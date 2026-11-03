@@ -1,0 +1,12 @@
+dimensions {0: 1, 1: 4, 2: 5} weight multiplicities {0: 6, 1: 4, 2: 2}
+Gram determinants {0: 1, 1: 5, 2: 162}
+exact matrix units checked 42
+copies (4,) denominator 30 max numerator 40 physical reconstruction PASS involution PASS
+copies (3, 4) denominator 30 max numerator 45 physical reconstruction PASS involution PASS
+S5-1 PASS
+FO-1 all one-body, pair and Kramers-frame coefficient identities PASS
+FO-1 generic graph invariants and exact skewness saturation PASS
+FO-1 affine invariant H=155+96y and tangent-square defect 96^2 t^2 PASS
+FO-1 generic Gc=h, c^T h=1, frame reconstruction and shell purity PASS
+FO-1 shell endpoint modulus recovered by h_s=4 b^2-1 PASS
+FO-1 PASS: family orbit data on 1/32 < y < 1/12; includes purity and entropy parameters

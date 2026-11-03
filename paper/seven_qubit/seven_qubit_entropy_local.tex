@@ -1,0 +1,102 @@
+\subsection{The family maximiser}
+\label{sec:entropy-local-seven}
+
+Write \(E_3(z)=35^{-1}\sum_{|S|=3}S(\rho_S)\) for a unit
+seven-qubit vector, and retain the two real amplitude patterns
+\[
+ U=\sum_{i<j}s_{ij}\bigl(|0,e_i+e_j\rangle
+       -|1,\mathbf1-e_i-e_j\rangle\bigr),\qquad
+ V=|0,\mathbf1\rangle+|1,\mathbf0\rangle,
+\]
+so \(\psi_x=\alpha U+\beta V\), \(\alpha=\sqrt{(1-2x)/30}\), \(\beta=\sqrt x\),
+\(\langle U,V\rangle=0\), \(\|U\|^2=30\), and \(\|V\|^2=2\).
+
+\begin{lemma}[Symmetric criticality of the conference family; proved, ES-1]
+\label{lem:seven-family-symmetric-criticality}
+Let $\mathcal F$ be a real function on the unit sphere, invariant under
+local unitaries, qubit permutations and complex conjugation, and
+differentiable at $\psi_x$ for some $0<x<1/2$. If $x$ is a stationary point
+of $x\mapsto\mathcal F(\psi_x)$, then $\psi_x$ is stationary on the whole
+unit sphere. This applies to $\pi_3$ (a polynomial) and to $E_3$, whose
+marginals have full rank for $0<x<1/2$ by Theorem~\ref{thm:ico}.
+\end{lemma}
+\begin{proof}
+We exhibit a common symmetry group of $U,V$ whose real fixed space is
+exactly $\operatorname{span}_{\mathbb R}\{U,V\}$. Ordinary labels are $0,\ldots,5$,
+with the distinguished qubit denoted by $s$.
+The diagonal unitary
+\[
+ T=-Z_s\otimes\operatorname{diag}(1,i)^{\otimes6}
+\]
+fixes $U,V$. Its eigenvalue on $|s,b\rangle$ is $-(-1)^s i^{|b|}$,
+so its fixed space consists of the pair and complement sectors
+$(s,|b|)=(0,2),(1,4)$ and the two endpoints $(0,6),(1,0)$.
+
+Put $g=(1\,3\,2\,4\,5)$, $p=(0\,1)(2\,4)$ and
+$\epsilon=(1,1,1,-1,1,-1)$. The conference signs satisfy
+$s_{g(i)g(j)}=s_{ij}$ and
+$\epsilon_i\epsilon_j s_{p(i)p(j)}=s_{ij}$.
+If $P_\pi$ permutes the ordinary qubits by $\pi$, then $P_g$ and
+\[
+ W=\left(-Z_s\otimes\bigotimes_{i=0}^5
+           \operatorname{diag}(1,-i\epsilon_i)\right)P_p
+\]
+fix $U,V$ and both endpoints. On either pair sector, dividing the
+coefficients by $s_{ij}$ turns their actions into ordinary permutations
+of the fifteen pairs. These permutations act transitively: $g$ has
+three pair orbits (pairs through $0$, pentagon edges, and pentagon
+diagonals), while $p$ sends $\{0,3\}$ to $\{1,3\}$ and
+$\{0,2\}$ to $\{1,4\}$, connecting all three.
+Thus a real vector fixed by $T,P_g,W$ has one coefficient on each
+signed pair sector and one on each endpoint.
+
+Finally the local unitary
+\[
+ Q=\left(\operatorname{diag}(i,1)_s\otimes
+       \operatorname{diag}(1,e^{i\pi/4})^{\otimes6}\right)X^{\otimes7}
+\]
+fixes $U,V$. On the displayed support it exchanges complementary
+pair strings with a minus sign and exchanges the endpoints with a
+plus sign. Its fixed space within the preceding four-dimensional
+space is therefore exactly $\operatorname{span}_{\mathbb R}\{U,V\}$.
+
+At a real $\psi_x$, conjugation invariance makes the spherical gradient
+real. The four displayed symmetries act orthogonally on
+$\mathbb C^{128}\cong\mathbb R^{256}$, preserve $\mathcal F$ and fix
+$\psi_x$, so they fix that gradient, which therefore lies in this plane. Orthogonality to $\psi_x$ leaves only the
+one-dimensional family tangent. Stationarity within the family makes that last component vanish,
+proving full-space stationarity.
+\end{proof}
+
+\begin{proposition}[Full-space stationarity; proved, ES-1]
+\label{prop:entropy-seven-stationarity}
+The unique maximiser \(\psi_{x_*}\) of \(E_3\) within the icosahedral
+family is a stationary point on the whole projective space
+\(\mathbb CP^{127}\). Its parameter is the unique root in \((0,1/2)\) of
+\begin{equation}\label{eq:entropy-seven-star}
+ 2^{32}(1-2x_*)^{15}=3^8(1+8x_*)^8(1+28x_*)^7,
+ \qquad x_*=0.069828\ldots.
+\end{equation}
+In particular \(E_3(\psi_{x_*})=2.96535602947767\ldots\) bits, and
+\(1/32<x_*<37/524\), so \(x_*/u_*\in(1,37/15)\) with \(u_*=(1-2x_*)/30\).
+\end{proposition}
+\begin{proof}
+By Lemma~\ref{lem:seven-family-symmetric-criticality}, it suffices to
+find the family stationary point. The marginal spectra of
+Theorem~\ref{thm:ico} give
+\[
+ E_3'(x)=\frac4{35\ln2}\ln
+  \frac{(4u)^{13}(8u)^2}{(3u+x)^8(u+x)^7},
+ \qquad u=(1-2x)/30.
+\]
+Strict concavity and the endpoint derivative signs in
+Corollary~\ref{cor:ico-entropy-separation} give a unique interior
+zero, equivalent to~\eqref{eq:entropy-seven-star}. At this zero the symmetry
+lemma gives full-projective stationarity. At \(x=1/32\) one has \(u=x\) and
+\(E_3'(1/32)=4\ln512/(35\ln2)>0\), so \(1/32<x_*<37/524\) by concavity
+and Corollary~\ref{cor:ico-entropy-separation}; since \(x/u\) increases
+with \(x\) and equals \(37/15\) at \(x=37/524\), \(x_*/u_*\in(1,37/15)\).
+\end{proof}
+
+Throughout the entropy sections, \(\phi=\psi_{x_*}\), \(u_*=(1-2x_*)/30\) and
+\(E_*=E_3(\phi)\); a \emph{competitor} is a pure state \(z\) with \(E_3(z)\ge E_*\).

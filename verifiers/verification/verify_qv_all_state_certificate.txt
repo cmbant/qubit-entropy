@@ -1,0 +1,6 @@
+QVA-1 PASS: exact six-copy intertwiners; all 95 covariants vanish at HS and cluster
+QVA-2 PASS: 95 positive integer norm weights; denominator 10235456181520; at most 14 numerator digits
+Covariants: 716 nonzero integer coefficients, maximum absolute value 22
+QVA-3 PASS: exact identity 2*D*QV_defect = sum q_i*||s_i||^2 at all 83 determining states
+QVA-4 PASS: one-state regression: all 95 squared norms invariant under conjugation, qubit permutations and four local maps per qubit (with k^6 scaling)
+QVA PASS: positive-norm all-state QV certificate; integer arithmetic throughout

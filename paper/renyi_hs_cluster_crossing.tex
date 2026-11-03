@@ -1,0 +1,26 @@
+\subsection{The HS--cluster transition}
+Put $m_q=2^{-q}+3\,6^{-q}$, so the HS entropy is $h_q=\log_2m_q/(1-q)$.
+
+\begin{proposition}[HS--cluster crossing]
+\label{prop:fqe-renyi-crossing}
+There is a unique $q_*\in(3/2,8/5)$ satisfying
+\[
+\frac{\log_2 m_{q_*}}{1-q_*}=\frac53.
+\]
+For every $q>q_*$, the cluster state has strictly larger mean R\'enyi entropy
+than $M_4$; at $q_*$ the two values coincide. Since $1587/1000<q_*<1589/1000$ (RA-4), $q_*$ is the
+threshold $\alpha_0\approx1.59$ of the R\'enyi conjecture of Gour and Wallach~\cite[Fig.~2]{GW}. That the two states are the global maximisers below and above $q_*$ is
+Corollary~\ref{cor:fqe-renyi-gw}.
+\end{proposition}
+\begin{proof}
+The cluster spectra recalled above give $(1+2+2)/3=5/3$ for every $q>0$.
+The R\'enyi entropy of the nonuniform full-support HS spectrum is strictly
+decreasing: $g(q)=\ln m_q$ is strictly convex, $g(1)=0$, and its secant slope
+$g(q)/(q-1)$ is strictly increasing. Since $1-q<0$ for $q>1$, $h_q>5/3$ if and only if
+$m_q<2^{-5(q-1)/3}$. As $m_q=2^{-q}(1+3^{1-q})$, we have
+$m_{3/2}<2^{-5/6}$, as $(1+1/\sqrt3)^3=2+10/(3\sqrt3)<4$ reduces to $100<108$; and $m_{8/5}>1/2$, as
+$2^{3/5}<47/31<1+3^{-3/5}$ reduces to $8\cdot31^5<47^5$ and $27\cdot16^5<31^5$. So its R\'enyi value crosses $5/3$
+strictly between those parameters. Continuity and strict monotonicity finish.
+The same monotonicity and the exact enclosures RA-4 of $\log_2m_q$ at $q=1587/1000$ and
+$q=1589/1000$ give $h_{1587/1000}>5/3>h_{1589/1000}$, hence $1587/1000<q_*<1589/1000$.
+\end{proof}

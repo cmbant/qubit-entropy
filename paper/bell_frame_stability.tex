@@ -1,0 +1,27 @@
+\subsection{The intrinsic moment identity}
+\label{sec:fqe-bell-extraction}
+
+Here is a convenient arbitrary-state identity. For a state with magic matrix $Z$ (Appendix~\ref{sec:fqe-normal-form} of the paper) put $s=\operatorname{tr}(Z^TZ)$,
+$\mathcal N=ZZ^TZ-sZ/2$, and $C=\sum_j e_3(\rho_{1j})$, where $e_3$ is the third elementary symmetric
+polynomial of the eigenvalues. Then
+\begin{equation}\label{eq:fqe-bell-cubic}
+ C=\frac32\|\operatorname{adj}Z\|_F^2+\frac12\|\mathcal N\|_F^2,
+ \qquad Q=5-36C\quad(\|Z\|_F=1).
+\end{equation}
+For a direct derivation let $D_{12},D_{13},D_{14}$ be the three flattening determinants
+in the computational basis, and set
+$J=\operatorname{tr}((Z^TZ)^2)/4-s^2/8$. Expanding the four-by-four
+determinants in the stated magic basis gives
+$D_{12}=\det Z$, $D_{13}=(\det Z+J)/2$,
+$D_{14}=(-\det Z+J)/2$. If $M_{1j}$ is the flattening matrix with $\rho_{1j}=M_{1j}M_{1j}^\dagger$, then
+$e_3(\rho_{1j})$ is the sum of the $3\times3$ principal minors of $M_{1j}M_{1j}^\dagger$, which by Cauchy--Binet is
+$\|\operatorname{adj}M_{1j}\|_F^2$; the holomorphic gradient of $\det M_{1j}$ is the transposed adjugate, and the flattening
+and the magic change of basis are unitary reshapings, so $e_3(\rho_{1j})=\|\nabla D_{1j}\|^2$. Here
+$\nabla D_{12}=\nabla\det Z$ has norm $\|\operatorname{adj}Z\|_F$, and $\nabla J=\mathcal N$. By the parallelogram law
+$\|\nabla D_{13}\|^2+\|\nabla D_{14}\|^2=\tfrac12(\|\operatorname{adj}Z\|_F^2+\|\mathcal N\|_F^2)$, and adding
+$\|\nabla D_{12}\|^2$ proves the first identity in \eqref{eq:fqe-bell-cubic}. The second is Newton's identity
+$6e_3(\rho)=1-3\operatorname{tr}\rho^2+2\operatorname{tr}\rho^3$ for $\operatorname{tr}\rho=1$, summed over $j=2,3,4$:
+$36C=18-18P+12T$, while $Q=18P-12T-13$ for unit states.
+
+Section~\ref{sec:sup-bellframe} also gives a constructive distance certificate from three chosen Bell-pair products.
+

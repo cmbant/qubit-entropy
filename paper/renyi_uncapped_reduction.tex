@@ -1,0 +1,88 @@
+
+\input{spectral_spinflip_bound}
+
+\subsection{Quantitative rigidity of two maximally mixed cuts}
+\label{sec:fqe-renyi-two-flat}
+
+\begin{proposition}[Crossed purity costs and two-flat rigidity]
+\label{prop:fqe-two-flat-rigidity}
+Let $\psi$ be any unit pure four-qubit state. Fix a balanced cut $k$,
+write its ordered spectrum as
+$\lambda_1\ge\lambda_2\ge\lambda_3\ge\lambda_4\ge0$,
+and put
+\[
+\Delta_k=\sum_{j\ne k}(p_j-1/4),\qquad
+p_j=\operatorname{tr}\rho_{1j}^2.
+\]
+If $\lambda_1\ge1/2$, then
+\[
+\boxed{\quad
+\Delta_k\ge\frac14W_1+
+2(\lambda_2\lambda_3+\lambda_2\lambda_4+
+\lambda_3\lambda_4)
+\ge\frac14W_1+(\lambda_3+\lambda_4)^2.\quad}
+\tag{TF}\label{eq:fqe-two-flat}
+\]
+The first inequality is sharp for every chosen spectrum with
+$\lambda_1\ge1/2$. On the critical locus, equality holds exactly when
+all nonzero squares of the other normal-form amplitudes have a phase
+opposite to the square of the largest amplitude. The noncritical
+sharpness family in Proposition~\ref{prop:fqe-spectral-spinflip} also
+attains the first inequality.
+
+Consequently, whenever \emph{two} balanced cuts of a pure
+four-qubit state have maximally mixed marginals $(1/4)^4$,
+the third has Schmidt rank at most two. Up to local
+unitaries and a permutation of the qubits, every such
+state belongs to the attained cluster-to-Bell family
+\eqref{eq:fqe-quadratic-family}. In particular the exact
+R\'enyi envelope of Proposition~\ref{prop:fqe-renyi-rank-two} of the supplement
+applies for all $q>0$.
+\end{proposition}
+\begin{proof}
+The purity identity and Proposition~\ref{prop:fqe-spectral-spinflip} give
+\[
+2\Delta_k
+=2(P-p_k-1/2)
+=W_1+\tau-(2p_k-1)
+\ge\frac12W_1+(2\lambda_1-1)^2-(2p_k-1).
+\]
+Using $\sum_i\lambda_i=1$ gives
+\[
+(2\lambda_1-1)^2-(2p_k-1)
+=4(\lambda_2\lambda_3+\lambda_2\lambda_4+
+\lambda_3\lambda_4).
+\]
+This proves the first bound. Since
+$\lambda_2\ge(\lambda_3+\lambda_4)/2$,
+the second follows by dropping the nonnegative
+$\lambda_3\lambda_4$ term.
+On the critical locus, write the chosen spectrum as $\lambda_i=|w_i|^2$
+in the normal form, so $\tau=|\sum_iw_i^2|^2$.
+The bound is then the reverse triangle inequality, with exactly the stated
+opposite-phase equality condition. Choosing those phases realises every
+ordered spectrum with $\lambda_1\ge1/2$, proving sharpness.
+
+Suppose now two cuts have purity $1/4$. Already one
+maximally mixed two-qubit cut forces all four one-qubit
+marginals to be $I/2$ by purity of complementary
+reductions. If $k$ is the remaining cut, then
+$p_k=P-1/2=1/2+\tau/2\ge1/2$. Since
+$p_k=\sum_i\lambda_i^2\le\lambda_1$, the hypothesis
+$\lambda_1\ge1/2$ holds. The first bound and
+$\Delta_k=0$ force at most one among
+$\lambda_2,\lambda_3,\lambda_4$ to be nonzero.
+The opposite-phase equality condition means that, up to
+overall phase and a signed permutation, $w$ has the form
+\[
+w=(\sqrt a,\ i\sqrt{1-a},\ 0,\ 0),\qquad 1/2\le a\le1.
+\]
+The magic-basis action is
+$\operatorname{diag}(w)\mapsto O_1\operatorname{diag}(w)O_2^T$, $O_1,O_2\in SO(4)$: the same permutation on both
+sides permutes the entries of $w$, a sign on one side changes the sign of one entry, and extra signs on the zero
+coordinates make both factors proper rotations. This action is induced by local one-qubit unitaries on
+each side of the chosen cut, so this is exactly the
+normal form \eqref{eq:fqe-quadratic-family} up to LU and
+cut relabelling.
+\end{proof}
+

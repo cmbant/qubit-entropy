@@ -1,0 +1,7 @@
+[PASS] CE-1 F = N^3/2 + (7/4)N tau + (9/4) perm Theta and P = N^2 + tau/2 on G(v) (64 monomials in F)
+[PASS] CE-1 det Theta = -N tau and Theta^T Theta has eigenvalues N^2, tau, tau
+[PASS] CE-2 sign-triple sums, cyclic diagonals = (perm+det)/2, and F = -3/2 + 2|Theta|^2 + (9/2)e
+[PASS] CE-3 perm(kI+(1-k)uu^T) expansion (sum y = 1 used afterwards), Maclaurin value (2+3k^2+4k^3)/9, and 1/2 + (7/4)k^2 - (9/4)(2+3k^2+4k^3)/9 = k^2 - k^3
+[PASS] CE-4 12 signed permutations with det -1 and O^(x3) omega = -omega, all signed cyclic with sign product -1; perm Theta = -(2+3k^2+4k^3)/9 on all 12 x 8 equality matrices
+[PASS] CE-5 [numerical sanity] min of F - tau + tau^(3/2) over 3000 random critical states = 4.811e-02; equality state with Theta = -(kI+(1-k)ss^T), k = 3/5: tau = 0.360000, gap = -1.4e-16
+ALL CE CHECKS PASS

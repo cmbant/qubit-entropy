@@ -1,0 +1,26 @@
+LP-0 n=4 random pure state: |a_s - formula| < 1e-12: True; min shadow coefficient > -1e-12: True
+LP-0 n=4 random mixed state: |a_s - formula| < 1e-12: True; min shadow coefficient > -1e-12: True
+LP-0 n=5 random pure state: |a_s - formula| < 1e-12: True; min shadow coefficient > -1e-12: True
+LP-0 n=5 random mixed state: |a_s - formula| < 1e-12: True; min shadow coefficient > -1e-12: True
+LP-1 exact Rains-LP dual certificates for min mean balanced purity:
+   n= 4 k=2  bound 1/3     certificate exact: True   (2^-k = 1/4)
+   n= 5 k=2  bound 1/4     certificate exact: True   (2^-k = 1/4)
+   n= 6 k=3  bound 1/8     certificate exact: True   (2^-k = 1/8)
+   n= 7 k=3  bound 1/8     certificate exact: True   (2^-k = 1/8)
+   n= 8 k=4  bound 3/35    certificate exact: True   (2^-k = 1/16)
+   n= 9 k=4  bound 1/14    certificate exact: True   (2^-k = 1/16)
+   n=10 k=5  bound 1/21    certificate exact: True   (2^-k = 1/32)
+   n=11 k=5  bound 1/28    certificate exact: True   (2^-k = 1/32)
+   n=12 k=6  bound 5/224   certificate exact: True   (2^-k = 1/64)
+LP-2 n=7: A = [1, 0, 0, 0, 35, 42, 28, 22] is exactly LP-feasible (A_j >= 0, shadow >= 0, a_s = a_{7-s}): True; a_3(A) = 1/8 = LP bound 1/8: True
+GS-1 n= 4 graph path P4 (cluster)      mean balanced purity 1/3    = LP bound 1/3: True; cut ranks {1: 2, 2: 4}
+GS-1 n= 5 graph C5(1)                  mean balanced purity 1/4    = LP bound 1/4: True; cut ranks {2: 10}
+GS-1 n= 6 graph C6(2,3)                mean balanced purity 1/8    = LP bound 1/8: True; cut ranks {3: 20}
+GS-1 n= 8 graph 8 vertices, 17 edges   mean balanced purity 3/35   = LP bound 3/35: True; cut ranks {2: 6, 3: 8, 4: 56}
+GS-1 n= 9 graph C9(3,4)                mean balanced purity 1/14   = LP bound 1/14: True; cut ranks {3: 18, 4: 108}
+GS-1 n=10 graph C10(1,2,4)             mean balanced purity 1/21   = LP bound 1/21: True; cut ranks {4: 132, 5: 120}
+GS-1 n=11 graph 11 vertices, 34 edges  mean balanced purity 1/28   = LP bound 1/28: True; cut ranks {4: 66, 5: 396}
+GS-1 n=12 graph C12(3,5,6)             mean balanced purity 5/224  = LP bound 5/224: True; cut ranks {4: 6, 5: 378, 6: 540}
+GS-2 n=10: weight enumerator [1, 0, 0, 0, 10, 72, 160, 240, 285, 200, 56]; 3-uniform (A1=A2=A3=0): True; a_5(A) = 1/21
+GS-3 comparison, Petersen graph state (n=10): mean 5|5 purity = 3/56
+GS-4 n=7: MacWilliams/shadow-integrality minimum of pi_3 over all stabilizer states = 19/140 (witness A=[1, 0, 0, 3, 29, 42, 34, 19], cut ranks {2: 3, 3: 32}); 121/917 < 19/140: True

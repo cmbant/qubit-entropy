@@ -1,0 +1,5 @@
+[PASS] FP-1 all 70 interleavings reduce to exactly 23 ordering classes
+[PASS] FP-2 all 23 rational identities, 4830 coefficients and 184 positive Gram matrices
+[PASS] FP-3 exact area-weighted plane identity and magic spin-flip compatibility
+[PASS] FP-4 matching cluster-to-GHZ family attains the profile for every spin flip
+All FP checks passed; sharp covering follows by the analytic area-weighted Bures argument.

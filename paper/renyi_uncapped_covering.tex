@@ -1,0 +1,112 @@
+\subsection{An exact Lagrangian dual for the classical relaxation}
+\label{sec:fqe-renyi-covering}
+
+We now prove the anchor-order bounds used with Corollary~\ref{cor:fqe-renyi-order-transfer}.
+The argument uses a classical relaxation of the cut-spectrum constraints: three four-point probability vectors
+$\lambda^{(2)},\lambda^{(3)},\lambda^{(4)}$ with
+$p_j=\sum_i(\lambda^{(j)}_i)^2$, $t_j=\sum_i(\lambda^{(j)}_i)^3$, $P=\sum p_j\ge1$,
+$F=17P-12T-12\ge0$ ($T=\sum t_j$), and the quadratic bound \eqref{eq:fqe-quadratic-variance-proved}.
+The cut spectra of every physical state form such a triple (Lemma~\ref{lem:fqe-purity}, Theorem~\ref{thm:fqe-moment},
+Corollary~\ref{thm:fqe-quadratic-variance}). Write $\varepsilon=P-1$, $U=\sum p_j^2$,
+$f_j=17p_j-12t_j$, and $\mathcal E_q=\frac13\sum_jH_q(\lambda^{(j)})$ in bits.
+
+\begin{lemma}[Lagrangian dual bound]\label{lem:fqe-dual}
+For $\theta=(\alpha,\beta,\gamma)\in\mathbb R^2\times[0,\infty)$ put
+\[
+\Lambda_\theta(\lambda)=H_q(\lambda)+\alpha(p-\tfrac13)+\beta(f-4)-\gamma(p^2-\tfrac19),
+\qquad
+\ell_\theta(\varepsilon,F)=\alpha\varepsilon+\beta F-\frac\gamma6\Bigl(F^2+\frac{17}2\varepsilon+2\varepsilon^2\Bigr).
+\]
+For every triple of the relaxation, $\sum_jH_q(\lambda^{(j)})\le\sum_j\Lambda_\theta(\lambda^{(j)})-\ell_\theta(\varepsilon,F)$.
+The function $\ell_\theta$ is concave, so on a rectangle its minimum is attained at a corner.
+\end{lemma}
+\begin{proof}
+$\sum_j(p_j-\frac13)=\varepsilon$, $\sum_j(f_j-4)=F$ and $\sum_j(p_j^2-\frac19)=U-\frac13$, hence
+$\sum_jH_q=\sum_j\Lambda_\theta-\alpha\varepsilon-\beta F+\gamma(U-\frac13)$. The quadratic bound reads
+$6U\le F^2+\frac92\varepsilon+2P^2$, i.e.\ $U-\frac13\le\frac16(F^2+\frac{17}2\varepsilon+2\varepsilon^2)$, and $\gamma\ge0$.
+\end{proof}
+
+\begin{lemma}[Sharp third-moment bound at fixed purity]\label{lem:fqe-third-moment}
+If a four-point probability vector has purity $p=\frac14+x$, then $0\le x\le\frac34$ and
+$\bigl|t-\frac1{16}-\frac34x\bigr|\le x^{3/2}/\sqrt3$.
+The upper bound is attained only at the one-large spectrum
+$((1+3s)/4,(1-s)/4,(1-s)/4,(1-s)/4)$, up to permutation,
+where $s=\sqrt{4x/3}$. The lower bound is attained precisely at its
+one-small counterpart when $x\le1/12$; at $x=0$ both are uniform.
+\end{lemma}
+\begin{proof}
+The vectors with given $p$ form a round two-sphere $\{\lambda=\frac14\mathbf1+w:\ \sum w_i=0,\ |w|^2=x\}$
+of radius $\sqrt x$. Optimising on the whole sphere gives a valid bound
+even when it extends outside the simplex. On it $t=\frac1{16}+\frac34x+\sum w_i^3$; critical points of the cubic
+$\sum w_i^3$ have at most two distinct coordinates, namely the patterns $(3,1)$ and $(2,2)$.
+The pattern $(2,2)$ has $\sum w^3=0$, and the patterns $(z,z,z,-3z)$ with $12z^2=x$ give
+$\sum w^3=-24z^3=\mp x^{3/2}/\sqrt3$.
+The upper extremiser has three entries $(1-s)/4\ge0$ for every $x\le3/4$;
+the lower has smallest entry $(1-3s)/4\ge0$ exactly when $x\le1/12$.
+\end{proof}
+
+\paragraph{Exact contact identities.}
+Write $c_1=(1/2,1/2,0,0)$ and $c_2=(1/4)^4$.
+Their $(H_q,p,f,p^2)$ values, independent of $q$, are
+$(1,1/2,11/2,1/4)$ and $(2,1/4,7/2,1/16)$.
+Consequently, with $\Lambda^\star_i=\Lambda_\theta(c_i)$,
+\[
+\Lambda^\star_1=1+\frac\alpha6+\frac32\beta-\frac5{36}\gamma,
+\qquad \Lambda^\star_2=2-\frac\alpha{12}-\frac\beta2+\frac7{144}\gamma,
+\qquad \Lambda^\star_1+2\Lambda^\star_2-\ell_\theta(0,1/2)=5,
+\tag{DC}\label{eq:fqe-dual-contact}
+\]
+since $\ell_\theta(0,1/2)=\beta/2-\gamma/24$.
+\begin{theorem}[Two R\'enyi anchors]
+\label{thm:fqe-renyi-classical}
+Let $q_s=1587/1000$ and $q_u=8/5$. Every triple satisfying $P\ge1$, $F\ge0$ and
+\eqref{eq:fqe-quadratic-variance-proved} obeys one of the following.
+\begin{enumerate}
+\item If $F\ge3/20$ or $20\varepsilon+2F\ge1$, then $\mathcal E_{q_s}\le5/3$, with equality only at a permutation of
+$(c_1,c_2,c_2)$.
+\item Otherwise $\mathcal E_{q_u}\le h_{q_u}$, with equality only when all three spectra are HS spectra.
+\end{enumerate}
+\end{theorem}
+\begin{proof}[Proof outline]
+The cubic envelope first removes $20\varepsilon+2F\ge1$.
+On the residual, $\varepsilon<1/20$ and every $p_j<11/20$.
+For $F<3/20$ use the HS supporting inequality at $q_u$.
+For $3/20\le F\le11/25$ use the strict dual band at $q_s$.
+The remaining region lies near the cluster triple: the capped cubic bound
+handles cuts with $p_j\le47/100$, and the sliver bound handles the unique
+cut above that threshold. Table~\ref{tab:fqe-renyi-coverage} and
+Section~\ref{sec:sup-renyi-classical-proof} of the supplement~\cite{Companion}
+give the complete partition, summation and equality argument.
+\end{proof}
+
+
+\begin{proof}[Proof of Corollary~\ref{cor:fqe-renyi-gw}]
+For $0<q<1$ use Corollary~\ref{cor:fqe-renyi}, and for $q=1$ use Theorem~\ref{thm:fqe-entropy-max}.
+For $q>1$, the three cut spectra of $\psi$ form a triple of the relaxation
+(Lemma~\ref{lem:fqe-purity}, Theorem~\ref{thm:fqe-moment} and Corollary~\ref{thm:fqe-quadratic-variance}); recall
+$q_s<q_*<q_u$ and that $\mathcal E_q$ and $h_q$ decrease in $q$.
+
+In case (1) of Theorem~\ref{thm:fqe-renyi-classical}, $\mathcal E_{q_s}\le5/3<h_{q_s}$. Corollary~\ref{cor:fqe-renyi-order-transfer}
+gives $\mathcal E_q<h_q$ for $1<q\le q_s$, and $\mathcal E_q\le\mathcal E_{q_s}\le5/3$ for $q\ge q_s$. So
+$\mathcal E_q\le\max\{h_q,5/3\}$, strictly for $q<q_*$; for $q\ge q_*$ equality forces $\mathcal E_{q_s}=5/3$, hence the
+cluster-type triple.
+
+In case (2), Corollary~\ref{cor:fqe-renyi-order-transfer} gives $\mathcal E_q\le h_q$ for $1<q\le q_u$, with equality only
+for three HS spectra, and $\mathcal E_q\le\mathcal E_{q_u}\le h_{q_u}<5/3$ for $q\ge q_u$. As $h_q<5/3$ for $q>q_*$, equality
+occurs only for $q\le q_*$ and three HS spectra.
+
+Three HS spectra imply $P=1,F=0$, so Proposition~\ref{prop:fqe-onecut} gives the two HS LU orbits.
+A physical state with triple $(c_1,c_2,c_2)$ has two maximally mixed cut marginals;
+Proposition~\ref{prop:fqe-two-flat-rigidity} identifies it with the cluster endpoint of
+\eqref{eq:fqe-quadratic-family}.
+\end{proof}
+
+\begin{remark}[Scope of the relaxation]\label{rem:fqe-renyi-covering-scope}
+The classical relaxation uses only $P\ge1$, $F\ge0$ and (QK); no joint purity bound, spectrum cap or four-tangle information.
+It is needed only at the two anchor orders: Corollary~\ref{cor:fqe-renyi-order-transfer} acts cut by cut and needs no
+compatibility at all.
+The multiplier $\beta$ may have either sign; the dual has no gap on the sliver only after the third-moment link of
+Lemma~\ref{lem:fqe-third-moment} (a constant $\theta$ on a fixed $(\varepsilon,F)$ cell fails there).
+The equality classification uses the same strict local bounds as the inequality;
+it requires no additional covering.
+\end{remark}

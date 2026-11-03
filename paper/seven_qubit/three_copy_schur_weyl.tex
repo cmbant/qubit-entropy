@@ -1,0 +1,107 @@
+\subsection{The three-copy level for all $n$: Schur--Weyl form}\label{sec:threecopy-sw}
+
+The orbit coordinates of \S\ref{sec:threecopy} grow exponentially in $n$. Schur--Weyl duality for the
+site symmetry reduces level $m=3$ of Theorem~\ref{thm:spinflip-ppt-hierarchy} to $O(n^3)$ real
+parameters and blocks of size $O(n)$, with every step exact over $\mathbb Q$
+(\texttt{three\_copy\_schur\_weyl.py}).
+
+\paragraph{Reduction.} Per site, $\mathcal A_3=\operatorname{End}(S^{[3]})\oplus\operatorname{End}(S^{[21]})
+\cong\mathbb C\oplus M_2$, with $S^{[3]}=\langle|000\rangle\rangle$ and
+$S^{[21]}=\langle b_1=|100\rangle-|010\rangle,\ b_2=|010\rangle-|001\rangle\rangle$ (Gram matrix
+$G_0=\bigl(\begin{smallmatrix}2&-1\\-1&2\end{smallmatrix}\bigr)$), on which global copy permutations act
+by the standard representation $\rho$ of $S_3$. Sort the sites by type: $a$ sites in the $[21]$ sector.
+The site-symmetrised twirl $\Omega$ of $(zz^*)^{\otimes3}$ lies in
+$\bigoplus_a\bigl(M_2^{\otimes a}\bigr)^{S_a}$, and by Schur--Weyl duality for $GL_2$,
+$\bigl(M_2^{\otimes a}\bigr)^{S_a}=\bigoplus_{\nu}\operatorname{End}(U_\nu)$ over two-row partitions
+$\nu=(a-q,q)$, with $U_\nu=\operatorname{Sym}^{a-2q}\otimes{\det}^{q}$ and multiplicity
+$f_\nu=\binom aq-\binom a{q-1}$. Global copy symmetry confines the block on $U_\nu$ to the
+$\rho(S_3)$-invariant vectors $w_1,\dots,w_r$ of $U_\nu$, so $\Omega$ is the family
+$X_{a,\nu}=\sum_{k,l}M_{kl}|w_k\rangle\langle w_l|$ with real symmetric $M=M_{a,\nu}\succeq0$
+(the $\omega$-blocks; their entries are the parameters). For a test element $g=(g_0,g_1)\in\mathbb C\oplus M_2$
+of $\mathcal A_3$,
+\[
+ P(g)=\tr\bigl[\Omega\,g^{\otimes n}\bigr]
+ =\sum_{a=0}^n\binom na g_0^{\,n-a}\sum_{\nu}f_\nu\,\tr\bigl[X_{a,\nu}\,\rho_\nu(g_1)\bigr],
+\]
+and the normalisation and every mean purity $\pi_k$ are fixed linear functionals of the parameters:
+$\sum_k\binom nk\pi_k\,t^k$ is $P$ evaluated on the identity plus $t$ times a copy transposition.
+The flipped moment of $z\otimes z\otimes\tilde z$ has generating polynomial $P(T^*g)$, where $T^*$ is the
+per-site spin-flip map on test elements (a fixed rational $5\times5$ matrix), and the same block form
+with $S_2$-invariant vectors (copies $1,2$): the $\gamma$-blocks $\Gamma_{a,\nu}$. Matching the two
+polynomial forms determines each $\Gamma_{a,\nu}$ as an exact rational linear function of the parameters
+(the \emph{$\gamma$-map}); it is computed by isolating each type $a$ on rational points of the unit
+circle and solving one square rational system per type. Level $m=3$ is then
+\[
+ L_3(n,k)=\min\Bigl\{\pi_k(M):\ \text{normalised},\ M_{a,\nu}\succeq0,\ \Gamma_{a,\nu}(M)\succeq0\Bigr\}.
+\]
+The sizes are small: $(14,12,18)$ parameters, $\omega$- and $\gamma$-blocks at $n=7$, $(68,41,53)$
+at $n=13$, $(209,87,105)$ at $n=19$ and $(502,152,176)$ at $n=25$, with blocks of size at most $13$.
+SW-1 checks the construction against genuine states: for a random integer state at $n=4,5$ the exact
+generating polynomial lies in the parameter family, its flipped values equal those of the $\gamma$-map, and
+its $\gamma$-blocks are positive semidefinite to floating tolerance (a regression, not a proof input); the Haar moment gives the Haar purity $(2^k+2^{n-k})/(2^n+1)$ exactly.
+
+\begin{theorem}[three-copy bounds for all $n$; exact certificates SW-0--SW-4]\label{thm:threecopy-sw}
+For every pure state of $n$ qubits:
+\begin{enumerate}
+  \item[(a)] $n=13$: \ $\pi_6\ \ge\ 18171249/10^9=0.018171249>25/1408$; \quad
+             $n=19$: \ $\pi_9\ \ge\ 23947609/10^{10}=0.0023947609>93/38896$;
+  \item[(b)] $n=13$: \ $\pi_5\ \ge\ 15699039/(5\cdot10^8)>1/32$; \quad
+             $n=19$: \ $\pi_7\ \ge\ 78133177/10^{10}>1/128$;
+  \item[(c)] $n=25$: \ $\pi_9\ \ge\ 4882879/(25\cdot10^8)=0.0019531516>1/512$.
+\end{enumerate}
+Consequently no pure $13$-qubit state is $5$-uniform, no pure $19$-qubit state is $7$-uniform and no
+pure $25$-qubit state is $9$-uniform, that is, there is no pure $((13,1,6))_2$, $((19,1,8))_2$ or
+$((25,1,10))_2$ quantum code.
+\end{theorem}
+
+\begin{proof}
+For each case \texttt{data/three\_copy\_sw\_certificates.json} gives $\lambda$ and rational matrices
+$Z_{a,\nu}$, which SW-2 proves positive definite. SW-3 forms the exact residual
+$d=\pi_k-\lambda\cdot\mathrm{norm}-\sum\langle Z_{a,\nu},\Gamma_{a,\nu}(\cdot)\rangle$, a linear functional
+of the parameters, and proves each of its $\omega$-blocks positive definite. For a genuine state the
+parameters are normalised with $M_{a,\nu}\succeq0$ and $\Gamma_{a,\nu}\succeq0$, so
+$\pi_k-\lambda=\sum\langle D_{a,\nu},M_{a,\nu}\rangle+\sum\langle Z_{a,\nu},\Gamma_{a,\nu}\rangle\ge0$.
+Since $\tr\rho_S^2\ge2^{-k}$ for $|S|=k$, with equality only for a maximally mixed marginal, a
+$k$-uniform state has $\pi_k=2^{-k}$; and a pure $((n,1,d))_2$ code is exactly a $(d-1)$-uniform
+state. \qedhere
+\end{proof}
+
+\noindent\emph{Code-theoretic priority.}
+The nonexistence of pure $((13,1,6))_2$ and $((25,1,10))_2$
+codes is \emph{not new}. Huber's 2017 dissertation
+\cite[\S5.11.4]{HuberThesis17} explicitly excludes those code
+parameters, and $((31,1,12))_2$, by applying Rains's
+shortening theorem for pure quantum codes and a linear
+programming nonexistence bound for the shortened codes.
+The later Terwilliger-algebra SDP certificates of
+Angl\`es Munn\'e and Huber~\cite{AMH26}
+independently exclude $((13,1,6))_2$ and
+$((19,1,8))_2$.
+Theorem~\ref{thm:threecopy-sw}(b,c) supplies a
+\emph{different certificate family} and, importantly, the
+explicit \emph{quantitative} inequalities
+$\pi_5(13)>1/32$, $\pi_7(19)>1/128$, and
+$\pi_9(25)\ge4882879/(25\cdot10^8)
+=1/512+133/(5\cdot10^9)$.
+These quantitative lower bounds concern \emph{all}
+pure states, not just their exact uniformity status.
+The three-copy SDP is tighter than the Rains LP for
+the $25$-qubit $9$-body problem, but that fact does
+not imply a new code-nonexistence theorem.
+The seven-qubit three-copy numerical value is
+$125/978>1/8$ (TCN-1, TA-1), compatible with the
+known nonexistence of AME$(7,2)$.
+The quantitative bounds in part (a) do not
+require the previous code-nonexistence results.
+
+\paragraph{Where three copies beat the Rains LP} (TA-1; numerical). The Rains LP is level
+$L_2$ (Proposition~\ref{prop:rainsppt}). For $4\le n\le20$ and $k=\lfloor n/2\rfloor$, $L_3$ agrees with
+$L_2$ to $10^{-12}$ except at $n=7$, where $L_3=0.1278118609407\ldots$ (agreeing with $125/978$ to
+$10^{-16}$), at $n=13$, where $L_3=0.0181712542184\ldots$, and at $n=19$, where
+$L_3=0.0023947628089\ldots$. For $n\le18$ every other $L_2$ is attained by a graph state
+(Table~\ref{tab:minima} and Theorem~\ref{thm:eighteen}), so $L_3=L_2$ is forced there. The three exceptions are exactly the cases
+$n\le20$ in which the LP optimum would require a nonexistent code: $((7,1,4))_2$, $((13,1,6))_2$ and
+$((19,1,8))_2$ (\cite{HGS} and Theorem~\ref{thm:strictLP1319}). At $n=20$ level three gives no obstruction to the
+LP equality profile, consistent with its open status; nor (numerically) at $n=23,24$ (at the uniformity levels $k=8,9$ of the putative codes, not $\lfloor n/2\rfloor$), while at $n=25$, $k=9$
+it excludes the code (Theorem~\ref{thm:threecopy-sw}(c)): so far it obstructs exactly at $n\equiv1\pmod6$. The double-precision solver loses accuracy from
+$n=15$; TA-1 uses an exactly re-centred multiprecision solve (\texttt{search\_three\_copy\_sw\_certificate.py}).

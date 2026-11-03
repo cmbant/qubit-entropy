@@ -1,0 +1,55 @@
+\subsection{A positive repair lemma}
+\label{sec:positive-repair}
+
+The seven-qubit purity and entropy certificates
+(Theorems~\ref{thm:fivecopy-sharp-certificate}
+and~\ref{thm:seven-entropy-localized-identity}) both correct a strictly positive
+baseline, which fails the target identity, into an exact positive identity. The
+correction is found from finitely many evaluations, and its existence and
+positivity follow from two verified norm bounds. The common step is the following
+finite-dimensional real linear algebra; each application supplies its own spaces
+and verifies the bounds.
+
+\begin{lemma}[positive repair]
+\label{lem:positive-repair}
+Let $\mathcal V$ be a finite-dimensional real vector space, $\mathcal C\subseteq\mathcal V$
+a subspace of dimension $d$, and $\mathcal E:\mathcal V\to\mathbb R^m$ a linear map. Let
+$\Phi:\mathbb R^N\to\mathcal V$ be linear with $\Phi(\mathbb R^N)\subseteq\mathcal C$, let
+$\rho\in\mathcal C$, and put $A=\mathcal E\Phi\in\mathbb R^{m\times N}$ and
+$r=\mathcal E\rho\in\mathbb R^m$. Suppose $L\in\mathbb R^{d\times m}$ and
+$R\in\mathbb R^{N\times d}$ satisfy
+\begin{equation}\label{eq:positive-repair-inverse}
+ \|I_d-LAR\|_2\le\delta<1 .
+\end{equation}
+\begin{enumerate}
+\item[(a)] $A$ has rank $d$; $\Phi$ maps onto $\mathcal C$, and $\mathcal E$ is injective
+  on $\mathcal C$.
+\item[(b)] $z=R(LAR)^{-1}Lr$ satisfies $\Phi(z)=\rho$ and
+  $\|z\|_2\le\|R\|_2\|Lr\|_2/(1-\delta)$. If the entries of $A,r,L,R$ lie in a
+  subfield $K\subseteq\mathbb R$, then $z\in K^N$.
+\item[(c)] Let $\Delta_b:\mathbb R^N\to\operatorname{Sym}_{k_b}(\mathbb R)$, $b=1,\ldots,B$, be
+  linear maps with $\|\Delta_b(y)\|_2\le c\|y\|_2$ for every $y$. If
+  \begin{equation}\label{eq:positive-repair-margin}
+   \frac{c\,\|R\|_2\|Lr\|_2}{1-\delta}<1,
+  \end{equation}
+  then $I+\Delta_b(z)\succ0$ for every $b$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+By~\eqref{eq:positive-repair-inverse} the Neumann series for $(LAR)^{-1}$ converges, so
+$LAR$ is invertible with $\|(LAR)^{-1}\|_2\le1/(1-\delta)$. Hence $\operatorname{rank}A\ge d$.
+Since $A=\mathcal E\Phi$ factors through the $d$-dimensional space $\mathcal C$, also
+$\operatorname{rank}A\le d$. Equality forces $\Phi(\mathbb R^N)=\mathcal C$ and
+$\ker\mathcal E\cap\mathcal C=0$, proving (a).
+
+Since $AR$ has rank $d$, its image is $A(\mathbb R^N)=\mathcal E(\mathcal C)$, which
+contains $r$. Write $r=ARy$; applying $L$ gives $y=(LAR)^{-1}Lr$, so $Az=r$. Thus
+$\mathcal E(\Phi(z)-\rho)=0$ with $\Phi(z)-\rho\in\mathcal C$, and (a) gives $\Phi(z)=\rho$.
+The norm bound follows from the bound on $\|(LAR)^{-1}\|_2$, and $z\in K^N$ because
+$(LAR)^{-1}$ has entries in $K$. For (c),
+$\|\Delta_b(z)\|_2\le c\|z\|_2<1$ by (b) and~\eqref{eq:positive-repair-margin}, so every
+eigenvalue of $I+\Delta_b(z)$ is positive.
+\end{proof}
+No singular value enters the conclusion: $\delta$ and the margin bound the exact matrices,
+and $L,R$ are arbitrary candidates (in both applications, binary64 singular-vector data read
+as exact dyadic rationals).

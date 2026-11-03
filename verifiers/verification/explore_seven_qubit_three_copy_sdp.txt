@@ -1,0 +1,10 @@
+TCN-1 n=4 k=2: three-copy bound on mean 2-body purity = 0.3333333309  (reference 1/3 = 0.3333333333)
+TCN-1 n=5 k=2: three-copy bound on mean 2-body purity = 0.2499999991  (reference 1/4 = 0.2500000000)
+TCN-1 n=6 k=3: three-copy bound on mean 3-body purity = 0.1249999994  (reference 1/8 = 0.1250000000)
+TCN-1 n=7 k=3: three-copy bound on mean 3-body purity = 0.1278115229  (reference 125/978 = 0.1278118609)
+code/explore_seven_qubit_three_copy_sdp.py:33: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  pr.solve(solver='CLARABEL', tol_gap_abs=1e-14, tol_gap_rel=1e-14, tol_feas=1e-14, max_iter=500)
+TCN-1b n=7 tight tolerances: 0.1278118609404, minus 125/978 = -3.25e-13
+TCN-2 n=7: strictly feasible dual at lambda = 639/5000, min eigenvalue margin 4.104e-06
+TCN-3 integer rounding residual max 8.931e+30 (relative to Q=5.0e+43)
+TCN-3 exact integer identity data written (Q has 308 digits); not checked or used by any proof (L_3 is certified by certify_seven_qubit_three_copy_bound.py)

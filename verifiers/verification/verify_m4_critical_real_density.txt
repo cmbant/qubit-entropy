@@ -1,0 +1,5 @@
+[PASS] RP-1 three real MUBs, exact tomography and tight quadratic frame
+[PASS] RP-2 all 16 HS planes, paired overlaps and Bures compression determinants
+[PASS] RP-3 spin flip, entropy gradient, exact fourth frame moment and sharp GHZ floor
+[PASS] RP-4 exact rank-two normal family forces quartic correction beta >= 3/4
+All RP checks passed; full critical entropy/orbit reduction is analytic.

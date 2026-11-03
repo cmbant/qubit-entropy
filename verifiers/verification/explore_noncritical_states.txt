@@ -1,0 +1,16 @@
+orbit fidelity (BFGS) vs 32-ray formula on a critical state: 0.807878565 0.807878565
+G at the equality state: 0 (|G| < 1e-9)
+random filters of size 0.02 at the equality state: min G/eps^2 = 4.24, median 6.79
+random filters of size 0.05 at the equality state: min G/eps^2 = 3.07, median 6.28
+random filters of size 0.10 at the equality state: min G/eps^2 = 4.77, median 7.93
+random filters of size 0.20 at the equality state: min G/eps^2 = 5.01, median 7.78
+critical part within 0.05 of the equality state, filters of size 0.05: min G = 0.0245, min delta/d^2 = 0.2745 (10 states)
+critical part within 0.05 of the equality state, filters of size 0.15: min G = 0.1099, min delta/d^2 = 0.5440 (10 states)
+critical part within 0.05 of the equality state, filters of size 0.40: min G = 0.4467, min delta/d^2 = 1.2869 (10 states)
+critical part within 0.15 of the equality state, filters of size 0.05: min G = 0.0364, min delta/d^2 = 0.2829 (10 states)
+critical part within 0.15 of the equality state, filters of size 0.15: min G = 0.1410, min delta/d^2 = 0.7265 (10 states)
+critical part within 0.15 of the equality state, filters of size 0.40: min G = 0.5398, min delta/d^2 = 1.3326 (10 states)
+critical part within 0.40 of the equality state, filters of size 0.05: min G = 0.0683, min delta/d^2 = 0.5750 (10 states)
+critical part within 0.40 of the equality state, filters of size 0.15: min G = 0.1057, min delta/d^2 = 0.6272 (10 states)
+critical part within 0.40 of the equality state, filters of size 0.40: min G = 0.5706, min delta/d^2 = 1.4129 (10 states)
+(42 s)

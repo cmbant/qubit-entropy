@@ -1,0 +1,516 @@
+% The most entangled states of four and seven qubits.
+% The paper and its supplement refer to each other: build the pair twice,
+%   latexmk -pdf four_qubit_entropy.tex; latexmk -pdf supplement.tex; latexmk -g -pdf four_qubit_entropy.tex; latexmk -g -pdf supplement.tex
+\documentclass[11pt]{article}
+\input{fqe_preamble}
+\externaldocument[][nocite]{supplement}
+% Pointers to tables printed in the supplement.
+\newcommand{\LNtab}[1]{Table~\ref{#1} of the supplement~\cite{Companion}}
+\newcommand{\LNtabs}[2]{Tables~\ref{#1} and~\ref{#2} of the supplement~\cite{Companion}}
+\hypersetup{pdfauthor={Antony Lewis},pdftitle={The most entangled states of four and seven qubits}}
+\title{The most entangled states\\of four and seven qubits}
+\author{Antony Lewis \affiliation{\Sussex}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Pure states of four and seven qubits cannot be maximally entangled across every balanced bipartition; we determine
+how entangled they can be on average. For four qubits we prove the conjecture of Higuchi and Sudbery: the mean von
+Neumann entropy of the three $2|2$ cuts is at most $1+\tfrac12\log_2 3$ bits, with equality exactly on the
+local-unitary orbits of their state $M_4$ and its complex conjugate. For seven qubits the mean purity of the 35
+balanced $3|4$ cuts is at least $121/917$ and their mean entropy is at most $2.965356029\ldots$ bits, each with a
+unique optimiser up to local unitaries and qubit permutations. The two optimisers are distinct members of one
+icosahedral family, so minimum purity and maximum entropy select different states.
+
+The proofs bound moments of the marginal spectra by positive identities on several copies of the state, some of them
+spin flipped, and bound the entropy by a polynomial in those moments. The four-qubit maximum has an analytic proof; the
+seven-qubit proofs, and some of the four-qubit refinements below, are computer-assisted, with exact arithmetic and
+rigorous error bounds. We also prove the
+Gour--Wallach conjecture for R\'enyi entropies of all orders, with the maximiser changing from $M_4$ to cluster
+states at $q_*\approx1.588$, and obtain sharp Tsallis bounds, mixed-state bounds and quantitative stability.
+
+The results and text were all produced by AI agents under human supervision.
+\end{abstract}
+
+\section{Introduction}\label{sec:fqe-intro}
+
+Multipartite entanglement requires a compromise: a state maximally entangled across one division of its qubits
+need not be maximally entangled across another. A state that achieves maximal entanglement across every
+bipartition is called \emph{absolutely maximally entangled} (AME). Such states are closely related to
+quantum error-correcting codes~\cite{Scott} and ``perfect'' tensors~\cite{PYHP}; Ref.~\cite{AMEreview} reviews them. They exist for two, three, five and six qubits,
+but not for four~\cite{HS,HSi26}, seven~\cite{HGS}, or eight or more~\cite{Scott}.
+Four and seven qubits are therefore the first two sizes at which no state can maximise
+entanglement across every cut simultaneously; at most four of the six two-qubit marginals, and at most 32 of the 35
+three-qubit marginals, can be maximally mixed~\cite{HS,HGS,ZNSZ}. Balanced cuts expose this obstruction: if all
+balanced marginals are maximally mixed, their smaller reductions are too. Conversely,
+states with all one- and two-qubit marginals maximally mixed exist for every $n\ge5$~\cite{Scott},
+so small marginals alone do not reveal the seven-qubit obstruction. We determine the greatest
+mean entropy across balanced cuts at both sizes; minimisers of the mean balanced purity are the maximally multipartite
+entangled states of Facchi et al.~\cite{FFPP}, and highly entangled states have been sought numerically since
+Refs.~\cite{BSSB,Borras}. At four qubits this is the question posed by Higuchi and Sudbery in ``How entangled can two couples get?''~\cite{HS}.
+
+Label the qubits $1,2,3,4$. There are three ways to divide them into two
+groups of two:
+\[
+12|34,\qquad 13|24,\qquad 14|23.
+\]
+A \emph{bipartition}, or \emph{cut}, is balanced when its two groups are as close in size as possible:
+$2|2$ here, and $3|4$ for seven qubits. For a pure state $\psi$, the reduced density matrix
+$\rho_{12}=\operatorname{tr}_{34}|\psi\rangle\langle\psi|$ describes qubits $1,2$ alone; define
+$\rho_{13}$ and $\rho_{14}$ similarly. Its von Neumann entropy
+\[
+S(\rho)=-\operatorname{tr}\rho\log_2\rho
+\]
+measures the entanglement across the cut. Operationally, it is the
+number of Bell pairs per copy that the two sides can distil from many copies of the pure state, or need to prepare those copies,
+using local operations and classical communication~\cite{BBPS}. The complementary pair has the same entropy, so each cut
+is counted once. A pair of qubits
+has a four-dimensional state space, so $S\le2$ bits, with equality when $\rho$ is maximally mixed,
+$I_4/4$, with four equal eigenvalues $1/4$. Entropies are in bits throughout, except in the Tsallis
+corollary and in proofs that use $\ln$, which say so.
+
+We give the three cuts equal weight and study the average
+\[
+E(\psi)=\frac13\bigl[S(\rho_{12})+S(\rho_{13})+S(\rho_{14})\bigr]
+       =\frac13\sum_{j=2}^{4}S(\rho_{1j}).
+\]
+It is the entanglement, in Bell pairs, available across a balanced cut chosen at random, and it is unchanged by
+relabelling the qubits. Reaching $E=2$ would require all three reduced states to be
+maximally mixed, hence an AME state. Their compatibility---all three come from one wavefunction---prevents
+this~\cite{HS}: three maximally mixed cuts would give total purity $P=\sum_j\operatorname{tr}\rho_{1j}^2=3\cdot\tfrac14$,
+whereas every pure four-qubit state has $P\ge1$ (Lemma~\ref{lem:fqe-purity}). The best average is
+therefore strictly below $2$.
+
+\paragraph{The two main results.} Higuchi and Sudbery (HS) exhibited the state
+\[
+M_4=\tfrac1{\sqrt6}\bigl(|0011\rangle+|1100\rangle+\omega(|0101\rangle+|1010\rangle)
++\omega^2(|0110\rangle+|1001\rangle)\bigr),\qquad\omega=e^{2\pi i/3},
+\]
+whose amplitudes sit on the six strings of Hamming weight two, grouped into complementary pairs, one for each
+pairing of the qubits, with phases $1,\omega,\omega^2$. An even permutation of the qubits permutes the three pairings
+cyclically (or fixes each of them) and only multiplies $M_4$ by a phase (Remark~\ref{rem:fqe-single-orbit}), so the three cuts are
+identical: each reduced state has eigenvalues
+$(\tfrac12,\tfrac16,\tfrac16,\tfrac16)$. Every cut then has the same entropy, and
+$E(M_4)=1+\tfrac12\log_2 3\approx1.792$. They conjectured that this is the maximum~\cite{HS}. Brierley and Higuchi
+proved that $M_4$ is a local maximum~\cite{BH}. Derksen et al.\ proved that $M_4$ maximises a different measure, the
+geometric measure of entanglement (distance to the nearest product state)~\cite{DFLW}. Gour and Wallach proved the corresponding Tsallis bound among
+\emph{critical} states, those whose one-qubit marginals are all maximally mixed, and conjectured the R\'enyi envelope~\cite{GW}; the precise scope of these results is at the end of this section.
+Independent single-qubit unitaries are called \emph{local unitaries} (LU). Two states are \emph{LU-equivalent} if
+local unitaries map one to the other up to an overall phase, and the states equivalent to a given one form its
+\emph{LU orbit}. Since these operations preserve cut entropies, maximisers occur in whole LU orbits.
+
+\medskip\noindent\emph{Theorem~\ref{thm:fqe-entropy-max} (four qubits). For every pure state of four
+qubits, $E(\psi)\le1+\tfrac12\log_2 3$. Equality holds if and only if $\psi$ is equivalent to $M_4$ or
+to its complex conjugate $\overline{M_4}$ by independent single-qubit unitaries.}
+\medskip
+
+At seven qubits a balanced cut puts three qubits on one side, and there are $\binom73=35$ such cuts, one for each
+set $S$ of three qubits with reduced state $\rho_S$. Write
+$\pi_3=\frac1{35}\sum_{|S|=3}\operatorname{tr}\rho_S^2$ and $E_3=\frac1{35}\sum_{|S|=3}S(\rho_S)$ for the mean
+purity and mean entropy of the 35 cuts. An AME state
+would have $\pi_3=1/8$ and $E_3=3$ bits.
+
+\medskip\noindent\emph{Theorems~\ref{thm:fqe-seven-purity} and~\ref{thm:fqe-seven-entropy} (seven qubits). Every
+pure seven-qubit state has $\pi_3\ge121/917$, with equality exactly on the local-unitary and
+permutation orbit of an explicit icosahedral state $\Psiico$. Every pure seven-qubit state has
+$E_3\le E_3(\psi_{x_*})=2.965356029\ldots$ bits, with equality exactly on the local-unitary and permutation orbit of
+a different member $\psi_{x_*}$ of the same icosahedral family (Section~\ref{sec:fqe-seven-entropy}). With qubit labels fixed,
+each equality set consists of $42$ LU orbits.}
+\medskip
+
+For four qubits, many states tie for the minimum mean purity, but the
+HS cut spectra uniquely maximise the entropy. At seven qubits even the purity minimiser is globally unique (up to
+local unitaries and qubit permutations), yet it is not the entropy maximiser. Both optimisers lie in one explicit
+one-parameter icosahedral family, and our proofs separate them globally with five-copy certificates. ``Most entangled'' thus depends on the measure, even when only balanced cuts are compared;
+at four qubits the R\'enyi entropies show the same effect, with the maximiser changing at $q_*$.
+
+\paragraph{Four qubits: compromise between cuts.} To see why a compromise is needed, compare the four-qubit linear cluster state
+$C_4=\tfrac12(|0000\rangle+|0011\rangle+|1100\rangle-|1111\rangle)$. Its entropy is $1$ bit for
+$12|34$ and $2$ bits for each of the other two cuts, so $E(C_4)=5/3\approx1.667<E(M_4)$. Making two cuts
+perfect costs more on the third than is gained. Figure~\ref{fig:fqe-cuts} compares the reduced-state
+\emph{spectra}, or lists of eigenvalues, of the two states.
+
+\begin{figure}[t]
+\centering\includegraphics[width=\linewidth]{fig_cuts}
+\caption{Four eigenvalues of each reduced density matrix for the three balanced
+$2|2$ cuts (same vertical scale throughout). For $M_4$ each cut has spectrum
+$(\tfrac12,\tfrac16,\tfrac16,\tfrac16)$ and entropy
+$1+\tfrac12\log_2 3$ bits. For the cluster state $C_4$, the
+$12|34$ cut has spectrum $(\tfrac12,\tfrac12,0,0)$ and entropy
+$1$ bit, while the other two cuts are maximally mixed and have entropy
+$2$ bits, so $E(C_4)=(1+2+2)/3=5/3<E(M_4)$: balancing the three cuts beats perfecting two at the expense of one.}
+\label{fig:fqe-cuts}
+\end{figure}
+
+The LU orbits of $M_4$ and $\overline{M_4}$ are distinct~\cite[Prop.~7]{LWB} (Appendix~\ref{sec:fqe-sextic}
+gives an elementary separating invariant), but an odd permutation of the qubits exchanges them
+(Remark~\ref{rem:fqe-single-orbit}), so the maximiser is unique up to local unitaries and relabelling the qubits.
+
+Purity alone cannot identify the entropy maximiser: the cluster state and $M_4$ both attain
+the minimum summed purity $P=1$ but have different entropies, so a proof must also control higher moments of the cut spectra. The entanglement of
+a cut depends only on the spectrum of its marginal $\rho_S$, and spectra are what copies of a state measure: $\operatorname{tr}\rho_S^k$ is the expectation value of the operator that
+cyclically permutes the subsystems $S$ of $k$ copies of $\psi$. More generally, any homogeneous polynomial of degree $m$
+in $|\psi\rangle\langle\psi|$ is an $m$-copy expectation value. A bound is proved by writing the gap between the bound
+and the objective as the $m$-copy expectation value of a sum of manifestly positive operators $A^\dagger A$; the
+optimisers are the states on which every term vanishes.
+
+The useful positive operators also act on copies replaced by
+the spin flip $\tilde\psi=\sigma_y^{\otimes n}\bar\psi$, time reversal ($\sigma_y$ composed with complex conjugation)
+applied to every spin-$\tfrac12$. A Pauli string is a tensor product of Pauli matrices and identities; its weight is the number of nonidentity factors.
+On density matrices, $\tilde\rho=\sigma_y^{\otimes n}\rho^T\sigma_y^{\otimes n}$ negates
+the Pauli-string components of odd weight and keeps those of even weight; on one qubit it reverses the Bloch vector.
+For a product state $\tilde\psi$ is orthogonal to $\psi$, while for a Bell pair it equals $\psi$ up to phase (for two qubits
+$|\langle\psi|\tilde\psi\rangle|$ is Wootters' concurrence~\cite{Wootters}). Since
+$\epsilon\bar u\epsilon^{-1}=u$ for $u\in SU(2)$ and $\epsilon=i\sigma_y$, a flipped copy transforms like an ordinary one, so these operators
+remain local-unitary covariant.
+
+The number of copies is set by two things. First, the entropy is not a polynomial. The proof bounds $-t\log_2t$ by a
+\emph{majorant}, a polynomial lying above it on $[0,1]$, that touches it at the optimiser's eigenvalues,
+and the degree needed grows with the number of touching points (Section~\ref{sec:fqe-entropy_maximum-entropy-bound}). The cuts of $M_4$ have spectrum
+$(\tfrac12,\tfrac16,\tfrac16,\tfrac16)$, with two distinct eigenvalues, so a cubic suffices: two copies give $P\ge1$ and
+three bound the cubic moments. Second, a few copies may not be enough even for a polynomial objective. Allowing
+$m=2,3,\dots$ copies gives a \emph{hierarchy} of ever stronger bounds, but a few copies constrain only low-order
+correlations between copies, and they admit moment data that pass every positivity test at that level yet come from no pure state.
+At seven qubits both the purity and the entropy need five copies; Section~\ref{sec:fqe-seven-entropy} explains why and
+compares the two sizes in Table~\ref{tab:fqe-four-seven}.
+
+\paragraph{The four-qubit proof.} Write $P$ and $T$ for the sums of the second and third
+moments of the three two-qubit marginals, and $F=17P-12T-12$. The two-copy spin flip~\cite{GW,WC} gives $P\ge1$
+(Lemma~\ref{lem:fqe-purity}); a three-copy sum of squared tensor norms, the sextic identity, gives
+$F\ge0$, that is $T\le5/12+(17/12)(P-1)$ (Theorem~\ref{thm:fqe-moment} and Appendix~\ref{sec:fqe-sextic}).
+A cubic majorant of $-x\ln x$, its Hermite interpolant (the cubic matching its value and slope at $1/6$ and $1/2$,
+which lies above it), turns these
+moment bounds into the entropy bound. With $\Delta_H\ge0$ the total gap of the majorant over the twelve cut eigenvalues,
+the entropy gap is
+\[
+3\ln2\,\bigl[E(M_4)-E(\psi)\bigr]=\bigl(\tfrac{15}{2}-6\ln3\bigr)(P-1)+\tfrac32(\ln3-1)F+\Delta_H,
+\]
+with all three terms nonnegative (Section~\ref{sec:fqe-entropy_maximum-entropy-bound},
+equation~\eqref{eq:fqe-entropy-gap}). Equality forces $P=1$ and every cut eigenvalue to be $1/6$ or $1/2$, hence the $M_4$ spectrum
+on each cut; the critical normal form identifies the state from just one cut
+(Proposition~\ref{prop:fqe-onecut}). The classification of all zeros of the
+moment inequality, also given in Appendix~\ref{sec:fqe-sextic}, is not needed for equality.
+
+\paragraph{Relation to earlier work.} Gour and Wallach studied the analogous optimisation for Tsallis and R\'enyi
+entropies~\cite{GW}, including a conjecture on R\'enyi entropies that we prove (Corollary~\ref{cor:fqe-renyi-gw}).\footnote{It is distinct from the statement on four-qubit states maximising the absolute value of the
+hyperdeterminant that is usually called the Gour--Wallach conjecture, proved by Chen and
+\DJ{}okovi\'c~\cite{CD}.} Their Theorem~10(a) proves the Tsallis-entropy bound for exponents $0<q<2$
+among the critical states (the normal form of~\cite{VDD}), with the
+bound attained by $M_4$. It does not cover every pure state. Their equality clause names only the class of $M_4$;
+with labelled qubits $M_4$ and its conjugate are distinct LU classes, exchanged by an odd permutation
+(Remark~\ref{rem:fqe-single-orbit}). For $q>2$ their Theorem~9(a) identifies the unrestricted Tsallis maximiser, a
+state other than $M_4$ (we prove only that the cluster state beats $M_4$ there), and their Theorem~12 identifies the cluster-state maximisers of the
+R\'enyi entropies for $q\ge2$~\cite{GW}; Corollary~\ref{cor:fqe-renyi-two-up} gives a self-contained
+elementary proof of that high-order ceiling and its equality cut spectra. For the von Neumann entropy itself, this paper supplies
+a short, self-contained analytic proof of the bound for all pure states, the classification of the
+equality case, and unrestricted corollaries for other spectral entropies.\footnote{A proof of the unrestricted entropy bound and its attainment at $M_4$, with a Lean verification, appeared
+independently while this work was in preparation~\cite{Omega}; it does not address uniqueness of the maximiser or the
+equality case, and we make no priority claim for the moment inequality as such.}
+At seven qubits, earlier numerical searches found mean three-qubit purities of $0.13387$~\cite{Facchi}
+and $0.131952$~\cite{DMFF18}; the latter agrees with our minimum $121/917$ to six digits. \emph{Stabilizer states},
+joint eigenstates of $n$ commuting, independent Pauli strings (graph states and the cluster state $C_4$ are examples), do worse: the best,
+including that of Zha et al., have purity $19/140\approx0.1357$~\cite{Zha11,HGS}.
+Before this work, the best explicit universal lower bound known to us was the
+unattainable AME value $1/8$; Rico et al.\ obtained a numerical semidefinite
+estimate of $0.127(8)$~\cite{Rico}, without a certificate. It agrees with the exact three-copy bound
+$\pi_3\ge125/978\approx0.12781$ proved here (Table~\ref{tab:fqe-seven-levels}), the three-copy level of our hierarchy.
+
+\paragraph{Proofs and verification.} The four-qubit von Neumann bound and its
+equality case have a fully analytic proof here. Some extensions, particularly at
+seven qubits, use exact-rational or rigorously bounded numerical certificates.
+Table~\ref{tab:fqe-guide} is a roadmap of the paper: for each result it gives the optimiser, how it is proved
+and where the complete proof is. The supplement uses S-prefixed numbering; the companion
+repository~\cite{Companion} contains both documents, the scripts and their
+captured outputs, and the Lean formalisation. Appendix~\ref{sec:fqe-verifiers} lists the computer checks
+behind each result, and \texttt{verifiers/MAP.md} maps them to scripts. The analytic arguments do not depend on Lean.
+Every theorem, proposition, lemma and corollary is proved, analytically or with the exact and computer-assisted checks named in its proof; numerical observations are labelled as such. Table~\ref{tab:fqe-other-n} in Section~\ref{sec:fqe-discussion} collects what is known at other qubit counts.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}p{0.19\linewidth}p{0.17\linewidth}p{0.33\linewidth}p{0.23\linewidth}@{}}
+\toprule
+Question & Optimiser & How proved & Where \\
+\midrule
+Four qubits: maximum mean entropy & $M_4$, $\overline{M_4}$ &
+Analytic (two- and three-copy identities, cubic majorant) &
+Sections~\ref{sec:fqe-entropy_maximum-purity-identity}--\ref{sec:fqe-entropy_maximum-equality-and-one-cut-rigidity};
+Appendices~\ref{sec:fqe-sextic}, \ref{sec:fqe-normal-form} \\\addlinespace
+Four qubits: Tsallis $0<q<2$ & $M_4$ & Analytic (same majorant) &
+Section~\ref{sec:fqe-spectral}; Appendix~\ref{sec:fqe-spectral-proofs} \\\addlinespace
+Four qubits: R\'enyi $0<q<1$ & $M_4$ & Analytic (from the Tsallis bound) &
+Section~\ref{sec:fqe-spectral} \\\addlinespace
+Four qubits: R\'enyi $1<q<2$ & $M_4$ for $q<q_*$, cluster for $q>q_*$ &
+Analytic with exact finite checks &
+Appendix~\ref{sec:fqe-renyi-proofs}; supplement, Section~\ref{sec:sup-renyi} \\\addlinespace
+Four qubits: R\'enyi $q\ge2$ & cluster & Analytic (elementary purity bound) &
+Appendix~\ref{sec:fqe-renyi-high-order} \\\addlinespace
+Four qubits: orbit stability & -- & Analytic with exact finite checks; some constants computer-assisted with rigorous error bounds &
+Section~\ref{sec:fqe-stability-summary}; Appendix~\ref{sec:fqe-orbit-stability}; supplement, Sections~\ref{sec:fqe-stability-proofs}, \ref{sec:sup-stability} \\\addlinespace
+Seven qubits: minimum mean purity & $\Psiico$ & Computer-assisted with rigorous error bounds (five-copy identity) &
+Appendices~\ref{sec:fqe-seven}, \ref{sec:ico}; supplement, Section~\ref{sec:fivecopy} \\\addlinespace
+Seven qubits: maximum mean entropy & $\psi_{x_*}\ne\Psiico$ & Computer-assisted with rigorous error bounds (five-copy identity, joint majorant) &
+Supplement, Section~\ref{sec:sup-seven-entropy}; uses Theorem~\ref{thm:fqe-seven-purity} \\
+\bottomrule
+\end{tabular}
+\caption{Optimisers, methods and the location of complete proofs. Optimisers are listed up to local unitaries and qubit
+permutations; both classes attain the R\'enyi bound at $q=q_*$. Supplementary sections have an S prefix. Exact finite checks use exact arithmetic; computer-assisted
+proofs evaluate explicit identities in floating point with rigorous error bounds. Neither uses a numerical search as
+evidence. Appendix~\ref{sec:fqe-verifiers} lists the checks behind each result.}
+\label{tab:fqe-guide}\label{tab:fqe-proof-guide}
+\end{table}
+
+\input{entropy_maximum}
+
+\input{spectral_corollaries}
+
+\section{Stability of the four-qubit maximum}\label{sec:fqe-stability-summary}
+A nearly maximal four-qubit entropy forces the state close to a maximising orbit. Let $d(\psi)$ be the minimum Hilbert-space
+distance from a unit state $\psi$ to the LU orbits of $M_4$ and $\overline{M_4}$, allowing a global phase, and
+$\delta(\psi)=1+\frac12\log_23-E(\psi)$ the entropy deficit. Then $\delta\ge d^2/20$ for every pure state
+(Theorem~\ref{thm:fqe-orbit-stability}): an entropy within $\varepsilon$ of the maximum guarantees distance at most
+$\sqrt{20\varepsilon}$ from a maximiser. Near the orbits the bound improves to $\delta\ge\frac3{10}d^2$ when $d\le1/20$,
+and the power two is optimal. On the critical locus, where all one-qubit marginals are maximally mixed, the optimal
+bound is $\delta\ge C_*d^2$ with $C_*\approx0.19058$, attained by explicit states (Theorem~\ref{thm:fqe-p1-sharp}),
+so no universal coefficient can exceed $C_*$. The coefficient
+$\tfrac3{10}$ holds only for $d\le1/20$, whereas the states attaining $C_*$ lie at distance $d\approx0.55$. The proof compares the infidelity to the orbits with a sextic moment
+defect, with optimal coefficient one (Theorem~\ref{thm:fqe-global-overlap}). The same estimates transfer
+to the Tsallis entropies of Section~\ref{sec:fqe-spectral} (Corollary~\ref{cor:fqe-orbit-spectral}).
+Appendix~\ref{sec:fqe-orbit-stability} states these results with their constants and proof strategy.
+
+\input{seven_qubit_results}
+
+
+\section{Discussion and open problems}\label{sec:fqe-discussion}
+
+\paragraph{Intermediate R\'enyi orders.} Gour and Wallach conjectured that $M_4$ maximises the mean
+R\'enyi-$q$ entropy for $q<\alpha_0\approx1.59$ and the cluster states for $q>\alpha_0$, and proved the
+cluster-state bound for $q\ge2$~\cite[Fig.~2 and Theorem~12]{GW}; their $\alpha_0$ is the crossing $q_*$ of
+Proposition~\ref{prop:fqe-renyi-crossing}, and Corollary~\ref{cor:fqe-renyi-gw} proves the conjecture. For $1<q<2$ a
+single-crossing property of individual spectra (Lemma~\ref{lem:fqe-renyi-single-crossing}) transfers two anchor bounds to
+all intermediate orders, and Appendix~\ref{sec:fqe-renyi-proofs} gives the argument and the finite checks it uses.
+
+\paragraph{Quantitative stability.} The universal coefficient $1/20$ in
+Theorem~\ref{thm:fqe-orbit-stability} is not claimed to be sharp, and whether the critical optimum $C_*$ of
+Section~\ref{sec:fqe-stability-summary} holds for all states is open. Numerical tests of locally filtered
+critical states have found no smaller $\delta/d^2$
+(Remark~\ref{rem:fqe-critical-noncritical} of the supplement). Local filtering does not preserve the entropy deficit,
+even though the overlap bound of Theorem~\ref{thm:fqe-global-overlap} holds without a
+criticality assumption.
+
+\paragraph{Seven-qubit questions.} The five-copy proofs give sharp purity and
+entropy bounds, but an analytic certificate comparable to the four-qubit
+sextic identity would better explain the global role of the icosahedral
+geometry. The entropy ceiling also holds for mixed-state convex roofs, with equality only for pure states
+(Proposition~\ref{prop:seven-mixed-roofs} of the supplement); where the four-qubit argument finds a support vector of
+deficient Schmidt rank, the seven-qubit one uses that the optimiser's local-unitary tangent space contains no complex line.
+
+\paragraph{The method.} At both sizes the proof starts from the spectra of the candidate optimiser, builds a
+polynomial majorant touching the entropy at those spectra, bounds the required moments by positivity of
+multicopy operators with some copies spin flipped, and reads off the equality states from the vanishing
+terms. The spin-flip constraints rely on the pseudoreality $\epsilon\bar u\epsilon^{-1}=u$ of $SU(2)$. For $SU(d)$,
+$d\ge3$, the defining representation is inequivalent to its conjugate, so this form of the multicopy argument does not extend directly
+to qudits.
+
+\paragraph{Purity and entropy at other sizes.} Table~\ref{tab:fqe-other-n} collects what is known. Four qubits is the
+smallest size at which the question has content. At five qubits AME states exist, so the mean entropy reaches its
+elementary upper bound, exactly at the AME states; their LU classes form a continuum, each LU-equivalent to a point of the
+unique $((5,2,3))$ code (five qubits, a two-dimensional code space and distance three), with points identified under a
+group of order~24~\cite{Tan}. The minimum purity is
+the value of the Rains linear programme~\cite{Rains,HESG}, the two-copy level of the hierarchy, attained by a graph state, at
+every $n\le18$ except $7$ and $13$ (Theorems~\ref{thm:lptable}, \ref{thm:fourteenfifteen}, \ref{thm:sixteenseventeen}
+and~\ref{thm:eighteen} of the supplement~\cite{Companion}). A graph state is the stabilizer state obtained from
+$|+\rangle^{\otimes n}$ by a controlled-$Z$ gate along each edge of a graph on the qubits; every stabilizer state is
+locally equivalent to one~\cite{VdN,HEB}, and $C_4$ is locally equivalent to the graph state of the four-vertex path. Seven qubits is the first size at which the two-copy level is
+not sharp: the linear-programming value would require the weight distribution of a pure $((7,1,4))_2$ code, which does
+not exist~\cite{HGS}. At thirteen qubits it is not sharp either: the three-copy level gives $\min\pi_6\ge0.018171249$, above the
+linear-programming value $25/1408$, and an explicit stabilizer state gives $\min\pi_6\le85/4576$, but the exact minimum
+is open (Proposition~\ref{prop:thirteeninterval} of the supplement); here the linear-programming value would require a
+pure $((13,1,6))_2$ code, which the three-copy bound excludes.
+
+The maximum entropy is known only at the AME sizes
+and at four and seven qubits. Elsewhere each purity minimum, or at thirteen qubits its lower bound, gives an explicit
+entropy ceiling through a sharp linear inequality: every $d$-dimensional density matrix, $d\ge3$, satisfies
+$\log_2d-S(\rho)\ge c_d(d\operatorname{tr}\rho^2-1)$ with $c_d=(d-1)\log_2(d-1)/(d(d-2))$
+(Lemma~\ref{lem:seven-entropy-linear-purity} of the supplement). Being linear in the purity, this inequality averages over the
+balanced cuts, $E_k\le k-c_{2^k}(2^k\pi_k-1)$, whereas the largest entropy at fixed purity is not concave in the purity and
+does not average this way. At thirteen qubits an explicit state also gives $\max E_6>5.8336$
+(Corollary~\ref{cor:thirteen-entropy-witness} of the supplement). The ceilings are not attained by the graph-state
+purity minimisers. A stabilizer state's marginals are normalised projectors, so unless $n\in\{2,3,5,6\}$ some balanced
+marginal is rank-deficient; such a marginal can always be perturbed to raise the entropy at order $t^2|\ln t|$.
+Hence no stabilizer state is even a local maximum of the mean balanced entropy
+(Corollary~\ref{cor:stabilizer-entropy-noname} of the supplement); in particular neither seven-qubit optimiser is a
+stabilizer state.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}cccl@{}}
+\toprule
+$n$ & ideal purity $2^{-k}$ & $\min\pi_k$ & $\max E_k$ (bits)\\
+\midrule
+2, 3 & $1/2$ & $1/2$ & $1$ (AME)\\
+4 & $1/4$ & $1/3$ & $1+\tfrac12\log_23$ (Theorem~\ref{thm:fqe-entropy-max})\\
+5 & $1/4$ & $1/4$ & $2$ (AME)\\
+6 & $1/8$ & $1/8$ & $3$ (AME)\\
+7 & $1/8$ & $121/917$ & $2.96535602947\ldots$ (Theorem~\ref{thm:fqe-seven-entropy})\\
+8 & $1/16$ & $3/35$ & $<3.9029$\\
+9 & $1/16$ & $1/14$ & $<3.9627$\\
+10 & $1/32$ & $1/21$ & $<4.9163$\\
+11 & $1/32$ & $1/28$ & $<4.9772$\\
+12 & $1/64$ & $5/224$ & $<5.9594$\\
+13 & $1/64$ & $[0.018171249,\ 85/4576]$ & $(5.8336,\ 5.9846)$\\
+14 & $1/128$ & $331/27456$ & $<6.9702$\\
+15 & $1/128$ & $1/104$ & $<6.9874$\\
+16 & $1/256$ & $1/156$ & $<7.9800$\\
+17 & $1/256$ & $1/208$ & $<7.9928$\\
+18 & $1/512$ & $7/2288$ & $<8.9901$\\
+\bottomrule
+\end{tabular}
+\caption{Mean balanced purity and entropy of $n$-qubit pure states. With $k=\lfloor n/2\rfloor$, $\pi_k$ and $E_k$ are
+the mean purity and mean von Neumann entropy of the $k$-qubit marginals over all $\binom nk$ subsets of $k$ qubits. The
+ideal purity $2^{-k}$ and entropy $k$ are attained exactly at the AME sizes $n=2,3,5,6$. The known purity minima other than
+at $n=7$ are Rains linear-programming values attained by graph states (Table~\ref{tab:minima} and
+Theorem~\ref{thm:eighteen} of the supplement); at $n=13$ the minimum is open, and the entry is the interval of
+Proposition~\ref{prop:thirteeninterval} of the supplement. Single entropy entries without $<$ are exact maxima; entries with $<$
+are upper bounds on unknown maxima, the ceilings $k-c_{2^k}(2^k\min\pi_k-1)$ rounded up, with the lower end of the
+purity interval in place of $\min\pi_k$ at $n=13$. There the maximum is open; the upper end of its interval is that
+ceiling, and the lower end is exceeded by an explicit state (Corollary~\ref{cor:thirteen-entropy-witness} of the
+supplement).}
+\label{tab:fqe-other-n}
+\end{table}
+
+\paragraph{Purity and time reversal.}\label{rem:fqe-spinflip-tradeoff}
+A large overlap with the spin-flipped state costs purity: at $n=4$, $\pi_2=\tfrac13+\tfrac16(W_1+\tau)$
+(Lemma~\ref{lem:fqe-purity}), and Rains' shadow inequalities give sharp analogues at larger sizes
+(Section~\ref{sec:spinflip-tradeoffs} of the supplement~\cite{Companion}).
+
+\paragraph{Formal verification.} The four-qubit maximum, its attainment by $M_4$ and its equality case are formalised in
+Lean~4 with Mathlib~\cite{Companion}, together with the moment inequality, the general and critical envelopes, most of the
+four-qubit spectral corollaries, the overlap bound with the global orbit-stability estimates, the sharp quadratic
+variance bound with the R\'enyi envelope above order one, and the exact
+computations for the icosahedral family. Finite checks of two certificates, for the overlap bound and the quadratic
+variance bound, use compiled code; the results depending on them inherit that trust assumption, and everything else uses
+the Lean kernel alone. The global seven-qubit theorems are not formalised. Section~\ref{sec:fqe-lean} of the supplement
+lists the scope, declarations and trust assumptions.
+
+\section*{Use of AI}
+All results, documents and scripts were generated by AI agents (mainly Claude Opus and Sonnet 5.5, and OpenAI's GPT 6.1 sol) with human supervision and many cross-checks,
+including AI-generated Lean verification of most of the four-qubit results.
+
+\section*{Acknowledgements}
+We acknowledge support by the UK STFC grant ST/T000473/1.
+
+\appendix
+\input{sextic_identity}
+\input{critical_four_qubit_normal_form}
+\input{correlation_geometry}
+\input{lu_orbit_stability}
+\input{spectral_proofs}
+\input{renyi_proofs_appendix}
+\input{seven_qubit_appendix}
+\input{seven_qubit/icosahedral_state}
+
+\input{paper_checks}
+
+\begin{thebibliography}{99}
+\bibitem{HS} A.~Higuchi and A.~Sudbery, How entangled can two couples get?, Phys.\ Lett.\ A
+\textbf{273}, 213 (2000), \href{https://arxiv.org/abs/quant-ph/0005013}{arXiv:quant-ph/0005013}.
+\bibitem{BBPS} C.~H.~Bennett, H.~J.~Bernstein, S.~Popescu and B.~Schumacher, Concentrating partial entanglement by
+local operations, Phys.\ Rev.\ A \textbf{53}, 2046 (1996), \href{https://arxiv.org/abs/quant-ph/9511030}{arXiv:quant-ph/9511030}.
+\bibitem{HSi26} F.~Huber and J.~Siewert, On two maximally entangled couples, Quantum Sci.\ Technol.\ \textbf{11},
+015025 (2026), \href{https://arxiv.org/abs/2506.21282}{arXiv:2506.21282}.
+\bibitem{AMEreview} G.~Rajchel-Mieldzio\'c, R.~Bistro\'n, A.~Rico, A.~Lakshminarayan and K.~\.Zyczkowski, Absolutely
+maximally entangled pure states of multipartite quantum systems, Rep.\ Prog.\ Phys.\ \textbf{89}, 057601 (2026),
+\href{https://arxiv.org/abs/2508.04777}{arXiv:2508.04777}.
+\bibitem{ZNSZ} W.~Zhang, Y.~Ning, F.~Shi and X.~Zhang, Extremal maximal entanglement (2024),
+\href{https://arxiv.org/abs/2411.12208}{arXiv:2411.12208}.
+\bibitem{DFLW} H.~Derksen, S.~Friedland, L.-H.~Lim and L.~Wang, Theoretical and computational aspects of entanglement
+(2017), \href{https://arxiv.org/abs/1705.07160}{arXiv:1705.07160}.
+\bibitem{BH} S.~Brierley and A.~Higuchi, On maximal entanglement between two pairs in four-qubit
+pure states, J.\ Phys.\ A \textbf{40}, 8455 (2007), \href{https://arxiv.org/abs/0704.2961}{arXiv:0704.2961}.
+\bibitem{GW} G.~Gour and N.~R.~Wallach, All maximally entangled four-qubit states, J.\ Math.\ Phys.\
+\textbf{51}, 112201 (2010), \href{https://arxiv.org/abs/1006.0036}{arXiv:1006.0036v2}.
+\bibitem{CD} L.~Chen and D.~\v{Z}.~\DJ{}okovi\'c, Proof of the Gour--Wallach conjecture, Phys.\ Rev.\ A
+\textbf{88}, 042307 (2013), \href{https://arxiv.org/abs/1308.1306}{arXiv:1308.1306}.
+\bibitem{DMFF18} S.~Di~Martino, P.~Facchi and G.~Florio, Feynman graphs and the large dimensional limit
+of multipartite entanglement, J.\ Math.\ Phys.\ \textbf{59}, 012201 (2018),
+\href{https://arxiv.org/abs/1702.04919}{arXiv:1702.04919}.
+\bibitem{WC} A.~Wong and N.~Christensen, Potential multiparticle entanglement measure, Phys.\ Rev.\ A
+\textbf{63}, 044301 (2001), \href{https://arxiv.org/abs/quant-ph/0010052}{arXiv:quant-ph/0010052}.
+\bibitem{LWB} D.~W.~Lyons, S.~N.~Walck and S.~A.~Blanda, Classification of nonproduct states with
+maximum stabilizer dimension, Phys.\ Rev.\ A \textbf{77}, 022309 (2008),
+\href{https://arxiv.org/abs/0709.1105}{arXiv:0709.1105}.
+\bibitem{LAS} D.~W.~Lyons, J.~R.~Arnold and A.~F.~Swogger, Local unitary classes of states
+invariant under permutation subgroups, Phys.\ Rev.\ A \textbf{105}, 032442 (2022),
+\href{https://arxiv.org/abs/2109.06921}{arXiv:2109.06921}.
+\bibitem{CMHW} S.~Cheng, A.~Milne, M.~J.~W.~Hall and H.~M.~Wiseman, Volume monogamy of quantum
+steering ellipsoids for multiqubit systems, Phys.\ Rev.\ A \textbf{94}, 042105 (2016),
+\href{https://arxiv.org/abs/1606.02390}{arXiv:1606.02390}.
+\bibitem{Tan} I.~Tan, Classification of five-qubit absolutely maximally
+entangled states, \href{https://arxiv.org/abs/2507.02185}{arXiv:2507.02185} (2025).
+\bibitem{HGS} F.~Huber, O.~G\"uhne and J.~Siewert, Absolutely maximally entangled states of seven
+qubits do not exist, Phys.\ Rev.\ Lett.\ \textbf{118}, 200502 (2017),
+\href{https://arxiv.org/abs/1608.06228}{arXiv:1608.06228}.
+\bibitem{DPS} A.~C.~Doherty, P.~A.~Parrilo and F.~M.~Spedalieri, Complete family of separability criteria,
+Phys.\ Rev.\ A \textbf{69}, 022308 (2004), \href{https://arxiv.org/abs/quant-ph/0308032}{arXiv:quant-ph/0308032}.
+\bibitem{YSWNG} X.-D.~Yu, T.~Simnacher, N.~Wyderka, H.~C.~Nguyen and O.~G\"uhne, A complete hierarchy for the pure
+state marginal problem in quantum mechanics, Nat.\ Commun.\ \textbf{12}, 1012 (2021),
+\href{https://arxiv.org/abs/2008.02124}{arXiv:2008.02124}.
+\bibitem{Nielsen99} M.~A.~Nielsen, Conditions for a class of entanglement transformations, Phys.\ Rev.\ Lett.\
+\textbf{83}, 436 (1999), \href{https://arxiv.org/abs/quant-ph/9811053}{arXiv:quant-ph/9811053}.
+\bibitem{Brydges19} T.~Brydges, A.~Elben, P.~Jurcevic, B.~Vermersch, C.~Maier, B.~P.~Lanyon, P.~Zoller, R.~Blatt and
+C.~F.~Roos, Probing R\'enyi entanglement entropy via randomised measurements, Science \textbf{364}, 260 (2019), \href{https://arxiv.org/abs/1806.05747}{arXiv:1806.05747}.
+\bibitem{Rains} E.~M.~Rains, Quantum shadow enumerators, IEEE Trans.\ Inf.\ Theory \textbf{45}, 2361
+(1999), \href{https://arxiv.org/abs/quant-ph/9611001}{arXiv:quant-ph/9611001}.
+\bibitem{FFPP} P.~Facchi, G.~Florio, G.~Parisi and S.~Pascazio, Maximally multipartite entangled states, Phys.\ Rev.\ A
+\textbf{77}, 060304(R) (2008), \href{https://arxiv.org/abs/0710.2868}{arXiv:0710.2868}.
+
+\bibitem{BSSB} I.~D.~K.~Brown, S.~Stepney, A.~Sudbery and S.~L.~Braunstein, Searching for highly entangled multi-qubit
+states, J.\ Phys.\ A \textbf{38}, 1119 (2005).
+
+\bibitem{Borras} A.~Borras, A.~R.~Plastino, J.~Batle, C.~Zander, M.~Casas and A.~Plastino, Multiqubit systems: highly
+entangled states and entanglement distribution, J.\ Phys.\ A \textbf{40}, 13407 (2007),
+\href{https://arxiv.org/abs/0803.3979}{arXiv:0803.3979}.
+
+\bibitem{HESG} F.~Huber, C.~Eltschka, J.~Siewert and O.~G\"uhne, Bounds on absolutely maximally entangled states from
+shadow inequalities, and the quantum MacWilliams identity, J.\ Phys.\ A \textbf{51}, 175301 (2018),
+\href{https://arxiv.org/abs/1708.06298}{arXiv:1708.06298}.
+
+\bibitem{HEB} M.~Hein, J.~Eisert and H.~J.~Briegel, Multiparty entanglement in graph states, Phys.\
+Rev.\ A \textbf{69}, 062311 (2004), \href{https://arxiv.org/abs/quant-ph/0307130}{arXiv:quant-ph/0307130}.
+\bibitem{Zha11} X.-W.~Zha, H.-Y.~Song, J.-X.~Qi, D.~Wang and Q.~Lan, A genuine maximally seven-qubit
+entangled state, J.\ Phys.\ A \textbf{45}, 255302 (2012),
+\href{https://arxiv.org/abs/1110.5011}{arXiv:1110.5011}.
+\bibitem{Facchi} P.~Facchi, G.~Florio, U.~Marzolino, G.~Parisi and S.~Pascazio, Classical statistical
+mechanics approach to multipartite entanglement, J.\ Phys.\ A \textbf{43}, 225303 (2010),
+\href{https://arxiv.org/abs/1002.2592}{arXiv:1002.2592}.
+\bibitem{Scott} A.~J.~Scott, Multipartite entanglement, quantum-error-correcting codes, and entangling power of
+quantum evolutions, Phys.\ Rev.\ A \textbf{69}, 052330 (2004),
+\href{https://arxiv.org/abs/quant-ph/0310137}{arXiv:quant-ph/0310137}.
+\bibitem{Rico} A.~Rico, J.~Abellanet-Vidal, N.~B.~T.~Kothakonda, A.~Sanpera and G.~Angl\`es Munn\'e,
+Entangling a quantum system to disentangle its parts,
+\href{https://arxiv.org/abs/2604.13169}{arXiv:2604.13169} (2026).
+
+\bibitem{PYHP} F.~Pastawski, B.~Yoshida, D.~Harlow and J.~Preskill, Holographic quantum error-correcting codes: toy
+models for the bulk/boundary correspondence, J.\ High Energy Phys.\ \textbf{06} (2015) 149,
+\href{https://arxiv.org/abs/1503.06237}{arXiv:1503.06237}.
+\bibitem{VdN} M.~Van den Nest, J.~Dehaene and B.~De Moor, Graphical description of the action of local Clifford
+transformations on graph states, Phys.\ Rev.\ A \textbf{69}, 022316 (2004),
+\href{https://arxiv.org/abs/quant-ph/0308151}{arXiv:quant-ph/0308151}.
+
+\bibitem{Wootters} W.~K.~Wootters, Entanglement of formation of an arbitrary state of two qubits, Phys.\ Rev.\ Lett.\
+\textbf{80}, 2245 (1998), \href{https://arxiv.org/abs/quant-ph/9709029}{arXiv:quant-ph/9709029}.
+\bibitem{VDD} F.~Verstraete, J.~Dehaene and B.~De~Moor, Normal forms and entanglement measures for multipartite quantum
+states, Phys.\ Rev.\ A \textbf{68}, 012103 (2003), \href{https://arxiv.org/abs/quant-ph/0105090}{arXiv:quant-ph/0105090}.
+\bibitem{Renyi} A.~R\'enyi, On measures of entropy and information, in \emph{Proc.\ Fourth Berkeley Symp.\ Math.\
+Statist.\ Prob.}, Vol.~1 (University of California Press, 1961), pp.~547--561.
+\bibitem{Tsallis} C.~Tsallis, Possible generalisation of Boltzmann--Gibbs statistics, J.\ Stat.\ Phys.\ \textbf{52},
+479 (1988).
+\bibitem{BDSW} C.~H.~Bennett, D.~P.~DiVincenzo, J.~A.~Smolin and W.~K.~Wootters, Mixed-state entanglement and quantum
+error correction, Phys.\ Rev.\ A \textbf{54}, 3824 (1996), \href{https://arxiv.org/abs/quant-ph/9604024}{arXiv:quant-ph/9604024}.
+\bibitem{LS} P.~W.~H.~Lemmens and J.~J.~Seidel, Equiangular lines, J.\ Algebra \textbf{24}, 494 (1973).
+\bibitem{Omega} The Omega Institute, trureturing pull request 14064 (merged 7 October 2026),
+\href{https://github.com/the-omega-institute/trureturing/pull/14064}{\texttt{github.com/the-omega-institute/trureturing/pull/14064}}.
+\bibitem{Companion} A.~Lewis, Companion repository (paper and supplement, verification scripts with captured output,
+Lean~4 formalisation), \href{https://github.com/cmbant/qubit-entropy}{\texttt{github.com/cmbant/qubit-entropy}}.
+\end{thebibliography}
+\end{document}

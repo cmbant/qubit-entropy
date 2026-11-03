@@ -1,0 +1,406 @@
+We first remove the continuous orbit optimisation exactly.
+For complex diagonal matrices $D_v,D_w$ of any common size,
+\begin{equation}\label{eq:fqe-signed-diagonal-overlap}
+ \max_{A,B\in O(m)}|\operatorname{tr}(D_v^\dagger A D_wB^T)|
+ =\max_{\pi,\,\varepsilon_i=\pm1}
+                  \left|\sum_i\bar v_i\varepsilon_iw_{\pi(i)}\right|.
+\end{equation}
+Indeed $|A_{ij}B_{ij}|$ is doubly substochastic, by Cauchy--Schwarz
+on each row and column. Complete it to a doubly stochastic matrix;
+for any common phase the real overlap is bounded by the largest
+assignment sum of the absolute real coefficient entries. Birkhoff's
+permutation decomposition gives this bound, and signed permutation
+matrices attain it. Maximising the phase proves
+\eqref{eq:fqe-signed-diagonal-overlap}.
+
+The magic normal form makes a critical state $D_v$. Here and below the coordinates of $v\in\mathbb C^4$, and the
+rows and columns of $4\times4$ matrices, are indexed $0,\dots,3$: $v_i$ is the coefficient of $m_{i+1}\otimes m_{i+1}$ in
+$G(v)$ of Appendix~\ref{sec:fqe-normal-form} of the paper, so $D_v=\operatorname{diag}(v)$.
+Up to global phase, the union $\mathcal M$ is the $O(4)\times O(4)$ orbit
+of $Z_*$: a common orientation reversal in both factors fixes $Z_*$
+up to proper rotations, whereas a single reversal gives its conjugate
+up to proper rotations. Thus its overlap with $D_v$ is exactly the
+maximum over the following 32 diagonal representatives:
+\[
+ \mathcal H=\left\{\eta:\ \eta_i=1/\sqrt2,\quad
+         \eta_j=\varepsilon_j i/\sqrt6\ (j\ne i),\quad i=0,1,2,3\right\}.
+\]
+Its exact spin-flip-dependent covering profile is proved in
+Lemma~\ref{lem:fqe-critical-real-density} below.
+
+The real cut transforms are $H_0=I$ and
+\[
+ H_1=\frac12\begin{pmatrix}
+ 1&-1&1&-1\\-1&1&1&-1\\1&1&1&1\\-1&-1&1&1
+ \end{pmatrix},\qquad
+ H_2=\frac12\begin{pmatrix}
+ 1&-1&-1&-1\\-1&1&-1&-1\\1&1&-1&1\\-1&-1&-1&1
+ \end{pmatrix}.
+\]
+With $\Delta=\operatorname{diag}(1,-1,1,-1)$, so that $\Delta v$ are the coordinates $(a,b,c,d)$ of $G_{abcd}$, these are
+the transforms $H_\pm$ of Section~\ref{sec:sup-sextic-zeros} conjugated by $\Delta$: $H_1=\Delta H_+\Delta$, and $H_2$
+is $\Delta H_-\Delta$ with its rows permuted and re-signed, which only permutes the squared moduli $|e_i^TH_2v|^2$ of the cut spectrum.
+
+\begin{proof}[Proof of Theorem~\ref{thm:fqe-critical-orbit-sharp}]
+The comparison $Q(\psi)\ge1-\Phi(\psi)$ holds for all states by
+Theorem~\ref{thm:fqe-global-overlap}. When $\Phi(\psi)\ge\tfrac12$,
+$1-\Phi(\psi)\ge\tfrac32-2\Phi(\psi)$, so \eqref{eq:fqe-critical-fidelity}
+holds. Assume henceforth that $\Phi(v)\le\tfrac12$ for a unit critical
+normal vector $v\in\mathbb C^4$.
+
+The three real orthogonal cut transforms $H_0=I,H_1,H_2$ displayed above
+preserve $N=\|v\|^2=1$, $\tau=|\sum_i v_i^2|^2$ and $Q(v)$, and permute
+the $32$ representatives $\mathcal H$ up to the sixth-root-of-unity
+phases $(\pm1\pm i\sqrt3)/2$: for any $\eta\in\mathcal H$, one coordinate
+is $1/\sqrt2$ and three are $\pm i/\sqrt6$, so under $H_1$ or $H_2$ the
+row whose relative signs on those three coordinates match $\eta$ has inner
+product $\frac{\pm1\pm i\sqrt3}{2\sqrt2}$ and the other three rows have
+$\frac{\pm1\pm i\sqrt3}{2}(\mp i/\sqrt6)$ (CO-1). Thus $H_0,H_1,H_2$,
+coordinate permutations, global phase and coordinate sign flips preserve
+both $Q(v)$ and $\Phi(v)$. Replace $v$ by $H_mv$ ($m\in\{0,1,2\}$) and
+permute coordinates so that
+$p_0:=|v_0|^2=\max_{m,i}|e_i^TH_mv|^2$ is the largest of all twelve cut
+probabilities. Choose global phase so that $v_0=r_0>0$, and flip signs
+$v_j\mapsto\pm v_j$ ($1\le j\le3$) so that $y_j:=\operatorname{Im}v_j\ge0$,
+writing $v_j=x_j+iy_j$ and $p_j=x_j^2+y_j^2\le p_0=r_0^2$. Put
+$X_2:=\sum_{j=1}^3x_j^2$, $Y_2:=\sum_{j=1}^3y_j^2=1-p_0-X_2$,
+$S_x:=\sum_{j=1}^3|x_j|$ and $S_y:=\sum_{j=1}^3y_j$.
+
+Testing $\Phi(v)$ against
+$Z_*=(1/\sqrt2,i/\sqrt6,i/\sqrt6,i/\sqrt6)^T\in\mathcal H$ gives
+\[
+ \Phi(v)\ge\Phi_{\rm im}(v):=\left(\frac{r_0}{\sqrt2}+\frac{S_y}{\sqrt6}\right)^2
+ =\frac12-\frac12X_2+\frac13\Bigl(\sqrt3\,r_0S_y-Y_2+\sum_{1\le k<\ell\le3}y_ky_\ell\Bigr).
+\]
+Since $\Phi_{\rm im}(v)\le\Phi(v)\le\tfrac12$, we have
+$S_y\le\sqrt3(1-r_0)$, hence $Y_2\le S_y^2\le3(1-r_0)^2$ and
+$X_2=1-r_0^2-Y_2\ge2(1-r_0)(2r_0-1)$. Moreover, since
+$0\le y_j\le\sqrt{p_j}\le r_0$ and $\sqrt3<\tfrac{26}{15}<\tfrac74$
+($26^2=676>675$), we also have
+$Y_2\le r_0S_y\le\tfrac{26}{15}r_0(1-r_0)\le\tfrac74r_0(1-r_0)$ and
+$X_2\ge\tfrac1{15}(1-r_0)(15-11r_0)$.
+
+Up to sign, the eight rows of $H_1$ and $H_2$ are
+$\tfrac12(1,\varepsilon_1,\varepsilon_2,\varepsilon_3)$ for
+$\varepsilon\in\{\pm1\}^3$, so the eight cut probabilities in $H_1v$ and
+$H_2v$ are
+\[
+ \lambda_\varepsilon
+ =\frac14\left[\left(r_0+\sum_{j=1}^3\varepsilon_jx_j\right)^2
+   +\left(\sum_{j=1}^3\varepsilon_jy_j\right)^2\right]
+ =\frac14\left(1+2\sum_{j=1}^3\varepsilon_jc_{0j}
+   +2\sum_{1\le k<\ell\le3}\varepsilon_k\varepsilon_\ell c_{k\ell}\right)\le p_0,
+\]
+where $c_{ij}:=\operatorname{Re}(\bar v_iv_j)=x_ix_j+y_iy_j$
+($c_{0j}=r_0x_j$). Choosing $\varepsilon_j=\operatorname{sgn}(x_j)$ gives
+$(r_0+S_x)^2\le4p_0$, so $S_x\le r_0$. For each $j\in\{1,2,3\}$, averaging
+$\lambda_\varepsilon\le p_0$ over the four sign vectors with
+$\varepsilon_j=\operatorname{sgn}(x_j)$ cancels the other terms and yields
+$\tfrac14(1+2r_0|x_j|)\le r_0^2$, so $|x_j|\le\frac{4r_0^2-1}{2r_0}$ and
+$X_2\le(\max_j|x_j|)S_x\le2r_0^2-\tfrac12$. Combining this with
+$Y_2\le\tfrac74r_0(1-r_0)$ gives
+\[
+ 1=r_0^2+X_2+Y_2\le3r_0^2-\frac12+\frac74r_0(1-r_0),\qquad
+ 0\le\frac14(5r_0-3)(r_0+2),
+\]
+hence $r_0\ge\tfrac35$. Furthermore, for $\varepsilon_j=\operatorname{sgn}(x_j)$
+we have $(\sum_{j=1}^3\varepsilon_jy_j)^2\ge Y_2-2\sum_{k<\ell}y_ky_\ell
+=2Y_2-S_y^2\ge2(1-p_0-X_2)-3(1-r_0)^2$, so
+\[
+ (r_0+S_x)^2\le4p_0-2(1-p_0-X_2)+3(1-r_0)^2=(3r_0-1)^2+2X_2
+ \le\left(3r_0-1+\frac{X_2}{3r_0-1}\right)^2,
+\]
+and therefore $S_x\le\min\bigl(r_0,\,2r_0-1+\frac{X_2}{3r_0-1}\bigr)$. For
+$s_2:=\sum_{1\le k<\ell\le3}|x_k||x_\ell|=\tfrac12(S_x^2-X_2)$, if
+$X_2\le(1-r_0)(3r_0-1)$ then
+\[
+ 2s_2\le\left(2r_0-1+\frac{X_2}{3r_0-1}\right)^2-X_2
+ =(2r_0-1)^2-\frac{X_2\bigl((1-r_0)(3r_0-1)-X_2\bigr)}{(3r_0-1)^2}
+ \le(2r_0-1)^2,
+\]
+while if $X_2\ge(1-r_0)(3r_0-1)$ then
+$2s_2\le r_0^2-X_2\le(2r_0-1)^2$. Thus $2s_2\le(2r_0-1)^2$ and
+$q_4:=\sum_{1\le k<\ell\le3}x_k^2x_\ell^2\le s_2^2\le\tfrac14(2r_0-1)^4$
+for all $X_2\ge0$.
+
+On the critical locus, expanding $Q(v)$ in terms of $p_i=|v_i|^2$ and
+$c_{ij}=\operatorname{Re}(\bar v_iv_j)$ gives the exact identity (CO-1)
+\begin{equation}\label{eq:fqe-critical-three-term}
+ Q(v)=\frac12\Bigl(\sum_{i=0}^3p_i\Bigr)^3
+      +18\sum_{j=1}^3D_j\bigl(c_{0j}^2-c_{k\ell}^2\bigr),
+\end{equation}
+where for each $j\in\{1,2,3\}$ and $\{k,\ell\}=\{1,2,3\}\setminus\{j\}$ we
+set $D_j:=p_0+p_j-p_k-p_\ell=2(p_0+p_j)-1=1-2(p_k+p_\ell)\le
+D_{\max}:=\min(1,4p_0-1)$. Using $c_{0j}^2=p_0x_j^2$,
+$c_{k\ell}^2\le2(x_k^2x_\ell^2+y_k^2y_\ell^2)$ when $D_j\ge0$, and
+$c_{k\ell}^2\ge0$ when $D_j<0$, we obtain with $D_j^+:=\max(D_j,0)$ the
+decoupled lower bound
+\[
+ Q(v)+2\Phi(v)-\frac32\ge Q(v)+2\Phi_{\rm im}(v)-\frac32
+ \ge\mathcal Y(r_0,y)+\mathcal X(p;x^2),
+\]
+where
+\begin{align*}
+ \mathcal Y(r_0,y)&:=\frac23\Bigl(\sqrt3\,r_0S_y-Y_2
+   +\sum_{1\le k<\ell\le3}y_ky_\ell\Bigr)-36\sum_{j=1}^3D_j^+y_k^2y_\ell^2,\\
+ \mathcal X(p;x^2)&:=\sum_{j=1}^3(18p_0D_j-1)x_j^2
+   -36\sum_{j=1}^3D_j^+x_k^2x_\ell^2.
+\end{align*}
+
+We show that both $\mathcal Y(r_0,y)$ and $\mathcal X(p;x^2)$ are
+nonnegative (CO-2). For $\mathcal Y(r_0,y)$, the four-term AM--GM
+inequality on $(2r_0+1)+3(2r_0-1)+4(1-r_0)+4(1-r_0)=6$ gives
+$48(4r_0^2-1)(1-r_0)^2\le(3/2)^4=81/16$, so
+$9D_{\max}S_y^2\le27(4r_0^2-1)(1-r_0)^2\le729/256<3$. Since
+$Y_2=S_y^2-2\sum_{k<\ell}y_ky_\ell$ and
+$\sum_{k<\ell}y_k^2y_\ell^2\le\tfrac14S_y^2\sum_{k<\ell}y_ky_\ell$
+(as $y_ky_\ell\le\tfrac14(y_k+y_\ell)^2\le\tfrac14S_y^2$), we have
+\[
+ \mathcal Y(r_0,y)\ge\frac23S_y(\sqrt3\,r_0-S_y)
+   +\bigl(2-9D_{\max}S_y^2\bigr)\sum_{1\le k<\ell\le3}y_ky_\ell
+ \ge\frac23S_y(\sqrt3\,r_0-S_y)-\sum_{1\le k<\ell\le3}y_ky_\ell.
+\]
+Using $\sum_{k<\ell}y_ky_\ell\le\tfrac13S_y^2$ and
+$S_y\le\sqrt3(1-r_0)$ gives
+$\mathcal Y(r_0,y)\ge\tfrac13S_y(2\sqrt3\,r_0-3S_y)
+\ge\tfrac{\sqrt3}{3}S_y(5r_0-3)\ge0$.
+
+For $\mathcal X(p;x^2)$, substituting
+$D_j=(2p_0-1)+2x_j^2+2y_j^2\ge(2p_0-1)+2x_j^2$ and
+$\sum_{j=1}^3x_j^4=X_2^2-2q_4$ into the first sum yields
+\[
+ \mathcal X(p;x^2)\ge\bigl(18p_0(2p_0-1)-1\bigr)X_2+36p_0(X_2^2-2q_4)
+   -36\sum_{j=1}^3D_j^+x_k^2x_\ell^2.
+\]
+If $X_2=0$, then $\mathcal X=0$; assume $X_2>0$. On
+$r_0\in[\tfrac{19}{25},1]$, we have $p_0\ge\tfrac{361}{625}>\tfrac12$, so
+$D_j=1-2(p_k+p_\ell)\ge0$ and $D_j\le1-2(x_k^2+x_\ell^2)$. Hence
+$\sum_{j=1}^3D_j^+x_k^2x_\ell^2\le q_4-2(X_2q_4-3x_1^2x_2^2x_3^2)
+\le(1-\tfrac43X_2)q_4$ by $3x_1^2x_2^2x_3^2\le\tfrac13X_2q_4$, and since
+$2p_0+1-\tfrac43X_2>0$ and $q_4\le\tfrac13X_2^2$,
+\[
+\begin{aligned}
+ \frac{\mathcal X(p;x^2)}{X_2}&\ge18p_0(2p_0-1)-1-12(1-p_0)X_2+16X_2^2\\
+ &=\left(4X_2-\frac32(1-p_0)\right)^2+\frac{135p_0^2-54p_0-13}{4}
+ \ge\frac{16573}{78125}>0.
+\end{aligned}
+\]
+On $r_0\in[\tfrac35,\tfrac{19}{25}]$, using $D_j^+\le D_{\max}$ and
+$q_4\le\tfrac14(2r_0-1)^4$ gives
+\[
+ \frac{\mathcal X(p;x^2)}{X_2}\ge18p_0(2p_0-1)-1+36p_0X_2
+   -\frac{9(2p_0+D_{\max})(2r_0-1)^4}{X_2},
+\]
+which is strictly increasing in $X_2>0$. On $[\tfrac35,\tfrac{16}{25}]$,
+setting $D_{\max}=4p_0-1$ and
+$X_2\ge X_{2,1}(r_0):=\tfrac1{15}(1-r_0)(15-11r_0)$ and multiplying by
+$15X_{2,1}(r_0)>0$ gives the degree-six polynomial
+$P_1(r_0)=15\bigl((36r_0^4-18r_0^2-1)X_{2,1}(r_0)+36r_0^2X_{2,1}(r_0)^2
+-9(6r_0^2-1)(2r_0-1)^4\bigr)$, which is strictly concave on
+$[\tfrac35,1]$ ($P_1''(\tfrac35+u)=-368208u^4-\tfrac{2057376}{5}u^3
+-\tfrac{2990232}{25}u^2-\tfrac{1591704}{125}u-\tfrac{226078}{625}<0$ for all
+$u\ge0$) with $P_1(\tfrac35)=\tfrac{3693}{78125}>0$ and
+$P_1(\tfrac{16}{25})=\tfrac{216609912}{1220703125}>0$. On
+$[\tfrac{16}{25},\tfrac{19}{25}]$, setting $D_{\max}=1$ and
+$X_2\ge X_{2,2}(r_0):=2(1-r_0)(2r_0-1)$ and multiplying by
+$\frac{X_{2,2}(r_0)}{2r_0-1}=2(1-r_0)>0$ gives the degree-five polynomial
+$P_2(r_0)=72r_0^5-432r_0^4+432r_0^3-54r_0^2-52r_0+7$, which is strictly
+concave on $[\tfrac35,1]$
+($P_2''(\tfrac35+u)=-36\bigl(8u^2(9-5u)+\tfrac{288}{5}u+3\bigr)<0$ for
+$u\in[0,\tfrac25]$) with $P_2(\tfrac{16}{25})=\tfrac{988047}{9765625}>0$
+and $P_2(\tfrac{19}{25})=\tfrac{570453}{9765625}>0$. Thus
+$\mathcal X(p;x^2)\ge0$ in all cases, proving \eqref{eq:fqe-critical-fidelity}.
+
+Let $x=\sqrt{\Phi}$ and $c=(2+\sqrt2)/4$. The $32$ overlaps
+$q_\eta=|\langle\eta,v\rangle|^2$ sum to $8$, since the frame operator is $8I$ (CO-1), so
+$\Phi=\max_\eta q_\eta\ge1/4$ and $x\ge1/2$.
+For $x\ge1/\sqrt2$, the first bound gives
+$1-x^2\ge2c(1-x)$. For $1/2\le x\le1/\sqrt2$, the second gives
+\[
+ 3/2-2x^2-2c(1-x)
+ =2(1/\sqrt2-x)\bigl(x-(2-\sqrt2)/4\bigr)\ge0.
+\]
+Since $d^2=2(1-x)$, this proves \eqref{eq:fqe-critical-distance}.
+Equation~\eqref{eq:fqe-orbit-surrogate} gives \eqref{eq:fqe-critical-entropy}, with
+$\mathcal D=Q+5\tau/2$ on critical states and the bound just proved as its last step. Bell products have
+$Q=\Phi=1/2$, hence $d^2=2-\sqrt2$; both constants are sharp.
+The null-critical refinement is proved in the next paragraph.
+\end{proof}
+
+\paragraph{Two auxiliary Bloch spheres on the null-critical locus.}
+Let $M=(m_1,m_2,m_3,m_4)$ be the unitary $4\times4$ matrix whose columns are the magic basis vectors of
+Appendix~\ref{sec:fqe-normal-form} of the paper, written in the basis
+$|00\rangle,|01\rangle,|10\rangle,|11\rangle$, so that $Mv=\sum_kv_km_{k+1}$ for $v\in\mathbb C^4$. For the critical
+normal form $D_v$, regard $Mv$ as an auxiliary two-qubit vector.
+Its coefficient matrix has determinant $\sum_jv_j^2/2$.
+Thus $\tau=0$ is equivalent to $Mv=a\otimes b$ for unit auxiliary
+qubits $a,b$. These are coordinates on the critical normal form, not
+physical tensor factors of the original four-qubit state.
+Let $r,s\in S^2$ be their Bloch vectors. Direct Bell probabilities give
+\begin{equation}\label{eq:fqe-null-critical-bloch}
+ Q=\frac12+\frac{27}{2}r_1r_2r_3s_1s_2s_3,\qquad
+ \Phi=\frac14\max_{\substack{\varepsilon,\eta\in\{\pm1\}^3\\
+                         \prod_j\varepsilon_j\eta_j=-1}}
+ \left(1+\frac{\varepsilon\cdot r}{\sqrt3}\right)
+ \left(1+\frac{\eta\cdot s}{\sqrt3}\right).
+\end{equation}
+Indeed, the four probabilities $|v_j|^2$ are
+$(1+\sum_\alpha\chi_{j\alpha}r_\alpha s_\alpha)/4$, where
+\[
+ (\chi_{j\alpha})=
+ \begin{pmatrix}1&-1&1\\1&1&-1\\-1&-1&-1\\-1&1&1\end{pmatrix}.
+\]
+Their second and third power sums in
+\eqref{eq:fqe-global-intrinsic}, with $Z=D_v$ and $\operatorname{tr}(Z^TZ)=0$, give
+the first identity. The 32 HS representatives become exactly the
+auxiliary product rays whose Bloch vectors are cube vertices
+$\varepsilon/\sqrt3,\eta/\sqrt3$ of opposite parity. The product-state
+overlap formula and \eqref{eq:fqe-signed-diagonal-overlap} give the second
+identity. These finite identities are checked independently by NC-1--NC-3.
+
+Here is an elementary proof of the geometric claims in
+\eqref{eq:fqe-null-critical-sharp}; NC-4 checks its scalar identities and constants.
+Write $A=1-1/\sqrt3$, $B=1+1/\sqrt3$, and
+$f_0=B^2/4=(2+\sqrt3)/6$.
+First we prove $\Phi\ge f_0$. If the signs of the coordinates of
+$r,s$ have opposite parity, align both cube vertices with those signs;
+$\|r\|_1,\|s\|_1\ge1$ gives the claim. A zero coordinate allows either
+parity. In the remaining case put $L=\|r\|_1$, $m=\min_j|r_j|$ and
+define $f_r=1+L/\sqrt3$, $g_r=1+(L-2m)/\sqrt3$, with analogous
+quantities for $s$. Flipping the sign at a smallest coordinate gives
+\[
+ 4\Phi\ge\max(f_rg_s,g_rf_s)
+                  \ge\sqrt{f_rg_rf_sg_s}.
+\]
+For the ordered coordinate moduli $x\ge y\ge z=m$ of either unit vector,
+\[
+ f_rg_r-B^2=\frac2{\sqrt3}(x+y-1)+\frac23(xy-z^2)\ge0.
+\]
+Here $xy\ge z^2$ and $(x+y)^2=1-z^2+2xy\ge1$.
+This proves the fidelity floor in all cases.
+
+If $r_1r_2r_3s_1s_2s_3\ge0$, then $Q\ge1/2$, and with $\Phi\ge f_0$ this gives
+$Q\ge(1-\Phi)/(2(1-f_0))=\frac3{4-\sqrt3}(1-\Phi)$.
+Otherwise put $\mu=3\sqrt3|r_1r_2r_3|$ and
+$\nu=3\sqrt3|s_1s_2s_3|$, so $0\le\mu,\nu\le1$ and $2Q=1-\mu\nu$.
+For a nonnegative unit triple $x,y,z$,
+\[
+ x+y+z-1
+ =\frac{2(xy+yz+zx)}{x+y+z+1}
+ \ge(9-3\sqrt3)xyz.
+\]
+For positive coordinates this follows from
+$1/x+1/y+1/z\ge3\sqrt3$ and $x+y+z\le\sqrt3$;
+zero coordinates follow by continuity.
+Thus $\|r\|_1\ge1+(\sqrt3-1)\mu$ and similarly for $s$.
+Aligning opposite-parity signs in \eqref{eq:fqe-null-critical-bloch} gives
+$4\Phi\ge \Lambda:=(B+A\mu)(B+A\nu)$. The identity
+\[
+ \Lambda-B^2-(4-B^2)\mu\nu=AB\bigl(\mu(1-\nu)+\nu(1-\mu)\bigr)\ge0
+\]
+gives $1-\Phi\le(1-f_0)(1-\mu\nu)=2(1-f_0)Q$, the infidelity bound. In both cases the distance bound follows
+pointwise: $1-\Phi=\frac{1+\sqrt\Phi}2\,d^2\ge\frac{1+\sqrt{f_0}}2\,d^2$, and
+$\frac3{4-\sqrt3}\cdot\frac{1+\sqrt{f_0}}2=\frac{3+\sqrt3}4$ because $\sqrt{f_0}=B/2$.
+The critical cluster representative $v=(1,i,0,0)/\sqrt2$ has
+$Q=1/2$ and $\sqrt{\Phi}=B/2$, attaining all three geometric
+bounds.
+
+
+\begin{lemma}[Real-density geometry and sharp critical covering profile; exact certificate, RP, FP]
+\label{lem:fqe-critical-real-density}
+Write a unit critical normal vector as $v=x+iy$, with $x,y\in\mathbb R^4$,
+and put $A=xx^T+yy^T$. Then $A$ ranges over exactly the real positive
+semidefinite matrices of trace one and rank at most two, and
+\begin{equation}\label{eq:fqe-critical-density-measurements}
+ \lambda_{ji}=e_i^TH_jAH_j^Te_i,\qquad
+ \tau=2\operatorname{tr}A^2-1.
+\end{equation}
+Here $H_0,H_1,H_2$ are the three real orthogonal cut transforms displayed
+above. Their bases are mutually unbiased. For their twelve unit vectors
+$h_{ji}=H_j^Te_i$ and rank-one projectors $B_{ji}=h_{ji}h_{ji}^T$,
+\begin{equation}\label{eq:fqe-critical-real-tomography}
+ A=\sum_{j,i}\lambda_{ji}B_{ji}-\tfrac12I,\qquad
+ \sum_{j,i}\lambda_{ji}^2=\operatorname{tr}A^2+\tfrac12.
+\end{equation}
+For each coordinate axis $e_k$ and each of the four lines
+$u=(0,\pm1,\pm1,\pm1)/\sqrt3$ in its orthogonal coordinate three-space,
+put $P=e_ke_k^T+uu^T$ and $A_P=P/2$. There are sixteen such planes.
+With $F_{\rm B}(A,B)=(\operatorname{tr}\sqrt{\sqrt B A\sqrt B})^2$,
+\begin{equation}\label{eq:fqe-critical-bures-orbit}
+ \Phi(v)=\max_P F_{\rm B}(A,A_P),\qquad
+ F_{\rm B}(A,A_P)=\frac12\left[\operatorname{tr}(PA)
+                    +2\sqrt{\det\bigl((e_k,u)^TA(e_k,u)\bigr)}\right].
+\end{equation}
+Thus $d(v)$ is exactly the minimum Bures distance from $A$ to these
+sixteen real density matrices. The entire critical locus obeys the sharp bound
+\begin{equation}\label{eq:fqe-critical-fidelity-floor}
+ \Phi\ge f_{\rm cov}(\tau):=
+       \frac13+\frac{\sqrt{1-\tau}}{2\sqrt3},\qquad
+ \max_{\substack{\psi\ {\rm critical}\\\tau(\psi)=t}}d(\psi)^2
+       =2-2\sqrt{f_{\rm cov}(t)}\quad(0\le t\le1).
+\end{equation}
+The bound is attained for every $t$ by the cluster-to-GHZ family below.
+In particular every critical state has $d^2\le2-2/\sqrt3$, with equality for GHZ.
+For any one such plane, put
+$\lambda^P_{ji}=\operatorname{tr}(B_{ji}A_P)$ and
+$D_P=\sum_{j,i}\lambda_{ji}\ln(\lambda_{ji}/\lambda^P_{ji})$.
+The entropy gap has the exact form
+\begin{equation}\label{eq:fqe-critical-relative-entropy}
+ 3\ln2\,\delta=D_P-\tfrac32\ln3\,J_P,\qquad
+ J_P=1-\operatorname{tr}(PA)
+    =\|A-A_P\|_F^2-\tau/2.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The three physical cut vectors are $H_jv$, so their squared moduli are
+the stated real measurements. Conversely, for any real $A$ of the
+specified rank, its spectral decomposition gives
+$v=\sqrt{a_1}e_1+i\sqrt{a_2}e_2$; rank one is included.
+The identity $|v^Tv|^2=2\operatorname{tr}A^2-1$ proves the spin-flip claim.
+The twelve real lines are the coordinate lines and the half-sign lines
+of the regular $24$-cell. Their tight frame identity, valid for every
+real symmetric matrix $C$, is
+\[
+ \sum_{j,i}\operatorname{tr}(B_{ji}C)B_{ji}
+                    =C+\tfrac12\operatorname{tr}(C)I.
+\]
+Taking its trace pairing with $C$ proves both tomography formulas (RP-1).
+
+The two HS rays associated with $P$ are $(e_k\pm iu)/\sqrt2$.
+Their squared overlaps with $v$ have sum $\operatorname{tr}(PA)$ and
+half their difference has squared value
+$\det((e_k,u)^TA(e_k,u))$. Maximising over this pair therefore gives
+\eqref{eq:fqe-critical-bures-orbit}, by the two-dimensional formula
+$(\operatorname{tr}\sqrt C)^2=\operatorname{tr}C+2\sqrt{\det C}$.
+The signed-Birkhoff reduction already proved shows that maximising
+these sixteen pairwise maxima is the full physical HS fidelity.
+
+For $q_\eta=|\langle\eta,v\rangle|^2$, the finite HS frame satisfies
+\[
+ \sum_{\eta\in\mathcal H}q_\eta=8,\qquad
+ \sum_{\eta\in\mathcal H}q_\eta^2=\tfrac89(4-\tau).
+\]
+Both follow by expanding and cancelling odd sign powers (RP-3).
+The stronger sharp profile \eqref{eq:fqe-critical-fidelity-floor} follows
+from the area-weighted calibration proved below; the moment identity
+alone does not give that profile.
+
+Each reference distribution has one entry $1/2$ in each cut and nine
+entries $1/6$ in total. The sum of the three projectors selecting its
+large entries is $3P/2$ (RP-3). Expanding $D_P$ then gives
+\eqref{eq:fqe-critical-relative-entropy}. Finally
+$\operatorname{tr}A_P^2=1/2$ and
+$2\operatorname{tr}(AA_P)=\operatorname{tr}(AP)$ give the leakage formula.
+All matrix and compression identities here are independently checked by RP;
+the covering calibration uses FP.
+\end{proof}
+
+\input{critical_covering_geometry}
+
+This model expresses both the entropy and the optimised orbit distance exactly.
+In particular, a bound on the classical relative entropy $D_P$ that
+controls the explicit plane leakage $J_P$ can improve the entropy
+constant without first improving a moment surrogate. Its domain is a
+real rank-two density matrix; replacing it by all real density matrices
+would admit $I/4$, whose entropy exceeds the critical-state maximum.

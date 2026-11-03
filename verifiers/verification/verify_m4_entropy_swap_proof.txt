@@ -1,0 +1,6 @@
+SP-1 PASS: exact local swap, antisymmetry and spin-flip transpose identities
+SP-2 PASS: generic two-qubit swap/cycle, partial-transpose and marginal trace identities; pair norm (Pr)
+SP-3 PASS: eleven exact orbit coefficients and the qubit-antisymmetry class reduction
+SP-4 PASS: all three contraction formulas; 8F = 6nW1 + 3||V-8U||^2 + 12 sum||(R_i-R_j)z||^2
+SP-5 PASS: local tensor norm n(lambda-mu)^2/3; no nondegeneracy assumption
+ALL SP CHECKS PASS

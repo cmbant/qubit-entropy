@@ -1,0 +1,1 @@
+[PASS] PS-1 C* enclosed in (0.190578947012726887, 0.190578947012726888); equality algebra is checked by PM-4

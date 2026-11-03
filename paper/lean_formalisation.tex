@@ -1,0 +1,203 @@
+\section{Lean formalisation}\label{sec:fqe-lean}
+The formalisation is the \texttt{lean/} folder of the companion repository \href{https://github.com/cmbant/qubit-entropy}{\texttt{cmbant/qubit-entropy}}, a standalone Lake project
+(\texttt{lake build}) using Lean~4 and Mathlib, whose theorem docstrings give the TeX labels of the paper and this
+supplement. Table~\ref{tab:fqe-lean} lists what it proves, with the main Lean declarations; the
+companion README gives the build commands. The default \texttt{lake build} omits the final overlap certificate and
+the unconditional quadratic-variance certificate; these have separate targets described below.
+The formalised results use only Lean's standard three axioms
+(\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}), except for the finite compiled checks behind
+Theorems~\ref{thm:fqe-global-overlap} and~\ref{thm:fqe-sharp-quadratic-variance} and any results that depend on them.
+For the first, three finite
+checks of the certificate data (the identity~\eqref{eq:fqe-global-overlap-sos} with the Gram test~\eqref{eq:fqe-compact-gram-test}, the
+target polynomial, and the constraint matrices) are evaluated by compiled code (\texttt{native\_decide}, which adds one axiom per
+check); their soundness and the whole reduction to the normal slice are kernel-checked. The 32-variable
+polynomial identities behind~\eqref{eq:fqe-remainder} and~\eqref{eq:fqe-flip-gradient-identity} are split into 7 and 22
+pieces, each checked by kernel evaluation in its own declaration.
+
+For Theorem~\ref{thm:fqe-sharp-quadratic-variance} the formalisation proves the identity~\eqref{eq:fqe-qv-allstate-sos} for
+all $z$ without the dimension count of Section~\ref{sec:sup-qk}. The difference of its two sides is written as a
+sesquilinear form $\overline{z^{\otimes6}}^{\mathsf T}Kz^{\otimes6}$ with an integer matrix $K$ assembled from the
+covariants $\Phi_{ki}$ and from copy permutations; the form vanishes once $PKP=0$ for the symmetriser $P$ of the six copies.
+The integer spin intertwiner of $(\mathbb C^2)^{\otimes6}$ block-diagonalises each qubit factor into sectors of twice-spin $0,2,4,6$, and
+$PKP=0$ becomes one integer matrix identity in each of the $164$ spin sectors that carry symmetrised vectors, with bases
+of their images certified by a character average and pivot certificates. These finite checks run as one compiled checker
+(\texttt{native\_decide}); a second compiled check identifies its intertwiner array with the mathematical definition.
+The remaining table facts are kernel-evaluated. The soundness of the checker, the block calculus, and the
+deduction of (QV), (QK) and the R\'enyi envelope above one are kernel-checked.
+
+To include these results, build \nolinkurl{FourQubitEntropy.QVEqualityMain} separately (it imports
+\nolinkurl{FourQubitEntropy.QVCheck.Unconditional} and adds the equality and optimality statements of (QV) and (QK)), and, after generating
+the overlap data as directed in the companion README, \nolinkurl{FourQubitEntropy.GOGlue.Final}.
+Their consequences inherit the same compiled checks: in particular, the unconditional R\'enyi envelope inherits
+the quadratic-variance checks, and the unconditional global orbit-stability bounds inherit the overlap checks.
+
+The analytic arguments and certificates of the paper do not depend on the Lean
+development.
+
+{\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.14\linewidth}>{\raggedright\arraybackslash}p{0.49\linewidth}>{\raggedright\arraybackslash}p{0.31\linewidth}@{}}
+\caption{Scope of the Lean formalisation.}\label{tab:fqe-lean}\\
+\toprule
+Topic & Formalised statements & Main declarations \\
+\midrule
+\endfirsthead
+\toprule
+Topic & Formalised statements & Main declarations \\
+\midrule
+\endhead
+Four-qubit maximum &
+Theorem~\ref{thm:fqe-entropy-max}: the bound, attainment by $M_4$ and the equality case; one-cut rigidity on every cut
+(Proposition~\ref{prop:fqe-onecut}); the critical normal form (Theorem~\ref{thm:fqe-critical-normal-form}). &
+\texttt{meanEntropy\_le}, \texttt{meanEntropy\_eq\_max\_iff}, \texttt{one\_cut\_rigidity\_12}, \texttt{critical\_normal\_form}, \texttt{critical\_iff\_LU\_Gv}\\
+Moment inequality &
+Theorem~\ref{thm:fqe-moment}: the sharp $F\ge\frac34NW_1$ from~\eqref{eq:fqe-remainder}, optimality of $\frac34$ at
+product states, the zero set of $F$ (Proposition~\ref{prop:fqe-moment-zeros}) and the sharp third-moment lemma. &
+\texttt{sexticF\_ge}, \texttt{sexticF\_ge\_sharp}, \texttt{moment\_zeros}, \texttt{third\_moment}\\
+Envelopes &
+The spin-flip derivative identity~\eqref{eq:fqe-flip-gradient-identity} (Lemma~\ref{lem:fqe-flip-gradient}); the
+general envelope of Theorem~\ref{thm:fqe-general-envelope} in the homogeneous form~\eqref{eq:fqe-general-envelope}, with
+optimality of its coefficient $\frac78$ and its complete equality classification; the critical envelope
+(Proposition~\ref{prop:fqe-critical-envelope}) in full: the closed form, its equality classification and the critical moment
+boundary. &
+\texttt{flipGradient}, \texttt{general\_envelope\_homog}, \texttt{general\_envelope\_coeff\_iff}, \texttt{envelope\_equality\_iff},
+\texttt{critical\_closed\_form}, \texttt{critical\_envelope\_eq\_iff}\\
+Orbit distance &
+The distance $d$ to the $M_4$ orbits as a minimum, with $d^2=2-2\sqrt\Phi$; the fidelity floor
+(Lemma~\ref{lem:fqe-hs-fidelity-floor}) with its attainment at GHZ; hence the global estimates of Theorem~\ref{thm:fqe-orbit-stability} and
+Corollary~\ref{cor:fqe-orbit-spectral} (the local-radius clauses and the limiting coefficient are not formalised). &
+\texttt{orbitDist\_sq}, \texttt{fidelity\_floor}, \texttt{fidelity\_floor\_ghz\_attained}, \texttt{entropy\_gap\_orbit\_\allowbreak stability\_dist\_all}\\
+HS overlap stability &
+Theorem~\ref{thm:fqe-global-overlap}, $Q\ge1-\Phi$ for every unit state: a closest representative on the $19$-coordinate normal
+slice with all its constraints, $Q$ on the slice, and the certificate~\eqref{eq:fqe-global-overlap-sos} on data generated from
+the certificate file. &
+\texttt{globalOverlap\_all}, \texttt{globalOverlap\_of\_frame\_cert}, \texttt{go\_certificate\_sound}\\
+Critical orbit stability &
+Theorem~\ref{thm:fqe-critical-orbit-sharp} with its sharp constants (the case $\Phi\ge\frac12$ from
+Theorem~\ref{thm:fqe-global-overlap}) and its null-critical refinement~\eqref{eq:fqe-null-critical-sharp}, attained at
+the cluster state. &
+\texttt{critical\_orbit\_sharp\_\allowbreak dist\_all}, \texttt{Phi\_eq\_max}, \texttt{bell\_product\_sharp}, \texttt{null\_critical\_sharp}\\
+Spectral extensions &
+The cubic-majorant criterion with its equality clause (Proposition~\ref{prop:fqe-majorant}); Tsallis $0<q<2$ and R\'enyi $0<q<1$ with equality
+cases; failure of $M_4$ for Tsallis $q>2$; the quadratic deficit bounds in $W_1$ and $\tau$; the rank-two and $q\ge2$
+R\'enyi bounds; the HS--cluster crossing $1587/1000<q_*<1589/1000$; Lemma~\ref{lem:fqe-renyi-grouping} and
+Proposition~\ref{prop:fqe-cubic-bound} with their equality cases, the necessity of $q_b$ and $\tfrac32<q_b<\tfrac{313}{200}$; the single crossing
+(Lemma~\ref{lem:fqe-renyi-single-crossing}) with its equality case and the order transfer
+(Corollary~\ref{cor:fqe-renyi-order-transfer}), also for the three cut spectra of a state. &
+\texttt{majorant\_le}, \texttt{majorant\_eq\_iff\_of\_pos}, \texttt{tsallis\_le}, \texttt{renyi\_le}, \texttt{tsallis\_cluster4\_gt}, \texttt{entropy\_stability},
+\texttt{renyi\_crossing}, \texttt{renyi\_grouping\_eq\_iff}, \texttt{renyi\_cubic\_eq\_iff}, \texttt{renyi\_cubic\_iff},
+\texttt{single\_crossing\_statement}, \texttt{meanRenyi\_order\_transfer}\\
+R\'enyi above one &
+The envelope $\mathcal E_q\le\max\{h_q,5/3\}$ of Corollary~\ref{cor:fqe-renyi-gw} for every $q>1$, with its equality cases (HS
+equality as the two $M_4$ orbits, cluster equality spectrally), from (QK); within it: the band-$L$
+bound (Lemma~\ref{lem:fqe-rational-dual}, from the bounded-head bound of Lemma~\ref{lem:fqe-small-head-dual} and the large-head
+Lemmas~\ref{lem:fqe-large-head-curvature} and~\ref{lem:fqe-large-head-dual}), the capped cubic bound
+(Lemma~\ref{lem:fqe-capped-cubic}), the binary quartic lemma at $q_s$ (Lemma~\ref{lem:fqe-binary-quartic}, by a real-variable route that differs from the
+Cauchy-formula proof in the text), the HS supporting inequality (Lemma~\ref{lem:fqe-hs-polynomial}, with the low-tilt
+reduction), the cluster sliver (Lemma~\ref{lem:fqe-cluster-sliver}), the dual bound (Lemma~\ref{lem:fqe-dual}), determinant
+monotonicity (Lemma~\ref{lem:fqe-renyi-determinant}), the near-uniform dual bound (Lemma~\ref{lem:fqe-near-uniform-dual}), the
+large-moment-slack regime (Corollary~\ref{cor:fqe-renyi-high-f}) and the case analysis of
+Theorem~\ref{thm:fqe-renyi-classical}. &
+\texttt{renyi\_envelope\_above\_\allowbreak one\_unconditional}, \texttt{renyi\_envelope\_above\_one\_QK}, \texttt{largeHeadDual}, \texttt{smallHeadDual}, \texttt{det\_reduction}, \texttt{nearUniformDual},
+\texttt{meanRenyi\_high\_F}\\
+Quadratic variance &
+The sharp bound (QV) of Theorem~\ref{thm:fqe-sharp-quadratic-variance} through the identity~\eqref{eq:fqe-qv-allstate-sos}
+for every $z$, with the certificate data committed as Lean literals generated from the certificate file and the identity
+checked by compiled code, its equality along the cluster-to-Bell family
+and optimality of the coefficient $3$; (QK) of Corollary~\ref{thm:fqe-quadratic-variance} with its equality classification
+and both coefficients sharp; the critical-state bound of Proposition~\ref{prop:fqe-critical-variance} with its equality case
+and attainment. &
+\texttt{qvCertIdentity}, \texttt{sharpQuadraticVarianceBound}, \texttt{quadraticVarianceBound}, \texttt{checkAll\_true},
+\texttt{qv\_coefficient\_iff}, \texttt{qk\_equality\_\allowbreak classification\_product}, \texttt{qk\_coefficients\_sharp}, \texttt{critical\_rf}\\
+Convex roofs &
+The von Neumann, Tsallis ($0<q<2$) and R\'enyi ($0<q<1$) roof ceilings, attained only by pure states in the two $M_4$
+orbits (Corollary~\ref{cor:fqe-convex-roof}). &
+\texttt{convexRoof\_vn\_eq\_iff} and its Tsallis and R\'enyi analogues\\
+Spin-flip bounds &
+Both inequalities of~\eqref{eq:fqe-two-flat}, their sharpness, the equality case on the critical locus and the
+Schmidt-rank-two consequence and the identification of states with two maximally mixed cuts with the cluster-to-Bell
+family, with their R\'enyi and von Neumann values (Proposition~\ref{prop:fqe-two-flat-rigidity}); the spectral spin-flip bound
+(Proposition~\ref{prop:fqe-spectral-spinflip}) and the overlap inequality behind it
+(Lemma~\ref{lem:fqe-isospectral-overlap}, with attainment); Lemma~\ref{lem:fqe-real-gram}. &
+\texttt{two\_flat\_TF\_12}, \texttt{two\_flat\_eq\_iff\_12}, \texttt{two\_flat\_QF}, \texttt{two\_flat\_renyi}, \texttt{spectral\_spinflip\_12}, \texttt{isospectral\_overlap\_rect},
+\texttt{real\_gram\_rect}\\
+Icosahedral family &
+Normalisation, maximally mixed one-qubit marginals, and the purity and spectrum of every pair and three-qubit marginal;
+hence $\min_x\pi_3(\psi_x)=121/917$ at $x=37/524$, and $b_3'(37/524)=-432/120127$. The family entropy $E_3(x)$ is strictly
+concave with unique maximiser $x_*$, the root in $(0,\tfrac12)$ of $2^{32}(1-2x)^{15}=3^8(1+8x)^8(1+28x)^7$, with
+$0.0698287<x_*<0.0698288$ and $2.9653560294776<E_3(x_*)<2.9653560294777$ bits. &
+\texttt{icosahedralState\_eq\_ico}, \texttt{pairCut\_spectrum}, \texttt{star\_value}\\
+Seven-qubit reductions &
+The global joint scalar majorant with its equality set (Lemma~\ref{lem:seven-joint-scalar-majorant}, AH-6); the spectral pair
+(Proposition~\ref{prop:seven-spinflip-spectral-pair}); the joint spin-flip identity on the family (Lemma~\ref{lem:seven-joint-spinflip});
+the minimal majorant degree (Proposition~\ref{prop:seven-entropy-majorant-degree}); the eigenvalue cap of
+Corollary~\ref{cor:seven-entropy-eigen-cap-497} for pure states. Assuming $\pi_3\ge121/917$: the competitor band
+(Proposition~\ref{prop:seven-competitor-band}), so every pure state with $E_3$ above the SC-2 threshold has purity in the band and
+eigenvalues at most $497/1000$, and $E_3$ is bounded by the joint functional; with the localised bound E7-1 as a further hypothesis this
+gives $E_3\le E_3(\psi_{x_*})$ for every state. &
+\texttt{joint\_scalar\_majorant}, \texttt{joint\_scalar\_majorant\_\allowbreak eq\_iff}, \texttt{seven\_entropy\_max\_\allowbreak reduction\_joint},
+\texttt{spinflip\_spectral\_pair}, \texttt{tripleCut\_\allowbreak spinflip\_family}, \texttt{majorant\_degree\_isLeast},
+\texttt{eigenCap\_497\_pure}, \texttt{competitor\_\allowbreak purity\_band}\\
+Spin-flip doubling and five-copy steps &
+Theorem~\ref{thm:spinflip-double} and Corollary~\ref{cor:ordinary-triples}; the tangent-line lemma
+(Lemma~\ref{lem:fivecopy-tangent-line}) in abstract form, for any copy number and number of qubits; the moment-level step of
+Theorem~\ref{thm:fivecopy-family-equality}; the family relations of Proposition~\ref{prop:zero-focus}. &
+\texttt{spinflip\_double\_odd}, \texttt{ordinary\_\allowbreak triple\_purity}, \texttt{SevenFiveCopy.\allowbreak tangent\_line}, \texttt{equality\_\allowbreak moment\_centred},
+\texttt{zeroFocus\_\allowbreak wronskian\_\allowbreak unconditional}\\
+Balanced-purity minima &
+For $4\le n\le18$, $n\ne7,13$: $\min\pi_{\lfloor n/2\rfloor}$ equals the value of Table~\ref{tab:minima}
+(Theorems~\ref{thm:lptable}, \ref{thm:fourteenfifteen}, \ref{thm:sixteenseventeen} and~\ref{thm:eighteen}), with
+Rains' shadow inequalities and the graph-state purity $2^{-\mathrm{rk}_2}$ proved rather than quoted. &
+\texttt{minPurity}$n$, \texttt{shadow\_nonneg}, \texttt{purity\_gsn}\\
+Entropy--purity slope &
+For every $d\ge3$ the sharp slope \eqref{eq:entropy-purity-general-slope} of Lemma~\ref{lem:seven-entropy-linear-purity} and,
+for every $d\ge2$, the fixed-purity envelope of Lemma~\ref{lem:seven-fixed-purity-envelope}, both with their equality
+cases; hence the entropy ceilings of Table~\ref{tab:fqe-other-n} for $8\le n\le18$, $n\ne13$, from the formalised purity minima. &
+\texttt{entropy\_purity\_slope\_bits}, \texttt{entropy\_le\_gEnv}, \texttt{meanEntropy\_le}, \texttt{entropyCeiling}$n$\\
+Odd-$n$ tradeoff &
+The identity of Theorem~\ref{thm:odd-spinflip-tradeoff} for every odd $n\ge5$, with the coefficients $c_n$ and its
+equality case. &
+\texttt{odd\_tradeoff\_sharp}, \texttt{odd\_tradeoff\_sharp\_eq\_iff}\\
+Even-$n$ tradeoff &
+The bound of Theorem~\ref{thm:purity-spinflip-tradeoff} for $n\in\{8,10,14,16,20\}$, with its sharpness, the optimality of
+$c_n$ for $L_n$ and Corollary~\ref{cor:spinflip-rigidity}. &
+\texttt{purity\_spinflip\_\allowbreak tradeoff\_even}, \texttt{purity\_spinflip\_\allowbreak tradeoff\_even\_sharp}\\
+\midrule
+Not formalised: four qubits &
+The local-radius and limiting-coefficient clauses of Theorem~\ref{thm:fqe-orbit-stability} and
+Corollary~\ref{cor:fqe-orbit-spectral} (Lemma~\ref{lem:fqe-entropy-local-radius}); Theorem~\ref{thm:fqe-p1-sharp} and its covering
+proof (Proposition~\ref{prop:fqe-critical-covering} and its lemmas); the critical fidelity profile~\eqref{eq:fqe-critical-fidelity-floor}
+(Lemmas~\ref{lem:fqe-critical-real-density} and~\ref{lem:fqe-four-point-cubic}); Theorem~\ref{thm:sup-null-family} for $\theta>0$;
+Proposition~\ref{prop:fqe-bell-frame}; the near-one proof of Theorem~\ref{thm:fqe-renyi-above-one} (Lemma~\ref{lem:fqe-renyi-slack},
+the defect estimate~\eqref{eq:fqe-renyi-defect} and the R\'enyi clause of Corollary~\ref{cor:fqe-orbit-spectral}) and
+Corollary~\ref{cor:fqe-renyi-purity}, although the bound and equality case of Theorem~\ref{thm:fqe-renyi-above-one} follow from the
+formalised envelope; Proposition~\ref{prop:fqe-spin-flip-calibration}; the equality and defect clauses of
+Proposition~\ref{prop:fqe-critical-quadratic-variance} (its inequality is (QV)) and the equality clause of
+Theorem~\ref{thm:fqe-joint-purity}; Lemma~\ref{lem:fqe-single-filter}; the R\'enyi roofs for $1<q<q_*$ in
+Corollary~\ref{cor:fqe-convex-roof}. & \\
+Not formalised: seven qubits &
+Theorems~\ref{thm:fqe-seven-purity} and~\ref{thm:fqe-seven-entropy} (FP5-1, E7-1, attainment and the longer decimal; only the family
+values and the reductions under explicit hypotheses above are formalised), with the five-copy chain
+(Lemmas~\ref{lem:fivecopy-site-algebra}, \ref{lem:fivecopy-young-blocks}, \ref{lem:fivecopy-direct-probes}, \ref{lem:positive-repair},
+Propositions~\ref{prop:ico-fivecopy-g34-kernels}, \ref{prop:fivecopy-finite-probes}, Theorem~\ref{thm:fivecopy-sharp-certificate},
+Corollary~\ref{cor:seven-global-from-fivecopy}), orbit rigidity (Theorem~\ref{thm:moment-orbit-rigidity},
+Corollaries~\ref{cor:fourth-moment-orbit-rigidity} and~\ref{cor:icosahedral-labelled-orbits}; of
+Theorem~\ref{thm:fivecopy-family-equality} only the moment-level step in abstract form: the tangent line and the elimination of $t$
+by the centred square, given $H(X_y')\ne0$; the family value $H(\psi_y)=155+96y$ (FO-1) and the passage to the orbit are not formalised) and the entropy certificates
+(Theorems~\ref{thm:seven-entropy-localized-identity}, \ref{thm:seven-entropy-global-maximum},
+Proposition~\ref{prop:seven-entropy-equality-moment}, the five-copy part of Proposition~\ref{prop:seven-joint-entropy-target},
+Corollary~\ref{cor:seven-joint-degree-five}, the mixed-state clause of Corollary~\ref{cor:seven-entropy-eigen-cap-497});
+full-space stationarity (Lemma~\ref{lem:seven-family-symmetric-criticality}); the Hessian, basin and stability results
+(Theorems~\ref{thm:icolocal}, \ref{thm:icoquantbasin}, \ref{thm:entropy-seven-local}, \ref{thm:entropy-seven-quantbasin},
+Lemmas~\ref{lem:quarticbasin} and~\ref{lem:seven-flat-extremal-planes}, Corollary~\ref{cor:seven-global-quadratic},
+Proposition~\ref{prop:seven-mixed-roofs}); Propositions~\ref{prop:stab7} and~\ref{prop:seven-entropy-full-rank},
+Corollary~\ref{cor:stabilizer-entropy-noname}; Theorem~\ref{thm:complexsos} and Propositions~\ref{prop:confphase}
+and~\ref{prop:kramers-conference-shell}. & \\
+Not formalised: replica hierarchy and covariants &
+Proposition~\ref{prop:rainsppt} and Theorem~\ref{thm:spinflip-ppt-hierarchy}; Theorems~\ref{thm:threecopy} and~\ref{thm:fourcopy},
+Corollary~\ref{cor:strict-copy-hierarchy}, Proposition~\ref{prop:fourcopy-not-sharp}; Proposition~\ref{prop:focus},
+Lemma~\ref{lem:focus-pauli}, Proposition~\ref{prop:zero-focus} beyond its family relations, Theorem~\ref{thm:sextic-sos-obstruction};
+the Pauli weight distribution and Type~II claim of Theorem~\ref{thm:eighteen} and the $n=18$ entry of
+Corollary~\ref{cor:typeII-sixteen-twenty}. & \\
+\bottomrule
+\end{longtable}
+}

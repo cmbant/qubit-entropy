@@ -1,0 +1,5 @@
+CG-1 moment rectangle (CG column, shared check): concavity in x, tangent square and the two rational point bounds PASS
+CG-2 positive integral kernel and divided-difference identities; both rational binary endpoints PASS
+CG-3 binary quartics imply the required slack by monotonicity and two concave endpoint bounds PASS
+CG-4 pair coordinates, binary curvature/weight identities and strict capped-cluster assembly PASS
+CG-5 negative controls: coefficient 6/5 fails inside the cap; 11/10 fails without the cap PASS

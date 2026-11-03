@@ -1,0 +1,52 @@
+\subsection{High orders: an elementary bound}\label{sec:fqe-renyi-high-order}
+Every order $q\ge2$ is settled by purity alone, with no anchor, crossing or certificate; the rest of this appendix
+is needed only for $1<q<2$.
+
+\begin{corollary}[Unrestricted high-order R\'enyi purity deficit]
+\label{cor:fqe-renyi-two-up}
+For every pure four-qubit state and every $q\ge2$,
+\[
+\boxed{\quad
+\mathcal E_q(\psi)\le\frac53-\frac13\log_2(2P-1)\le\frac53.
+\quad}
+\tag{R2}\label{eq:fqe-renyi-two-up}
+\]
+At $q=2$, the first bound is sharp at every $P\in[1,3/2]$ and equality
+holds exactly when two of the three cut marginals are maximally mixed.
+For $q>2$, equality in the first bound requires and is attained by the
+cluster or Bell-pair-product cut spectra. In particular, for all $q\ge2$
+the global ceiling $5/3$ has equality exactly at the cluster-type cut
+spectra: $(1/2,1/2,0,0)$, $(1/4)^4$, $(1/4)^4$, up to ordering of cuts.
+No eigenvalue-cap hypothesis is assumed.
+\end{corollary}
+\begin{proof}
+Put $p_j=\operatorname{tr}\rho_{1j}^2$ and $x_j=4p_j-1\ge0$.
+Lemma~\ref{lem:fqe-purity} gives $P=\sum_jp_j\ge1$. Expanding a product
+of nonnegative terms yields
+\[
+64\prod_{j=2}^4p_j=\prod_j(1+x_j)
+\ge1+\sum_jx_j=4P-2,
+\]
+so $\prod_jp_j\ge(2P-1)/32$. Consequently
+\[
+\mathcal E_2(\psi)=-\frac13\log_2\prod_jp_j
+\le\frac53-\frac13\log_2(2P-1).
+\]
+R\'enyi entropy is nonincreasing in its order, proving the bound for
+$q\ge2$. At $q=2$ equality in the product inequality holds exactly
+when at most one $x_j$ is positive, equivalently when at least two
+cut spectra are uniform-four. The cluster-to-Bell family
+\eqref{eq:fqe-quadratic-family} of Section~\ref{sec:fqe-quadratic-certificate}, with cut spectra
+$((1+r)/2,(1-r)/2,0,0),(1/4)^4,(1/4)^4$ for $0\le r\le1$, has precisely
+the equality form and $P=1+r^2/2$, proving sharpness for every
+$P\in[1,3/2]$.
+
+For $q>2$, equality also requires equality in R\'enyi-order
+monotonicity on every cut, hence each cut spectrum is uniform on its
+support. The two already-uniform-four spectra contribute total purity
+$1/2$. Since $P\ge1$, the last uniform support has rank at most two:
+rank two gives the cluster pattern, and rank one the Bell-pair-product
+pattern. Both attain the displayed bound. Finally the weaker ceiling
+$5/3$ requires $P=1$, which excludes the Bell pattern and leaves only
+the cluster-type spectra.
+\end{proof}

@@ -1,0 +1,4 @@
+[PASS] EH-1 full cut forms in explicit orthonormal 10+2+9 normal blocks; entropy coefficients (2-ln3)/(2ln2)^10, (1/ln2)^2, ((2+3ln3)/(3ln2))^9; U>=6
+[PASS] EH-2 exact bracket identity (3-epsilon)(1-sqrt3 r-r^2/2)^2, exact rational c(1/20)>3/10 and resolvent-integral coefficient 1/2-epsilon/6
+[PASS] EH-3 explicit unit normal attains the least coefficient (algebraic eigen-relations and the closed form of c_*; the asymptotics are analytic)
+All EH checks passed (exact); the analytic radius and limiting proofs are in the paper.

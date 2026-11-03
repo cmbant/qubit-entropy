@@ -1,0 +1,267 @@
+\section{Verification checks and certificate status}\label{sec:sup-verifiers}
+The labels below identify the finite checks used in the paper and this supplement. They have
+different roles: \emph{exact symbolic or rational checks} establish algebraic
+identities, ranks and coefficient signs; \emph{verified-arithmetic checks}
+prove bounds using explicit rounding-error control; and
+\emph{exploratory numerical checks} are diagnostics, not proof inputs.
+In particular, the five-copy identities for purity (FP5-1, rational) and for
+entropy (E7-1, whose coefficients involve the algebraic parameter $x_*$ and
+logarithms) are verified-arithmetic certificates.
+The surrounding reductions and equality arguments are given in the
+proofs, not delegated to a table of scripts.
+
+Table~\ref{tab:fqe-checks} of the paper lists which results use which checks. The companion's
+\texttt{verifiers/MAP.md} identifies the script, supporting data and
+committed output for each label. The groups NV, TCN, FS and TA are
+numerical evidence only, and no proof uses them.
+
+\input{verification_map}
+
+\subsection{Further four-qubit and stability checks}
+\begin{description}
+\item[FG-1--FG-5, FG-9] The direct proof of the spin-flip gradient identity (Section~\ref{sec:sup-flip-gradient}): Schouten symmetry
+of $V-6U$ (FG-1); the copy-label Casimir selection rules, the moment operators~\eqref{eq:fqe-cubic-copy-moments}, and the
+polarisation defect~\eqref{eq:fqe-cubic-polarization-defect} on the full invariant multiplicities (FG-2); the cubic intertwiner's
+normalisation $54$ and the Klein-four rule excluding the quartic spin-one covariant (FG-3); the mixed-norm
+algebra~\eqref{eq:fqe-cubic-mixed-norms} and its polarisation giving~\eqref{eq:fqe-flip-gradient-identity} (FG-4); nonzero coefficients
+for the wrong factor or omitted correction (FG-5). FG-9 evaluates every intermediate identity of the proof from the tensor
+definitions, in exact arithmetic at Gaussian-integer states, as a regression check. The checks FG-6--FG-8 of the same script
+are listed in Section~\ref{sec:sup-paper-checks}.
+\item[CO-1--CO-3] The critical variance and three-term moment identity \eqref{eq:fqe-critical-three-term},
+the 32-ray tight frame and its permutation up to sixth-root-of-unity phases under $H_1,H_2$ (CO-1);
+the exact polynomial identities and rational concavity bounds $P_1,P_2$ for $Q\ge\tfrac32-2\Phi$ on
+$\Phi\le\tfrac12$ (CO-2); and the sharp distance constant $(2+\sqrt2)/4$ and Bell equality (CO-3).
+The signed-Birkhoff reduction and case reductions are analytic
+(Section~\ref{sec:fqe-critical-orbit-proof}).
+\item[OS-1--OS-3] The full local quadratic form from direct flattenings, its exact spectrum and orbit
+kernel, the local sextic radius, and HS, Bell and cluster regressions
+(Section~\ref{sec:fqe-orbit-local}).
+\item[BF-1--BF-4] All coefficients of the quartic determinant and cubic gradient identities behind \eqref{eq:fqe-bell-cubic}, the magic
+Pauli normalisation of the $W_1$ formula, and the Bell-pair Gram algebra,
+compatible-plane geometry and HS/Bell representatives of Proposition~\ref{prop:fqe-bell-frame}, whose
+constructive plane argument is analytic.
+\item[EH-1--EH-3] The full entropy quadratic forms from all cut flattenings, explicit orthonormal normal
+blocks, exact coefficient multiplicities, the rational radius bound and a least-coefficient normal; the
+resolvent estimate and the sharp limiting argument are analytic
+(Section~\ref{sec:fqe-entropy-orbit-local}).
+\item[NSL-1--NSL-3] The closest-point normal slice: the thirteen first-order conditions have rank ten and are
+exactly \eqref{eq:fqe-slice-stationary}; lower rotations conjugate the gauge matrix; the stationary and gauge
+conditions cut out exactly the span of the nineteen slice coordinates. That a closest point exists and
+maximises the height is analytic.
+\item[NC-1--NC-4] The two auxiliary Bloch spheres on the null-critical locus
+(Section~\ref{sec:fqe-critical-orbit-proof}): the auxiliary magic transform is unitary with determinant
+$\sum_jv_j^2/2$ (NC-1); the 32 HS rays are exactly the opposite-parity cube pairs (NC-2); the Bell
+projectors and the moment formula \eqref{eq:fqe-null-critical-bloch} (NC-3); and the scalar remainder
+identities, sharp constants and cluster equality of the elementary proof of
+\eqref{eq:fqe-null-critical-sharp} of the paper (NC-4). The unit-sphere inequalities and the overlap maximisation are
+analytic. NC-5 and NC-6 of the same script are further checks not used here.
+
+\item[RP-1--RP-4] The three real mutually unbiased bases and the tight tomography identity, all sixteen
+HS planes, the paired overlap/Bures compression formulas, purity, the fourth frame moment, sharp GHZ
+covering equality and entropy-gradient matrices; the rank-two coverage and the relative-entropy identity
+are analytic (Lemma~\ref{lem:fqe-critical-real-density}).
+\item[FP-1--FP-4] All $70$ interleavings and their $23$ symmetry classes (FP-1), every coefficient and positive
+Gram of \eqref{eq:fqe-four-point-cubic-sos} ($184$ Grams, all $4830$ coefficients through degree four
+compared exactly; FP-2), the homogeneous area-weighted fusion identity and the magic-basis spin flip (FP-3), and every
+overlap of the matching family \eqref{eq:fqe-covering-equality-family} (FP-4); ordering coverage, the Bloch
+bridge and the area-weighted Bures argument are analytic.
+\item[PM-1, PM-2, PM-4, PS-1] The slice $P=1$ (Section~\ref{sec:fqe-p1-sharp}): exact cut correlation
+matrices from the physical magic basis, symmetry generators, and the exact equality
+spectra, fidelities and full $144$-pair symmetry orbit (PM); $C_*$ to eighteen digits in interval arithmetic (PS-1);
+the symmetry arguments and the wall lemma are analytic.
+\item[NV-1--NV-2] Numerical evidence only, no certificate: the minimum of $\delta-C_*d^2$ over critical states at fixed
+$\tau$ (NV-1) and random positive local filters of the equality state and of nearby critical states (NV-2), quoted in the
+remarks after Theorem~\ref{thm:fqe-p1-sharp}.
+
+\item[TC-1--TC-8] The correlation-matrix chart of the critical locus
+(Section~\ref{sec:fqe-critical-sharp}): exact Bell correlation matrices of the twelve rays and
+$\lambda_{ji}=(\|v\|^2+\langle C^{ji},T\rangle)/4$ for a rational $v$ (TC-1); the analytic range
+$\tau\ge0.36$ in ball arithmetic (TC-6) and the sign symmetry at the equality point (TC-7). TC-2--TC-5 are
+numerical regressions of the analytic Lemmas~\ref{lem:fqe-critical-correlation}
+and~\ref{lem:fqe-critical-chart} and of the ball evaluator against floating point and finite
+differences; TC-8 is a sampled audit of the cell bounds and of the HS rule, a regression and not a
+proof input.
+\item[EX] Exact symbolic statements behind the local cone lemma at all eight chart equality points: the
+sign symmetry permutes the rays within each cut and the planes, preserving the trace and determinant of
+each plane matrix; exactly four planes tie, at $4\Phi_*=(1+1/\sqrt3)(1+\sqrt{2/3})$, with $G_\Pi=0$ there by the
+definition of $C_*$; and the tied gradients sum to zero identically.
+\item[LCC] The four tied planes, their gradients and interval Hessians at the eight chart equality points,
+and the cone cells of Lemma~\ref{lem:fqe-critical-local-cone}.
+\item[CCV] The covering of Proposition~\ref{prop:fqe-critical-covering}; a floating-point twin only orders
+the attempts and certifies nothing.
+\item[UR-3] The fixed-trace Newton identities $e_2=(1-p)/2$ and $e_3=(1-3p+2t)/6$ used in the proof of
+Lemma~\ref{lem:fqe-renyi-determinant} (Section~\ref{sec:sup-determinant}); the rest of that proof is analytic.
+The same verifier checks the quantitative crossed-purity bound UR-4 in
+Section~\ref{sec:sup-paper-checks}; its UR-1 and UR-2 are further checks not used here.
+\item[HD-1--HD-5] Algebra in the analytic HS supporting proof of
+Lemma~\ref{lem:fqe-hs-polynomial} at $q_u=8/5$: the fixed-purity path to the one-large spectrum (HD-1),
+the slope constant $105^5<3\cdot2^{32}$ (HD-2), the one-large moment formula and the displayed scalar
+curvature identity (HD-3), the rational uniform-contact gap and the outer dual (HD-4), and the
+lower-band target and wrong-slope/excessive-tilt controls (HD-5). The maximisation, divided-difference and curvature
+sign arguments and all equality inferences are proved in the text.
+\item[LT-1--LT-3] The generic identities in the low-tilt chart reduction
+(Lemma~\ref{lem:fqe-low-tilt-reduction}): the divided-difference identities behind the bound
+\eqref{eq:fqe-dd-power} and the slope constant $64/35>9/5$ (LT-1),
+fixed-purity path and derivative ratio (LT-2), and negative controls for extending
+$q$ to $2$ or dropping the tilt bound (LT-3). The feasible monotone path is proved
+in the text.
+\item[CG-1--CG-5] The explicit arithmetic in the capped strengthened cubic bound
+(Lemma~\ref{lem:fqe-capped-cubic} and Corollary~\ref{cor:fqe-capped-cluster}): the coefficient bounds and the CG column of
+Table~\ref{tab:fqe-moment-rectangle} (CG-1), the divided-difference algebra and two binary endpoints, with the kernel algebra of the Cauchy-integral
+proof of monotonicity in Lemma~\ref{lem:fqe-binary-quartic}, which is all this lemma uses of
+that lemma (CG-2),
+and the quartic endpoint bounds (CG-3), the pair identities, the two weight polynomials and the capped-cluster assembly (CG-4), and
+negative controls for an excessive correction or an omitted purity cap (CG-5). All maximisation and
+sign arguments are in the proof; CG adds no Bernstein sign test or parameter covering.
+\item[NU-1--NU-3] Exact-symbolic fifth-order Newton and projection identities,
+rational coefficient and logarithm bounds at the order $q_s$, and the NU column of
+Table~\ref{tab:fqe-moment-rectangle} in Lemma~\ref{lem:fqe-near-uniform-dual}.
+NU-3, SHD-4 and CG-1 check their columns of that table, the hypotheses of
+Lemma~\ref{lem:fqe-moment-rectangle}, through one shared function. This is algebra for a written analytic
+proof, with no subdivision, Hessian grid or interval sign test.
+\item[SL-1--SL-4] Exact finite power/logarithm constants for the head/tail entropy estimates,
+four polynomial lower bounds, rational domain and $\varepsilon$-removal inequalities,
+and comparison of all 11 printed Bernstein coefficients with exact rationals.
+The distinguished HT cut is proved analytically in Lemma~\ref{lem:fqe-cluster-sliver};
+there is no subdivision or interval derivative grid. The verifier checks both printed tables
+against the symbolic formulas.
+\item[QV-1--QV-3] The residual identity and the minimum-purity reduction (QV-1), the purity-box bounds for (QV) and (QK)
+(QV-2), and the cluster-to-Bell calibration
+\eqref{eq:fqe-quadratic-family} of the paper with both forced coefficients (QV-3), used in Section~\ref{sec:sup-qk}; the box
+extremum and the equality inferences are analytic.
+\item[JI-1--JI-3] Exact symbolic verification of the implication identity
+\eqref{eq:fqe-joint-implication}, all three purity-box residual formulas
+\eqref{eq:fqe-purity-box}, and rational data at HS, cluster and Bell products.
+These check algebra only; the fixed-sum box maximum and equality inference
+are analytic.
+\item[MS-1--MS-4] The strengthened sphere norm identities and all sixteen multiaffine vertices for the
+opposite-parity reduction (MS-1), the exact same-parity parametrisation, monotonicity in $\tilde w$ and
+polynomial minorants (MS-2), the three univariate polynomial decompositions closing the same-parity triangle
+on $[0,1]$ (MS-3), and the sharp cluster interpolation and equality family (MS-4); the sphere, monotonicity
+and coverage arguments are analytic.
+\end{description}
+\subsection{Seven-qubit and higher-qubit checks}
+\begin{description}
+\item[ES-1] Exact phase-support and conference-switching identities, and the common real fixed space
+$\operatorname{span}_{\mathbb R}\{U,V\}$. Lemma~\ref{lem:seven-family-symmetric-criticality} gives the analytic
+stationarity argument for every differentiable LU/permutation/conjugation-invariant functional;
+Proposition~\ref{prop:entropy-seven-stationarity} applies it to entropy.
+\item[SEH-1--SEH-3] The root bracket for $x_*$ and the spectral floor $1/12$ (SEH-1); exact invariance and
+Sylvester positive definiteness of all $16$ canonical symmetry-adapted integer blocks (sizes at most $4\times4$)
+of the two $128\times128$ Hessian blocks above $0.239395$, with no floating-point basis (SEH-2); and the
+perturbation bound giving $-239/1000$ (SEH-3), for
+Theorem~\ref{thm:entropy-seven-local}.
+\item[EB-0--EB-3] The rational constants of the third-derivative and Taylor bounds in
+Theorem~\ref{thm:entropy-seven-quantbasin}.
+\item[SC-2] The rational logarithm lower witness $E_3(\psi_{7/100})>59307/20000$ used for the competitor band and the cap.
+\item[SP7-1, SP7-5, SP7-6] Spin-flip spectral pairing and overlapping-cut compatibility,
+the sharp entropy--purity slope at $d=8$ (proved analytically in Lemma~\ref{lem:seven-entropy-linear-purity} from $N(r_*)=0$ and $7^5>2^{14}$), and the competitor eigenvalue cap $497/1000$ (proved analytically by a relative-entropy tangent lower bound and square completion in Corollary~\ref{cor:seven-entropy-eigen-cap-497}).
+\item[AH-1, AH-5] The exact competitor purity band and candidate joint spin-flip identities (proved analytically in Lemma~\ref{lem:seven-joint-spinflip}).
+\item[AH-6] Exact rational coefficient certificate for the global joint scalar majorant
+(Section~\ref{sec:seven-joint-analytic-proof}): rational root/logarithm enclosures and the positive kernel constants (AH-6a),
+the symbolic cubic discriminant and double factor (AH-6b), and positive Bernstein and shifted-power coefficients (four rows) of the
+degree-eighteen quotient (AH-6c). The positive-kernel and binary Hermite reductions are analytic.
+\item[E7-K0--E7-K3] Exact integer family contractions for seventeen five-copy sources, exact generic
+rank bounds by determining-point minor identities, and exact three-copy kernel source polynomials.
+\item[E7-1] Verified-arithmetic certificate of Theorems~\ref{thm:seven-entropy-localized-identity}
+and~\ref{thm:seven-entropy-global-maximum}: exact physical kernel projection with Arb, evaluation of all
+$3424$ direct probes with forward error bounds, a validated rank-$3283$ inverse, and a strictly positive
+Gram repair in $3754$ independent symmetric coordinates.
+The cubic purity multipliers and marginal spectral-cap sources are included in the identity.
+\item[TCB-0--TCB-4] The three-copy certificate of Theorem~\ref{thm:threecopy}: integer block kernels and
+antisymmetriser relations, primal feasibility of the boundary pseudo-moment $m^*/70416$, the exact dual identity
+at $L_3=125/978$ in all $37$ orbit coordinates from the six active-block kernels, and positive definiteness
+of the primal pivot submatrices and rational kernel multipliers by fraction-free Bareiss elimination.
+\item[TCN-1--TCN-3] Numerical only: floating-point solves of the three-copy relaxation for $n=4,\ldots,7$ (TCN-1),
+with a tight-tolerance solve at $n=7$ (TCN-1b), a strictly feasible dual at $n=7$ (TCN-2) and its rounding to
+integer data (TCN-3).
+\item[FC-0--FC-4] The four-copy certificate of Theorem~\ref{thm:fourcopy}: exact integer $S_4$ irreps,
+matrix units and the flip maps $T_1,T_2$ (FC-0); numerical regressions of the parametrisation and of the
+modular adjoint contraction (FC-1, FC-2, not used in the proof); positive definiteness of the $271$ integer
+flip multipliers and of every residual $\omega$-block, with the residual sum recovered exactly by the
+Chinese remainder theorem over $35$ primes under an integer magnitude bound (FC-3); and the conclusion $\pi_3\ge211/1600$ (FC-4). The
+integer certificate is a data file found by a floating-point SDP search; only its exact check is used.
+The reported smallest eigenvalue is diagnostic; exact Sylvester tests decide positivity.
+Runtime about $12$ minutes.
+\item[NS-0--NS-4] The exact four-copy pseudo-moment of Proposition~\ref{prop:fourcopy-not-sharp}: a regression of
+the modular forward map against a direct floating-point computation at $n=3,4$ (NS-0, not used in the proof); the
+exact objective $\mathrm{oo}(x)/\mathrm{on}(x)<6597/50000$ (NS-1); positive definiteness of all $78$ $\omega$-blocks
+(NS-2) and of all $271$ flip blocks, recovered exactly by the Chinese remainder theorem over $34$ primes under an
+integer magnitude bound (NS-3), by fraction-free elimination; and the conclusion $L_4<6597/50000<121/917$ (NS-4).
+The integer point comes from a floating-point solve; only its exact check is used. Runtime about $13$ minutes.
+\item[FS-0--FS-2] Numerical only: floating-point solves of the four-copy relaxation at $n=4,5,6,7$, the
+source of the table in Appendix~\ref{sec:fqe-seven}; the two largest $n=7$ solves
+are flagged inaccurate by the solver and are not certified bounds.
+\item[S5-1, Y5-1] The exact $S_5$ matrix units and physical spin-flip reconstruction of Lemma~\ref{lem:fivecopy-site-algebra}, and the rational two-flip Young models of Lemma~\ref{lem:fivecopy-young-blocks}.
+\item[IK5-1--IK5-4, PK5-1--PK5-4] The exact icosahedral feature ranks and annihilators, the twelve exact physical kernels, and the support and invertibility of the supplied kernel bases (Proposition~\ref{prop:ico-fivecopy-g34-kernels}); PK5-4 does not check the sharp identity.
+\item[DP5-1] The character count of the five-copy moment space, the trace-adjoint flip, the coset count and the target calibration of the direct probes (Lemma~\ref{lem:fivecopy-direct-probes}, Proposition~\ref{prop:fivecopy-finite-probes}).
+\item[FP5-1] Verified-arithmetic certificate of Theorem~\ref{thm:fivecopy-sharp-certificate}: evaluation of the $3424$ rational direct probes with single-column norm companions, the rank-$3283$ right inverse in $3754$ independent symmetric coordinates with $\|I-LAR\|_2<0.070$, and the positive repair of the identity Grams, with correction below $0.324$. The triangular dyadic baseline, frames and probes occupy $441612$ bytes.
+\item[FP5-2] An independent exact check, on scalar probes, of the baseline trace and of all $8965$ evaluator coefficients in the width-$16$ frames, whose first $r_b\le7$ columns give the $3754$ coordinates of FP5-1.
+\item[FP5-3] An independent reimplementation of the probe evaluator (physical local transport, Gram transport and
+symmetric powers rebuilt from the stored data, all coset pairs summed) reproduces all twelve face traces and the $8965$
+width-$16$ evaluator coefficients inside the evaluator's error radii on twelve non-scalar probes, and refutes a wrong-convention
+control.
+\item[FP5-4] Exact orthogonality and fingerprints of the seed-generated repair frames, action and norm bound of the independent symmetric coordinates, rigorous rotation radii and a wrong-frame control.
+\item[TT-1] Exact contractions of the three unflipped all-$V$ faces over the
+$14{,}432$ allowed support five-multisets check disjoint even/odd column supports,
+as do the four stored IK5 arrays. The stored physical kernels annihilate both
+field components, as predicted by the column-parity proof in
+Proposition~\ref{prop:ico-fivecopy-g34-kernels}.
+\item[FO-1] Integer one-body, pair and spin-flip frame contractions for the entire real icosahedral
+family; exact symbolic graph, skewness and frame reconstruction identities on $1/32<y<1/12$ (proved analytically from the computational-basis marginals and spin-flip parity in Theorem~\ref{thm:moment-orbit-rigidity}); the affine invariant $H(\psi_y)=155+96y$ and its tangent-square defect $96^2t^2$ in Theorem~\ref{thm:fivecopy-family-equality}.
+\item[LH-1--LH-4] Exact stationarity of $\Psiico$ (LH-1); the integer field decomposition $H=(A+\sqrt{555}B)/18340$
+of the real $256\times256$ Lagrange Hessian (LH-2); the $22$ local-unitary and phase tangents in its kernel (LH-3);
+and the exact symmetry-adapted integer block decomposition into $1\times1$, $2\times2$, and $4\times4$ blocks with
+closed-form characteristic polynomials and exact minimum transverse curvature $(350-6\sqrt{2005})/4585>80/4585>78/4585$
+(LH-4), for Theorem~\ref{thm:icolocal}.
+\item[QB-1--QB-3] The rational remainder margin $285123/14672000000$ (QB-1), the overlap form of the orbit distance (QB-2),
+and the diagonal phases of the $32$ nonzero amplitudes (QB-3), for Theorem~\ref{thm:icoquantbasin}.
+\item[EO-1] Exhaustive integer switching/complement classification of the $720$ ordinary-site
+permutations: six classes of size $120$, giving $42$ labelled LU orbits after the distinguished-site
+choice (Corollary~\ref{cor:icosahedral-labelled-orbits}).
+\item[MO-1, MO-2] Independent purity-parameter checks of the pair tensors, tetrads, skewness arithmetic, frame overlaps and reconstruction coefficients in Theorem~\ref{thm:moment-orbit-rigidity}.
+\item[SF-1, SF-5] The focused sextic covariants, complete scalar-gradient basis controls,
+and a coefficient check of the closed zero-focus Gram with determinant $72x(1-2x)$
+in Section~\ref{sec:sextic-general}. Completeness and rank throughout the family are analytic.
+\item[HI-1--HI-4] Exact copy-invariant counts from \eqref{eq:fqe-invariant-dimension}, used for the free
+coordinates in Theorem~\ref{thm:sextic-sos-obstruction}.
+\item[LP-0--LP-2, GS-1--GS-3] Exact Rains-LP dual identities for $4\le n\le12$, the exact primal point attaining $L_2=1/8$ at
+$n=7$ (the AME weight distribution), the graph-state cut ranks
+of Table~\ref{tab:graphs}, the weight distribution of $C_{10}(1,2,4)$ and the Petersen purity
+(Theorem~\ref{thm:lptable}, Remark~\ref{rem:ten}).
+\item[LP-14, LP-15, GS-14, GS-15, LP-13, QP-13] The same at $n=14,15$ (Theorem~\ref{thm:fourteenfifteen}); at $n=13$, the
+exact Rains dual for $25/1408$ (LP-13) and the exact stabilizer count of the $X$-measured fourteen-qubit witness,
+with all $14\times3$ one-qubit Pauli measurements compared (QP-13), for Proposition~\ref{prop:thirteeninterval}.
+\item[LP-19, GS-19, NG-1--NG-3] The exact Rains dual at $n=19$ (LP-19), the starting graph witness (GS-19), and the
+improved graph with its stabilizer enumeration and independent cut-rank count (NG-1--NG-3), for
+Theorem~\ref{thm:strictLP1319}.
+\item[SW-0--SW-4] The three-copy Schur--Weyl certificates of Theorem~\ref{thm:threecopy-sw}: the per-site algebra
+(SW-0); regressions against the Haar moment and random states at $n=4,5$, not used in the proof (SW-1); exact
+positive definiteness of the rational multipliers (SW-2) and of every $\omega$-block of the exact residual (SW-3);
+and the resulting purity bounds and code exclusions (SW-4). Runtime about $7$ minutes, dominated by $n=25$.
+\item[TA-1] Numerical only: the three-copy level compared with the Rains linear programme for $4\le n\le20$, in the
+paragraph after Theorem~\ref{thm:threecopy-sw}.
+\item[E13L-1--E13L-2] The thirteen-qubit entropy witness of Corollary~\ref{cor:thirteen-entropy-witness}: exact
+Gaussian-integer amplitudes and norm by a Walsh transform, the exact Pauli-code block compression of
+Lemma~\ref{lem:pauli-code-compression} at all $1716$ balanced cuts with every block eigenvalue enclosed in Arb above
+$1/2100^2$ (E13L-1), and the Arb enclosure of $E_6$ (E13L-2). The same script's Hessian checks E13L-0, E13L-3--E13L-5 are not used.
+Runtime about $15$ minutes.
+\item[GL-1, GL-2] The same at $n=16,17$ (Theorem~\ref{thm:sixteenseventeen}).
+\item[E18-1--E18-4] The exact Rains dual and the attaining graph state at $n=18$ (Theorem~\ref{thm:eighteen}).
+\item[TY-1--TY-2] The circulant graph states $C_{16}(2,3,4,8)$ and $C_{20}(3,4,5,10)$ of
+Corollary~\ref{cor:typeII-sixteen-twenty}: odd degree at every vertex ($\tau_n=1$), the exact $\mathbb F_2$ ranks of all balanced
+cuts, and the purities $1/143$ and $131/77792$.
+\item[ST-1--ST-6] The rational multipliers and residual signs of \eqref{eq:tradeoff-dual} for each
+$n\in\{4,8,10,14,16,20\}$, and the exact purity $L_n+c_n$ of a $\tau_n=1$ graph state at each $n$
+(Theorem~\ref{thm:purity-spinflip-tradeoff}).
+\item[ST-7, ST-8] The closed-form multipliers and weights of \eqref{eq:odd-tradeoff}, checked against an exact elimination for odd $n=5,\dots,41$, and the
+exact evaluation of both sides on Gaussian-integer states at $n=5,7,9$ (Theorem~\ref{thm:odd-spinflip-tradeoff}).
+\item[ST-9] The witness $\mathrm{GHZ}_{n-2}\otimes\Phi^+$ for the optimality of $c_n$ over all pure states: its Pauli weights,
+$O=1/(2n)$, and $\pi_m$ from the subsystem-purity generating polynomials, with $\pi_m+c_nO=\tfrac12$ exactly for odd
+$n=5,\dots,43$ and a negative control.
+\item[SDS-1--SDS-3] Exact Pauli selection in spin-flip-doubled states (Theorem~\ref{thm:spinflip-double},
+Corollary~\ref{cor:ordinary-triples}).
+\item[CC-1] The quartic identity~\eqref{eq:complexsos}, all $226$ coefficients, in formal variables
+(proved analytically by Hamming-weight block decomposition and the Hafnian--Gram identity in Theorem~\ref{thm:complexsos}).
+\item[CP-4] The algebraic matching-pattern identity in Proposition~\ref{prop:confphase} (proved analytically from $B\mathbf{1}=0$ and $B\overline B=5I_5-J_5$).
+\end{description}

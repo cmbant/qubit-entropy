@@ -1,0 +1,39 @@
+\subsection{Independent arguments on restricted domains}\label{sec:fqe-renyi-restricted}
+The proof of Corollary~\ref{cor:fqe-renyi-gw} in the paper needs no eigenvalue cap and no rank condition. The following result gives a shorter,
+independent proof of the envelope for states with a rank-two cut, at every order (for $q\ge2$ see
+Section~\ref{sec:fqe-renyi-high-order}).
+
+\begin{proposition}[Sharp fixed-spectrum rank-two cut envelope]
+\label{prop:fqe-renyi-rank-two}
+Suppose one of the three balanced cuts of a pure four-qubit state has
+Schmidt rank at most two and nonzero eigenvalues $a,1-a$,
+where $1/2\le a\le1$. Then for every $q>0$,
+\[
+\boxed{\qquad
+\mathcal E_q(\psi)\le
+\frac43+\frac{1}{3}H_q(a,1-a)
+\le\frac53.\qquad}
+\tag{Rk2}\label{eq:fqe-renyi-rank-two}
+\]
+For each fixed $a$, the first bound is sharp; equality holds precisely
+when the other two balanced cut spectra are both $(1/4)^4$.
+The attained cluster-to-Bell family \eqref{eq:fqe-quadratic-family}
+realises equality for every $a\in[1/2,1]$ and every order $q>0$.
+In particular the global HS--cluster R\'enyi envelope holds on
+this entire rank-two boundary without any purity or other cap hypothesis.
+\end{proposition}
+\begin{proof}
+A density matrix on a four-dimensional cut has R\'enyi entropy
+at most $\log_2 4=2$, with equality exactly for the uniform-four
+spectrum. The stipulated cut has entropy $H_q(a,1-a)$, so bounding
+each of the other two cut entropies by $2$ proves the first
+inequality and its equality classification. A binary probability
+vector has entropy at most $1$, proving the second inequality.
+The physical states in \eqref{eq:fqe-quadratic-family} have the
+stipulated binary spectrum and both crossed cuts uniform-four
+for all $a=(1+r)/2\in[1/2,1]$; they therefore attain the bound
+at every $q>0$. Since the HS entropy $h_q$ is at least $5/3$
+up to $q_*$, and the cluster ceiling is $5/3$ thereafter,
+the final assertion follows.
+\end{proof}
+

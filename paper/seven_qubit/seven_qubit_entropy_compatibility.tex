@@ -1,0 +1,226 @@
+\subsection{Spin-flip spectral pairing and the pure-state obstruction}
+\label{sec:seven-spinflip-spectral}
+
+We first bound opposite-pair sums in the marginal spectrum, then combine these bounds across overlapping cuts.
+For a normalised three-qubit state \(\rho\), write its
+eigenvalues as \(\lambda_1\ge\cdots\ge\lambda_8\).
+Put
+\[
+ e(\rho)=8\operatorname{tr}\rho^2-1,\quad
+ b(\rho)=\sum_{1\le i<j\le3}\sum_{a,b=1}^3
+    \bigl[\operatorname{tr}(\rho\,\sigma_a^{(i)}
+                       \sigma_b^{(j)})\bigr]^2,\quad
+ v(\rho)=\sum_{i=1}^4
+   \left(\lambda_i+\lambda_{9-i}-\frac14\right)^2.
+\]
+The convention for \(b\) sums precisely the
+weight-two Pauli squares on these three sites;
+one- and three-body terms do not enter.
+
+\begin{proposition}[Spin-flip spectral pairing; SP7-1]
+\label{prop:seven-spinflip-spectral-pair}
+Every three-qubit density matrix satisfies the
+\emph{sharp spectral inequality}
+\begin{equation}\label{eq:seven-spinflip-pair}
+ \boxed{\qquad b(\rho)\ge4v(\rho).\qquad}
+\end{equation}
+Equality holds, in particular, for every
+\[
+ \rho_r=(1-r)\frac{I_8}{8}+r\,|g\rangle\langle g|,
+ \qquad 0\le r\le1,\quad |g\rangle\in(\mathbb C^2)^{\otimes3}
+ \text{ pure},
+\]
+where \(e(\rho_r)=7r^2\),
+\(b(\rho_r)=3r^2\), \(v(\rho_r)=3r^2/4\).
+For a pure seven-qubit state, letting \(e_S=e(\rho_S)\)
+and \(R=\sum_{|T|=3}e_T\), there is the stronger
+\emph{joint spectral compatibility} inequality
+\begin{equation}\label{eq:seven-spinflip-cross-cut}
+ \boxed{\qquad e_S+16v(\rho_S)\le R
+       \qquad\text{for all }|S|=3.\qquad}
+\end{equation}
+The latter also holds for mixed global states.
+\end{proposition}
+\begin{proof}
+Let \(\widetilde\rho=Y^{\otimes3}\rho^T Y^{\otimes3}\)
+be the spin-flipped marginal. This is positive,
+has the same eigenvalues as \(\rho\), and flips the
+sign of each odd Pauli weight. Pauli orthogonality gives
+\[
+ \operatorname{tr}\rho^2=\frac{1+e}{8},\qquad
+ \operatorname{tr}(\rho\widetilde\rho)
+      =\frac{1-e+2b}{8},
+\]
+hence
+\(\operatorname{tr}\rho^2+
+  \operatorname{tr}(\rho\widetilde\rho)=(1+b)/4\).
+The von Neumann trace rearrangement inequality implies
+\[
+ \operatorname{tr}(\rho\widetilde\rho)
+   \ge\sum_{i=1}^8\lambda_i\lambda_{9-i}.
+\]
+Consequently
+\[
+ \frac{1+b}{4}\ge
+ \sum_{i=1}^4(\lambda_i+\lambda_{9-i})^2
+ =\frac14+v(\rho),
+\]
+proving~\eqref{eq:seven-spinflip-pair}.
+
+For every pure three-qubit vector \(g\), complementarity
+of one- and two-qubit marginal purities gives
+\(\sum_{i<j}\operatorname{tr}\rho_{ij}(g)^2
+ =\sum_i\operatorname{tr}\rho_i(g)^2\).
+Its Pauli expansion shows that the total weight-two
+Pauli sum is exactly \(3\), independently of \(g\).
+Depolarisation by \(r\) multiplies all nontrivial
+Pauli expectations by \(r\), proving \(b=3r^2\)
+and \(e=7r^2\). The spectrum is
+\(((1+7r)/8,((1-r)/8)^7)\), whose four opposite
+pair sums give \(v=3r^2/4\); equality follows.
+
+For a seven-qubit global state, let
+\(b_{ij}\) denote the sum of weight-two Pauli
+squares on the physical pair \(ij\). Then
+\(b(\rho_S)=\sum_{\{i,j\}\subset S}b_{ij}\)
+and each such pair occurs in \emph{four other}
+three-site subsets. Since all weights in every
+\(e_T\) are nonnegative,
+\[
+ R-e_S\ge4b(\rho_S)\ge16v(\rho_S).
+\]
+This proves~\eqref{eq:seven-spinflip-cross-cut}.
+\end{proof}
+
+\begin{lemma}[Sharp entropy--purity slope; proved, SP7-5]\label{lem:seven-entropy-linear-purity}
+Every $d$-dimensional density matrix, $d\ge3$, satisfies
+\begin{equation}\label{eq:entropy-purity-general-slope}
+ \log_2d-S(\rho)\ge c_d\bigl(d\operatorname{tr}\rho^2-1\bigr),
+ \qquad c_d=\frac{(d-1)\log_2(d-1)}{d(d-2)}.
+\end{equation}
+The constant is sharp: equality holds exactly at the uniform spectrum and at
+$\bigl((d-1)/d,(1/[d(d-1)])^{d-1}\bigr)$. In particular, for $d=8$,
+\begin{equation}\label{eq:seven-entropy-linear-purity}
+ 3-S(\rho)\ge\frac{7\log_27}{48}(8\operatorname{tr}\rho^2-1)
+ \ge\frac{49}{120}(8\operatorname{tr}\rho^2-1)
+ \ge\frac25(8\operatorname{tr}\rho^2-1),
+\end{equation}
+and the last two comparisons are strict unless $\rho=I_8/8$.
+These bounds include rank-deficient matrices.
+\end{lemma}
+\begin{proof}
+Put $m=d-1\ge2$. By Lemma~\ref{lem:seven-fixed-purity-envelope} it suffices to treat the one-spike spectrum
+$((1+mr)/d,((1-r)/d)^m)$, $0\le r\le1$. Its normalised purity excess is $d\operatorname{tr}\rho^2-1=mr^2$ and its
+entropy loss is $\log_2d-S=F_m(r)/(d\ln2)$, where
+\[
+ F_m(r)=(1+mr)\ln(1+mr)+m(1-r)\ln(1-r).
+\]
+The derivative of $F_m(r)/r^2$ has numerator $N=rF_m'-2F_m$, with $N(0)=N'(0)=0$ and
+\[
+ N''=rF_m'''=\frac{m(m+1)r\bigl(2mr-(m-1)\bigr)}{(1-r)^2(1+mr)^2}.
+\]
+So $N''$ changes sign once, from negative to positive: $N'$ is negative and then increasing, and $N$ has at most one
+interior zero. At $r_*=(m-1)/m$ one has $1+mr_*=m$ and $1-r_*=1/m$, so
+\[
+ F_m(r_*)=(m-1)\ln m,\qquad F_m'(r_*)=2m\ln m,\qquad N(r_*)=0.
+\]
+Hence $F_m/r^2$ strictly decreases on $(0,r_*]$ and strictly increases on $[r_*,1]$, with minimum $m^2\ln m/(m-1)$.
+Dividing by $dm\ln2$ gives~\eqref{eq:entropy-purity-general-slope}, with equality only at $r\in\{0,r_*\}$.
+For $d=8$, $c_8=7\log_27/48$; since $7^5=16807>16384=2^{14}$, $\log_27>14/5$ and
+$7\log_27/48>49/120>2/5$. SP7-5 checks these identities and constants.
+\end{proof}
+
+\begin{corollary}[Sharpened universal high-entropy spectral
+restriction; proved, SC-2, SP7-6]
+\label{cor:seven-entropy-eigen-cap-497}
+For any (pure or mixed) seven-qubit state \(\omega\),
+\[
+ E_3(\omega)\ge\frac{59307}{20000}
+ \quad\Longrightarrow\quad
+ \boxed{\ \lambda_{\max}(\omega_S)
+      <\frac{497}{1000}=0.497
+      \quad\text{for every }|S|=3.\ }
+\]
+Every competitor satisfies the hypothesis, since
+\(E_*\ge E_3(\psi_{7/100})>59307/20000\) (SC-2).
+\end{corollary}
+\begin{proof}
+Fix a cut \(S\) with eigenvalues in descending
+order. Let \(t=\lambda_1\), \(a=\lambda_8\)
+and \(b=(1-t-a)/6\), so \(0\le a\le(1-t)/7\).
+By concavity of entropy,
+\[
+ S(\omega_S)\le
+ -t\log_2t-a\log_2a-6b\log_2b.
+\]
+For the four opposite-pair sums of eigenvalues
+in \(v(\omega_S)\), one sum is \(t+a\), and
+the other three sum to \(1-t-a\).
+Cauchy--Schwarz thus yields
+\[
+ v(\omega_S)\ge\frac43
+      \left(t+a-\frac14\right)^2.
+\]
+The spin-flip compatibility inequality
+\eqref{eq:seven-spinflip-cross-cut} and
+Lemma~\ref{lem:seven-entropy-linear-purity}
+(with the rational slope \(49/120\))
+applied to the other 34 marginals yield
+\[
+\begin{split}
+ 35(3-E_3(\omega))
+ &\ge 3-S(\omega_S)
+      +\frac{49}{120}\sum_{T\ne S}e_T\\
+ &\ge 3-S(\omega_S)+\frac{98}{15}v(\omega_S)
+ \ge J(t,a),
+\end{split}
+\]
+where, continuously at \(a=0\),
+\[
+ J(t,a)=3+t\log_2t+a\log_2a+6b\log_2b
+      +\frac{392}{45}
+           \left(t+a-\frac14\right)^2.
+\]
+Apply the tangent inequality \(p\ln(p/q)\ge p-q\)
+(\(p\ge0,q>0\)) to the three probability weights
+\((t,6b,a)\) with comparison weights
+\(q_1=1/2\), \(6q_2=1/2\) (\(q_2=1/12,\;8q_2=2/3\)), and
+\(q_3=1/192\) (\(8q_3=1/24\)), whose sum is
+\(q_1+6q_2+q_3=1+1/192\). Since
+\(3+t\log_2t+a\log_2a+6b\log_2b
+ =\bigl[t\ln(8t)+6b\ln(8b)+a\ln(8a)\bigr]/\ln2\)
+and \(\ln(8q_1)=\ln4=2\ln2\),
+\(\ln(8q_2)=\ln(2/3)=\ln2-\ln3\),
+\(\ln(8q_3)=\ln(1/24)=-3\ln2-\ln3\), this gives
+\[
+\begin{aligned}
+ 3+t\log_2t+a\log_2a+6b\log_2b
+ &\ge 2t+(1-t-a)(1-\log_23)-a(3+\log_23)
+      -\frac1{192\ln2}\\
+ &=1+t-(1-t)\log_23-4a-\frac1{192\ln2}.
+\end{aligned}
+\]
+Completing the square in \(a\) gives
+\[
+ -4a+\frac{392}{45}\left(t+a-\frac14\right)^2
+ =4t-1-\frac{45}{98}
+  +\frac{392}{45}\left(t+a-\frac{47}{98}\right)^2
+ \ge 4t-1-\frac{45}{98}.
+\]
+The resulting lower bound \(5t-\frac{45}{98}-(1-t)\log_23-\frac1{192\ln2}\) increases in \(t\)
+(slope \(5+\log_23>0\)). For \(t\ge t_0=497/1000\), using only
+\(3^5=243<256=2^8\) (\(\log_23<8/5\)) and
+\(\ln2=2\operatorname{arctanh}(1/3)>2/3\)
+(\(1/(192\ln2)<1/128\)), we obtain
+\[
+ J(t,a)
+ >5t_0-\frac{45}{98}-\frac85(1-t_0)-\frac1{128}
+ =\frac{4755759}{3920000}
+ >\frac{4851}{4000}
+ =35\left(3-\frac{59307}{20000}\right),
+\]
+with exact rational margin \(1779/3920000>0\) (SP7-6),
+contradicting \(E_3(\omega)\ge59307/20000\).
+Therefore \(t<497/1000\) on all 35 cuts.
+\end{proof}
+

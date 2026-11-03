@@ -1,0 +1,4 @@
+[PASS] CO-1 critical variance and 3-term Q(v) identities; 32 HS representatives form an 8I tight frame permuted up to 6th-root phases by H_1, H_2
+[PASS] CO-2 exact decoupled lower bound Q+2*Phi_im-3/2 >= Y+X and rational concavity certificates P_1, P_2 on [3/5, 1] prove Q >= 3/2 - 2*Phi
+[PASS] CO-3 sharp Hilbert-distance coefficient (2+sqrt2)/4 and sharp infidelity coefficient 1; both attained by the three Bell-pair-product representatives, whose maximum overlap over all 32 representatives is exactly 1/2
+All CO checks passed; analytic orbit reduction and case arguments are in the paper.

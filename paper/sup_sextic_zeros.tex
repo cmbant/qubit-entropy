@@ -1,0 +1,61 @@
+\section{A weighted-variance proof of the sextic zero set}\label{sec:sup-sextic-zeros}
+The paper derives the zero set of $F$ (Proposition~\ref{prop:fqe-moment-zeros}) from the critical envelope. This section
+gives an independent proof: on the critical normal form, $F$ is an explicit sum of twelve squared moduli, whose
+simultaneous vanishing is solved directly. The notation is that of Appendices~\ref{sec:fqe-sextic}
+and~\ref{sec:fqe-normal-form} of the paper.
+
+\begin{proof}[Second proof of Proposition~\ref{prop:fqe-moment-zeros}]
+The identity \eqref{eq:fqe-remainder} makes every nonzero zero critical. Use the elementary
+\hyperref[sec:fqe-normal-form]{normal form} and write the state in its \(G_{abcd}\) coordinates
+\(v=(a,b,c,d)\). These differ only by fixed coordinate signs from the magic-basis diagonal
+coordinates. Its three cut spectra are the squared moduli of \(v,H_+v,H_-v\), where \[
+H_+=\frac12\begin{pmatrix}1&1&1&1\\1&1&-1&-1\\1&-1&1&-1\\1&-1&-1&1\end{pmatrix},\qquad
+H_-=\frac12\begin{pmatrix}1&1&1&-1\\1&1&-1&1\\1&-1&1&1\\-1&1&1&1\end{pmatrix}.
+\] This follows by the same two-block Hadamard diagonalisation for each cut. Put \(p_i=|v_i|^2\),
+\(x_i=v_i^2\), \(s=\sum_i x_i\), and \(B=\sum_i p_ix_i\). The critical-slice identity is \[
+\boxed{\quad F(G_{abcd})=
+\sum_i\ \sum_{\substack{j<k\\j,k\ne i}}
+\left|\bar v_i(v_j^2-v_k^2)+2v_i(p_j-p_k)\right|^2.\quad} \tag{Z}\label{eq:fqe-critical-factor}
+\] Here is a direct derivation. The rows of \(2H_+\) and \(2H_-\) together are all four-sign vectors
+modulo an overall sign. Expanding the sixth power and cancelling terms with an odd sign multiplicity
+gives \[
+T=\frac34N^3+\frac98N|s|^2-\frac94N\sum_i p_i^2
++3\sum_i p_i^3-\frac32\operatorname{Re}(\bar sB).
+\] Also \(P=N^2+|s|^2/2\): this is the purity identity (Lemma~\ref{lem:fqe-purity}) in homogeneous form for a critical state, where \(P=N^2+\tau/2\) and \(\tau=|s|^2\) by \eqref{eq:fqe-spin-flip-normal-form} (the signs relating \(G_{abcd}\) to the magic-basis coordinates do not affect the squares \(x_i\)). Substitution gives \[
+F=27N\sum_i p_i^2-36\sum_i p_i^3-4N^3-5N|s|^2
++18\operatorname{Re}(\bar sB).
+\] Expanding the right side of \eqref{eq:fqe-critical-factor} gives this same expression: for each
+\(i\) use \(\sum_{j<k}|y_j-y_k|^2=3\sum_j|y_j|^2-|\sum_j y_j|^2\) on the three remaining indices,
+and its bilinear version for the cross terms. Thus \eqref{eq:fqe-critical-factor} is an elementary
+weighted-variance identity.
+
+We now classify its zeros; rescale to \(N=1\). For \(p_i>0\) let \(u_i=x_i/p_i\), so \(|u_i|=1\).
+Vanishing of each summand says \[
+x_j-x_k=-2u_i(p_j-p_k),\qquad i,j,k\text{ distinct},\quad p_i>0. \tag{ZE}\label{eq:fqe-zero-equations}
+\] If between two and three coordinates are nonzero, choose nonzero \(i,j\) and zero \(k\). Then
+\(|x_j|=2p_j\), impossible. A single nonzero coordinate is a Bell-pair product across \(12|34\).
+
+It remains to take all \(p_i>0\). If they are equal, \eqref{eq:fqe-zero-equations} makes all \(x_i\)
+equal too. Thus, up to phase, \(v=(\pm1,\pm1,\pm1,\pm1)/2\). One of \(H_+v,H_-v\) has just one
+nonzero coordinate: the sign parity selects which. These are Bell-pair products across the other two
+cuts.
+
+Otherwise choose \(p_1\ne p_2\). Equation \eqref{eq:fqe-zero-equations} for the pair \(1,2\) with \(i=3,4\) gives
+\(u_3=u_4=:u\). If \(p_3\ne p_4\), the same reasoning for the pair \(3,4\) gives \(u_1=u_2=:w\). Now
+\eqref{eq:fqe-zero-equations} for the pair \(3,4\) with \(i=1\) reads \(u(p_3-p_4)=-2w(p_3-p_4)\), that is
+\(u=-2w\), and for the pair \(1,2\) with \(i=3\) it reads \(w(p_1-p_2)=-2u(p_1-p_2)\), that is \(w=-2u\); but
+\(|u|=|w|=1\), which is impossible. Hence
+\(p_3=p_4=:t\) and \(x_3=x_4=ut\). Relabel \(1,2\) so \(p_1\ne t\). Applying
+\eqref{eq:fqe-zero-equations} to the pair \(1,3\), with \(i=2,4\), gives \(u_2=u\). The equations
+for the pairs \(1,2\) and \(1,3\) now give \[
+x_1=u(3p_2-2p_1)=u(3t-2p_1).
+\] Thus \(p_2=t\), and \(|x_1|=p_1\) forces \(p_1=3t\) and \(u_1=-u\). Normalisation yields, up to
+position and common phase, \[
+v=(\sqrt3,\pm i,\pm i,\pm i)/\sqrt6. \tag{HS}\label{eq:fqe-hs-family}
+\]
+
+These sign families are exactly the two $M_4$ LU orbits, by the explicit normal-form
+identification in the proof of Proposition~\ref{prop:fqe-onecut}; the fixed coordinate signs
+relating $G_{abcd}$ to $G(v)$ preserve the displayed set of sign choices. Conversely, all the
+listed vectors make every term of \eqref{eq:fqe-critical-factor} vanish.
+\end{proof}

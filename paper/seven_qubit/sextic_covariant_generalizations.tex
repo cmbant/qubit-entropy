@@ -1,0 +1,331 @@
+\section{Focused covariants of the four-qubit sextic}\label{sec:sextic-general}
+
+Throughout this section $n$ is the number of qubits and $N=\|z\|^2$ (in the four-qubit
+sections the norm squared is denoted by $N$, and in the seven-qubit entropy certificate by $\nu$), and $W_1=\sum_i\|\mathbf r_i\|^2$ with
+$\mathbf r_i^a=\langle z|\sigma_a^{(i)}|z\rangle$.
+The four-qubit moment identity \eqref{eq:fqe-remainder} is not an ordinary positive
+three-copy replica operator: the latter has a negative sector on the
+copy-symmetric cube (Appendix~\ref{sec:fqe-correlation}).
+The successful proof uses the spin-flipped mixed tensor
+$w=z_x\otimes z_y\otimes\widetilde z_t$,
+$\widetilde z=\epsilon^{\otimes n}\bar z$, with
+$\epsilon=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)$.
+A complementary Pauli-coordinate description of third moments is derived in
+\eqref{eq:pauli-triple} below.
+At one site write
+\[
+ L|xyt\rangle=\epsilon_{yt}|x\rangle,\qquad
+ M|xyt\rangle=\epsilon_{xt}|y\rangle,
+\]
+and let $S_i$ project the local three-copy tensor at site $i$ onto
+$\operatorname{Sym}^3(\mathbb C^2)$.
+
+\begin{proposition}[focused-site sextic covariants]\label{prop:focus}
+For a subset $I\subseteq[n]$ and $0\le r\le n-|I|$, define
+\[
+ \Phi_{I,r}(z)=\left(\prod_{i\in I}S_i\right)
+ \sum_{\substack{A\subseteq I^c\\|A|=r}}
+ \left(\prod_{j\in A}M_j\right)
+ \left(\prod_{j\in I^c\setminus A}L_j\right)
+ (z_x\otimes z_y\otimes\widetilde z_t).
+\]
+Each $\Phi_{I,r}$ is a local-$SU(2)$ covariant of bidegree $(2,1)$ (quadratic in $z$, linear in $\bar z$), and
+\begin{equation}\label{eq:focus-reflection}
+ \Phi_{I,r}=\Phi_{I,n-|I|-r}.
+\end{equation}
+Its Gram matrix $G_I(z)=(\langle\Phi_{I,r},\Phi_{I,s}\rangle)_{r,s}$
+is positive semidefinite. After~\eqref{eq:focus-reflection}, at most
+$\lfloor(n-|I|)/2\rfloor+1$ distinct vectors remain.
+
+For $n=4$ and $I=\{i\}$ put $\mathcal R_i=4\Phi_{i,1}-15\Phi_{i,0}$, a residual different from the
+$V_i-8U_i$ of \eqref{eq:fqe-remainder}. The
+homogeneous sextic identity then has the reduced form
+\begin{equation}\label{eq:focus-four}
+32(17NP-12T-12N^3)
+=3\sum_{i=1}^4\left(
+ 15\|\Phi_{i,0}\|^2+
+ \|4\Phi_{i,1}-15\Phi_{i,0}\|^2\right),
+\end{equation}
+where $N=\|z\|^2$, $P=\sum_{j=2}^4\tr R_{1j}^2$ and
+$T=\sum_{j=2}^4\tr R_{1j}^3$.
+\end{proposition}
+\begin{proof}
+Interchanging the two identical factors $z_x,z_y$ swaps $L$ with
+$M$ at every contracted site, while the symmetric projectors at the
+focused sites are unchanged. This gives~\eqref{eq:focus-reflection}.
+Gram positivity follows from the Hilbert-space inner product.
+In the notation of Appendix~\ref{sec:fqe-sextic}, $U_i=\Phi_{i,0}$ and
+$V_i=\sum_{r=0}^3\Phi_{i,r}=2(\Phi_{i,0}+\Phi_{i,1})$.
+Thus $\mathcal R_i=2V_i-19U_i=2Y_i-7U_i$ with $Y_i=V_i-6U_i$. Writing $F=17NP-12T-12N^3$ for the
+left side of~\eqref{eq:focus-four} divided by $32$, the contractions
+\eqref{eq:fqe-cubic-mixed-norms} give
+\[
+ \sum_i\|\mathcal R_i\|^2=4\sum_i\|Y_i\|^2-28\operatorname{Re}\sum_i\langle U_i,Y_i\rangle+49\sum_i\|U_i\|^2
+ =\tfrac{32}3F-5NW_1 .
+\]
+Hence $32F=15NW_1+3\sum_i\|\mathcal R_i\|^2$, and $\sum_i\|U_i\|^2=NW_1/3$ turns this
+into~\eqref{eq:focus-four}. SF-1 checks the identity on one integer four-qubit tensor by exact rational arithmetic.
+\end{proof}
+
+\begin{lemma}[the exact-support Pauli selection rule]\label{lem:focus-pauli}
+Let $R_I$ be the unnormalised reduction of an arbitrary pure $n$-qubit
+state to the focused sites $I$. Then, up to the fixed sign
+$(-1)^{n-|I|}$,
+\[
+ \Phi_{I,0}= \left(\prod_{i\in I}S_i\right)
+ \left(z_x\otimes (R_I\epsilon_I^T)_{y_I,t_I}\right),
+ \qquad \epsilon_I=\epsilon^{\otimes|I|},
+\]
+with the $x$-slots on $I^c$ left intact. In particular, if
+$\langle z|P|z\rangle=0$ for every Pauli word $P$ of exact support
+$I$, then $\Phi_{I,0}(z)=0$.
+\end{lemma}
+\begin{proof}
+At a contracted site,
+$\sum_t\epsilon_{yt}\epsilon_{tu}=-\delta_{yu}$,
+so the two remaining replicas form $R_I$. Expand
+$R_I=2^{-|I|}\sum_{P\in\{I,X,Y,Z\}^{I}}
+\langle z|P|z\rangle P$.
+If $P$ has an identity factor at some $i\in I$, then
+$\operatorname{vec}(I\epsilon^T)$ is a local singlet in the $y,t$
+slots. Its tensor product with any $x$-qubit is killed by $S_i$.
+Only terms supported on every site survive.
+\end{proof}
+
+\begin{proposition}[complete scalar cubic gradients; analytic, SF-5 controls]
+\label{prop:zero-focus}
+For any $n$, let $Q_r(z)=\sum_{|S|=r}\tr R_S^2$, $N=\|z\|^2$,
+and $V_r(z)=\sum_{|S|=r}(R_S\otimes I_{S^c})z$.
+Then
+\[
+ \Phi_{\varnothing,r}(z)=(-1)^nV_r(z),\qquad
+ \frac{\partial Q_r}{\partial\bar z}=2V_r(z),\qquad
+ \langle z,V_r(z)\rangle=Q_r(z).
+\]
+More generally, let $v$ be a local-unitary scalar covariant of bidegree
+$(2,1)$ with real coefficients in the $L,M$ tensor basis. Its closure
+$p_v=\langle z,v(z)\rangle$ is real and
+$v=\tfrac12\partial_{\bar z}p_v$.
+The vectors $V_S=(R_S\otimes I)z$, with one $S$ from each complementary
+pair $\{S,S^c\}$, form a basis of this real space, of dimension $2^{n-1}$.
+Its permutation-invariant subspace has basis
+$V_0,\ldots,V_{\lfloor n/2\rfloor}$ and dimension
+$\lfloor n/2\rfloor+1$. Thus the zero-focus weight sums exhaust
+the symmetric scalar cubic source.
+Consequently, for any fixed real $\lambda$,
+\begin{equation}\label{eq:gradient-sextic}
+ \mathcal G_{r,\lambda}(z):=
+ \|\Phi_{\varnothing,r}(z)-\lambda\Phi_{\varnothing,0}(z)\|^2
+ =\|V_r(z)-\lambda Nz\|^2\ge0
+\end{equation}
+is a universal homogeneous sextic. It vanishes exactly when $z$
+is a projective stationary point of $Q_r/N^2$ with
+$Q_r/N^2=\lambda$, for nonzero $z$. Moreover,
+\begin{equation}\label{eq:gradient-octic}
+ \begin{split}
+ N\mathcal G_{r,\lambda}(z)
+ &=\bigl(N\|V_r\|^2-Q_r^2\bigr)+(Q_r-\lambda N^2)^2,\\
+ N\|V_r\|^2-Q_r^2
+ &=\sum_{a<b}|z_a(V_r)_b-z_b(V_r)_a|^2\ge0.
+ \end{split}
+\end{equation}
+Along the seven-qubit icosahedral family $\psi_x$ ($0\le x\le1/2$),
+\begin{equation}\label{eq:zero-focus-family}
+\begin{aligned}
+ &\Phi_{\varnothing,1}(\psi_x)=\tfrac72\Phi_{\varnothing,0}(\psi_x),\\
+ &4(104x-7)\Phi_{\varnothing,3}(\psi_x)-2(524x-37)\Phi_{\varnothing,2}(\psi_x)
+   +(96x^2+3628x-263)\Phi_{\varnothing,0}(\psi_x)=0.
+\end{aligned}
+\end{equation}
+At $\Psiico=\psi_{37/524}$ the second relation simplifies to
+$\Phi_{\varnothing,3}=\frac{605}{131}\Phi_{\varnothing,0}$.
+(Both relations are proved below; SF-5 checks them exactly.)
+In fact the entire zero-focus Gram on this family is
+\begin{equation}\label{eq:zero-focus-gradient-gram}
+ G(x)=q(x)q(x)^T+\frac{x(1-2x)}8q'(x)q'(x)^T,
+ \qquad q=(1,\tfrac72,21\pi_2,35\pi_3)^T.
+\end{equation}
+It has rank two for $0<x<1/2$ and rank one at both endpoints.
+For the two source combinations $V_0$ and $131V_2-52V_3$, its
+$2\times2$ Gram determinant is exactly $72x(1-2x)$.
+Thus $\mathcal G_{3,605/131}$ is a nontrivial
+sextic SOS vanishing at $\Psiico$, while at $x=x_*$ the two relations
+in~\eqref{eq:zero-focus-family} give the $\operatorname{Sym}^7\mathbb R^2$
+three-copy kernel features of Theorem~\ref{thm:seven-entropy-localized-identity}.
+Neither gives a lower bound on $\pi_3$; Theorem~\ref{thm:sextic-sos-obstruction}
+excludes a sharp fixed-coefficient cubic SOS certificate even after including this form.
+\end{proposition}
+\begin{proof}
+At an $L$ site, the first replica index survives and the other
+two are identified after spin flip; at an $M$ site the second
+replica index survives and the first is identified with the
+conjugate. For a set $S$ of $M$ sites, the surviving tensor is
+$(-1)^n(R_S\otimes I_{S^c})z$.
+Differentiating $\tr R_S^2$ by the product rule yields
+$2(R_S\otimes I)z$. Euler's homogeneous identity gives the
+inner product.
+
+To prove that these scalar cubics exhaust the possibilities, contract the output of a general scalar cubic with
+$\bar z$. Locally its two-copy invariant operator is a real combination
+of identity and swap. Their tensor products are Hermitian and commute
+with the simultaneous copy exchange. Since the two holomorphic inputs
+are already symmetric, the two antiholomorphic inputs are symmetric
+as well; hence $p_v$ is real and $\partial_{\bar z}p_v=2v$.
+All quartic local-unitary invariants of bidegree $(2,2)$ are linear combinations of the
+swap expectations $\tr R_S^2$. On the symmetric square, complementary
+swap words agree. These are their only relations: the local
+antisymmetric-site sets $A$ have even cardinality, and the words act
+on them by the characters $(-1)^{|S\cap A|}$. Characters of this
+even-subset group are indexed exactly by $S$ modulo complementation
+and are linearly independent. Each such sector occurs on qubits.
+Expectations on $z^{\otimes2}$ determine a Hermitian operator on
+the symmetric square, by its polynomial coefficients.
+This proves the full basis statement. After site averaging, only
+$|S|$ remains. The weight-$r$ swap sum has value
+$[t^r](1+t)^{n-|A|}(1-t)^{|A|}$, a polynomial of degree $r$ in $|A|$
+with leading coefficient $(-2)^r/r!$. For
+$0\le r\le\lfloor n/2\rfloor$ these polynomials are independent on
+the equally many distinct even values of $|A|$, proving the symmetric
+basis statement.
+
+Projective stationarity of $Q_r/N^2$ is
+$V_r=(Q_r/N)z$, proving the equality criterion.
+The octic equation is the orthogonal decomposition of
+$V_r$ into its component along $z$ and its perpendicular
+component; its final equality is the usual complex
+Lagrange identity. Along the icosahedral family $\psi_x$,
+one-body maximal mixing gives the first relation in~\eqref{eq:zero-focus-family}.
+For $r\in\{2,3\}$, the fixed-space argument of
+Lemma~\ref{lem:seven-family-symmetric-criticality} places the real gradient
+$4V_r(\psi_x)$ in the plane
+$\operatorname{span}\{U,V\}=\operatorname{span}\{\psi_x,\psi_x'\}$, where
+$\psi_x'\perp\psi_x$, $\langle\psi_x,V_r(\psi_x)\rangle=Q_r(\psi_x)$ and, by the gradient formula,
+$\langle\psi_x',V_r(\psi_x)\rangle=\tfrac14 Q_r'(\psi_x)$.
+Hence $V_r=Q_r\psi_x+\tfrac14Q_r'\psi_x'/\|\psi_x'\|^2$.
+Since $30(a')^2+2(b')^2=1/[2x(1-2x)]$, taking inner products gives
+\eqref{eq:zero-focus-gradient-gram}. The explicit purity polynomials give
+$131q_2'-52q_3'=24$. The displayed Gram determinant is therefore
+$24^2x(1-2x)/8=72x(1-2x)$, proving rank two throughout the open
+interval; continuity gives rank one at its endpoints.
+Eliminating $\psi_x'$ between $r=2$ and $r=3$ gives
+$Q_2'\Phi_{\varnothing,3}-Q_3'\Phi_{\varnothing,2}-(Q_2'Q_3-Q_3'Q_2)\Phi_{\varnothing,0}=0$;
+substituting $Q_2=21\pi_2$ and $Q_3=35\pi_3$ from Theorem~\ref{thm:ico} yields the second
+relation in~\eqref{eq:zero-focus-family}.
+Thus the two displayed relations span its kernel for every interior $x$:
+their source rows are independent, since $104x-7$ and $524x-37$
+cannot vanish together. SF-5 compares the closed Gram formula with every
+coefficient of an independent exact tensor contraction, and checks its
+specialisation at $x=37/524$ with null vectors
+$(-7,2,0,0)$ and $(-605,0,0,131)$ in the
+$\Phi_{\varnothing,0},\ldots,\Phi_{\varnothing,3}$ basis.
+\end{proof}
+
+\begin{remark}[scope of cubic-contraction searches]
+Theorem~\ref{thm:sextic-sos-obstruction} rules out every fixed-coefficient
+cubic SOS certificate of the sharp seven-qubit purity bound,
+including all nonempty-focus forms, zero-focus gradients and their
+cross-sector couplings. The
+covariant identities above remain useful algebraic descriptions;
+they do not evade the complete three-copy obstruction.
+\end{remark}
+
+\begin{remark}[joint quadratic/cubic Pauli enumerators]
+For a trace-one density matrix $\rho$ define $r_P=\tr(\rho P)$ for Hermitian
+Pauli strings $P$. The ordinary weight enumerator
+$A_j=\sum_{\operatorname{wt}P=j}r_P^2$ controls mean subsystem
+purity. There is a natural signed \emph{triple} enumerator:
+\[
+ C_j=\!\!\sum_{\substack{P,Q:[P,Q]=0\\
+           |\operatorname{supp}P\cup\operatorname{supp}Q|=j}}
+ \eta(P,Q)\,r_Pr_Qr_{R(P,Q)},
+ \qquad PQ=\eta(P,Q)R(P,Q),\ \eta(P,Q)\in\{\pm1\},
+\]
+The sum is over ordered pairs of Pauli words, including the identity;
+$R(P,Q)$ is the canonical Hermitian Pauli word.
+For $b_k=\binom nk^{-1}\sum_{|S|=k}\tr\rho_S^3$,
+\begin{equation}\label{eq:pauli-triple}
+ b_k=\frac1{4^k\binom nk}
+ \sum_{j=0}^k\binom{n-j}{k-j}C_j.
+\end{equation}
+Expand $\rho_S^3$ in the Pauli basis: products of
+anticommuting $P,Q$ cancel between orders and every commuting
+product is $\pm R(P,Q)$. Group by the union of supports to obtain
+the binomial coefficient. Thus $A_j,C_j$ are natural joint
+second/third-moment coordinates. For pure states the third moments are sextic in the amplitudes;
+unlike $A_j$, the individual $C_j$ need not be positive. This coordinate identity is independent
+of the covariant certificates and is not used in the cubic-SOS obstruction below.
+\end{remark}
+
+
+\section{The complete cubic-SOS obstruction}
+\label{sec:sextic-all-sos}
+
+For seven qubits let $N(z)=\|z\|^2$, let $\mathcal F_3(z)$ be the homogeneous
+quartic mean three-body purity ($\mathcal F_3=N^2\pi_3$), and put
+\[
+ F_\lambda(z)=N(z)\bigl(\mathcal F_3(z)-\lambda N(z)^2\bigr),\qquad
+ \lambda_{\mathrm{SOS},6}
+ =\max\{\lambda:F_\lambda\text{ is a sum of squares of real cubics}\}.
+\]
+The polynomials are in all $256$ real amplitude coordinates. No
+restriction to the conference family or to covariant subsets is imposed.
+
+\begin{theorem}[Complete real cubic-SOS obstruction; TCB]
+\label{thm:sextic-sos-obstruction}
+The maximal homogeneous degree-six real SOS lower bound satisfies
+\[
+ \boxed{\quad
+ \lambda_{\mathrm{SOS},6}=L_3=\frac{125}{978}<\frac{121}{917}.\quad}
+\]
+In particular, for every $\lambda>125/978$ there
+is no identity
+\[
+ F_\lambda(z)=\sum_a|p_a(z)|^2+\sum_b|q_b(z,\bar z)|^2
+\]
+with fixed-coefficient holomorphic cubics $p_a$ and bidegree-$(2,1)$
+cubics $q_b$, nor a real homogeneous cubic SOS.
+This includes arbitrary local $[2,1]$ sectors and cross-focused
+couplings. It excludes neither higher-degree SOS nor non-SOS
+inequalities or state-dependent reductions.
+\end{theorem}
+\begin{proof}
+Every squared holomorphic cubic is a positive linear functional of
+$|z\rangle\langle z|^{\otimes3}$. Every squared mixed cubic is a
+positive linear functional of
+$|zz\widetilde z\rangle\langle zz\widetilde z|$, since spin flip
+is invertible on the conjugate factor. Average any proposed real
+cubic SOS over global phase: only opposite phase weights pair, so
+its terms become squared moduli of their $(3,0)$ and $(2,1)$
+components, since $(\operatorname{Re}p)^2+(\operatorname{Im}p)^2=|p|^2$. Twirling their positive Gram matrices over the local
+unitaries, sites and conjugation preserves positivity and $F_\lambda$; an average of sums of squares is
+again a sum of squares.
+By Theorem~\ref{thm:spinflip-ppt-hierarchy}, the complete three-copy
+Fourier blocks contain both kinds of Gram forms, with no omitted
+local representation sector.
+
+Polynomial equality on every $z$ implies equality of the compressed
+Hermitian coefficient operators on $\operatorname{Sym}^3H$: the
+expectations in all $z^{\otimes3}$ determine such an operator by
+its polynomial coefficients. Thus the twirled identity holds on
+any feasible averaged moment, not only on physical pure powers.
+The argument uses three properties of the moment: its twirled operator $X$ is positive semidefinite on every
+$\omega$-block of the $\operatorname{Sym}^3H$ sector, the flipped image $\mathcal T(X)$ is positive semidefinite on
+every $\gamma$-block of the $\operatorname{Sym}^2H\otimes H$ sector, and its word values satisfy the one-site
+antisymmetriser relations, so that the pairing is well defined. In the isotypic decomposition of the local
+three-copy algebra the compressed blocks $\omega_1,\dots,\omega_7$ and $\gamma_0,\dots,\gamma_7$ have sizes $(1,1,1,3,5,11,21)$ and
+$(1,1,2,4,8,16,32,64)$.
+The boundary pseudo-moment $m^*/70416$ of Theorem~\ref{thm:threecopy} has positive semidefinite blocks,
+satisfies the relations and has objective value $125/978$, so it evaluates the left side as
+\[
+ F_\lambda(m^*/70416)=\frac{125}{978}-\lambda,
+\]
+while every positive Gram form pairs nonnegatively with it. An SOS representation therefore forces
+$\lambda\le125/978$.
+Conversely, the TCB dual certificate gives an SOS at $125/978$: its positive
+$\omega$ and $\gamma$ Gram forms factor into cubic squared moduli,
+and its antisymmetriser relations vanish identically.
+\end{proof}
+
+\noindent\emph{Remark.} The relations have exact rank $23$ (TCB); the $37-23=14$ free coordinates match
+the independent invariant count from~\eqref{eq:fqe-invariant-dimension} (HI). This count is not
+used in the proof.

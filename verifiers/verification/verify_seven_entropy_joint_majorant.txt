@@ -1,0 +1,8 @@
+AH-6a PASS: exact root/logarithm enclosures, original Hermite/contact coefficients and positive kernel constants
+AH-6b PASS: symbolic cubic discriminant identity, double-factor lemma and binary contacts; enclosed degree-18 quotient
+AH-6c [0,3/4] degree 18: all 19 Bernstein coefficients >= 21408188/10^14 > 0
+AH-6c [3/4,1] degree 18: all 19 Bernstein coefficients >= 55265/10^14 > 0
+AH-6c [1,5/4] degree 18: all 19 Bernstein coefficients >= 9276/10^14 > 0
+AH-6c [5/4,infinity) degree 18: all 19 shifted power coefficients >= 25668/10^14 > 0
+AH-6 PASS: original scalar majorant on the full nonnegative quadrant; fixed univariate polynomial certificate, no entropy-gap subdivision
+Analytic inputs: Stieltjes Jensen bound, binary Hermite minorant, cubic discriminant and contact factorization. No new quantum compatibility bound is claimed.

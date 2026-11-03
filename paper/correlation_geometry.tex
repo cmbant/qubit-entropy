@@ -1,0 +1,62 @@
+\section{Correlation geometry of the sextic}\label{sec:fqe-correlation}
+
+We use the notation \(F,P,T,\tau\) of Sections~\ref{sec:fqe-entropy_maximum-purity-identity}
+and~\ref{sec:fqe-entropy_maximum-the-sharp-moment-inequality} for a unit pure four-qubit state.
+
+\subsection{Correlation-volume identity}\label{sec:fqe-correlation_geometry-correlation-volume-identity}
+
+For a unit state, write \(r_i^a=\langle\sigma_a^{(i)}\rangle\) and
+\(C_{ij}^{ab}=\langle\sigma_a^{(i)}\sigma_b^{(j)}\rangle\), with \(C_{ij}\) a real \(3\times3\)
+matrix. Expanding a two-qubit marginal in Pauli matrices, and putting
+\(u_j=\|r_1\|^2+\|r_j\|^2+\|C_{1j}\|_F^2\), gives \[
+\operatorname{tr}\rho_{1j}^2=\frac{1+u_j}{4},\qquad
+\operatorname{tr}\rho_{1j}^3=
+\frac{1+3u_j+6r_1^TC_{1j}r_j-6\det C_{1j}}{16}.
+\] To see this, write \(\rho_{1j}=\tfrac14(I+X)\) with \(X\) the traceless part, so that
+\(\operatorname{tr}\rho^3=\tfrac1{64}(4+3\operatorname{tr}X^2+\operatorname{tr}X^3)\) and
+\(\operatorname{tr}X^2=4u_j\). In \(\operatorname{tr}X^3\), the terms with one Pauli matrix on each of the two qubits
+in every factor give \(\operatorname{tr}(\sigma_a\sigma_c\sigma_e)\operatorname{tr}(\sigma_b\sigma_d\sigma_f)C^{ab}C^{cd}C^{ef}
+=(2i)^2\epsilon_{ace}\epsilon_{bdf}C^{ab}C^{cd}C^{ef}=-24\det C_{1j}\), using
+\(\operatorname{tr}(\sigma_a\sigma_c\sigma_e)=2i\epsilon_{ace}\); the terms with one Bloch vector on each qubit and one
+factor \(C\) give \(6\cdot4\,r_1^TC_{1j}r_j\) (six orderings); the terms with two Bloch vectors on
+one qubit, or three, and those with one Bloch vector and two factors \(C\), are traceless (the last because \(CC^T\) is
+symmetric while \(\epsilon_{ace}\) is antisymmetric). Hence \(\operatorname{tr}X^3=24(r_1^TC_{1j}r_j-\det C_{1j})\), which gives the stated formulas.
+Lemma~\ref{lem:fqe-purity} implies \(\sum_j u_j=4P-3=1+2(W_1+\tau)\), where
+\(W_1=\sum_i\|r_i\|^2\). Substitution yields the compact identity \[
+\boxed{\quad 2F=
+1+8(W_1+\tau)-9\sum_{j=2}^4
+\bigl(r_1^TC_{1j}r_j-\det C_{1j}\bigr).\quad} \tag{CV}\label{eq:fqe-correlation-volume}
+\] The sum singles out qubit~$1$ only to label the three balanced cuts $\{1,j\}|\{k,l\}$: by the formulas above each
+summand equals $(16\operatorname{tr}\rho_{1j}^3-12\operatorname{tr}\rho_{1j}^2+2)/6$, a function of the cut spectrum
+alone, so the right-hand side is permutation invariant. Therefore Theorem~\ref{thm:fqe-moment} is equivalent to an
+\emph{oriented correlation-volume monogamy inequality} for three compatible two-qubit marginals.
+At \(M_4\) the Bloch vectors and \(\tau\) vanish and each \(\det C_{1j}=-1/27\); at
+\(\mathrm{Bell}\otimes\mathrm{Bell}\), \(\tau=1\) and the three determinants are \((-1,0,0)\) up to
+ordering. This explains the two tight configurations: the spin-flip invariant compensates for
+concentration of the correlation volume in a single Bell pair.
+
+Equation \eqref{eq:fqe-correlation-volume} gives a reduced-state reformulation.
+Its nonnegativity still requires the moment inequality. Pairwise density-matrix positivity and known absolute
+steering-ellipsoid volume-monogamy bounds do not visibly supply the required \emph{oriented} and
+\(\tau\)-sensitive inequality (compare the volume monogamy relation for pure four-qubit states of
+Cheng, Milne, Hall and Wiseman~\cite{CMHW}, Eq.~(28): in terms of normalised steering-ellipsoid
+volumes \(v_{j|1}=|\det(C_{1j}-r_1r_j^T)|/(1-\|r_1\|^2)^2\) of the ellipsoids that qubit \(1\) steers on
+qubit \(j\), it reads \(\sum_j v_{j|1}^{2/3}\le1\), which for \(r_1=0\) is
+\(\sum_j|\det C_{1j}|^{2/3}\le1\) and is already strict at \(M_4\), giving \(1/3<1\)). RG-1 and RG-2 (Appendix~\ref{sec:fqe-verifiers}) check the local Pauli
+formulas and \eqref{eq:fqe-correlation-volume} exactly.
+
+\paragraph{Replica witness.} Let \(p=(12)\) and \(c=(123)\) permute
+the \emph{three copies} of a qubit, and use a subscript \(i\) for the physical qubit on which they
+act. The Hermitian replica witness \[
+K_{\rm rep}=17\sum_{j=2}^4p_1p_j-6\sum_{j=2}^4(c_1c_j+c_1^{-1}c_j^{-1})-12I
+\] satisfies \(F(z)=\langle z^{\otimes3},K_{\rm rep}z^{\otimes3}\rangle\) for unit \(z\) (by the usual
+swap/cycle formulas for reduced moments). It is not positive on the
+copy-symmetric space. On the sector where all four local triples carry spin \(1/2\),
+let \(M\simeq\mathbb C^2\) be the standard \(S_3\) multiplicity space and take the three
+diagonal-\(S_3\)-fixed pairings \(\delta_{12}\delta_{34}\), \(\delta_{13}\delta_{24}\),
+\(\delta_{14}\delta_{23}\) in \(M^{\otimes4}\). Their Gram matrix has diagonal entries 4 and
+off-diagonal entries 2; the matrix of \(K_{\rm rep}\) on these pairings has diagonal entries \(-52\) and
+off-diagonal entries 42. The generalised eigenvalues are \(4,-47,-47\) (RG-3, exact). Thus
+\(K_{\rm rep}\) is indefinite even on \(\operatorname{Sym}^3((\mathbb
+C^2)^{\otimes4})\). By uniqueness of polarisation of a bidegree-\((3,3)\) polynomial, \(F\) cannot
+be a sum of squared moduli of \emph{holomorphic} cubic forms in \(z\) alone. This does not contradict \(F(z)\ge0\) on pure-state tensor powers.

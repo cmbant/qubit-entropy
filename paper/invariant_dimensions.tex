@@ -1,0 +1,63 @@
+\section{Determining symmetric invariant identities}\label{sec:fqe-invariant-dimensions}
+
+This section supports the exact polynomial certificates, in particular the quadratic variance proof
+in Section~\ref{sec:sup-qk}. The elementary entropy proof of the paper does not use these counts.
+Statements here are proved by Schur--Weyl duality and finite-group character averages.
+
+For \(N\) sites of local dimension \(r\), let \(V_d\) be the permutation-symmetric local-unitary
+invariants of bidegree \((d,d)\). Put \(A_d=\bigoplus_{\lambda\vdash d,\ \ell(\lambda)\le r}
+V_\lambda\otimes V_\lambda^*\), with its left--right \(S_d\times S_d\) action. Polarisation
+identifies invariant polynomials with operators on the symmetric copy subspace. Extend them by zero
+to all copies and apply Schur--Weyl duality at each site: the commutant is \(A_d^{\otimes N}\). The
+left and right diagonal copy symmetrisers impose \(S_d\times S_d\) invariance; physical-site
+symmetry then gives \[
+V_d\cong\bigl(\operatorname{Sym}^N A_d\bigr)^{S_d\times S_d}.\tag{ID1}\label{eq:fqe-invariant-space}
+\] Consequently \[
+\dim V_d=\frac1{N!(d!)^2}
+\sum_{\sigma\in S_N}\sum_{g,h\in S_d}
+\prod_{C\text{ cycle of }\sigma}
+\left(\sum_{\lambda\vdash d,\ \ell(\lambda)\le r}
+\chi_\lambda(g^{|C|})\chi_\lambda(h^{|C|})\right).\tag{ID2}\label{eq:fqe-invariant-dimension}
+\] Indeed, the trace of a tensor permutation is the product of the traces of powers over its cycles;
+averaging projects onto the fixed vectors. For bidegree \((d,d)\), \(SU(r)\) and \(U(r)\) invariance
+agree since the scalar action cancels. Conjugation interchanges the two copy actions. Since the irreducible representations of
+\(S_d\) are real, it acts on each \(V_\lambda\otimes V_\lambda^*\) as the swap, and the trace of
+\((g,h)\) followed by the swap is \(\chi_\lambda(gh)\). Inserting it in the average, a cycle of length
+\(L\) contributes \(\chi_\lambda((gh)^{L/2})^2\) for even \(L\) and \(\chi_\lambda((gh)^L)\) for odd \(L\), so
+\[
+\begin{aligned}
+\dim V_d^{\pm}&=\frac12\Bigl(\dim V_d\pm\frac1{N!(d!)^2}\sum_{\sigma\in S_N}\sum_{g,h\in S_d}
+\prod_{C}\ \sum_{\lambda\vdash d,\ \ell(\lambda)\le r}\tau_\lambda(gh,|C|)\Bigr),\\
+\tau_\lambda(k,L)&=\begin{cases}\chi_\lambda(k^{L/2})^2,&L\text{ even},\\ \chi_\lambda(k^L),&L\text{ odd}.\end{cases}
+\end{aligned}
+\tag{ID3}\label{eq:fqe-invariant-even}
+\]
+for the conjugation-even ($+$) and odd ($-$) invariants.
+
+For four qubits the exact character checks SD-1, SD-2 and SD-4 give:
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+$d$ & All invariants & Qubit-symmetric & Conjugation-even & Conjugation-odd \\
+\midrule
+3 & 20 & 5 & 5 & 0 \\
+4 & 98 & 18 & 16 & 2 \\
+5 & 293 & 37 & 30 & 7 \\
+6 & 1128 & 115 & 85 & 30 \\
+7 & 3409 & 273 & 183 & 90 \\
+\bottomrule
+\end{tabular}
+\caption{Dimensions of four-qubit local-unitary invariant spaces of bidegree $(d,d)$.
+The last two columns split the qubit-symmetric space by complex conjugation. The value $85$
+is used in the quadratic variance certificate; these counts are not inputs to the elementary entropy proof.}
+\label{tab:fqe-invariant-dimensions}
+\end{table}
+
+A dimension-\(D\) space admits \(D\) determining evaluations, but a proposed set
+must have a nonsingular evaluation matrix. Dimension alone never certifies
+particular points. The quadratic variance certificates QVA and QG
+use the degree-six even count 85 and two independent zero evaluations, with
+a nonsingular 83-point raw-Gram matrix supplied by QG on their common kernel. The sextic entropy proof of Appendix~\ref{sec:fqe-sextic}
+uses direct swap contractions and needs no determining-point argument.

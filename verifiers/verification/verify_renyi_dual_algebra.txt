@@ -1,0 +1,5 @@
+DA-1 PASS: symbolic HS tangency, cluster contacts and exact evenness
+DA-2 PASS: dual, Hessian, global third-moment and sliver algebra
+DA-3 PASS: all printed rational multiplier/band entries match the executable data
+DA-4 PASS: exact closed-cell coverage and certified crossing endpoints
+DA-5 PASS: exact wrong-multiplier and shifted-contact negative controls

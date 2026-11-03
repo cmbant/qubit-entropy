@@ -1,0 +1,6 @@
+QB-1 PASS: exact rational quartic remainder margin: 285123/14672000000
+QB-1: for LU-orbit distance d<=1/250, pi_3>=121/917 + d^2/1024.
+QB-2 PASS: any inequivalent state of purity <=121/917 has
+      d>1/250 and max LU overlap amplitude <124999/125000.
+QB-3 PASS: 32/32 nonzero amplitudes have the exact diagonal LU phase.
+NOTE: local basin only; global minimality is the five-copy certificate (cor:seven-global-from-fivecopy).

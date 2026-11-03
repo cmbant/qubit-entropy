@@ -1,0 +1,149 @@
+\section{Proof of the general envelope}\label{sec:sup-general-envelope}
+Notation is that of Appendix~\ref{sec:fqe-sextic} of the paper: $N=\lVert z\rVert^2$, $W_1$, the site residuals $V_i-8U_i$, the
+pair vectors $(R_i^{(i)}-R_j^{(j)})z$ and the sextic identity~(S); $X_i$ and $c_{ij}$ are defined below.
+
+\begin{restated}[general envelope and complete equality; exact certificate, FI, FG]{Theorem}{thm:fqe-general-envelope}
+Every nonzero four-qubit vector satisfies, with $s=z^T\sigma_y^{\otimes4}z$,
+\[
+ F-\tfrac34NW_1-N|s|^2+|s|^3\ \ge\ \frac{7|s|^2}{8(N+|s|)}\,W_1 .
+ \tag{GE}
+\]
+For unit states, with $\tau=|s|^2$,
+\[
+ \boxed{\quad F\ \ge\ \Bigl(\frac34+\frac{7\tau}{8(1+\sqrt\tau)}\Bigr)W_1+\tau-\tau^{3/2}.\quad}
+\]
+Equality in $F\ge\frac34W_1+\tau-\tau^{3/2}$ holds exactly on fully product states and on the critical
+equality family of Proposition~\ref{prop:fqe-critical-envelope}, including its HS endpoint at $\tau=0$ and
+Bell-pair-product endpoint at $\tau=1$.
+\end{restated}
+
+The optimality of the coefficient $\frac78$ is shown in the paper.
+
+Write $H=F-\frac34NW_1\ge0$ (by~(S)) and use the
+magic coordinates $z=\sum_{jk}Z_{jk}m_j\otimes m_k$ of Appendix~\ref{sec:fqe-normal-form} of the paper. There the spin flip
+$\tilde z=\epsilon^{\otimes4}\bar z$ is $Z\mapsto\bar Z$ (because $\sigma_y^{\otimes2}\bar m_k=-m_k$), and
+$s=\operatorname{tr}Z^TZ$ by~\eqref{eq:fqe-spin-flip-normal-form}. Call $z$ \emph{real} if $\tilde z=z$, that is $Z$ real.
+The flip is an antiunitary involution. It commutes with local $SU(2)$ transformations and qubit permutations and anticommutes with every
+$\sigma_a^{(i)}$, so it fixes all marginal spectra and every $\|\mathbf r_i\|$, and $H(\tilde z)=H(z)$. A real state has
+$\mathbf r_i=0$, since $\langle a,\sigma a\rangle=-\overline{\langle a,\sigma a\rangle}$ for $\tilde a=a$.
+
+\emph{Spin-flip split.} After a global phase making $s\ge0$, every unit $z$ is
+\[
+ z_\kappa=\sqrt{\tfrac{1+\kappa}2}\,a+i\sqrt{\tfrac{1-\kappa}2}\,b,\qquad \kappa=s=\sqrt\tau,
+\]
+with $a,b$ real and orthonormal. Indeed, with $Z=X+iY$, $s=\|X\|^2-\|Y\|^2+2i\langle X,Y\rangle$ is real and nonnegative
+exactly when $\langle X,Y\rangle=0$ and $\|X\|^2-\|Y\|^2=\kappa$. The path $t\mapsto z_t$, $0\le t\le\kappa$, joins the
+flip-orthogonal midpoint $\phi=z_0=(a+ib)/\sqrt2$ to $z$ through unit states with $s(z_t)=t$.
+
+\emph{The flip derivative.} By~(S), $H(x)=\|\mathcal O(x,x,\tilde x)\|^2$ for every $x$, where $\mathcal O(x,y,t)$ is the
+vector $\bigl(\sqrt{3/8}\,(V_i-8U_i)\bigr)_i\oplus\bigl(\sqrt{3/2}\,c_{ij}\bigr)_{i<j}$ computed from the three-copy tensor
+$x\otimes y\otimes t$ in place of $w$, symmetrised in $x,y$; in $c_{ij}=(R_i^{(i)}-R_j^{(j)})y$ the marginal is
+$R_i[a,b]=\sum x_{a\cdots}(\epsilon^{\otimes4}t)_{b\cdots}$, which is $R_i$ when $x=y=z$ and $t=\tilde z$. Write
+$X_i=(V_i-8U_i)(z)$ for the site residual of $z$, a vector on six qubits (three slots at site $i$, one at each other site), and
+$\tilde X_i=\epsilon^{\otimes6}\bar X_i$ for its spin flip.
+
+\begin{lemma}[spin-flip derivative]\label{lem:fqe-flip-gradient}
+For every four-qubit vector $z$,
+\[
+ \frac{d}{dt}\,H(z+t\tilde z)\Big|_{t=0}=\frac94\operatorname{Re}\sum_i\langle\tilde X_i,X_i\rangle
+ +\operatorname{Re}s\,\Bigl(4N^2-4|s|^2+\frac72W_1\Bigr).
+ \tag{FG}\label{eq:fqe-flip-gradient}
+\]
+\end{lemma}
+
+\begin{proof}
+For real $t$ the flip of $z+t\tilde z$ is $\tilde z+tz$, since the flip is an antiunitary involution. As
+$\mathcal O$ is symmetric and bilinear in its first two arguments,
+\[
+ \frac{d}{dt}H(z+t\tilde z)\Big|_{t=0}=2\operatorname{Re}\bigl(\langle A,C\rangle+2\langle D,A\rangle\bigr),\qquad
+ A=\mathcal O(z,z,\tilde z),\ C=\mathcal O(z,z,z),\ D=\mathcal O(z,\tilde z,\tilde z).
+\]
+We show
+\[
+ \langle A,C\rangle+2\langle D,A\rangle=\frac98\sum_iX_i^T\epsilon^{\otimes6}X_i
+ +s\Bigl(\frac54N^2+\frac{11}8W_1+\frac34P-\frac{19}8|s|^2\Bigr).
+ \tag{FGI}\label{eq:fqe-flip-gradient-identity}
+\]
+Section~\ref{sec:sup-flip-gradient} of the supplement derives this identity directly, without point evaluations, from the full
+symmetry of $V_i-6U_i$ and the angular momentum of the copy labels. Here we give a shorter check, by determining its values in a
+finite-dimensional invariant space.
+Both sides are polynomials of bidegree $(4,2)$ in $(z,\bar z)$, and both are $SU(2)^{4}$-invariant: $L$, $M$ and the slot
+symmetrisers intertwine $g\otimes g\otimes g$ with $g$ (respectively $g\otimes g\otimes g$) for $g\in SU(2)$, the flip commutes
+with local unitaries, and $g^T\epsilon g=\epsilon$. Replace $\bar z$ by an independent vector $\zeta$; this is legitimate because
+all coefficients are real, so the conjugate of a vector built from $(z,\bar z)$ is the same construction applied to $(\bar z,z)$.
+The identity is then one between polynomials of bidegree $(4,2)$ on pairs $(z,\zeta)$ invariant under $(z,\zeta)\mapsto(gz,\bar g\zeta)$,
+$g\in SU(2)^{4}$. Since $\bar g$ is equivalent to $g$, the Weyl character formula shows that these invariants form a space of
+dimension $19$ [FI-1]. Nineteen invariants that contract each site's six legs in pairs ($\epsilon$ between two $z$-legs or two
+$\zeta$-legs, $\delta$ between a $z$-leg and a $\zeta$-leg) take values at $24$ integer points $(z,\zeta)$ whose $24\times19$ matrix
+has exact rank $19$ [FI-2]. So an invariant of this bidegree that vanishes at these points is zero. Both sides
+of~\eqref{eq:fqe-flip-gradient-identity} agree exactly at the $24$ points [FI-4], with $\|A\|^2=H$ there as a check on the
+normalisation [FI-3]; hence~\eqref{eq:fqe-flip-gradient-identity} holds identically. Replacing $\frac98$ by $1$, or dropping the
+multiple of $s$, fails at every point tested [FI-5].
+
+Now $\langle\tilde X,X\rangle=X^T(\epsilon^{\otimes6})^TX=X^T\epsilon^{\otimes6}X$ (six factors $\epsilon^T=-\epsilon$), and the
+purity identity (Lemma~\ref{lem:fqe-purity}) in homogeneous form is $P=N^2+\frac12(W_1+|s|^2)$. Taking twice the real part
+of~\eqref{eq:fqe-flip-gradient-identity} gives~\eqref{eq:fqe-flip-gradient} [FG-7].
+\end{proof}
+
+\begin{lemma}[zeros of the sharp polarisation remainder]
+\label{lem:fqe-polarization-remainder-zeros}
+For a unit four-qubit state, $H=F-\frac34W_1$ vanishes exactly on
+fully product states, the two HS orbits, and the three Bell-pair-product
+orbits.
+\end{lemma}
+\begin{proof}
+By~(S), $H=0$ forces $(R_i^{(i)}-R_j^{(j)})z=0$ for every pair.
+If one Bloch vector $\mathbf r_i$ is zero, then
+$(\mathbf r_j\cdot\boldsymbol\sigma_j)z=0$ for every $j$.
+Since $(\mathbf r_j\cdot\boldsymbol\sigma_j)^2=\|\mathbf r_j\|^2I$,
+all Bloch vectors vanish. The state is critical, $H=F$, and
+Proposition~\ref{prop:fqe-moment-zeros} gives HS or Bell products.
+
+Otherwise diagonalise the four one-body marginals locally and write
+$R_i=(I+t_iZ)/2$, $t_i>0$. Each supported computational string obeys
+$t_i(-1)^{x_i}=t_j(-1)^{x_j}$ for all $i,j$.
+Thus all $t_i$ agree and every supported string has all four bits equal:
+$z=a|0000\rangle+b|1111\rangle$. Direct evaluation gives
+$H=18|ab|^2=(9/2)\tau$, so $H=0$ forces a product state [PZ-1, PZ-2].
+Conversely the listed states have $H=0$, by~(S) and
+Proposition~\ref{prop:fqe-moment-zeros}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:fqe-general-envelope}]
+Both sides of~\eqref{eq:fqe-general-envelope} are local-unitary invariant and homogeneous of degree six, so take $N=1$ and
+$s=\kappa\ge0$. If $\kappa=1$, equality in $|\langle z,\tilde z\rangle|\le\|z\|^2$ makes $z$ real up to phase, so $W_1=0$
+and~\eqref{eq:fqe-general-envelope} is $H\ge0$. Let $0\le\kappa<1$ and use the spin-flip split, with $h(t)=H(z_t)$ and
+$W_0=W_1(\phi)$. Since $a$ and $b$ have zero Bloch vectors, the Bloch vectors of $z_t$ are $\sqrt{1-t^2}$ times those of
+$\phi$, so $W_1(z_t)=(1-t^2)W_0$. Differentiating, $2(1-t^2)\frac{d}{dt}z_t=\tilde z_t-tz_t$; as $H$ is homogeneous of degree
+six, Lemma~\ref{lem:fqe-flip-gradient} at $z_t$ gives
+\[
+ 2(1-t^2)h'(t)=\frac94\operatorname{Re}\sum_i\langle\tilde X_i,X_i\rangle+4t(1-t^2)+\frac72t(1-t^2)W_0-6t\,h(t).
+\]
+The spin flip is antiunitary, so $\operatorname{Re}\langle\tilde X_i,X_i\rangle=\frac12\|X_i+\tilde X_i\|^2-\|X_i\|^2$, and
+by~(S) $h=\frac38\sum_i\|X_i\|^2+\frac32\sum_{i<j}\|c_{ij}\|^2$ with $c_{ij}=c_{ij}(z_t)$, where $c_{ij}(x)=(R_i^{(i)}-R_j^{(j)})x$ with the marginals of $x$. Hence the calibrated
+remainder
+\[
+ \mathcal M(t)=\frac{h(t)}{(1-t)^3}-\Bigl(1+\frac78W_0\Bigr)\frac{t^2}{(1-t)^2}
+\]
+satisfies the exact transport law [FG-7, FG-8]
+\[
+ \mathcal M'(t)=\frac{9}{16(1-t)^4(1+t)}
+ \Bigl[\sum_i\|X_i+\tilde X_i\|^2+8\sum_{i<j}\|c_{ij}\|^2\Bigr]\ \ge\ 0,
+ \tag{SC}\label{eq:fqe-spin-flip-calibration}
+\]
+all vectors evaluated at $z_t$. So $\mathcal M(\kappa)\ge\mathcal M(0)=H(\phi)$, that is,
+\[
+ H(z)\ \ge\ (1-\kappa)^3H(\phi)+\kappa^2(1-\kappa)\Bigl(1+\frac78W_0\Bigr).
+\]
+Drop $H(\phi)\ge0$ and substitute $W_0=W_1/(1-\kappa^2)$: $H\ge\kappa^2-\kappa^3+\frac{7\kappa^2}{8(1+\kappa)}W_1$,
+which is~\eqref{eq:fqe-general-envelope}.
+
+\emph{Equality.} For $0<\tau<1$ the added term is positive unless $W_1=0$, so an equality state is critical, and
+Proposition~\ref{prop:fqe-critical-envelope} gives exactly its equality family. At $\tau=1$ the state is real up to phase,
+hence critical, and equality is $F=0$, which gives the Bell-pair products (Proposition~\ref{prop:fqe-moment-zeros}). At
+$\tau=0$ equality is $H=0$; by Lemma~\ref{lem:fqe-polarization-remainder-zeros} this gives exactly the product states and the
+HS orbits, since Bell-pair products have $\tau=1$. Conversely these states attain the bound, by
+Proposition~\ref{prop:fqe-critical-envelope} and product-state sharpness ($F=3=\frac34W_1$, $\tau=0$).
+\end{proof}
+
+\input{spin_flip_calibration}

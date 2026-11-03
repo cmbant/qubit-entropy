@@ -1,0 +1,250 @@
+\section{A common replica hierarchy}\label{sec:hierarchy}
+
+Section~\ref{sec:fourcopy} bounds the mean three-qubit purity from below using four copies of the state. This section places
+that bound in a hierarchy of semidefinite relaxations indexed by the number $m$ of copies. It is a bosonic-extension
+hierarchy with PPT constraints of the Doherty--Parrilo--Spedalieri type~\cite{DPS}, applied to the pure-state moment problem
+rather than to separability; what is new here are the twirled reductions, the sharp certificates and the orbit recovery. Level $m=2$ is exactly the linear
+programme of Rains (Proposition~\ref{prop:rainsppt}); the spin-flip blocks give all higher levels, which increase to the true
+minimum (Theorem~\ref{thm:spinflip-ppt-hierarchy}); and levels $m=3,4$ are the three- and four-copy relaxations. The three-copy level
+has exact optimum $125/978=0.12781\ldots<121/917$, and four copies are provably
+stronger (Section~\ref{sec:threecopy}). The optimal three-copy pseudo-moment also rules out cubic sum-of-squares proofs
+of the sharp bound. Five copies are sharp: Section~\ref{sec:fivecopy} gives the certificate and the equality case.
+
+\begin{proposition}[two-copy PPT formulation of the Rains LP]\label{prop:rainsppt}
+After local-unitary and site-permutation twirling, the Rains LP
+of~Rains~\cite{Rains} (stated in Section~\ref{sec:lp} in the notation $a_s$, $A_j$, $S_j$ used here) is exactly the two-copy positive-partial-transpose
+relaxation with support on the globally symmetric two-copy subspace: a twirled two-copy operator $X$
+and an LP point $(a_k)$ correspond bijectively through $a_k=\tr(XG_{n,k})$ (with $G_{n,k}$ as in
+Theorem~\ref{thm:spinflip-ppt-hierarchy}), and $X$ is feasible exactly when the point is.
+\end{proposition}
+\begin{proof}
+Twirling is without loss of generality: the PPT constraint and the objective are invariant under
+$U\otimes U$ and site permutations, so averaging a feasible operator keeps it feasible with the same value.
+Let $F_i$ swap the two copies at qubit $i$, and $Q_i=2F_i-I$.
+If $R_r$ is the projector onto the sum of sectors with exactly $r$
+locally antisymmetric sites, then the local-unitary and site-twirled
+algebra is the commutative span of the $R_r$. The generating
+polynomial for the shadow coefficients gives
+$S_{n-r}=2^n\tr(XR_r)$ for a twirled operator $X$, as an algebraic identity in which the enumerator of a
+general $X$ is defined by $A_j=\sum_{|T|=j}\tr(XQ_T)$, $Q_T=\prod_{i\in T}Q_i$, so
+$S_j\geq0$ is equivalent to $X\succeq0$.
+Since $F_{\rm all}=\prod_iF_i=2^{-n}\prod_i(I+Q_i)$, the equality
+$a_n=a_0=1$ says $\tr(XF_{\rm all})=1$, forcing globally
+symmetric support for positive normalised $X$.
+Let $\mathcal T$ be partial transpose on the second copy followed by
+the local spin flip $\epsilon^{\otimes n}$, acting on the second copy only. Since
+$\mathcal T(F_i)=I-F_i$, and $\mathcal T$ is its own Hilbert--Schmidt adjoint on the span of the $F_S$
+(so $\tr[\mathcal T(X)R_r]=\tr[X\mathcal T(R_r)]$),
+\[
+ F_{\rm all}\sum_{r=0}^n\mathcal T(R_r)t^r
+ =2^{-n}\prod_{i=1}^n(tI+Q_i).
+\]
+On the globally symmetric support this yields
+$\tr[\mathcal T(X)R_r]=2^{-n}A_{n-r}$, so $A_j\geq0$ is
+equivalent to $\mathcal T(X)\succeq0$. Conversely, the shadow
+moments reconstruct $X$ uniquely in the twirled algebra; global
+bosonic support gives $a_s=a_{n-s}$, and PPT gives $A_j\geq0$.
+\end{proof}
+
+\begin{theorem}[the spin-flip blocks are the bosonic PPT hierarchy]
+\label{thm:spinflip-ppt-hierarchy}
+For general $n,k$, the two-copy operator
+$G_{n,k}=\binom nk^{-1}\sum_{|S|=k}\prod_{i\in S}F_i$
+satisfies $\pi_k(z)=\tr[G_{n,k}(|z\rangle\langle z|)^{\otimes2}]$.
+For $m\geq2$, minimise the same expectation over normalised positive
+$m$-copy operators supported on $\mathrm{Sym}^m((\mathbb C^2)^{\otimes n})$
+and positive under partial transposition on every collection of
+\emph{global copies}. By Proposition~\ref{prop:rainsppt}, $L_2$ is exactly the Rains LP.
+The lower bounds $L_m$ satisfy
+$L_m\leq L_{m+1}\leq\min_z\pi_k(z)$.
+Their limit equals $\min_z\pi_k(z)$ by compactness and the quantum
+de~Finetti representation for infinitely extendible bosonic states.
+Local-unitary and site-permutation twirling reduce each finite SDP.
+For qubits, let $\mathcal A_m$ be the local copy commutant and,
+for $1\le s\le\lfloor m/2\rfloor$, define
+\[
+ \mathcal T_s(X)=E_sX^{T_{[s]}}E_s^\dagger,
+ \qquad E_s=(\epsilon^{\otimes n})^{\otimes s}\otimes I.
+\]
+The operator $X$ is feasible exactly when it is positive, normalised,
+globally bosonic, and every $\mathcal T_s(X)$ is positive.
+After twirling these are operators in $\mathcal A_m^{\otimes n}$.
+Thus the \emph{complete} Fourier $\omega$- and flipped $\gamma$-blocks,
+including all site types, give precisely this hierarchy.
+In particular the three- and four-copy SDPs in
+\S\ref{sec:threecopy}--\ref{sec:fourcopy} are its levels $m=3,4$
+in conjugation-even coordinates. Restricted focused-contraction
+cones in \S\ref{sec:sextic-general} are smaller objects and are not being
+identified with the complete hierarchy.
+\end{theorem}
+\begin{proof}
+Partial trace maps feasible level $m+1$ operators to feasible level
+$m$ operators and preserves the objective, proving monotonicity.
+The product $(|z\rangle\langle z|)^{\otimes m}$ is feasible, so $L_m\le\min_z\pi_k(z)$.
+For the limit, let $X_m$ attain $L_m$ (the feasible set is compact). For each fixed $j$, the $j$-copy
+marginals of $X_m$, $m\ge j$, lie in a compact set; a diagonal subsequence gives limits $X^{(j)}$, each the
+partial trace of $X^{(j+1)}$ and supported on $\mathrm{Sym}^j((\mathbb C^2)^{\otimes n})$. By the quantum
+de~Finetti theorem for such an infinitely exchangeable family~\cite{HudsonMoody}, $X^{(j)}=\int\sigma^{\otimes j}\,d\mu(\sigma)$ for a
+probability measure $\mu$ on states. Bosonic support gives
+$1=\operatorname{tr}(FX^{(2)})=\int\operatorname{tr}\sigma^2\,d\mu(\sigma)$ for the swap $F$, so $\mu$ is carried by
+pure states $\sigma=|z\rangle\langle z|$. Hence
+$\lim_mL_m=\operatorname{tr}[G_{n,k}X^{(2)}]=\int\pi_k(z)\,d\mu\ge\min_z\pi_k(z)$; the PPT constraints are not
+needed for the limit.
+
+Unitary conjugation by $E_s$ preserves positivity, so
+$\mathcal T_s(X)\succeq0$ is exactly the usual global-copy PPT
+constraint. Global copy permutations equate all subsets of the same
+size; full transposition equates a subset with its complement. These
+are all PPT constraints. The identity
+$\epsilon\overline U\epsilon^{-1}=U$ for $U\in SU(2)$ shows that
+$\mathcal T_s$ preserves the local commutant. Bosonic support of $X$
+implies left and right invariance of $\mathcal T_s(X)$ under
+$S_s\times S_{m-s}$, so its other blocks vanish identically.
+Positivity on every remaining Fourier block is equivalent to
+positivity of the full operator; invertible basis changes preserve it.
+For $m=3$ there is just the $1|2$ flip; for $m=4$ there are the
+$1|3$ and $2|2$ flips used in the construction.
+Finally $X\mapsto\overline X$ preserves all constraints and the real
+purity objective. Averaging $X$ with $\overline X$ loses no objective
+value and justifies the conjugation-even coordinate reduction.
+\end{proof}
+
+
+\paragraph{Bosonic realignment at four copies.}
+One natural convex strengthening of PPT is the realignment
+(or computable cross-norm) condition. The copy-$2|2$
+version, however, is \emph{already implied} by the
+bosonic PPT constraints of
+Theorem~\ref{thm:spinflip-ppt-hierarchy}.
+For an operator $X$ on $V\otimes V$ write its matrix
+elements $X_{ij,kl}$ and define its realignment by
+$\mathcal R(X)_{ik,jl}=X_{ij,kl}$.
+Let $F$ swap the two $V$ factors. If $XF=X$, then
+\[
+   \mathcal R(X)_{ik,jl}
+     =X_{ij,lk}
+     =(X^{T_2})_{ik,lj},
+   \qquad\text{i.e.}\quad
+   \boxed{\mathcal R(X)=X^{T_2}F}.
+\]
+Consequently for trace-one $X$ with $X^{T_2}\succeq0$,
+$\|\mathcal R(X)\|_1=\|X^{T_2}\|_1=\tr X=1$.
+At four copies set $V=H^{\otimes2}$ and group
+$(1,2)|(3,4)$. Bosonic support on
+$\operatorname{Sym}^4(H)$ implies $XF=X$
+for the group swap $(13)(24)$; the $Y_2$
+constraint of Section~\ref{sec:fourcopy} is precisely PPT on copies $(3,4)$,
+up to its unitary spin-flip congruence.
+Thus a $2|2$ CCNR inequality adds no restriction
+to the four-copy SDP.
+
+For completeness, the \emph{unequal} copy split
+$1|3$ supplies the distinct, valid necessary
+condition
+\[
+                   \|\mathcal R_{1|3}(X_4)\|_1\le1
+\]
+for any actual (possibly twirled) fourth-power
+moment, or any convex mixture of fourth powers:
+each unaveraged pure tensor power is a product
+across that copy partition, its realignment has
+trace norm one, and convexity survives twirling.
+No claim is made that this $1|3$ condition is
+independent of the existing bosonic PPT constraints
+or that it improves the numerical seven-qubit bound;
+both questions remain untested.
+
+\subsection{The three-copy spin-flip relaxation}\label{sec:threecopy}
+
+The sharp four-qubit inequality of Theorem~\ref{thm:fqe-moment} is proved by an identity among squared norms of local contractions
+of $z\otimes z\otimes\tilde z$, $\tilde z=\epsilon^{\otimes n}\bar z$, $\epsilon=\bigl(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\bigr)$
+(Appendix~\ref{sec:fqe-sextic}). The same positivity construction gives a semidefinite relaxation for general numbers of qubits.
+
+\paragraph{Moments.} For a unit $z\in(\mathbb C^2)^{\otimes n}$ and $m$ copies, the per-site
+twirl of $(zz^*)^{\otimes m}$ by $U^{\otimes m}$, $U\in U(2)$ (which has the same commutant as $SU(2)$), lies in $\mathcal A_m^{\otimes n}$, where
+$\mathcal A_m\subset\operatorname{End}((\mathbb C^2)^{\otimes m})$ is the image of
+$\mathbb C[S_m]$, and it is positive. For $m=3$, $\mathcal A_3\cong\mathbb C\oplus M_2$ (trivial and
+standard $S_3$ blocks; the sign block vanishes on qubits). The twirl is determined by the word values
+$\mu(w)=\langle z^{\otimes3}|\bigotimes_i\pi_i|z^{\otimes3}\rangle$, $w=(\pi_1,\dots,\pi_n)\in S_3^n$.
+Since $\pi_3$ is invariant under site permutations, global copy permutations and $z\mapsto\bar z$, we
+may average $\mu$ over these; the averaged values $\bar\mu$ are constant on orbits of $S_n\times
+S_3\times S_3$ and inversion. Two families of positive matrices are linear in $\bar\mu$:
+\begin{itemize}
+  \item \emph{$\omega$-blocks}: the Fourier blocks $\sum_w\bar\mu(w)\bigotimes_i\rho(\pi_i^{-1})$ of
+    the twirl of $(zz^*)^{\otimes3}$, compressed to the copy-symmetric subspace;
+  \item \emph{$\gamma$-blocks}: the same for the twirl of $|w\rangle\langle w|$,
+    $w=z\otimes z\otimes\tilde z$. Because $\epsilon\bar U\epsilon^{-1}=U$ on $SU(2)$, this twirl is the
+    image of the first under the per-site spin-flip map
+    $t(\pi)=(I\otimes I\otimes\epsilon)^T\pi^{T_3}(I\otimes I\otimes\epsilon)$, which is expanded exactly
+    in permutations (TCB-0).
+\end{itemize}
+Every one-site antisymmetriser of three qubit copies vanishes, which gives linear relations among the
+$\bar\mu$. For $n=7$ there are $37$ orbit values, $23$ relations, $7$ $\omega$-blocks and $8$
+$\gamma$-blocks, built exactly in integer bases (TCB-0).
+
+\begin{theorem}[exact certificate; TCB-0--TCB-4]\label{thm:threecopy}
+Every pure seven-qubit state satisfies $\pi_3(\psi)\ge 125/978 = 0.12781186\ldots$,
+and the exact optimum of the $n=7$ three-copy spin-flip relaxation is $L_3 = 125/978$.
+\end{theorem}
+
+\begin{proof}
+At the boundary rational pseudo-moment $m^*/70416$ (given by $37$ four-digit integers with
+$m^*_{\mathrm{norm}}=70416$ and $m^*_{\mathrm{obj}}=9000$), all $23$ antisymmetriser relations vanish,
+nine of the $15$ integer block matrices $B_b(m^*)$ are strictly positive definite, and the remaining six
+active blocks $b\in\mathcal A=\{\omega_6,\omega_7,\gamma_4,\gamma_5,\gamma_6,\gamma_7\}$ have integer
+kernels $V_b=\ker B_b(m^*)$ of dimensions $k_b=1,14,1,5,22,56$ whose complementary principal pivot
+submatrices are strictly positive definite by fraction-free Bareiss elimination (TCB-2, TCB-3), proving
+$B_b(m^*)\succeq0$ and hence $L_3\le 125/978$. On each active block $b\in\mathcal A$, let
+$G_{\mathrm{site},b}\succ0$ be the integer
+site-invariant Gram matrix, $M_{b,0}=V_b^{\mathsf T}G_{\mathrm{site},b}V_b\succ0$, and
+$K_{b,q}=V_b^{\mathsf T}B_b(R_q)V_b$ for the $14$ integer RREF basis vectors $R_q$ of $\ker(\mathrm{rel})$.
+The $25$ canonically normalised $S_m$-invariant kernel matrices
+$\widehat Y_{b,p}=M_{b,0}^{-1}K_{b,p}M_{b,0}^{-1}/\operatorname{tr}(M_{b,0}^{-1}K_{b,p}M_{b,0}^{-1}K_{b,p})$
+have basis-independent trace pairings $\operatorname{tr}(\widehat Y_{b,p}K_{b,q})$. Solving the $14$
+reduced dual equations at $\lambda=125/978$ with $12$ rational free parameters yields symmetric rational
+multipliers $Y_b=\sum_p w_{b,p}\widehat Y_{b,p}$ on the six active kernels that TCB-3 proves strictly
+positive definite by Bareiss elimination, together with rational relation multipliers $\nu\in\mathbb Q^{23}$
+satisfying the exact $37$-orbit identity (TCB-2)
+\[
+  \bar\mu_{\mathrm{obj}}-\frac{125}{978}\bar\mu_{\mathrm{norm}}
+  =\sum_{b\in\mathcal A}\bigl\langle Y_b,V_b^{\mathsf T}B_b(\bar\mu)V_b\bigr\rangle+\nu\cdot\mathrm{rel}(\bar\mu).
+\]
+For a genuine state $\bar\mu_{\mathrm{norm}}=1$, $\mathrm{rel}(\bar\mu)=0$, $B_b(\bar\mu)\succeq0$ and
+$\bar\mu_{\mathrm{obj}}=\pi_3$, since each $B_b(\bar\mu)$ is obtained from a multiplicity block of a positive
+twirled moment by compression to the copy-invariant subspace followed by congruence with a fixed invertible
+integer matrix. The identity uses only normalisation, the relations and block positivity, so every feasible
+pseudo-moment satisfies $\bar\mu_{\mathrm{obj}}\ge 125/978$, giving $L_3=125/978$.
+The four-copy bound of Theorem~\ref{thm:fourcopy} supersedes this value; the three-copy certificate is kept
+for the strict separation of Corollary~\ref{cor:strict-copy-hierarchy} and the cubic-SOS obstruction. \qedhere
+\end{proof}
+
+
+\noindent Since $L_3=125/978<121/917$, the three-copy positivity and linear relations cannot certify the sharp
+seven-qubit bound. The boundary point $m^*/70416$ is a pseudo-moment, not a quantum state, so it is no physical
+counterexample. Through Theorem~\ref{thm:spinflip-ppt-hierarchy}, which identifies block positivity with operator
+positivity on every local representation sector, it also excludes every homogeneous real cubic SOS proof of the sharp
+bound (Theorem~\ref{thm:sextic-sos-obstruction}).
+
+\begin{corollary}[quantitative strictness of the copy hierarchy]
+\label{cor:strict-copy-hierarchy}
+Let $L_3$ and $L_4$ denote the optima of the specific
+three- and four-copy spin-flip SDPs defined in this section.
+Then the exact certificates imply
+\[
+ L_4-L_3\ \ge\
+ \frac{211}{1600}-\frac{125}{978}
+ =\frac{3179}{782400}>0.
+\]
+Thus four copies yield a provably strictly stronger
+seven-qubit SDP bound, by more than $0.00406$.
+Neither level attains $121/917$: Proposition~\ref{prop:fourcopy-not-sharp} gives $L_3<L_4<6597/50000<121/917$.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:fourcopy} gives $L_4\ge211/1600$ and Theorem~\ref{thm:threecopy} gives $L_3=125/978$.
+\end{proof}
+
+\noindent\emph{Numerical} (TCN-1): the relaxation reproduces the four-qubit value $1/3$ at $n=4$ and the AME
+values $1/4$, $1/8$ at $n=5,6$. At $n=7$ the tight-tolerance solve (TCN-1b) gives $0.1278118609\ldots$, which
+agrees with $125/978$ to $3\times10^{-13}$, so the three-copy bound stays below $121/917$. Rico et
+al.~\cite{Rico} report $0.127(8)$, without a certificate, by strengthening the linear programme with the
+quantum-code SDP of Angl\`es Munn\'e, Nemec and Huber~\cite{MNH}.

@@ -1,0 +1,4 @@
+LT-1 divided-difference bound (DD): [a,b,c](x-m)^2=1, [a,b,c](x-m)^3=0 and the concavity identity PASS
+LT-1 slope constant: eta > 64/35 > 9/5 on 3/2<=q<=8/5 PASS
+LT-2 fixed-purity path, increasing third moment and divided-difference derivative identity PASS
+LT-3 negative controls: extending to q=2 or removing the tilt bound fails PASS

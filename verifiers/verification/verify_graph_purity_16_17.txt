@@ -1,0 +1,6 @@
+GL-1 PASS: n=16, exact lower bound 1/156, nonnegative Rains multipliers and residual
+  Positive Pauli-weight penalties: [(1, '1/312'), (2, '133/102960'), (3, '19/34320'), (4, '1/6864'), (5, '1/20592')]
+GL-2 PASS: n=16, graph cuts {5: 10, 6: 500, 7: 6680, 8: 5680}, purity 1/156 = exact LP lower bound
+GL-1 PASS: n=17, exact lower bound 1/208, nonnegative Rains multipliers and residual
+  Positive Pauli-weight penalties: [(1, '7/2992'), (2, '37/38896'), (3, '307/777920'), (4, '639/5445440'), (5, '3/83776'), (6, '5/1089088')]
+GL-2 PASS: n=17, graph cuts {6: 510, 7: 4080, 8: 19720}, purity 1/208 = exact LP lower bound

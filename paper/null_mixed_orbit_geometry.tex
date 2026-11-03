@@ -1,0 +1,173 @@
+\paragraph{Sharp mixed-moment geometry.}
+With the auxiliary Bloch vectors $r,s$ of
+\eqref{eq:fqe-null-critical-bloch}, put
+$X=3\sum r_j^4-1$ and $Y=3\sum s_j^4-1$.
+We prove the endpoint $\theta=1/24$ in
+\eqref{eq:fqe-null-critical-family} by elementary polynomial inequalities in both parity sectors.
+Interpolation with the already proved $\theta=0$ bound, which is the inequality
+\eqref{eq:fqe-null-critical-sharp} of the paper, then covers
+$0\le\theta\le1/24$.
+
+First, every nonnegative unit triple $a,b,c$ obeys the strengthened norm
+inequality
+\begin{equation}\label{eq:fqe-strengthened-sphere-norm}
+ L:=a+b+c\ge1+(\sqrt3-1)u+\tfrac14(2-X-2u),\quad
+ u=3\sqrt3abc,\quad X=3(a^4+b^4+c^4)-1.
+\end{equation}
+To see this, put $B=9-9\sqrt3/2$ and use
+$a^4+b^4+c^4=1-(L^2-1)^2/2+4Labc$.
+The desired residual is
+\[
+ L-1-\tfrac38(L^2-1)^2+(3L-B)abc.
+\]
+For $1\le L\le\sqrt2$, its first three terms equal
+$(L-1)[1-3(L-1)(L+1)^2/8]\ge0$, since
+$(\sqrt2-1)(\sqrt2+1)^2=1+\sqrt2<8/3$; also $3L>B$.
+For $\sqrt2\le L\le\sqrt3$, Schur gives
+$abc\ge L(L^2-2)/9$. The resulting lower bound is
+\[
+ f(L)=-L^4/24+(\sqrt3/2-1)L^3+L^2/12+(3-\sqrt3)L-11/8.
+\]
+It is concave on that interval, with
+$f(\sqrt2)=\sqrt2-11/8>0$ and $f(\sqrt3)=0$, proving the claim.
+All these finite identities are checked by MS-1.
+
+Suppose first that $\prod_jr_js_j\le0$.
+Put $u=3\sqrt3|r_1r_2r_3|$, $v=3\sqrt3|s_1s_2s_3|$.
+For a unit triple $r$, put $t_i=r_i^2$ and $q_r=\sum_{i<j}t_it_j$. The identity
+\[
+ q_r^2-3t_1t_2t_3
+ =\tfrac12\bigl[(t_1t_2-t_2t_3)^2+(t_2t_3-t_3t_1)^2
+                         +(t_3t_1-t_1t_2)^2\bigr]\ge0
+\]
+gives the elementary bound
+\begin{equation}\label{eq:fqe-bloch-triple-product}
+ 0\le u\le3q_r=1-X/2,\qquad 0\le v\le1-Y/2.
+\end{equation}
+Write $p=1-u$, $q=1-v$, $X=2p(1-\alpha)$ and
+$Y=2q(1-\beta)$, with $p,q,\alpha,\beta\in[0,1]$; a zero
+$p$ or $q$ is handled by continuity.
+Aligning the two cube signs is admissible in this parity sector, so
+\eqref{eq:fqe-strengthened-sphere-norm} gives
+\[
+ 4\Phi\ge f_rf_s,\qquad
+ f_r=2-(1-1/\sqrt3)p+\frac{p\alpha}{2\sqrt3},\quad
+ f_s=2-(1-1/\sqrt3)q+\frac{q\beta}{2\sqrt3}.
+\]
+Set $a_{24}=4/(4-\sqrt3)$. The polynomial
+\[
+ \frac{p+q-pq}{2}+\frac{pq(1-\alpha)(1-\beta)}6
+                   -a_{24}(1-f_rf_s/4)
+\]
+is affine in each of its four variables separately.
+At the sixteen cube vertices its distinct values are
+\[
+ 0,\quad \frac{3+4\sqrt3}{26},\quad
+ \frac{-6+5\sqrt3}{78},\quad
+ \frac{2+7\sqrt3}{52},\quad \frac{3+4\sqrt3}{78},
+\]
+all nonnegative (MS-1). This proves
+$Q+XY/24\ge a_{24}(1-\Phi)$ in this sector.
+
+For the remaining parity sector ($\prod_{j=1}^3 r_j s_j\ge0$), sort the
+coordinate moduli of $r$ as $a_r\ge b_r\ge c_r\ge0$ and those of $s$ as
+$a_s\ge b_s\ge c_s\ge0$. Swap $r$ and $s$ if necessary so that
+$c_r\ge c_s$, and set
+\[
+ x=\sqrt3\,c_r\in[0,1],\quad y=\sqrt3\,c_s\in[0,x],\qquad
+ \tilde w_r=3a_rb_r,\quad \tilde w_s=3a_sb_s.
+\]
+For a sorted unit triple $a\ge b\ge c\ge0$ with $x=\sqrt3\,c$ and
+$\tilde w=3ab$, one has $a+b=\sqrt{1-c^2+2ab}=\sqrt{1+(2\tilde w-x^2)/3}$,
+$3\sqrt3\,abc=x\tilde w$, and
+$\tilde w\in\bigl[x\sqrt{3-2x^2},\,(3-x^2)/2\bigr]$, where the lower and
+upper bounds correspond to $b=c$ and $a=b$. Moreover (MS-2),
+\[
+ X=2-2x^2\Bigl(1-\frac{x^2}{3}\Bigr)-\frac23\tilde w^2
+  \ge X_{\rm lin}(x,\tilde w)
+  :=2-2x^2\Bigl(1-\frac{x^2}{3}\Bigr)-\Bigl(1-\frac{x^2}{3}\Bigr)\tilde w\ge0,
+\]
+since $X-X_{\rm lin}=\frac23\tilde w\bigl(\frac{3-x^2}{2}-\tilde w\bigr)=3ab(a-b)^2\ge0$
+and $X_{\rm lin}(x,\tilde w)=\frac12(1-x^2)^2+\bigl(1-\frac{x^2}{3}\bigr)\bigl(\frac{3-x^2}{2}-\tilde w\bigr)\ge0$.
+Using the branch $(1+(a_r+b_r+c_r)/\sqrt3)(1+(a_s+b_s-c_s)/\sqrt3)$ of $4\Phi$ gives
+$4\Phi\ge f_r(x,\tilde w_r)\,g_s(y,\tilde w_s)$ with
+\[
+ f_r(x,\tilde w_r)=1+\frac1{\sqrt3}\sqrt{1+\frac{2\tilde w_r-x^2}{3}}+\frac x3,\qquad
+ g_s(y,\tilde w_s)=1+\frac1{\sqrt3}\sqrt{1+\frac{2\tilde w_s-y^2}{3}}-\frac y3.
+\]
+Hence $Q+XY/24-a_{24}(1-\Phi)$ is bounded below by
+\[
+ \mathcal F(x,y,\tilde w_r,\tilde w_s)
+ :=\frac{1+xy\tilde w_r\tilde w_s}{2}
+   +\frac{X_{\rm lin}(x,\tilde w_r)\,Y_{\rm lin}(y,\tilde w_s)}{24}
+   +\frac{a_{24}}{4}f_r(x,\tilde w_r)\,g_s(y,\tilde w_s)-a_{24}.
+\]
+Since $(3-2x^2)-\bigl(\frac{5-2x}{3}\bigr)^2=\frac{2(1-x)(1+11x)}{9}\ge0$,
+we have $\tilde w_r\ge x\sqrt{3-2x^2}\ge\tilde w_{\rm low}(x):=\frac{x(5-2x)}{3}\ge x$
+and $\tilde w_s\ge\tilde w_{\rm low}(y)\ge y$. Consequently $2\tilde w_s-y^2\ge\frac{y(10-7y)}{3}\ge0$, so
+\[
+ Y_{\rm lin}(y,\tilde w_s)\le2-\frac23y
+ \le\frac{2\sqrt3}{\sqrt3+1}\Bigl(1+\frac1{\sqrt3}-\frac y3\Bigr)
+ \le\frac{2\sqrt3}{\sqrt3+1}\,g_s(y,\tilde w_s),
+\]
+and likewise $X_{\rm lin}(x,\tilde w_r)\le2\le\frac{2\sqrt3}{\sqrt3+1}\,f_r(x,\tilde w_r)$.
+Since $1+(2\tilde w_r-x^2)/3\le2$, the partial derivative with respect to $\tilde w_r$ satisfies
+\[
+ \frac{\partial\mathcal F}{\partial\tilde w_r}
+ \ge Y_{\rm lin}(y,\tilde w_s)\Bigl(\frac{\sqrt3+1}{18\sqrt2\,(4-\sqrt3)}-\frac1{24}\Bigr)\ge0,
+\]
+and the same calculation gives $\partial\mathcal F/\partial\tilde w_s\ge0$ (MS-2). Monotonicity in $(\tilde w_r,\tilde w_s)$
+therefore reduces the inequality to $\tilde w_r=\tilde w_{\rm low}(x)$ and
+$\tilde w_s=\tilde w_{\rm low}(y)$.
+
+At $\tilde w=\tilde w_{\rm low}(x)$ one has $x\tilde w_{\rm low}(x)=\frac{x^2(5-2x)}{3}\ge x^2$,
+\[
+ X_{\rm lin}\bigl(x,\tilde w_{\rm low}(x)\bigr)-\frac49x^2(1-x)^2
+ =\frac19(1-x)(18+3x-13x^2)=:X_b(x)\ge0,
+\]
+and $\sqrt{1+(2\tilde w_{\rm low}(x)-x^2)/3}=\frac13\sqrt{9+10x-7x^2}\ge S_b(x):=1+\frac12x-\frac7{20}x^2$,
+since $(9+10x-7x^2)-9S_b(x)^2=\frac{x(10-7x)(63x^2-90x+40)}{400}\ge0$ on $[0,1]$ (MS-2).
+Putting $\hat f(x)=1+S_b(x)/\sqrt3+x/3$ and $\hat g(y)=1+S_b(y)/\sqrt3-y/3$, we obtain
+\begin{equation}\label{eq:fqe-null-mixed-certificate}
+ Q+\frac{XY}{24}-a_{24}(1-\Phi)
+ \ge P(x,y):=\frac{1+x^2y^2}{2}+\frac{X_b(x)X_b(y)}{24}+\frac{a_{24}}{4}\hat f(x)\hat g(y)-a_{24}
+\end{equation}
+for $0\le y\le x\le1$. Write $B=1+1/\sqrt3$. Three univariate polynomials on $[0,1]$ close the bound (MS-3):
+\begin{enumerate}
+\item $\hat g(y)-\frac B2 X_b(y)=\frac y2 q_2(y)\ge0$, where
+ $q_2(y)=\bigl(1+\frac{8\sqrt3}{9}\bigr)+\bigl(\frac{16}{9}+\frac{97\sqrt3}{270}\bigr)y-\bigl(\frac{13}{9}+\frac{13\sqrt3}{27}\bigr)y^2$
+ is concave on $[0,1]$ with $q_2(0)>0$ and $q_2(1)=\frac43+\frac{23\sqrt3}{30}>0$.
+\item Consequently, for $0\le y\le x\le1$,
+ \[
+  \frac{\partial P}{\partial x}(x,y)
+  =xy^2+\frac{a_{24}}{4}\hat f'(x)\hat g(y)+\frac{X_b'(x)}{24}X_b(y)
+  \ge\frac{X_b(y)}{4-\sqrt3}\,q_1(x)\ge0,
+ \]
+ where $q_1(x):=(4-\sqrt3)\bigl(\frac{a_{24}B}{8}\hat f'(x)+\frac{X_b'(x)}{24}\bigr)
+ =\bigl(\frac{11}{20}-\frac35x\bigr)^2+\bigl(\frac{5\sqrt3}{24}-\frac{1189}{3600}\bigr)
+ +\bigl(\frac{17\sqrt3}{540}-\frac{133}{2700}\bigr)x+\bigl(\frac{163}{450}-\frac{13\sqrt3}{72}\bigr)x^2>0$ on $[0,1]$.
+\item Hence $P(x,y)\ge P(y,y)=yq_3(y)\ge0$ on $[0,1]$, where
+ \begin{align*}
+  (4-\sqrt3)\,q_3(y)
+  &=\Bigl(\frac{13}{25}-\frac{26}{25}y-\frac1{10}y^2\Bigr)^2
+   +\Bigl(\frac{11\sqrt3}{18}-\frac{5896}{5625}\Bigr)
+   +\Bigl(\frac{737}{7500}-\frac{19\sqrt3}{360}\Bigr)y\\
+  &\quad+\Bigl(\frac{173411}{202500}-\frac{79\sqrt3}{162}\Bigr)y^2
+   +\Bigl(\frac{756757}{486000}-\frac{419\sqrt3}{972}\Bigr)y^3\\
+  &\quad-\Bigl(\frac{21043}{24300}-\frac{52\sqrt3}{243}\Bigr)y^4
+   +\frac{169(4-\sqrt3)}{1944}y^5>0,
+ \end{align*}
+ since every coefficient through $y^3$ and at $y^5$ is strictly positive while the $y^3$ coefficient ($>4/5$)
+ exceeds the $y^4$ coefficient ($<1/2$) on $0\le y\le1$. Since $P(0,0)=0$, this proves $P(x,y)\ge0$ on the entire triangle $0\le y\le x\le1$.
+\end{enumerate}
+
+Finally,
+\[
+ Q+\theta XY=(1-24\theta)Q+24\theta(Q+XY/24)
+ \ge(1+8\theta)\frac3{4-\sqrt3}(1-\Phi).
+\]
+The fidelity floor already proved converts this to the displayed distance
+bound. Clusters have $Q=1/2$, $X=Y=2$ and
+$\Phi=(2+\sqrt3)/6$, attaining both coefficients for every
+$\theta$ in the stated interval (MS-4). Thus the full geometric family
+is sharp.

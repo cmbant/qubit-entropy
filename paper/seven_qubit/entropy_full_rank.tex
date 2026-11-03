@@ -1,0 +1,97 @@
+\subsection{Full-rank necessity at every local entropy maximum}
+\label{sec:seven-entropy-fullrank}
+At a rank-deficient cut, a perturbation can create a small positive eigenvalue. The resulting entropy gain
+dominates the smooth losses on the other cuts, ruling out a local maximum.
+
+\begin{proposition}[No rank-deficient local maxima of mean balanced entropy]
+\label{prop:seven-entropy-full-rank}
+Let \(z\) be a normalised pure state of seven qubits. If \(z\)
+is a local maximiser of the mean three-body von Neumann entropy
+\(E_3(z)\) on the full pure-state space, then
+\[
+                  \rho_S(z)\succ0
+                  \qquad\text{for every }|S|=3.
+\]
+More generally, for any finite multipartite pure-state system,
+a positive weighted sum of subsystem entropies cannot have a
+local maximum at a state with a rank-deficient included marginal,
+provided the included subsystem has dimension no greater than
+its complement. This holds without assuming permutation or
+local-unitary symmetry.
+\end{proposition}
+\begin{proof}
+Suppose the reduction at a cut \(A|B\), with dimensions
+\(d_A\le d_B\), has rank \(r<d_A\). Flatten the normalised
+state \(z\) into a \(d_A\times d_B\) matrix \(M\). Choose unit
+vectors \(u\in\ker M^\dagger\) and \(w\in\ker M\), and let
+\(v\) have flattening \(u w^\dagger\). Then
+\(\langle z,v\rangle=0\) and \(\|v\|=1\).
+The normalised perturbation
+\[
+ z_t=\frac{z+t v}{\sqrt{1+t^2}},\qquad
+ p=\frac{t^2}{1+t^2}
+\]
+has, at the selected cut, the exact reduced state
+\[
+ \rho_A(z_t)=(1-p)\rho_A(z)+p\,uu^\dagger,
+\]
+with orthogonal supports. Hence
+\[
+ S(\rho_A(z_t))-S(\rho_A(z))
+   =h_2(p)-pS(\rho_A(z))
+   =\frac{2t^2|\ln|t||}{\ln2}+O(t^2)
+   \qquad(t\longrightarrow0),
+\]
+where \(h_2\) is the binary entropy.
+
+For every other included subsystem \(T\), its reduced state
+\(\rho_T(z_t)\) is a real-analytic positive semidefinite
+Hermitian matrix in \(t\). Its eigenvalues separated away from
+zero at \(t=0\) contribute
+\[
+ S_T^{\rm positive}(t)-S_T^{\rm positive}(0)
+       =a_T t+O(t^2)
+\]
+by analytic functional calculus on the positive spectral
+cluster. The eigenvalues emanating from zero contribute
+\(-\sum_{\lambda_i(t)\to0}\lambda_i(t)\log_2\lambda_i(t)
+\ge0\) for sufficiently small \(t\), since all such
+eigenvalues lie in \([0,1]\). Thus
+\[
+ S(\rho_T(z_t))-S(\rho_T(z))
+       \ge a_Tt-C_Tt^2
+\]
+for small positive and negative \(t\); this also holds for
+the selected cut with its strictly positive
+\(t^2|\ln|t||\) improvement kept separately.
+
+Summing with strictly positive weights, including the
+selected cut, gives
+\[
+ E_w(z_t)-E_w(z)
+ \ge at+c\,t^2|\ln|t||-Ct^2,\qquad c>0,
+\]
+for both signs of sufficiently small \(t\).
+Choose the sign of \(t\) so that \(at\ge0\).
+Then the right side is positive for small nonzero \(t\),
+contradicting local maximality.
+For seven qubits all 35 balanced cuts have dimensions
+\(8\le16\) and positive equal weights, proving the claim.
+\end{proof}
+
+\begin{corollary}[Stabilizer exclusion at every non-AME size]
+\label{cor:stabilizer-entropy-noname}
+For $n\ge2$ and $k=\lfloor n/2\rfloor$, a pure stabilizer state is a local
+maximiser of mean $k$-body von Neumann entropy if and only if it is
+AME$(n,2)$. Consequently no stabilizer state is an unrestricted
+entropy maximiser at $n=4$ or at any $n\ge7$; in particular, neither are the graph-state minimisers of $\pi_k$ in
+Table~\ref{tab:minima}.
+\end{corollary}
+\begin{proof}
+An AME state attains the cut-dimension upper bound $k$ bits on every cut.
+Conversely, every marginal of a stabilizer state is a normalised projector, $\rho_S=2^{-r_S}\Pi_S$ with
+$\operatorname{rank}\Pi_S=2^{r_S}$ (Hein--Eisert--Briegel~\cite{HEB}). If every $k$-qubit marginal had full rank $2^k$,
+each would be maximally mixed and the state would be AME$(n,2)$. So a non-AME stabilizer state has a rank-deficient
+$k$-qubit marginal, and $k\le n-k$, so Proposition~\ref{prop:seven-entropy-full-rank} applies with equal weights.
+The AME qubit sizes are $2,3,5,6$ (Section~\ref{sec:lp}).
+\end{proof}

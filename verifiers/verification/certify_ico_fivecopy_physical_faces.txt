@@ -1,0 +1,11 @@
+dimensions {0: 1, 1: 4, 2: 5} weight multiplicities {0: 6, 1: 4, 2: 2}
+Gram determinants {0: 1, 1: 5, 2: 162}
+exact matrix units checked 42
+copies (4,) denominator 30 max numerator 40 physical reconstruction PASS involution PASS
+copies (3, 4) denominator 30 max numerator 45 physical reconstruction PASS involution PASS
+S5-1 PASS
+PK5-1 7: exact physical rank 2/33, integer kernel 31x33, max coefficient 3; elapsed=3.85s
+PK5-1 6: exact physical rank 8/77, integer kernel 69x77, max coefficient 8; elapsed=5.64s
+PK5-1 51: exact physical rank 12/137, integer kernel 125x137, max coefficient 14; elapsed=13.19s
+PK5-1 42: exact physical rank 20/148, integer kernel 128x148, max coefficient 28; elapsed=33.11s
+PK5-1 PASS: four physical kernels checked; dual equality and PSD remain OPEN

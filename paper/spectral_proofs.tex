@@ -1,0 +1,102 @@
+\section{Proofs for R\'enyi, Tsallis and mixed-state entropies}\label{sec:fqe-spectral-proofs}
+
+\begin{proof}[Proof of Corollary~\ref{cor:fqe-tsallis}]The limit \(q\to1\) is the von Neumann entropy bound \emph{in nats} (divide by
+\(\ln2\) for bits). For the proof take \(f_q(x)=(x^q-x)/(1-q)\), with \(f_q(0)=0\). On \((0,1)\), \[
+f_q'''(x)=q(2-q)x^{q-3}>0,\qquad
+f_q^{(4)}(x)=-q(2-q)(3-q)x^{q-4}<0.
+\] Thus its Hermite cubic has \(a_q>0\) and majorises \(f_q\), including \(0\) by continuity. Set
+\(g(q)=(15-7q)3^{q-1}/(5+3q)\). Direct divided differences give \[
+b_q+\tfrac{17}{12}a_q
+=\frac{6^{3-q}}{48(1-q)}
+\bigl[5+3q-(15-7q)3^{q-1}\bigr]
+=\frac{6^{3-q}(5+3q)}{48}\cdot\frac{1-g(q)}{1-q}<0. \tag{T}\label{eq:fqe-tsallis-coefficient}
+\] The prefactor is positive, so the sign claim is that \(g>1\) on \((0,1)\) and \(g<1\) on \((1,2)\).
+Indeed \(g(0)=g(1)=1\) and \[
+(\log g)'=\ln3-\frac{80}{(15-7q)(5+3q)}.
+\] Since \((15-7q)(5+3q)=75+10q-21q^2\), and \(16/15<\ln3<5/4\), this derivative is positive at \(q=0\),
+increases up to the vertex \(q=5/21\) of the quadratic and then decreases, so it crosses zero exactly once in
+\((0,1)\) (it is \(\ln3-\tfrac54<0\) at \(q=1\)) and remains negative on \([1,2)\). Thus \(g>1\) on \((0,1)\)
+and \(g<1\) on \((1,2)\), proving the strict sign in \eqref{eq:fqe-tsallis-coefficient} on either
+side of \(q=1\). The logarithm bounds follow, for example, from \(\ln3=\sum_{k\ge0}1/((2k+1)4^k)\):
+its first two terms give the lower bound \(13/12\), and using \(2k+1\ge3\) in the terms with \(k\ge2\) gives the upper
+bound \(13/12+\tfrac13\sum_{k\ge2}4^{-k}=10/9\). At \(q=1\), since \(g(1)=1\), the quotient \((1-g(q))/(1-q)\) tends to \(g'(1)=(\log g)'(1)=\ln3-\tfrac54\),
+so the continuous limit is \(b_1+17a_1/12=\tfrac{36\cdot8}{48}(\ln3-\tfrac54)=6\ln3-\tfrac{15}2<0\).
+As for the von Neumann entropy, \(f_q^{(4)}<0\) makes the Hermite remainder vanish on \([0,1]\) only at the two nodes, so
+equality can also be identified without the zeros of \(F\): \(P=1\) and \(\Delta_f=0\) give every cut the spectrum
+\((\tfrac12,\tfrac16,\tfrac16,\tfrac16)\), and Proposition~\ref{prop:fqe-onecut} applies.
+
+\end{proof}
+
+\paragraph{Sharpness of the Tsallis range.} At \(q=2\) the bound is still valid, but equality is not
+unique: \(S_2(\rho)=1-\operatorname{tr}\rho^2\) and Lemma~\ref{lem:fqe-purity} give \(\mathcal
+E_{S_2}(\psi)=1-P/3\le2/3\), with equality iff all one-qubit marginals are maximally mixed and
+\(\tau=0\). The cluster state $C_4$ of the introduction has cut spectra \((1/2,1/2,0,0)\), \((1/4)^4\), \((1/4)^4\), and so also attains \(2/3\) at
+\(q=2\). More strongly, \(M_4\) is not a mean Tsallis-\(q\) maximiser for any \(q>2\). The
+averaged cut moments are \[
+m_q=2^{-q}+3\,6^{-q},\qquad
+c_q=(2^{1-q}+2\,4^{1-q})/3,\qquad
+m_q-c_q=\frac{2^{-q}}3(1+9\,3^{-q}-8\,2^{-q}).
+\] The last parenthesis vanishes at \(q=2\) and has strictly positive derivative
+\(8(\ln2)2^{-q}-9(\ln3)3^{-q}\) for \(q\ge2\): indeed \((3/2)^q\ge9/4>9\ln3/(8\ln2)\) follows from
+\(4>3\). Therefore \(S_q(C_4)>S_q(M_4)\) for all \(q>2\). This explains why the parameter range
+\(0<q<2\) for unique \(M_4\) maximisers ends sharply at 2.
+
+\paragraph{Expanded spectral gap.} In the setting of Proposition~\ref{prop:fqe-majorant}, with $\alpha$ and $\Delta_f$ as in its proof, the purity identity
+(Lemma~\ref{lem:fqe-purity}) and the remainder identity~\eqref{eq:fqe-remainder} at \(N=1\), \(z=\psi\), turn
+\eqref{eq:fqe-spectral} into the equivalent formula
+\[
+\begin{aligned}
+3\bigl(\mathcal E_f(M_4)-\mathcal E_f(\psi)\bigr)
+={}&\left(\frac\alpha2+\frac{a}{16}\right)W_1+\frac\alpha2\tau+\frac a{32}\sum_i\|V_i-8U_i\|^2\\
+&+\frac a8\sum_{i<j}\bigl\|(R_i^{(i)}-R_j^{(j)})z\bigr\|^2+\Delta_f,
+\end{aligned}\tag{SF+}\label{eq:fqe-spectral-plus}
+\]
+in which every term is nonnegative. The residual and pair terms sum to $\frac a{12}\bigl(F-\frac34W_1\bigr)$, which
+Theorem~\ref{thm:fqe-general-envelope} bounds below by $\frac a{12}(\tau-\tau^{3/2})$.
+
+\paragraph{Tsallis stability.} For \(0<q<2\), with \(\delta_q=\mathcal E_{S_q}(M_4)-\mathcal
+E_{S_q}(\psi)\), the identity \eqref{eq:fqe-spectral-plus}, with \(\alpha_q=-b_q-17a_q/12>0\),
+and Theorem~\ref{thm:fqe-general-envelope} give
+\[
+3\delta_q\ge
+\left(\frac{\alpha_q}{2}+\frac{a_q}{16}\right)
+W_1+\frac{\alpha_q}{2}\tau+\frac{a_q}{12}\bigl(\tau-\tau^{3/2}\bigr).
+\] Here \(\alpha_q,a_q>0\) for every fixed \(q\) in this interval (with the von Neumann limit at \(q=1\)), and
+\(\tau-\tau^{3/2}\ge0\). At \(q=2\) the bound becomes the identity \(\delta_2=(W_1+\tau)/6\).
+
+\paragraph{Quantitative consequence for von Neumann entropy.} With \(\delta=E(M_4)-E(\psi)\) in bits,
+Theorem~\ref{thm:fqe-general-envelope} gives \[
+3\ln2\,\delta\ge
+\frac{21-15\ln3}{8}W_1
++\Bigl(\frac{15}4-3\ln3\Bigr)\tau+\frac32(\ln3-1)\bigl(\tau-\tau^{3/2}\bigr).
+\] Both \(\tau\) terms are nonnegative, and for small \(\tau\) the
+coefficient of \(\tau\) rises from \(\frac{15}4-3\ln3\approx0.454\) to \(\frac94-\frac32\ln3\approx0.602\). Dropping $F$ in \eqref{eq:fqe-entropy-gap} gives the simpler joint estimate \[
+W_1+\tau
+\le\frac{6\ln2}{\tfrac{15}{2}-6\ln3}\,\delta
+\approx4.57862\,\delta.
+\] Thus near-maximal entropy forces small one-qubit polarisation and spin-flip overlap.
+These conditions alone do not identify the state: cluster states also have $W_1=\tau=0$.
+Appendix~\ref{sec:fqe-orbit-stability} adds control of the distance to the two HS orbits and transfers it to
+other strict spectral majorants.
+
+\begin{proof}[Proof of Corollary~\ref{cor:fqe-convex-roof}]
+The ceiling is proved in the main text after the corollary; it remains to show that no mixed state attains it. Fix one \(2|2\) cut. The support of a
+mixed \(\rho\) contains independent vectors with \(4\times4\) flattenings
+\(A,B\). Their pencil contains a nonzero singular matrix: either a
+generator is singular, or both are invertible and the positive-degree
+polynomial \(\det(A+tB)\) has a complex root. Let \(\chi\) be the
+normalised support vector represented by that matrix. Because \(\rho\)
+is positive definite on its support, for some \(p>0\) the operator
+\(\rho-p|\chi\rangle\langle\chi|\) is positive. Thus an ensemble for
+\(\rho\) can contain \(\chi\) with positive weight. But \(\chi\) has
+deficient Schmidt rank, whereas every pure maximiser has full rank on
+this cut. Applying the strict pure-state bound to that ensemble makes
+the mean of the convex roofs strictly smaller than the ceiling.
+
+For R\'enyi entropies in the stated range, use the pure-state bound of
+Corollary~\ref{cor:fqe-renyi-gw} in place of
+\eqref{eq:fqe-spectral}; the same support argument proves strictness.
+\end{proof}
+
+The same exclusion of mixed maximisers works whenever all pure maximisers have full Schmidt rank on
+one fixed square bipartition.

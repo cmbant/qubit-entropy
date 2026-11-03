@@ -1,0 +1,129 @@
+\subsection{A joint-cut proof on the critical locus}
+\label{sec:fqe-critical-quadratic-variance}
+
+\begin{proposition}[Sharp quadratic variance on critical states]
+\label{prop:fqe-critical-quadratic-variance}
+Every critical unit four-qubit state satisfies
+\[
+ F^2+3P(P-1)\ge6V_P.
+ \tag{CQ}\label{eq:fqe-critical-quadratic-variance}
+\]
+Equality holds at HS spectra and along the full cluster-to-Bell family
+\[
+ \bigl((1+\kappa)/2,(1-\kappa)/2,0,0\bigr),\qquad
+ (1/4)^4,\qquad(1/4)^4,\qquad 0\le\kappa\le1,
+\]
+up to ordering of cuts and eigenvalues, and only there.
+In particular, the defect in \eqref{eq:fqe-quadratic-variance-proved} is at least
+$3\tau(1-\tau)/4$ on the critical locus. The proof uses no variance certificate. At $P=1$ the sharper
+profile~\eqref{eq:fqe-critical-variance} of Proposition~\ref{prop:fqe-critical-variance} holds.
+\end{proposition}
+\begin{proof}
+Use the auxiliary correlation matrix of Proposition~\ref{prop:fqe-critical-envelope}:
+\[
+ \Theta=U\operatorname{diag}(\kappa,-\kappa,1)V^T,\qquad U,V\in SO(3),
+ \qquad \tau=\kappa^2,\qquad P=1+\kappa^2/2.
+\]
+Write $r=Ue_3$, $s=Ve_3$, $A_i=r_i^2$, $B_i=s_i^2$, and
+$X=1-3e_2(A)$, $Y=1-3e_2(B)$. Thus $0\le X,Y\le1$.
+We retain these two directional parameters in both the permanent and purity estimates.
+
+\emph{The permanent bound with directions retained.}
+Put $z=\sqrt{XY}$ and
+\[
+ b_\kappa(x)=\kappa^2+\frac23\kappa(1-\kappa)^2(1-x)
+             +\frac29(1-\kappa)^3(1-3x+2x^{3/2}).
+\]
+The polar-decomposition Cauchy--Schwarz bound from
+Proposition~\ref{prop:fqe-critical-envelope}, now using
+\eqref{eq:fqe-triple-product} instead of discarding $X,Y$, gives
+\[
+ |\operatorname{perm}\Theta|
+ \le\sqrt{b_\kappa(X)b_\kappa(Y)}\le b_\kappa(z).
+\]
+For completeness, the last inequality is geometric concavity.
+Write $b_\kappa(x)=a-bx+cx^{3/2}$, where
+\[
+ a=(4\kappa^3+3\kappa^2+2)/9,\quad
+ b=2(1-\kappa)^2/3,\quad c=4(1-\kappa)^3/9.
+\]
+The sign of $d^2\log b_\kappa(e^v)/dv^2$ is the negative of
+$4ab-9ac t+bc t^3$, $t=\sqrt x$.
+This polynomial decreases on $[0,1]$, since $b\le3a$, and its value at one is
+$4\kappa^2(1-\kappa)^2(4\kappa^2+\kappa+1)/9\ge0$.
+The cases with zero arguments follow by continuity.
+Consequently the exact formula for $F$ gives
+\[
+ F\ge\kappa^2(1-\kappa)+\frac32(1-\kappa)^2z
+                  -(1-\kappa)^3z^{3/2}
+ \ge f_\kappa(z),
+\]
+where, using $\sqrt z\le(1+z)/2$,
+\[
+ f_\kappa(z)=(1-\kappa)\kappa^2
+       +\frac12(1-\kappa)^2(1+2\kappa)z
+       +\frac12(1-\kappa)^3z(1-z)\ge0.
+\]
+
+\emph{The three purities as one Fourier coefficient.}
+Let $\omega=e^{2\pi i/3}$, $D=\operatorname{diag}(1,\omega,\omega^2)$, and
+\[
+ u_c=\sum_{j=0}^2\Theta_{j+c,j}^2,\qquad
+ Z=\sum_c\omega^c u_c
+   =\operatorname{tr}(D\Theta\overline D\Theta^T).
+\]
+Indices are cyclic. The cut formula $p_c=(1+u_c)/4$ implies
+$6V_P=|Z|^2/4$.
+The symmetric unitary matrices $M=U^TDU$ and $N=V^T\overline D V$
+have $|M_{33}|^2=X$, $|N_{33}|^2=Y$.
+Their last-row off-diagonal squared norms are $1-X,1-Y$;
+their leading $2\times2$ blocks have squared Frobenius norms $1+X,1+Y$.
+Expanding $Z$ in these blocks and applying Cauchy--Schwarz gives
+\[
+ |Z|\le z+2\kappa\sqrt{(1-X)(1-Y)}
+                +\kappa^2\sqrt{(1+X)(1+Y)}
+       \le B_\kappa(z):=(1-\kappa)^2z+2\kappa+\kappa^2.
+\]
+To see the last step, fix $z$ and put $S=X+Y\ge2z$.
+The last two terms become
+$2\kappa\sqrt{1-S+z^2}+\kappa^2\sqrt{1+S+z^2}$,
+which decreases with $S$ for $0\le\kappa\le1$; evaluate at $S=2z$.
+
+\emph{An elementary scalar comparison.}
+For $0\le\kappa,z\le1$,
+\[
+ 4f_\kappa(z)^2+9\kappa^2-B_\kappa(z)^2
+       -3\kappa^2(1-\kappa^2)
+   =(1-\kappa)^2(1-z)R_\kappa(z),
+\]
+where, putting $d=1-\kappa$,
+\[
+ R_\kappa(z)=-d^4z^3+3d^3(1+\kappa)z^2
+                    -4\kappa d^2z+2\kappa^2(1+2\kappa^2).
+\]
+Since $z^3\le z^2$,
+\[
+ R_\kappa(z)\ge
+ 2d^3(1+2\kappa)z^2-4\kappa d^2z+2\kappa^2(1+2\kappa^2)\ge0.
+\]
+The final quadratic is nonnegative: its discriminant is
+$-16\kappa^3d^3(3+2\kappa+4\kappa^2)\le0$ and its leading and constant
+coefficients are nonnegative (the endpoints follow directly).
+Combining the estimates proves
+\[
+ 4F^2+9\tau-24V_P\ge3\tau(1-\tau),
+\]
+which is exactly~\eqref{eq:fqe-critical-quadratic-variance}.
+
+For $0<\kappa<1$ the scalar comparison is strict unless $z=1$.
+Then $X=Y=1$, and equality in the Fourier triangle bound forces all nonzero
+entries of $\Theta$ onto one cyclic diagonal. Their magnitudes are
+$1,\kappa,\kappa$, with negative product since $\det\Theta=-\kappa^2$.
+The cut eigenvalue formula gives precisely the displayed family.
+At $\kappa=0$, equality requires $z=0$ or $z=1$; the latter is its cluster
+endpoint, while the former requires $F=0$ and hence HS by the critical
+envelope equality case. At $\kappa=1$, equality requires $F=0$ and
+$|Z|=3$, forcing the Bell endpoint.
+Conversely the family spectra are attained by the correlation matrices
+$\operatorname{diag}(\kappa,-\kappa,1)$, and direct substitution gives equality.
+\end{proof}

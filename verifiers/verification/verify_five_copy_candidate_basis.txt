@@ -1,0 +1,17 @@
+PK5-4 triangular dyadic baseline fingerprint checked exactly; physical kernel columns unchanged
+PK5-4 triangular factor slots 24502; dense factor slots 48434
+PK5-4 7: exact physical support 31/33; dyadic basis invertible
+PK5-4 6: exact physical support 69/77; dyadic basis invertible
+PK5-4 51: exact physical support 125/137; dyadic basis invertible
+PK5-4 42: exact physical support 128/148; dyadic basis invertible
+PK5-4 61: exact physical support 57/60; dyadic basis invertible
+PK5-4 52: exact physical support 72/75; dyadic basis invertible
+PK5-4 0-7: exact physical support 2/4; dyadic basis invertible
+PK5-4 0-61: exact physical support 3/6; dyadic basis invertible
+PK5-4 0-52: exact physical support 6/9; dyadic basis invertible
+PK5-4 1-7: exact physical support 14/16; dyadic basis invertible
+PK5-4 1-61: exact physical support 27/30; dyadic basis invertible
+PK5-4 1-52: exact physical support 36/39; dyadic basis invertible
+PK5-4 baseline file bytes 253967
+PK5-4 PASS: twelve full physical kernels; identity Grams give a strict positive baseline
+Sharp coefficient identity and verified residual repair are separate FP5-1 checks

@@ -1,0 +1,41 @@
+\section{Exact finite checks}\label{sec:fqe-verifiers}
+Table~\ref{tab:fqe-checks} lists, for each result, the labels of the computer checks its proof uses and their class.
+\emph{Exact} checks are symbolic or rational-arithmetic computations: polynomial identities, ranks, dimensions and
+Bernstein coefficient signs. \emph{Verified arithmetic} uses explicit rounding-error bounds, including outward-rounded interval or ball arithmetic, so that every
+sign decision is rigorously certified. Where the class is \emph{analytic}, the proof is complete in the text and the
+checks only confirm its algebra. Section~\ref{sec:sup-verifiers} of the supplement describes each label. The scripts, data
+and captured outputs are in the companion repository~\cite{Companion}: \texttt{verifiers/MAP.md} gives the script for each label,
+and the results table of its \texttt{README.md} gives the labels for each theorem. Checks marked numerical there (TCN, FS,
+NV, TA) are evidence only, and no proof uses them.
+
+\begin{table}[ht]
+\centering\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.37\linewidth}>{\raggedright\arraybackslash}p{0.33\linewidth}>{\raggedright\arraybackslash}p{0.24\linewidth}@{}}
+\toprule
+Result & Checks & Class\\
+\midrule
+Four-qubit maximum, moment inequality and equality (Theorems~\ref{thm:fqe-entropy-max}, \ref{thm:fqe-moment};
+Appendices~\ref{sec:fqe-sextic}--\ref{sec:fqe-correlation}) & ME, SP, SI, CE, PZ, ER, CN, RG & analytic\\
+General envelope (Theorem~\ref{thm:fqe-general-envelope}) & FI, FG-6--FG-8, ESH; direct proof FG-1--FG-5 &
+exact (point evaluation on a $19$-dimensional invariant space)\\
+Tsallis, R\'enyi $q<1$, mixed states (Section~\ref{sec:fqe-spectral}) & EF & analytic\\
+R\'enyi $1<q<2$ (Corollary~\ref{cor:fqe-renyi-gw}) & QVA, QG, SD, CV; SHD, LHD; OT, BC, DA, UR, SCB, RA; HD, LT,
+CG, NU, SL, QV & exact six-copy certificate for (QV); exact Bernstein sign checks; otherwise analytic\\
+Orbit stability (Section~\ref{sec:fqe-stability-summary}, Appendix~\ref{sec:fqe-orbit-stability}) & GO; OS, BF, EH,
+NSL, NC, RP, CO, FP, PM, PS, TC, MS, LCC, CCV, EX & exact integer Gram certificate; verified arithmetic\\
+Icosahedral family and stabilizer bound (Appendix~\ref{sec:ico}) & IC, EG, GS-4 & analytic; EG verified arithmetic\\
+Seven-qubit purity minimum (Theorem~\ref{thm:fqe-seven-purity}) & S5, Y5, IK5, PK5, DP5, FP5, TT, MO, FO, CC, CP; LH, QB &
+verified arithmetic (five-copy certificate FP5-1)\\
+Seven-qubit entropy maximum (Theorem~\ref{thm:fqe-seven-entropy}) & ES, SEH, EB, SC-2, SP7, AH, E7, FO, EO &
+verified arithmetic (five-copy certificate E7-1)\\
+Copy hierarchy at seven qubits (Table~\ref{tab:fqe-seven-levels}) and its covariant structure & TCB, FC, NS, SF, SDS, HI & exact\\
+Other qubit counts (Table~\ref{tab:fqe-other-n}) & LP, GS, GL, E18, LP/QP-13, NG, SW, E13L, EU & exact rational;
+E13L verified arithmetic; EU high precision, rounded up\\
+Purity--time-reversal tradeoffs (Section~\ref{sec:fqe-discussion}) & ST, TY & exact\\
+\bottomrule
+\end{tabular}
+\caption{Computer checks used by each result, by label, with their class. Section~\ref{sec:sup-verifiers} of the
+supplement describes each label.}
+\label{tab:fqe-checks}
+\end{table}

@@ -1,0 +1,128 @@
+\section{An exact eighteen-qubit balanced-purity minimum}
+\label{sec:eighteen}
+
+\begin{theorem}[exact Rains dual and graph certificate; E18-1--E18-4]
+\label{thm:eighteen}
+For every normalised pure $18$-qubit state,
+\[
+ \boxed{\quad\pi_9(\psi)\ge\frac7{2288},\qquad
+ \min_\psi\pi_9(\psi)=\frac7{2288}.\quad}
+\]
+Equality is attained by the graph state whose eighteen
+adjacency rows (vertex $0$ is the lowest bit, in hexadecimal)
+are
+\[
+\begin{gathered}
+\texttt{36e72 0fb7d 1b80a 0cad6 25e0b 30583}\\
+\texttt{1c10b 2b228 1a262 3999b 27031 3221f}\\
+\texttt{2a696 1dd87 2a45b 273ce 22b65 1deb1}.
+\end{gathered}
+\]
+Its entire graph-state Pauli weight distribution is
+\[
+ A_0=1,\quad
+ (A_8,A_{10},A_{12},A_{14},A_{16},A_{18})
+ =(2754,18360,77112,110160,50949,2808)
+\]
+and all other weights vanish. Its $9|9$ cut-rank
+distribution is $7^{9180}9^{39440}$.
+The graph is of Type II (all vertex degrees odd) and has
+global spin-flip overlap $\tau_{18}=1$.
+\end{theorem}
+\begin{proof}
+E18-1 verifies the rational dual identity for the
+18-qubit Rains LP, with constant $7/2288$.
+Specifically, using $a_s=a_s(A)$ and shadow coefficients
+$S_i(A)$, it verifies coefficientwise
+\[
+ a_9-\tfrac7{2288}A_0
+ =\sum_{s=0}^{8}e_s(a_s-a_{18-s})
+ +\tfrac1{1166880}S_4
+ +\tfrac1{1633632}S_6
+ +\tfrac1{2498496}S_{11}
+ +\sum_{j=0}^{18}w_jA_j
+\]
+with $w_j\ge0$ and the rational multipliers
+\[
+ (e_0,\ldots,e_8)=
+ \left(\tfrac5{4004},-\tfrac{291}{2002},\tfrac{81}{364},
+ \tfrac{278}{1001},-\tfrac{333}{1001},0,
+ -\tfrac{101}{143},-\tfrac{54}{143},\tfrac{51}{26}\right).
+\]
+For a pure state the complementarity terms vanish and
+every remaining term is nonnegative.
+
+E18-2 checks the displayed binary graph is simple,
+symmetric and has odd degrees; exhaustive enumeration of
+its $2^{18}$ stabilizers gives the displayed weight
+distribution, corresponding to an extremal Type II
+self-dual additive $GF(4)$ code of minimum weight eight.
+E18-3 computes every one of the $\binom{18}{9}=48620$
+binary cut ranks, obtaining $9180$ cuts of rank $7$
+and $39440$ of rank $9$. Thus
+\[
+ \pi_9=
+ \frac{9180/128+39440/512}{48620}=\frac7{2288}.
+\]
+E18-4 independently checks the same purity from the
+Pauli weight formula. The matching lower and upper
+bounds prove the theorem.
+\end{proof}
+
+\begin{remark}[relationship to the known quaternary $S_{18}$ code]
+An extremal Hermitian self-dual quaternary
+$[18,9,8]$ code is classical and well documented
+(see Cheng--Sloane and Harada--Munemasa's
+\href{https://www.math.is.tohoku.ac.jp/~mharada/research/codes/hsd4.htm}
+{code database}).
+The graph above is a local-Clifford graph form of a
+generator in that database. E18-1--E18-4 make the
+purity/cut-rank attainment claim entirely reproducible
+without downloading the external generator.
+We do not claim novelty for the underlying code or
+the existence of an extremal $[18,9,8]$ code.
+The equality between its purity and the Rains-LP
+lower bound is the conclusion here.
+\end{remark}
+
+\begin{corollary}[further sharp time-reversal-symmetric minima;
+TY-1--TY-2]\label{cor:typeII-sixteen-twenty}
+Inside the full spin-flip-invariant marginal class,
+\[
+ \boxed{\quad
+ \min_{\tau_{16}=1}\pi_8=\frac1{143},\quad
+ \min_{\tau_{18}=1}\pi_9=\frac7{2288},\quad
+ \min_{\tau_{20}=1}\pi_{10}=\frac{131}{77792}.
+ \quad}
+\]
+For $n=16$ and $20$ the respective attaining graph
+states are the circulants $C_{16}(2,3,4,8)$ and
+$C_{20}(3,4,5,10)$. Their balanced-cut rank
+distributions are
+\[
+\begin{array}{c|l|c}
+n & \text{ranks} & \pi_{n/2}\\\hline
+16&6^{1096}7^{6882}8^{4892}&1/143\\
+20&8^{12312}9^{96900}10^{75544}&131/77792.
+\end{array}
+\]
+In particular the positive spin-flip coefficients
+$c_{16}=1/1716$ and $c_{20}=103/1478048$
+in Theorem~\ref{thm:purity-spinflip-tradeoff} are
+\emph{sharp with their stated constant terms}.
+The $n=20$ constant $1193/739024$ remains only a
+global Rains lower bound, not a proven global minimum.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:purity-spinflip-tradeoff} at
+$\tau_n=1$ gives the lower values $1/143$
+and $131/77792$ for $n=16,20$. TY-1--TY-2
+check all $2^n$ graph stabilizers and all
+balanced-cut ranks, with exact fraction arithmetic.
+Each circulant has odd degree at every vertex, hence
+$\tau_n=1$. Theorem~\ref{thm:eighteen} handles
+$n=18$ and also exhibits a $\tau_{18}=1$ minimiser.
+A stronger coefficient at $16$ or $20$ would fail
+on the respective circulant witness, proving its
+sharpness.
+\end{proof}

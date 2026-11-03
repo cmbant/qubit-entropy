@@ -1,0 +1,87 @@
+\begin{proposition}[exact thirteen-qubit interval; LP-13, QP-13, SW-2--SW-4]
+\label{prop:thirteeninterval}
+For all pure thirteen-qubit states,
+\[
+ \frac{18171249}{10^9}\ \le\
+ \min_\psi\pi_6(\psi)\ \le\ \frac{85}{4576}.
+\]
+The upper bound is attained by a stabilizer state obtained by
+measuring $X$ on vertex $4$ (indexed from $0$) of the 14-vertex graph
+in Theorem~\ref{thm:fourteenfifteen}. The Rains LP gives only $25/1408$
+(Theorem~\ref{thm:strictLP1319}).
+\end{proposition}
+\begin{proof}
+The lower bound is Theorem~\ref{thm:threecopy-sw}(a). LP-13 checks an
+exact rational Rains dual for $25/1408$ as in
+Theorem~\ref{thm:fourteenfifteen}. For the $X$-projection witness,
+QP-13 counts the restricted graph stabilizers exactly. Its
+Pauli-weight distribution has $A_0=1$, $A_1=\cdots=A_4=0$,
+$A_5=15$, $A_6=204$. Formula~\eqref{eq:as} gives
+\[
+ \pi_6=\frac{\binom{13}{6}+8A_5+A_6}
+                 {64\binom{13}{6}}=\frac{85}{4576}.
+\]
+QP-13 also checks all $14\times3$ choices of distinguished qubit
+and Pauli measurement and, by Proposition~\ref{prop:pauliprojection},
+establishes that this is the best projection from this particular
+14-qubit stabilizer witness in \emph{any} one-qubit pure basis.
+No global thirteen-qubit optimality is asserted.
+\end{proof}
+
+
+
+\begin{theorem}[quantitative Rains-LP gaps at 13 and 19 qubits; LP-13, LP-19,
+SW-2--SW-4]\label{thm:strictLP1319}
+The unrestricted balanced-purity minima satisfy
+\[
+ \boxed{\frac{25}{1408}<\frac{18171249}{10^9}\le\min_{\|\psi\|=1}\pi_6(\psi)
+      \le\frac{85}{4576}\quad(n=13),}
+\]
+\[
+ \boxed{\frac{93}{38896}<\frac{23947609}{10^{10}}\le\min_{\|\psi\|=1}\pi_9(\psi)
+      \le\frac{15201}{5912192}\quad(n=19).}
+\]
+The values $25/1408$ and $93/38896$ are the exact optima of the Rains
+\emph{linear programmes}. The improved nineteen-qubit upper bound is attained by the explicit graph
+in \texttt{code/verify\_nineteen\_graph\_improvement.py} (NG-1--NG-3).
+\end{theorem}
+\begin{proof}
+The middle inequalities are Theorem~\ref{thm:threecopy-sw}(a); the upper
+bounds are Proposition~\ref{prop:thirteeninterval} and the nineteen-qubit graph of NG-1--NG-3.
+The exact LP-13 dual of Proposition~\ref{prop:thirteeninterval}
+has strictly positive Pauli-weight slack coefficients for $j=1,\ldots,5$.
+Thus equality in the LP would force $A_1=\cdots=A_5=0$, and hence every
+five-body reduced state would be maximally mixed. Such a vector would
+be a pure one-dimensional quantum code with parameters
+$((13,1,6))_2$. A second, qualitative proof that the LP value is not
+attained is the nonexistence of $((13,1,6))_2$ codes, proved by
+Angl\`es Munn\'e and Huber~\cite{AMH26} and independently by
+Theorem~\ref{thm:threecopy-sw}(b), together with compactness.
+
+For $n=19$, the script LP-19 checks the exact rational dual identity
+\[
+ a_9-\frac{93}{38896}A_0
+ =\sum_{s\in\{0,1,2,7\}}e_s(a_s-a_{19-s})
+  +\sum_{i\in\{0,1,2,3,4,8,12,16\}}y_iS_i
+  +\sum_{j=1}^{7}w_j A_j,
+ \quad y_i>0,\ w_j>0.
+\]
+All rational multipliers are literal in the script, and every
+coefficient of $A_0,\ldots,A_{19}$ is checked exactly.
+Starting from the graph witness specified by nineteen hexadecimal adjacency
+row masks in GS-19, toggle precisely the three edges $(2,6)$, $(2,16)$, and
+$(2,18)$ (vertices indexed from zero). NG-1--NG-3 check the resulting
+symmetric binary adjacency matrix, enumerate all $2^{19}$ stabilizer elements,
+and obtain the improved purity numerator $121608$, giving
+$\pi_9=15201/5912192$. An independent enumeration of all
+$\binom{19}{9}=92378$ cut ranks yields
+$6^2\,7^{840}\,8^{26696}\,9^{64840}$ and the same purity.
+The improvement over the earlier GS-19 upper bound $449/173888$ is exactly
+$5/454784$. Neither graph is claimed globally optimal.
+
+Any state attaining the LP bound at $n=19$ would have
+$A_1=\cdots=A_7=0$, hence would define a pure
+$((19,1,8))_2$ code, which~\cite{AMH26} and
+Theorem~\ref{thm:threecopy-sw}(b) exclude: the same qualitative
+second proof.
+\end{proof}

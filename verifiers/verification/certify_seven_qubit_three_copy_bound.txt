@@ -1,0 +1,6 @@
+TCB-0 PASS: S_3 products, vanishing qubit antisymmetrizer, spin-flip expansions 6t(pi) = sum C6 sigma
+TCB-1a PASS: n=4 random states satisfy all 5 relations; all 9 blocks PSD (min normalized eig 2.15e-03)
+TCB-1b PASS: n=7 random symmetric states satisfy all 23 relations; all 15 blocks PSD (min normalized eig 3.89e-05)
+TCB-2 PASS: exact primal m*/70416 and dual identity  pi_3 - 125/978 = sum_b <Y_b,V_b^T B_b(mu) V_b> + nu.rel(mu)  on all 37 orbit coordinates
+TCB-3 PASS: all 15 primal pivot blocks PSD and all 6 active-kernel dual matrices Y_b SPD (sizes [1, 14, 1, 5, 22, 56]; 17.7s)
+TCB-4 PASS: exact three-copy optimum L_3 = 125/978 = 0.1278118609 > 639/5000 = 0.1278 > 1/8

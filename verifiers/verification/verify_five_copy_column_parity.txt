@@ -1,0 +1,12 @@
+dimensions {0: 1, 1: 4, 2: 5} weight multiplicities {0: 6, 1: 4, 2: 2}
+Gram determinants {0: 1, 1: 5, 2: 162}
+exact matrix units checked 42
+copies (4,) denominator 30 max numerator 40 physical reconstruction PASS involution PASS
+copies (3, 4) denominator 30 max numerator 45 physical reconstruction PASS involution PASS
+S5-1 PASS
+TT-1 input check: even and odd parts have disjoint column supports (so A B^T = 0) in all four stored IK5 arrays
+TT-1 symmetry: D u = u and D v = -v for the diagonal local unitary D
+TT-1 face j=0 shape 7 kernel rows 2 feature columns 128 : even/odd columns disjoint; both kernel components vanish exactly
+TT-1 face j=0 shape 61 kernel rows 3 feature columns 384 : even/odd columns disjoint; both kernel components vanish exactly
+TT-1 face j=0 shape 52 kernel rows 6 feature columns 640 : even/odd columns disjoint; both kernel components vanish exactly
+TT-1 PASS: exact column parity and physical kernel annihilation; sec 41

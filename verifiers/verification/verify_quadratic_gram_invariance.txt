@@ -1,0 +1,4 @@
+raw entries: 60861; nonzero: 57863
+QG-5a PASS: complex conjugation fixes every raw entry
+QG-5b PASS: the adjacent qubit transpositions fix every raw entry
+QG-5c PASS: three Clifford-type and two non-Clifford local unitaries on each of the four sites scale every raw entry by k^6 (u^dagger u = kI)

@@ -1,0 +1,402 @@
+\section{The sextic from elementary swap contractions}\label{sec:fqe-sextic}
+
+The proof of Theorem~\ref{thm:fqe-moment} has two parts. We first express three tensor contractions as marginal
+moments in \eqref{eq:fqe-contractions}. We then eliminate their mixed moment $\Pi_2$ using norms of one-qubit
+marginals acting on the state. The derivation uses two-dimensional antisymmetry, partial traces and matrix algebra;
+the eleven-type table evaluates the longest contraction. An independent coefficient-by-coefficient check of
+\eqref{eq:fqe-remainder} in the sixteen complex amplitudes is also available (SI-1, SI-2,
+Appendix~\ref{sec:fqe-verifiers}); it does not use that table.
+
+Write \(R_S=\operatorname{tr}_{S^c}|z\rangle\langle z|\), \(N=\|z\|^2\),
+\(P=\sum_{j=2}^4\operatorname{tr}R_{1j}^2\), \(T=\sum_{j=2}^4\operatorname{tr}R_{1j}^3\),
+\(\Pi_1=\sum_i\operatorname{tr}R_i^2\) and \(\Pi_2=\sum_{i<j}\operatorname{tr}[R_{ij}(R_i\otimes
+R_j)]\). The unnormalised Bloch vectors \(\mathbf r_i=(r_i^a)\) have components \(r_i^a=\langle
+z|\sigma_a^{(i)}|z\rangle\); put \(W_1=\sum_i\|\mathbf r_i\|^2=2\Pi_1-4N^2\) and \(F=17NP-12T-12N^3\).
+
+\subsection{One residual tensor and the local moment
+map}\label{sec:fqe-sextic_identity-one-residual-tensor-and-the-local-moment-map}
+
+Let \(\epsilon=\begin{pmatrix}0&1\\-1&0\end{pmatrix}=i\sigma_y\) and \(w=z_x\otimes z_y\otimes\tilde z_t\), \(\tilde z=\epsilon^{\otimes4}\bar z\). At one physical site define maps from three qubits to one by \[
+L|xyt\rangle=\epsilon_{yt}|x\rangle,\qquad
+M|xyt\rangle=\epsilon_{xt}|y\rangle.
+\] For each site \(i\), let \(S_i\) symmetrise its three slots (the orthogonal projector onto the symmetric subspace). On the other three sites contract
+with \(L\), or with \(L+M\), respectively: \[
+U_i=S_i\!\prod_{j\ne i}L_jw,\qquad
+V_i=S_i\!\prod_{j\ne i}(L_j+M_j)w.
+\] These are ordinary vectors on six qubits (three slots at site \(i\), one at each other site), with the inherited
+Hilbert-space norm. Write \(R_i^{(i)}\) for the one-qubit marginal
+\(R_i\) acting on qubit \(i\) of \(\mathbb C^{16}\). The exact identity is \[
+\boxed{\quad8F=6NW_1+3\sum_i\|V_i-8U_i\|^2+12\sum_{i<j}\bigl\|(R_i^{(i)}-R_j^{(j)})z\bigr\|^2.\quad} \tag{S}
+\] It immediately proves the sharp bound \(F\ge\tfrac34NW_1\ge0\). For a product state
+\(z=\sqrt N\,a_1\otimes\cdots\otimes a_4\) every \(R_i^{(i)}z=Nz\), so the pair norms vanish, and \(F=3N^3=\tfrac34NW_1\);
+the constant \(3/4\) cannot be improved. Proposition~\ref{prop:focus} of the supplement writes \(32F\) as a sum of
+site terms alone; (S) keeps the separate \(W_1\) term, which gives this bound and the envelope below.
+
+\emph{How the terms are chosen.} All norms and overlaps of \(U_i,V_i\) are expectation values in \(z^{\otimes3}\) of
+slot permutations (Section~\ref{sec:fqe-sextic_identity-the-three-contractions}), so they are polynomials in the
+marginal moments. Besides \(N^3,NP,T\), they involve \(\Pi_1\) (equivalently \(W_1\)) and the mixed moment \(\Pi_2\), which
+\(F\) does not contain. The pair norms contain exactly this mixed moment. Since \((R_i^{(i)})^2\) acts on qubit \(i\) only,
+and a \(2\times2\) matrix of trace \(N\) has \(\operatorname{tr}R^3=\tfrac12(3N\operatorname{tr}R^2-N^3)\),
+\[
+\bigl\|(R_i^{(i)}-R_j^{(j)})z\bigr\|^2=\operatorname{tr}R_i^3+\operatorname{tr}R_j^3-2\operatorname{tr}[R_{ij}(R_i\otimes R_j)],
+\qquad
+\sum_{i<j}\bigl\|(R_i^{(i)}-R_j^{(j)})z\bigr\|^2=\tfrac92N\Pi_1-6N^3-2\Pi_2 .
+\tag{Pr}\label{eq:fqe-pair-norms}
+\]
+In \(\sum_i\|V_i-tU_i\|^2\) the coefficient of \(N^3\) is \(-\tfrac43(t-8)(t+4)\). At the root \(t=8\) the \(N^3\)
+terms cancel, and the \(\Pi_2\) that remains is removed by the pair norms, leaving the nonnegative multiple
+\(6NW_1=18\|U\|^2\); at the other root \(t=-4\) the same elimination leaves a negative multiple of \(NW_1\).
+
+The first tensor is just local polarisation. Contracting the three epsilon pairs gives
+\(U_i=-S_i(z_x\otimes(R_i\epsilon^T)_{yt})\). Diagonalise \(R_i\) with eigenvalues \(\lambda,\mu\),
+and write \(z=\sqrt\lambda\,|0\rangle|\varphi_0\rangle+\sqrt\mu\,|1\rangle|\varphi_1\rangle\) with orthonormal
+\(\varphi_a\) on the remaining sites. Then \(R_i\epsilon^T\) has entries \(-\lambda\) at \((y,t)=(0,1)\) and \(\mu\) at \((1,0)\), the two
+Schmidt terms of \(U_i\) are orthogonal, and symmetrising \(|0\rangle(\mu|10\rangle-\lambda|01\rangle)\) and
+\(|1\rangle(\mu|10\rangle-\lambda|01\rangle)\) gives \((\mu-\lambda)\) times
+\(\tfrac13(|001\rangle+|010\rangle+|100\rangle)\) and \(\tfrac13(|011\rangle+|101\rangle+|110\rangle)\), each of squared norm \(1/3\); the two Schmidt terms carry the weights \(\lambda\) and \(\mu\). Hence \[
+\|U_i\|^2=\frac{(\lambda+\mu)(\lambda-\mu)^2}{3}
+=\frac N3\|\mathbf r_i\|^2. \tag{U}\label{eq:fqe-local-polarization}
+\] Thus the first term in \eqref{eq:fqe-remainder} is \(18\|U\|^2\), an ordinary one-qubit marginal defect. For
+nonzero \(z\), equality \(F=0\) forces every \(R_i=NI/2\), hence \(U_i=0\); it then requires \(V_i=0\) for all \(i\).
+Section~\ref{sec:fqe-sextic_identity-all-zeros-and-why-the-moment-bound-is-tight} classifies the
+remaining zeros.
+
+
+\subsection{The three contractions}\label{sec:fqe-sextic_identity-the-three-contractions}
+
+Write \(\|U\|^2=\sum_i\|U_i\|^2\), \(\|V\|^2=\sum_i\|V_i\|^2\) and
+\(\langle U,V\rangle=\sum_i\langle U_i,V_i\rangle\). We will show \[
+\begin{aligned}
+\|U\|^2&=(2N\Pi_1-4N^3)/3,\\
+\operatorname{Re}\langle U,V\rangle&=(-8N^3-2N\Pi_1+8\Pi_2)/3,\\
+\|V\|^2&=(128N^3-226N\Pi_1+136NP+152\Pi_2)/3-32T. \end{aligned}\tag{C}\label{eq:fqe-contractions}
+\] These contraction identities imply \eqref{eq:fqe-remainder} by direct substitution:
+\(\sum_i\|V_i-8U_i\|^2=\|V\|^2-16\operatorname{Re}\langle U,V\rangle+64\|U\|^2\), and
+\eqref{eq:fqe-contractions} turns this into \[
+\sum_i\|V_i-8U_i\|^2=\tfrac{136}{3}NP-32T-22N\Pi_1+8\Pi_2 ,
+\] in which \(N^3\) has cancelled. Adding twelve times \eqref{eq:fqe-pair-norms} and \(6NW_1=12N\Pi_1-24N^3\) to three
+times this gives \(136NP-96T-96N^3=8F\), as claimed. The rest of this subsection
+proves \eqref{eq:fqe-contractions}. Every step uses only the invariance of $z^{\otimes3}$ under simultaneous permutations of the
+copies, the vanishing of the one-site antisymmetriser and averaging over sites, so \eqref{eq:fqe-contractions} holds as a
+linear identity in the twirled three-copy moment with one flipped copy.
+
+\paragraph{Slot permutations.} In this subsection \(p=(12)\), \(q=(13)\), \(r=(23)\) are the
+transpositions of the three slots \((x,y,t)\) of one site, acting by permuting the three tensor factors, and \(c\)
+is the cycle \(c|a_1a_2a_3\rangle=|a_2a_3a_1\rangle\), with inverse
+\(c^{-1}|a_1a_2a_3\rangle=|a_3a_1a_2\rangle\). (Here the letters \(p,q,r\) denote only these
+transpositions; in particular \(q\) is not the Tsallis exponent.) Products are composed as operators, right factor first; then \[
+cr=q,\qquad pr=c^{-1},\qquad qr=c,\qquad pq=c,\qquad qp=c^{-1}.
+\] Antisymmetrising three vectors in dimension two gives zero, so \[
+I-p-q-r+c+c^{-1}=0,\qquad S=\tfrac16(I+p+q+r+c+c^{-1})=(p+q+r)/3, \tag{A}\label{eq:fqe-antisym}
+\] where \(S\) is the symmetriser of the three slots of one site (a projector).
+
+\paragraph{The kernels.} Let \(\Gamma_3\) denote the partial transpose on slot \(3\), and for an
+operator \(A\) on the three slots of a site put
+\(\mathfrak t(A)=\bigl[(I\otimes I\otimes\epsilon)^TA(I\otimes I\otimes\epsilon)\bigr]^{\Gamma_3}\). Since
+\(\tilde z=\epsilon^{\otimes4}\bar z\), moving \(\epsilon\) from the vector \(\tilde z\) to the operator and
+transposing slot \(3\) (which turns \(\bar z\) into \(z\)) gives, for an operator
+\(A=\bigotimes_{s=1}^4A_s\) with \(A_s\) acting on the three slots of site \(s\),
+\[
+\langle w,Aw\rangle=\langle z^{\otimes3},\textstyle\bigotimes_s\mathfrak t(A_s)\,z^{\otimes3}\rangle .
+\]
+The matrix elements (output \(x'y't'\), input \(xyt\)) of the four needed operators are listed below, with
+\(\epsilon_{01}=1=-\epsilon_{10}\); for instance \(L^\dagger L=I\otimes|\epsilon\rangle\langle\epsilon|=I-r\),
+where \(|\epsilon\rangle=|01\rangle-|10\rangle\). Conjugation by \(\epsilon\) on slot \(3\) acts on the two
+\(\epsilon\)'s that carry the index \(t,t'\) as \(\sum_s\epsilon_{as}\epsilon_{sb}=(\epsilon^2)_{ab}=-\delta_{ab}\);
+the two signs cancel, and each such \(\epsilon\)-pair becomes a Kronecker \(\delta\). Then \(\Gamma_3\) exchanges
+\(t\) and \(t'\). Hence \[
+\begin{aligned}
+L^\dagger L&=\delta_{xx'}\epsilon_{y't'}\epsilon_{yt}\ \to\ \delta_{xx'}\delta_{y't}\delta_{yt'}:
+&|xyt\rangle&\mapsto|xty\rangle=r,\\
+M^\dagger M&=\delta_{yy'}\epsilon_{x't'}\epsilon_{xt}\ \to\ \delta_{yy'}\delta_{x't}\delta_{xt'}:
+&|xyt\rangle&\mapsto|tyx\rangle=q,\\
+L^\dagger M&=\delta_{x'y}\epsilon_{y't'}\epsilon_{xt}\ \to\ \delta_{x'y}\delta_{y't}\delta_{xt'}:
+&|xyt\rangle&\mapsto|ytx\rangle=c,\\
+M^\dagger L&=\delta_{xy'}\epsilon_{x't'}\epsilon_{yt}\ \to\ \delta_{xy'}\delta_{x't}\delta_{yt'}:
+&|xyt\rangle&\mapsto|txy\rangle=c^{-1}.
+\end{aligned}
+\] On permutation operators, \(\mathfrak t(I)=I\) and \(\mathfrak t(p)=p\) (slot \(3\) is not involved), while for
+\(q=\tfrac12(I+\sum_a\sigma_a\otimes I\otimes\sigma_a)\) and likewise \(r\), the identity
+\(\epsilon^T\sigma_a\epsilon=\sigma_y\sigma_a\sigma_y=-\sigma_a^T\) gives \(\mathfrak t(q)=I-q\),
+\(\mathfrak t(r)=I-r\). Hence \[
+\begin{aligned}
+\mathfrak t(S)&=(2I+p-q-r)/3=:S',\\
+\mathfrak t((L+M)^\dagger(L+M))&=r+q+c+c^{-1}=-I+p+2q+2r=:K,\\
+\mathfrak t(L^\dagger(L+M))&=r+c,\qquad
+\mathfrak t(L^\dagger L)=r, \end{aligned}\tag{K}\label{eq:fqe-kernels}
+\] using \eqref{eq:fqe-antisym} for \(c+c^{-1}=p+q+r-I\). Since \(S_i^\dagger S_i=S_i\), \[
+\|V\|^2=\sum_i\bigl\langle z^{\otimes3},S'_i\textstyle\prod_{j\ne i}K_j\,z^{\otimes3}\bigr\rangle .
+\]
+The vector \(z^{\otimes3}\) is fixed by every simultaneous slot permutation (the same permutation at all
+four sites); these can be multiplied on either side of any word inside its expectation, or used to
+conjugate it.
+
+\paragraph{Words and the table.} Expanding \(S'_i\prod_{j\ne i}K_j\) gives a combination of
+\emph{words} \((\pi_1,\dots,\pi_4)\), \(\pi_s\in\{I,p,q,r\}\), with \(\pi_s\) acting on the slots of site \(s\).
+The coefficient of \(S'\) on \(I,p,q,r\) is \((2,1,-1,-1)/3\) and that of \(K\) is \((-1,1,2,2)\); their
+ratios are \((-\tfrac23,\tfrac13,-\tfrac16,-\tfrac16)\). So a word with \(a\) letters \(I\) and
+\(\beta_p,\beta_q,\beta_r\) letters \(p,q,r\) has total coefficient (summed over the focused site \(i\)) \[
+(-1)^a2^{\beta_q+\beta_r}\bigl[-2a+\beta_p-(\beta_q+\beta_r)/2\bigr]/3 .
+\] Conjugation by a global slot permutation (the same permutation on all four sites) permutes the
+transposition labels \(p,q,r\) in all six ways and does not change expectations, so the expectation of a word depends only on its \emph{type}
+\((a;b,c,d)\): \(a\) is the number of identity letters and \(b\ge c\ge d\) are the multiplicities of the three
+transpositions, sorted (together with the placement on the four sites). Let \(\#\) be the number of words of a type (these numbers sum to
+\(4^4\)), \(C\) the sum of their coefficients, and \(J\) the mean expectation of the type over its placements
+and labellings; then \(\|V\|^2=\sum CJ\). Multiplying every letter on the left by one global transposition \(g\) (written
+\(\times g\)) does not change the expectation, and changes \(pq\to c\), \(pr\to c^{-1}\).
+The table gives, for each type, a representative word, its reduction, \(J\) and \(C\).
+\[
+J_*:=\tfrac12(N^3+NP+\Pi_2)-\tfrac34N\Pi_1-\tfrac13T .
+\]
+
+{\small
+\begin{longtable}{@{}l r l l l r@{}}
+\caption{The eleven contraction types in $\|V\|^2$. $\#$ counts the words of each type,
+$J$ is their mean expectation over site placements and transposition labels, and $C$ is the sum
+of their coefficients, so $\|V\|^2=\sum CJ$. A word acts on the three copies at each of the four
+sites; $I$ is the identity and $p,q,r$ are slot transpositions. Types are grouped by the number
+of identity letters.}\label{tab:fqe-contractions}\\
+\toprule
+type & \(\#\) & word & expectation of the word & \(J\) & \(C\) \\
+\midrule
+\endfirsthead
+\multicolumn{6}{@{}l}{\small Table~\ref{tab:fqe-contractions}, continued}\\
+\toprule
+type & \(\#\) & word & expectation of the word & \(J\) & \(C\) \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+\((4;0,0,0)\) & 1 & \(IIII\) & \(N^3\) & \(N^3\) & \(-8/3\) \\
+\addlinespace
+\((3;1,0,0)\) & 12 & \(pIII\) & \(N\operatorname{tr}R_1^2\) & \(N\Pi_1/4\) & \(124/3\) \\
+\addlinespace
+\((2;2,0,0)\) & 18 & \(ppII\) & \(N\operatorname{tr}R_{12}^2\) & \(NP/3\) & \(-84\) \\
+\((2;1,1,0)\) & 36 & \(pqII\) & \(\operatorname{tr}[R_{12}(R_1\otimes R_2)]\) & \(\Pi_2/6\) & \(-136\) \\
+\addlinespace
+\((1;3,0,0)\) & 12 & \(pppI\) & \(N\operatorname{tr}R_{123}^2=N\operatorname{tr}R_4^2\) & \(N\Pi_1/4\) & \(220/3\) \\
+\((1;2,1,0)\) & 72 & \(ppqI\ \overset{\times p}{=}\ IIcp\) & \(\operatorname{tr}[R_{34}^2(R_3\otimes I)]\) & \(\frac{NP+\Pi_2}6-\frac{N\Pi_1}8\) & \(296\) \\
+\((1;1,1,1)\) & 24 & \(pqrI\) & see (c) & \(J_*\) & \(64\) \\
+\addlinespace
+\((0;4,0,0)\) & 3 & \(pppp\ \overset{\times p}{=}\ IIII\) & \(N^3\) & \(N^3\) & \(-20\) \\
+\((0;3,1,0)\) & 24 & \(pppq\ \overset{\times p}{=}\ IIIc\) & \(\operatorname{tr}R_4^3\) & \(\frac{3N\Pi_1}8-\frac{N^3}2\) & \(-248/3\) \\
+\((0;2,2,0)\) & 18 & \(ppqq\ \overset{\times p}{=}\ IIcc\) & \(\operatorname{tr}R_{34}^3\) & \(T/3\) & \(-48\) \\
+\((0;2,1,1)\) & 36 & \(ppqr\ \overset{\times p}{=}\ IIcc^{-1}\) & \(\operatorname{tr}[(R_{34}^{\Gamma})^3]\) & \(J_*\) & \(-16\) \\
+\end{longtable}
+}
+
+Here \(\operatorname{tr}R_S^k\) is the expectation of the \(k\)-cycle on the sites of \(S\) (and \(\operatorname{tr}R_S^2\)
+that of a transposition), as for the usual replica trick, and \(R^\Gamma\) is a partial transpose of a two-qubit matrix on one qubit (see (e)); the entries come from following the index lines
+of \(z^{\otimes3}\). The means are obtained as follows.
+To make the nontrivial partial-transpose entry explicit, consider the representative
+$ppqr$. Multiplication on the left by the global $p$ gives $IIcc^{-1}$.
+Trace out sites $1,2$ and write $R=R_{34}$ with entries $R_{ab,a'b'}$.
+For partial transpose on the second qubit,
+$(R^\Gamma)_{ab,a'b'}=R_{ab',a'b}$, and the opposite cycles give
+\[
+\begin{aligned}
+\langle z^{\otimes3},(IIcc^{-1})z^{\otimes3}\rangle
+&=\sum_{a,a',a'';\,b,b',b''}
+ R_{ab',a'b}R_{a'b'',a''b'}R_{a''b,ab''}\\
+&=\sum_{a,a',a'';\,b,b',b''}
+ (R^\Gamma)_{ab,a'b'}(R^\Gamma)_{a'b',a''b''}
+ (R^\Gamma)_{a''b'',ab}\\
+&=\operatorname{tr}[(R^\Gamma)^3].
+\end{aligned}
+\]
+All six indices run over $\{0,1\}$. This explains why opposite local cycles produce
+a partial-transpose moment, whereas equal cycles give $\operatorname{tr}R^3$;
+part (e) below evaluates its mean in the marginal invariants.
+
+\begin{enumerate}
+\item[(a)] Types \((4;0,0,0)\), \((0;4,0,0)\): \(N^3\) on every word. Types \((3;1,0,0)\), \((1;3,0,0)\), \((0;3,1,0)\):
+average over the four sites of \(N\operatorname{tr}R_l^2\) or \(\operatorname{tr}R_l^3\), using
+\(\operatorname{tr}R_{123}^2=\operatorname{tr}R_4^2\) for a pure state and
+\(\operatorname{tr}R^3=(3N/2)\operatorname{tr}R^2-N^3/2\) for a \(2\times2\) matrix of trace \(N\).
+\item[(b)] Types \((2;2,0,0)\), \((0;2,2,0)\): complementary pairs have equal spectra, so over the six pairs
+\(\sum_{i<j}\operatorname{tr}R_{ij}^2=2P\) and \(\sum_{i<j}\operatorname{tr}R_{ij}^3=2T\), giving the means
+\(NP/3\) and \(T/3\). Type \((2;1,1,0)\): the mean of \(\operatorname{tr}[R_{ij}(R_i\otimes R_j)]\) over the six pairs is \(\Pi_2/6\).
+\item[(c)] Type \((1;1,1,1)\): replace the identity letter by \(p+q+r-c-c^{-1}\) (equation~\eqref{eq:fqe-antisym}).
+The three transpositions give words of type \((0;2,1,1)\). In the words with \(c\) or \(c^{-1}\), multiplying all letters
+by \(c^{-1}\) or \(c\) turns the cycle into \(I\) and permutes the three transpositions, so the type is \((1;1,1,1)\) again.
+Thus \(J_{(1;1,1,1)}=3J_{(0;2,1,1)}-2J_{(1;1,1,1)}\): the two types have the same mean.
+\end{enumerate}
+To evaluate the remaining means, we use the Pauli expansion of a two-qubit matrix, derived for $N=1$ in
+Appendix~\ref{sec:fqe-correlation}; the homogeneous forms below follow by scaling.
+For the unnormalised \(R_{ij}=\frac14\bigl(NI+\mathbf r_i\!\cdot\!\boldsymbol\sigma_i+\mathbf r_j\!\cdot\!\boldsymbol\sigma_j
++\sum_{a,b}C^{ab}_{ij}\sigma_a\otimes\sigma_b\bigr)\), with \(\mathbf r_i,C_{ij}\) the (unnormalised) expectations
+and \(u_{ij}=\|\mathbf r_i\|^2+\|\mathbf r_j\|^2+\|C_{ij}\|_F^2\), \[
+\begin{aligned}
+&\operatorname{tr}R_{ij}^2=\tfrac14(N^2+u_{ij}),\qquad
+\operatorname{tr}[R_{ij}(R_i\otimes R_j)]=\tfrac14\bigl(N^3+N\|\mathbf r_i\|^2+N\|\mathbf r_j\|^2+\mathbf r_i^TC_{ij}\mathbf r_j\bigr),\\
+&\operatorname{tr}R_{ij}^3=\tfrac1{16}\bigl(N^3+3Nu_{ij}+6\,\mathbf r_i^TC_{ij}\mathbf r_j-6\det C_{ij}\bigr),\qquad
+\operatorname{tr}\bigl[R_{ij}^2(\mathbf r_i\!\cdot\!\boldsymbol\sigma_i\otimes I)\bigr]=\tfrac12\bigl(N\|\mathbf r_i\|^2+\mathbf r_i^TC_{ij}\mathbf r_j\bigr).
+\end{aligned}
+\]
+\begin{enumerate}
+\item[(d)] Type \((1;2,1,0)\): writing \(R_i\otimes I=\frac N2I+\frac12\mathbf r_i\!\cdot\!\boldsymbol\sigma_i\otimes I\), the last formula gives the
+two-qubit identity \[
+\operatorname{tr}[R_{ij}^2(R_i\otimes I)]
+=\frac N2\operatorname{tr}R_{ij}^2
++\operatorname{tr}[R_{ij}(R_i\otimes R_j)]
+-\frac N2\operatorname{tr}R_j^2 ,
+\] since both sides exceed \(\frac N2\operatorname{tr}R_{ij}^2\) by \(\frac14(N\|\mathbf r_i\|^2+\mathbf r_i^TC_{ij}\mathbf r_j)\). Averaging over the twelve ordered pairs
+\((i,j)\), whose sums are \(4P\), \(2\Pi_2\), \(3\Pi_1\) for the three terms, gives \(\frac1{12}\bigl(2NP+2\Pi_2-\frac32N\Pi_1\bigr)\), the stated \(J\).
+\item[(e)] Type \((0;2,1,1)\): partial transposition of the first qubit (or the second; they differ by a full transpose, which does not change the spectrum) reverses the sign of \(\sigma_y\) there, so
+with \(D=\operatorname{diag}(1,-1,1)\) the data become \(\mathbf r_i\to D\mathbf r_i\), \(C_{ij}\to DC_{ij}\) and \(\mathbf r_j\) is unchanged. Hence
+\(\mathbf r_i^TC_{ij}\mathbf r_j\) and \(u_{ij}\) are unchanged and \(\det C_{ij}\to-\det C_{ij}\), and the cubic formula above gives
+\(\operatorname{tr}[(R_{ij}^{\Gamma})^3]=\operatorname{tr}R_{ij}^3+\tfrac34\det C_{ij}\). Solving the formulas above for
+\(\det C_{ij}\) and summing over the six pairs, with \(\sum_{i<j}u_{ij}=8P-6N^2\), \(\sum_{i<j}(\|\mathbf r_i\|^2+\|\mathbf r_j\|^2)=3W_1\) and \(\sum_{i<j}\operatorname{tr}R_{ij}^3=2T\), gives
+\(\sum_{i<j}\det C_{ij}=4N^3+4NP+4\Pi_2-6N\Pi_1-\tfrac{16}3T\); hence \(\sum_{i<j}\operatorname{tr}[(R_{ij}^\Gamma)^3]=3(N^3+NP+\Pi_2)-\tfrac92N\Pi_1-2T\), whose mean over six pairs is \(J_*\).
+\end{enumerate}
+Summing \(CJ\) over the table proves the last line of \eqref{eq:fqe-contractions}.
+
+\paragraph{The other two contractions.} By \eqref{eq:fqe-kernels},
+\(\langle U_i,V_i\rangle\) is the expectation of \(S'_i\prod_{j\ne i}(r+c)_j\). Multiply on the right by the global \(r\):
+the factors at \(j\ne i\) become \((r+c)r=I+q\), and at \(i\) we get
+\(S'_ir_i=\frac13(2r_i-I)+\frac13(c_i^{-1}-c_i)\). Conjugation by the global \(q\) fixes \(q\) and exchanges
+\(c\) and \(c^{-1}\), so the expectation of the last term equals its own negative and vanishes. Hence \[
+\operatorname{Re}\langle U,V\rangle=\tfrac13\sum_i\Bigl\langle\bigl(2r_i-I\bigr)\prod_{j\ne i}(I+q_j)\Bigr\rangle
+=\tfrac13\sum_i\sum_{m=0}^3\ \sum_{A\subseteq\{j\ne i\},\,|A|=m}\bigl\langle(2r_i-I)\,q_A\bigr\rangle ,
+\] where \(q_A\) puts \(q\) on the sites of \(A\). There are \(4\binom3m\) pairs \((i,A)\) for each \(m\), and the terms
+\(r_iq_A\) have the types \((3;1,0,0)\), \((2;1,1,0)\), \((1;2,1,0)\), \((0;3,1,0)\) for \(m=0,1,2,3\),
+and the terms \(I_iq_A\) the types \((4;0,0,0)\), \((3;1,0,0)\), \((2;2,0,0)\), \((1;3,0,0)\), each placement occurring equally often. With
+\(J_{(a;b,c,d)}\) the means of the table, \[
+\begin{aligned}
+\operatorname{Re}\langle U,V\rangle=\tfrac43\Bigl[&2\bigl(J_{(3;1,0,0)}+3J_{(2;1,1,0)}+3J_{(1;2,1,0)}+J_{(0;3,1,0)}\bigr)\\
+&-\bigl(J_{(4;0,0,0)}+3J_{(3;1,0,0)}+3J_{(2;2,0,0)}+J_{(1;3,0,0)}\bigr)\Bigr].
+\end{aligned}
+\] The first bracket is \(\frac12NP+\Pi_2+\frac14N\Pi_1-\frac12N^3\) and the second is \(NP+N\Pi_1+N^3\), which gives
+\((-8N^3-2N\Pi_1+8\Pi_2)/3\). Only the first six rows and the row \((0;3,1,0)\) of the table are used.
+The same argument for \(\|U\|^2\), with \(L^\dagger L\mapsto r\) on the other sites, leaves
+\(\frac13\sum_i\langle 2r_i-I\rangle=\frac13\sum_i(2N\operatorname{tr}R_i^2-N^3)=(2N\Pi_1-4N^3)/3\), agreeing with \eqref{eq:fqe-local-polarization}.
+This completes the derivation of \eqref{eq:fqe-contractions}.
+
+\subsection{The critical envelope}\label{sec:fqe-critical-envelope}
+
+On the critical locus $W_1=0$, and the moment bound can be sharpened by the spin-flip invariant. For a critical
+normal vector $v$ let $\phi=\sum_kv_km_k\in\mathbb C^4$ be the auxiliary two-qubit vector (Appendix~\ref{sec:fqe-normal-form})
+and $\Theta_{\alpha\beta}=\langle\phi|\sigma_\alpha\otimes\sigma_\beta|\phi\rangle$ its Bloch correlation matrix.
+
+\begin{proposition}[critical envelope]\label{prop:fqe-critical-envelope}
+Every critical unit four-qubit state satisfies
+\[
+ \boxed{\quad F=\frac12+\frac74\tau+\frac94\operatorname{perm}\Theta\ \ge\ \tau-\tau^{3/2}.\quad}
+ \tag{CE}\label{eq:fqe-critical-envelope}
+\]
+For $0<\tau\le1$, with $\kappa=\sqrt\tau$, equality holds exactly when
+$\Theta=O(\kappa I+(1-\kappa)ss^T)$ with $s\in\{\pm1\}^3/\sqrt3$ and $O$ one of the twelve signed cyclic permutation
+matrices whose three signs have product $-1$; such states exist for every $\tau$. Since $P=1+\tau/2$ on this locus, the
+cubic moment obeys $T\le\frac5{12}+\frac{17}{12}(P-1)-\frac1{12}(x-x^{3/2})$, $x=2(P-1)$, with equality attained for every
+$P\in[1,\tfrac32]$: this is the exact upper boundary of the critical moment region, and it meets the supporting line of
+Theorem~\ref{thm:fqe-moment} only at its two ends.
+\end{proposition}
+
+\begin{proof}
+$F$ and $\tau$ are LU invariant, so take $\psi=G(v)$ with $\|v\|=1$ (Theorem~\ref{thm:fqe-critical-normal-form}).
+\emph{The formula.} The twelve magic Bell rays have signed-permutation correlation matrices
+(Lemmas~\ref{lem:fqe-critical-correlation}(1) and~\ref{lem:fqe-p1-cuts} of the supplement), so the cut $k\in\mathbb Z/3$ has the four eigenvalues
+$(1+\sigma\cdot g^{(k)})/4$, where $g^{(k)}_\beta=\Theta_{\beta+k,\beta}$ is a cyclic diagonal of $\Theta$ and $\sigma$ runs over
+the four sign triples with $\sigma_1\sigma_2\sigma_3=-1$. Over these triples $\sum(\sigma\cdot g)=0$,
+$\sum(\sigma\cdot g)^2=4|g|^2$ and $\sum(\sigma\cdot g)^3=-24g_1g_2g_3$. The three cyclic diagonals partition the
+entries of $\Theta$, and the sum of their products is the even half $e=(\operatorname{perm}\Theta+\det\Theta)/2$ of the
+permanent. Hence $P=(3+\|\Theta\|^2)/4$, $T=(3+3\|\Theta\|^2-6e)/16$ and
+$F=-\tfrac32+2\|\Theta\|^2+\tfrac92e$. In Schmidt form $\phi=(U\otimes V)(\cos\varphi|00\rangle+\sin\varphi|11\rangle)$,
+so $\Theta=R_a\operatorname{diag}(\kappa,-\kappa,1)R_b^T$ with $R_a,R_b\in SO(3)$ the rotations induced by $U,V$ and
+$\kappa=\sin2\varphi$ the concurrence of $\phi$, which in the magic basis is $|\sum_kv_k^2|=\sqrt\tau$
+by~\eqref{eq:fqe-spin-flip-normal-form}. Thus $\Theta$ has singular values $(1,\kappa,\kappa)$ and $\det\Theta=-\kappa^2$. So $\|\Theta\|^2=1+2\tau$, which gives the formula in~\eqref{eq:fqe-critical-envelope}
+and $P=1+\tau/2$ (checks CE-1, CE-2).
+
+\emph{The permanent bound.} Write the polar decomposition $\Theta=OD$, with $O\in O(3)$, $\det O=-1$,
+$D=(\Theta^T\Theta)^{1/2}=\kappa I+(1-\kappa)ss^T$ and $ODO^T=\kappa I+(1-\kappa)rr^T$; here $r,s$ are unit top singular
+vectors of $\Theta$, the local Bloch directions of $\phi$. For every $3\times3$ matrix $X$,
+$\operatorname{perm}X=\langle\omega,X^{\otimes3}\omega\rangle$ with the unit vector
+$\omega=6^{-1/2}\sum_\pi e_{\pi1}\otimes e_{\pi2}\otimes e_{\pi3}$. Cauchy--Schwarz gives
+\[
+ |\operatorname{perm}\Theta|
+ =\bigl|\bigl\langle(D^{1/2}O^T)^{\otimes3}\omega,(D^{1/2})^{\otimes3}\omega\bigr\rangle\bigr|
+ \le\bigl(\operatorname{perm}(ODO^T)\operatorname{perm}D\bigr)^{1/2}.
+\]
+For a unit vector $u$ and $y_a=u_a^2$, expanding the permanent by rows,
+\[
+ \operatorname{perm}\bigl(\kappa I+(1-\kappa)uu^T\bigr)
+ =\kappa^3+\kappa^2(1-\kappa)+2\kappa(1-\kappa)^2e_2(y)+6(1-\kappa)^3e_3(y)
+ \le\frac{2+3\kappa^2+4\kappa^3}9,
+\]
+by Maclaurin's inequalities $e_2(y)\le\frac13$, $e_3(y)\le\frac1{27}$ on the simplex (check CE-3); for $\kappa<1$ equality needs
+$y=(\frac13,\frac13,\frac13)$. Thus $-\operatorname{perm}\Theta\le(2+3\tau+4\tau^{3/2})/9$, and
+$F\ge\frac12+\frac74\tau-\frac14(2+3\tau+4\tau^{3/2})=\tau-\tau^{3/2}$.
+
+\emph{Equality.} Let $\kappa>0$, so $D$ is invertible. Equality forces $r,s\in\{\pm1\}^3/\sqrt3$ when $\kappa<1$, and
+equality with a negative sign in Cauchy--Schwarz, $(O^T)^{\otimes3}\omega=-\omega$. As $\omega$ is the symmetric tensor of
+$x_1x_2x_3$, this says $x_1x_2x_3$ changes sign under $O^T$; then $O^T$ preserves the union of the coordinate planes, so $O$
+is a signed permutation, with sign product $-1$; then $\det O=-\operatorname{sgn}\pi=-1$ makes the permutation $\pi$
+even, that is, cyclic (check CE-4). Conversely, for such
+$O$ and $s$, $\operatorname{perm}\Theta=\langle(O^T)^{\otimes3}\omega,D^{\otimes3}\omega\rangle=-\operatorname{perm}D$ attains the
+bound. Every matrix with singular values $(1,\kappa,\kappa)$ and determinant $-\kappa^2$ has the form
+$R_a\operatorname{diag}(\kappa,-\kappa,1)R_b^T$ with $R_a,R_b\in SO(3)$, so it is the correlation matrix of a suitable
+$\phi$ in Schmidt form; and every unit $\phi$ is $\sum_kv_km_k$ for a critical $G(v)$.
+The moment statement is~\eqref{eq:fqe-critical-envelope} rewritten with $\tau=2(P-1)$ and $F=17P-12T-12$.
+\end{proof}
+
+On critical states $W_1=0$, so for unit states \eqref{eq:fqe-critical-envelope} is the critical case of
+$F\ge\frac34W_1+\tau-\tau^{3/2}$, which Theorem~\ref{thm:fqe-general-envelope} proves for all states.
+
+\subsection{All zeros and why the moment bound is tight}\label{sec:fqe-sextic_identity-all-zeros-and-why-the-moment-bound-is-tight}
+
+The critical envelope classifies the zeros of $F$. This classification supplements the moment inequality; it is
+not used in the proof of Theorem~\ref{thm:fqe-entropy-max}.
+
+\begin{proposition}[complete zero set of the moment inequality]\label{prop:fqe-moment-zeros}
+For unit four-qubit states, $F=0$ holds exactly on the two $M_4$ LU orbits and the three LU orbits
+of products of Bell pairs, one for each pairing of the labelled qubits.
+\end{proposition}
+
+\begin{proof}
+A unit zero has $W_1=0$ by Theorem~\ref{thm:fqe-moment}, so it is critical, and since $\tau-\tau^{3/2}>0$ for
+$0<\tau<1$, Proposition~\ref{prop:fqe-critical-envelope} leaves $\tau\in\{0,1\}$. At $\tau=1$, $F=0$ is equality in
+\eqref{eq:fqe-critical-envelope}, so $\Theta$ is one of the twelve signed cyclic permutation matrices $O$; one cyclic
+diagonal then has entries $\pm1$ with product $-1$, and that cut has spectrum $(1,0,0,0)$. The pure cut splits the
+state into two two-qubit pure states with maximally mixed one-qubit marginals, that is, two Bell pairs. At $\tau=0$,
+$\Theta=rs^T$ with unit $r,s$, and the formula in \eqref{eq:fqe-critical-envelope} reads $F=\frac12+\frac{27}2\prod_ar_as_a$.
+Its zero $\prod_ar_as_a=-\frac1{27}$ forces $|r_a|=|s_a|=3^{-1/2}$ by the AM--GM inequality, so every cyclic diagonal
+$g^{(k)}$ has entries $\pm\frac13$ with product $-\frac1{27}$ and every cut has spectrum $(\frac12,\frac16,\frac16,\frac16)$;
+Proposition~\ref{prop:fqe-onecut} then gives the $M_4$ orbits. Conversely $M_4$, $\overline{M_4}$ and the Bell-pair
+products have $F=0$. Section~\ref{sec:sup-sextic-zeros} of the supplement gives an independent proof by a
+weighted-variance identity on the critical normal form.
+\end{proof}
+
+There is also an elementary way to distinguish the two classes. Let \(D_{1j}\) be the determinant of
+the \(1j|\widehat{1j}\) flattening, with qubit indices in increasing order. Every invertible local
+transformation multiplies all three determinants by the same factor \(\prod_i(\det A_i)^2\); their
+ratios are therefore invariant, even under invertible local filters. Directly, \[
+\frac{D_{13}(M_4)}{D_{12}(M_4)}=\frac{1-i\sqrt3}{2},
+\] whereas conjugation conjugates this nonreal ratio. Thus the two classes are distinct even under
+such filters. LU-inequivalence alone was first proved in~\cite[Prop.~7]{LWB}.
+
+By Proposition~\ref{prop:fqe-moment-zeros}, the supporting line \(17P-12T-12=0\) meets the pure-state
+moment region at exactly \((1,5/12)\) and \((3/2,9/8)\); its open line segment is unattainable.
+
+\subsection{The general envelope}\label{sec:fqe-general-envelope}
+
+\begin{theorem}[general envelope and complete equality; exact certificate, FI, FG]\label{thm:fqe-general-envelope}
+Every nonzero four-qubit vector satisfies, with $s=z^T\sigma_y^{\otimes4}z$,
+\[
+ F-\tfrac34NW_1-N|s|^2+|s|^3\ \ge\ \frac{7|s|^2}{8(N+|s|)}\,W_1 .
+ \tag{GE}\label{eq:fqe-general-envelope}
+\]
+For unit states, with $\tau=|s|^2$,
+\[
+ \boxed{\quad F\ \ge\ \Bigl(\frac34+\frac{7\tau}{8(1+\sqrt\tau)}\Bigr)W_1+\tau-\tau^{3/2}.\quad}
+\]
+Equality in $F\ge\frac34W_1+\tau-\tau^{3/2}$ holds exactly on fully product states and on the critical
+equality family of Proposition~\ref{prop:fqe-critical-envelope}, including its HS endpoint at $\tau=0$ and
+Bell-pair-product endpoint at $\tau=1$.
+\end{theorem}
+
+The coefficient $\frac78$ of the added $W_1$ term is optimal. On $z=\alpha|0000\rangle+\beta|1111\rangle$ with real
+$\alpha,\beta\ge0$, $\alpha^2+\beta^2=1$, one has $s=2\alpha\beta$, $\tau=4\alpha^2\beta^2$, $W_1=4(1-\tau)$ and $F=3+\frac32\tau$, so the boxed bound with $\frac78$ replaced by $C$ leaves the slack
+$(\frac72-4C)\tau+(1+4C)\tau^{3/2}$, negative for small $\tau>0$ when $C>\frac78$ (exact check ESH). The proof (Section~\ref{sec:sup-general-envelope} of the supplement) follows $H=F-\frac34NW_1$ along a path of unit states
+from a state with $s=0$ to $z$, along which the spin-flip overlap grows from $0$ to $s$; an exact identity for the
+derivative of $H$ along this path (exact certificate; checks FI, FG), integrated, gives~\eqref{eq:fqe-general-envelope}, and the zeros of the
+remainder give the equality cases.

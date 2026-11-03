@@ -1,0 +1,5 @@
+NG-1 PASS: three graph-edge toggles (2,6), (2,16), (2,18); loop-free symmetric adjacency.
+NG-2 PASS: exact 2^19 stabilizer distribution; purity numerator 121608; pi_9=15201/5912192.
+NG-3 PASS: all 92378 balanced cut ranks exactly {6:2, 7:840, 8:26696, 9:64840}.
+NG-3 PASS: independent cut purity equals 15201/5912192; improvement over GS-19 is 5/454784.
+NEW UPPER BOUND: min pi_9(19) <= 15201/5912192; global optimality unknown.

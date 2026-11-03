@@ -1,0 +1,4 @@
+n=5: odd weights {3: 4, 5: 12}, O = 1/10, pi_m = 2/5, pi_m + c_n O = 1/2
+n=7: odd weights {5: 16, 7: 48}, O = 1/14, pi_m = 5/14, pi_m + c_n O = 1/2
+n=9: odd weights {7: 64, 9: 192}, O = 1/18, pi_m = 13/36, pi_m + c_n O = 1/2
+ST-9 PASS: Psi_n = GHZ_{n-2} (x) Bell attains pi_m + c_n O = 1/2 with O = 1/(2n) > 0, odd n = 5..43; negative control c_n - 1/100 fails

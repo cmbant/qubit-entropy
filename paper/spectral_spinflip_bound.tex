@@ -1,0 +1,138 @@
+\subsection{A spectral cap from spin flip}
+\label{sec:fqe-spectral-spinflip}
+
+The following bound controls the part of a cut spectrum above $1/2$
+directly by two-copy quantities. It holds for every pure state, not only on
+the critical locus, and needs neither a four-qubit normal form nor a
+polynomial certificate.
+Write $x_+=\max\{x,0\}$ and use the Hilbert--Schmidt norm throughout.
+
+\begin{proposition}[Spectral spin-flip bound]
+\label{prop:fqe-spectral-spinflip}
+For every unit pure four-qubit state and every balanced cut $A|A^c$,
+\begin{equation}\label{eq:fqe-spectral-spinflip}
+ \boxed{\quad
+ (2\lambda_{\max}(\rho_A)-1)_+^2
+ \le \tau+\frac12W_1
+ =2(P-1)-\frac12W_1\le2(P-1).
+ \quad}
+\end{equation}
+Both coefficients on the first right-hand side are optimal. In particular,
+$P=1$ forces every balanced eigenvalue to be at most $1/2$.
+\end{proposition}
+
+The matrix inequality behind the proposition holds in every bipartite
+dimension. The two vectors below need only have the same Schmidt
+coefficients; their Schmidt bases may be unrelated.
+
+\begin{lemma}[Overlap and marginal mismatch]
+\label{lem:fqe-isospectral-overlap}
+Let $\psi,\phi$ be unit bipartite pure states with common squared Schmidt
+coefficients $\lambda_1\ge\cdots\ge\lambda_n\ge0$. Let
+$\rho_A,\rho_B$ and $\sigma_A,\sigma_B$ be their marginals. Then
+\begin{equation}\label{eq:fqe-isospectral-overlap}
+ |\langle\psi,\phi\rangle|^2+
+ \frac12\bigl(\|\rho_A-\sigma_A\|_F^2+
+                    \|\rho_B-\sigma_B\|_F^2\bigr)
+ \ge (2\lambda_1-1)_+^2.
+\end{equation}
+For each common Schmidt spectrum with $\lambda_1\ge1/2$, the bound is
+attained by changing the sign of every Schmidt term except the first.
+\end{lemma}
+
+\begin{proof}
+The case $\lambda_1\le1/2$ is immediate. Assume $\lambda_1>1/2$.
+Pad the coefficient matrices with zeros if the local dimensions differ,
+and choose Schmidt bases for $\psi$. Its coefficient matrix is
+$D=\operatorname{diag}(\sqrt{\lambda_i})$; write $W$ for that of $\phi$.
+Thus $WW^\dagger$ and $W^\dagger W$ have eigenvalues $\lambda_i$.
+Put
+\[
+ \Lambda=D^2,\qquad r=1-\lambda_1,\qquad d=2\lambda_1-1,
+ \qquad S=\operatorname{diag}(0,r-\lambda_2,\ldots,r-\lambda_n).
+\]
+The entries of $S$ are nonnegative and increasing. Trace rearrangement
+therefore gives, for $R=WW^\dagger$ and for $R=W^\dagger W$,
+\begin{equation}\label{eq:fqe-isospectral-rearrange}
+ \operatorname{tr}(SR)\ge
+ \sum_{i=2}^n(r-\lambda_i)\lambda_i
+ =r^2-\sum_{i=2}^n\lambda_i^2.
+\end{equation}
+Indeed, diagonalising $R$ expresses its diagonal as a doubly stochastic
+average of permutations of the decreasing vector $(\lambda_i)$; pairing
+it with the increasing diagonal of $S$ is minimised in the displayed order.
+
+Define the quadratic form
+\[
+ \mathcal B_D(W)=\|W\|_F^2+|\operatorname{tr}(DW)|^2
+       -\operatorname{tr}\bigl(\Lambda(WW^\dagger+W^\dagger W)\bigr).
+\]
+Its useful lower bound has an explicit positive remainder. Let
+$W_{\rm t}=(W_{ij})_{i,j\ge2}$ and
+$t=\sum_{i=2}^n\sqrt{\lambda_i}W_{ii}$, so $\operatorname{tr}(DW)=\sqrt{\lambda_1}W_{11}+t$. Since
+$\Lambda+S=rI+dE_{11}$, with $E_{11}$ the first matrix unit, and $1-2r=d$, the left side below is
+$d\bigl(\|W_{\rm t}\|_F^2-|W_{11}|^2\bigr)+|\sqrt{\lambda_1}W_{11}+t|^2$; for $r>0$, completing the square in
+$W_{11}$ with $\lambda_1-d=r$ gives
+\begin{equation}\label{eq:fqe-isospectral-calibration}
+ \begin{split}
+ \mathcal B_D(W)-\operatorname{tr}\bigl(S(WW^\dagger+W^\dagger W)\bigr)
+ ={}&d\left(\|W_{\rm t}\|_F^2-\frac{|t|^2}{r}\right)
+       +\frac{|rW_{11}+\sqrt{\lambda_1}t|^2}{r}\ge0.
+ \end{split}
+\end{equation}
+Cauchy--Schwarz gives
+$|t|^2\le r\sum_{i\ge2}|W_{ii}|^2\le r\|W_{\rm t}\|_F^2$.
+This proves positivity without any condition on $W$.
+When $r=0$, the remainder is simply $\|W_{\rm t}\|_F^2\ge0$.
+
+Apply~\eqref{eq:fqe-isospectral-rearrange} twice to obtain
+\[
+ \mathcal B_D(W)\ge
+ 2\left(r^2-\sum_{i=2}^n\lambda_i^2\right).
+\]
+Set $c_2=\sum_i\lambda_i^2$. In these coordinates
+$\langle\psi,\phi\rangle=\operatorname{tr}(DW)$, $\rho_A=\Lambda$, $\sigma_A=WW^\dagger$,
+and $\rho_B,\sigma_B$ are the transposes of $\Lambda,W^\dagger W$. Since
+$\operatorname{tr}(WW^\dagger)^2=\operatorname{tr}(W^\dagger W)^2=c_2$, the mismatch terms
+are $2c_2-2\operatorname{tr}(\Lambda WW^\dagger)$ and
+$2c_2-2\operatorname{tr}(\Lambda W^\dagger W)$. With $\|W\|_F^2=1$, the left-hand
+side of~\eqref{eq:fqe-isospectral-overlap} is therefore
+$\mathcal B_D(W)-1+2c_2$. Its lower bound is
+$2r^2+2\lambda_1^2-1=d^2$, as required. Taking
+$W=\operatorname{diag}(\sqrt{\lambda_1},-\sqrt{\lambda_2},\ldots,
+-\sqrt{\lambda_n})$ proves sharpness.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:fqe-spectral-spinflip}]
+Apply Lemma~\ref{lem:fqe-isospectral-overlap} to
+$\phi=\widetilde\psi=\sigma_y^{\otimes4}\overline\psi$.
+Spin flip preserves every Schmidt spectrum and
+$|\langle\psi,\widetilde\psi\rangle|^2=\tau$.
+For a two-qubit marginal on sites $i,j$, Pauli expansion gives
+\[
+ \rho_{ij}-\widetilde\rho_{ij}
+ =\frac12\left(\mathbf r_i\cdot\boldsymbol\sigma\otimes I
+              +I\otimes\mathbf r_j\cdot\boldsymbol\sigma\right),
+ \qquad
+ \|\rho_{ij}-\widetilde\rho_{ij}\|_F^2
+ =\|\mathbf r_i\|^2+\|\mathbf r_j\|^2.
+\]
+Thus the two marginal mismatch terms add to $W_1/2$.
+The purity identity gives the remaining equalities and inequality
+in~\eqref{eq:fqe-spectral-spinflip}.
+
+For sharpness take
+$\psi=(a|00\rangle+b|11\rangle)_{12}\otimes
+(|00\rangle+|11\rangle)_{34}/\sqrt2$, with real $a,b\ge0$ and
+$a^2+b^2=1$. On $12|34$, the left side is one, while
+$\tau=4a^2b^2$ and $W_1=2(a^2-b^2)^2$, so equality holds throughout.
+The choices $a=b$ and $b=0$ force respectively the coefficients of
+$\tau$ and $W_1$ to be at least $1$ and $1/2$.
+\end{proof}
+
+Equation~\eqref{eq:fqe-spectral-spinflip} supplies a fully analytic quantum
+compatibility constraint. The separate-cut bounds do not by themselves
+replace the quadratic variance certificate: SCB-5 gives exact classical spectra
+satisfying all three caps and even $F\ge\tau$ (hence the critical
+envelope~\eqref{eq:fqe-critical-envelope}) but violating (QK), so compatibility
+between the three cut spectra still matters.

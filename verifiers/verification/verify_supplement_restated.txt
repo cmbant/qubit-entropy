@@ -1,0 +1,12 @@
+ok   sup_general_envelope.tex: Theorem thm:fqe-general-envelope
+ok   sup_renyi.tex: Theorem thm:fqe-sharp-quadratic-variance
+ok   sup_renyi.tex: Corollary thm:fqe-quadratic-variance
+ok   sup_renyi.tex: Lemma lem:fqe-renyi-determinant
+ok   sup_renyi.tex: Theorem thm:fqe-renyi-classical
+ok   stability_proofs.tex: Theorem thm:fqe-orbit-stability
+ok   sup_stability.tex: Theorem thm:fqe-critical-orbit-sharp
+ok   sup_stability.tex: Theorem thm:fqe-p1-sharp
+ok   sup_seven.tex: Theorem thm:fqe-seven-purity
+ok   sup_seven.tex: Theorem thm:fqe-seven-entropy
+ok   global_overlap_certificate.tex: Theorem thm:fqe-global-overlap
+11 restated statements, 0 differ from the paper (text or kind)

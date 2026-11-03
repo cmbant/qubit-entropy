@@ -1,0 +1,23 @@
+SW-0 PASS: per-site algebra, Fourier inversion, flip involution, antisymmetriser = 0
+SW-1 PASS: Haar moment reproduces the Haar mean purity (2^k+2^(n-k))/(2^n+1) exactly for n = 4..7
+SW-1 PASS: exact gamma map at n = 4 identical for two independent point sets
+SW-1 PASS n=4: a random integer state lies in the parameter family (5+4 exact points), its flipped values equal sum_b tr[Gamma_b(x) R_b(g)] exactly, gamma-blocks PSD (min relative eigenvalue 4.4e-04)
+SW-1 PASS n=5: a random integer state lies in the parameter family (7+4 exact points), its flipped values equal sum_b tr[Gamma_b(x) R_b(g)] exactly, gamma-blocks PSD (min relative eigenvalue 2.2e-03)
+SW-2 PASS n=13: 68 parameters, 41 omega- and 53 gamma-blocks; exact gamma map; 53 multipliers positive definite (1s)
+SW-3 PASS n=13: all 41 omega-blocks of the residual positive definite (1s)
+SW-4 n=13: every pure 13-qubit state has mean 6-body purity >= 18171249/1000000000 = 0.0181712490
+SW-2 PASS n=13: 68 parameters, 41 omega- and 53 gamma-blocks; exact gamma map; 53 multipliers positive definite (0s)
+SW-3 PASS n=13: all 41 omega-blocks of the residual positive definite (0s)
+SW-4 n=13: every pure 13-qubit state has mean 5-body purity >= 15699039/500000000 = 0.0313980780
+SW-4 n=13: 15699039/500000000 > 2^-5, so no pure 13-qubit state is 5-uniform: no ((13,1,6))_2 code
+SW-2 PASS n=19: 209 parameters, 87 omega- and 105 gamma-blocks; exact gamma map; 105 multipliers positive definite (16s)
+SW-3 PASS n=19: all 87 omega-blocks of the residual positive definite (26s)
+SW-4 n=19: every pure 19-qubit state has mean 9-body purity >= 23947609/10000000000 = 0.0023947609
+SW-2 PASS n=19: 209 parameters, 87 omega- and 105 gamma-blocks; exact gamma map; 105 multipliers positive definite (1s)
+SW-3 PASS n=19: all 87 omega-blocks of the residual positive definite (11s)
+SW-4 n=19: every pure 19-qubit state has mean 7-body purity >= 78133177/10000000000 = 0.0078133177
+SW-4 n=19: 78133177/10000000000 > 2^-7, so no pure 19-qubit state is 7-uniform: no ((19,1,8))_2 code
+SW-2 PASS n=25: 502 parameters, 152 omega- and 176 gamma-blocks; exact gamma map; 176 multipliers positive definite (109s)
+SW-3 PASS n=25: all 152 omega-blocks of the residual positive definite (269s)
+SW-4 n=25: every pure 25-qubit state has mean 9-body purity >= 4882879/2500000000 = 0.0019531516
+SW-4 n=25: 4882879/2500000000 > 2^-9, so no pure 25-qubit state is 9-uniform: no ((25,1,10))_2 code

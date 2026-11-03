@@ -1,0 +1,2 @@
+PZ-1 PASS: Bloch-operator invertibility and exact positive-Bloch support exclusion
+PZ-2 PASS: generic GHZ H=(9/2)N tau

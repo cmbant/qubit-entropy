@@ -1,0 +1,4 @@
+[PASS] OS-1 full quadratic Taylor form equals block formula; quadratic eigenvalues 0^11, 6^12, 20^9; kernel = radial + 10 orbit tangents
+[PASS] OS-2 local sextic Taylor radius 2^-10; coarse k>1/15, alpha>beta (the sharper k>16/225 is GO-4; alpha>6beta follows from ln3<11/10 in the text); exact rational inequalities
+[PASS] OS-3 Q=0 at both HS representatives; Bell: F=0,Q=1/2; cluster: P=1,F=Q=1/2; unit normal has quadratic coefficient 6
+All OS checks passed (exact).

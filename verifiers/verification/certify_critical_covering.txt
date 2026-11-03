@@ -1,0 +1,4 @@
+[PASS] CCV sector +1: 208953 boxes discharged by a certified bound G>0, 0 by d^2<=1/400, 42 inside the local cone boxes (verify_critical_local_cone.py); 26180 boxes skipped (tau>0.37 or P>P', transposition); 396608 ball-arithmetic attempts, 187655 unsuccessful
+[PASS] CCV sector -1: 246044 boxes discharged by a certified bound G>0, 436 by d^2<=1/400, 42 inside the local cone boxes (verify_critical_local_cone.py); 20750 boxes skipped (tau>0.37 or P>P', transposition); 454288 ball-arithmetic attempts, 207808 unsuccessful
+CCV tasks completed: 128 of 128 required initial boxes
+[PASS] CCV covering complete: every box of the chart with |w|^2 <= 37/100, both parity sectors, is discharged

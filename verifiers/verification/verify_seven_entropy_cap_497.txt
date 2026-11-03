@@ -1,0 +1,8 @@
+PASS SP7-5: N''(r) = 112*r*(7*r-3)/((1-r)^2*(1+7*r)^2) and N(6/7) = 0 verified symbolically
+PASS SP7-5: every 8-level rho satisfies 3-S(rho) >= (7*log2(7)/48)*(8*tr(rho^2)-1) > (49/120)*(8*tr(rho^2)-1) > (2/5)*(8*tr(rho^2)-1)
+PASS SP7-6: tangent-sum identity 2t+(1-t-a)(1-L)-a(3+L) = 1+t-(1-t)L-4a verified symbolically
+PASS SP7-6: d/dt [5t-45/98-(1-t)L-c] = 5+L > 0 (L = log2(3) > 1), so the lower bound is increasing in t
+PASS SP7-6: E3 >= 59307/20000 implies every three-body lambda_max < 497/1000
+PASS SP7-6: exact rational tangent + square-completion lower bound 4755759/3920000 exceeds 4851/4000 by 1779/3920000
+Rigorous lower bound and positive gap, decimal display only: 1.2132038265306122 0.0004538265306122449
+Scope: the contender eigenvalue cap; the global bound is thm:seven-entropy-global-maximum (E7-1).

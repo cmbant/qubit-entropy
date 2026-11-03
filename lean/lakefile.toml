@@ -1,0 +1,20 @@
+name = "four_qubit_entropy"
+version = "0.1.0"
+defaultTargets = ["FourQubitEntropy", "FormalResearch"]
+
+[[lean_lib]]
+name = "FourQubitEntropy"
+
+[[lean_lib]]
+name = "QVCheckImpl"
+roots = ["QVCheckImpl.Basic", "QVCheckImpl.DataStr", "QVCheckImpl.Impl1", "QVCheckImpl.Impl2", "QVCheckImpl.Impl3", "QVCheckImpl.Impl4", "QVCheckImpl.Impl5"]
+precompileModules = true
+
+[[lean_lib]]
+name = "FormalResearch"
+roots = ["FormalResearch.NQubit", "FormalResearch.NQubit.Entropy.PurityEnvelope", "FormalResearch.NQubit.Entropy.PuritySlope", "FormalResearch.NQubit.Entropy.QuadraticMajorant", "FormalResearch.NQubit.Foundations", "FormalResearch.NQubit.Graph.CutPurity", "FormalResearch.NQubit.Graph.CutRankBitmask", "FormalResearch.NQubit.Graph.F2Rank", "FormalResearch.NQubit.Graph.MeanPurity", "FormalResearch.NQubit.Graph.State", "FormalResearch.NQubit.Graph.Symmetry", "FormalResearch.NQubit.Pauli.Conjugation", "FormalResearch.NQubit.Pauli.GHZ", "FormalResearch.NQubit.Pauli.Hermitian", "FormalResearch.NQubit.Pauli.Weight", "FormalResearch.NQubit.Reduced.Entropy", "FormalResearch.NQubit.Reduced.MeanPurity", "FormalResearch.NQubit.Reduced.PartialTrace", "FormalResearch.NQubit.Reduced.Purity", "FormalResearch.NQubit.Shadow.Basic", "FormalResearch.NQubit.Shadow.Homogeneous", "FormalResearch.NQubit.TimeReversal.Doubling", "FormalResearch.NQubit.TimeReversal.OddOverlap", "FormalResearch.NQubit.TimeReversal.OddSector", "FormalResearch.NQubit.TimeReversal.Omega"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "5ed2965256430c3649e86755f9576b54eca72435"

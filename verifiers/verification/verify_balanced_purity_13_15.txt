@@ -1,0 +1,10 @@
+LP-13 PASS: exact rational certificate pi_6 >= 25/1408
+LP-14 PASS: exact rational certificate pi_7 >= 331/27456
+LP-15 PASS: exact rational certificate pi_7 >= 1/104
+GS-14 PASS: exact graph with 47 edges, rank counts {5: 60, 6: 1684, 7: 1688}, purity 331/27456
+GS-15 PASS: exact graph with 56 edges, rank counts {5: 35, 6: 1380, 7: 5020}, purity 1/104
+QP-13 PASS: best postselection X on vertex 4, pi_6=85/4576.
+QP-13: arbitrary pure-basis postselection is a convex combination
+       of the X,Y,Z axis purity profiles (stabilizer restriction proof).
+EXACT: min pi_7(n=14)=331/27456, min pi_7(n=15)=1/104.
+OPEN n=13: 25/1408 <= min pi_6 <= 85/4576.

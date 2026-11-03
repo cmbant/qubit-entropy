@@ -1,0 +1,5 @@
+RA-1 PASS: fourth-derivative and endpoint algebra; 15 printed Taylor bounds; tails 3,3,14; scalar bound 141/100 without a parameter grid
+RA-2 PASS: logarithm absorption (141 sqrt(2)/200)^2 = 19881/20000 < 1
+RA-3 PASS: logarithm conversion, slack absorption and summed moment-defect identities
+RA-4 PASS: integer comparisons at 3/2 (100 < 108) and 8/5 (via 47/31); exact HS/cluster comparison at 1587/1000 and 1589/1000; 1587/1000 < q_* < 1589/1000
+RA-5 PASS: exact purity-defect constants, cap-free P >= 10/9

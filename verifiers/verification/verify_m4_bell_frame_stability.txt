@@ -1,0 +1,5 @@
+[PASS] BF-1 all 16-variable quartic determinant coefficients and cubic gradients; C = (3/2)||adj Z||^2 + (1/2)||ZZ^T Z-sZ/2||^2
+[PASS] BF-2 magic Pauli basis and arbitrary skew-matrix normalization for W1
+[PASS] BF-3 Gram deficit, exact compatible-plane cosine sqrt((1+c)/(3(1-c))), null-ray correction <=7Delta/4; Bell-frame constant 9/2
+[PASS] BF-4 standard Bell products form a trine, alternative-pairing magic matrices are O/2, HS null plane has Q=0 and Bell overlap^2=1/2
+All BF checks passed (exact); analytic inequalities are proved in the paper.

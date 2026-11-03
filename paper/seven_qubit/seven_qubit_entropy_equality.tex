@@ -1,0 +1,28 @@
+\subsection{The entropy equality orbit}\label{sec:seven-entropy-equality}
+
+The positive identity and the invariant-square equality theorem shared with
+purity fix the five-copy moment, after which the degree-four invariants
+recover the orbit.
+
+\begin{proposition}[Entropy equality fixes the five-copy moment]
+\label{prop:seven-entropy-equality-moment}
+If a normalised pure seven-qubit state $z$ satisfies $E_3(z)=E_*$, then
+\[
+                     X_5^+(z)=X_5^+(\psi_{x_*}).
+\]
+Consequently it is local-unitarily and site-permutation equivalent to
+$\psi_{x_*}$.
+\end{proposition}
+\begin{proof}
+Proposition~\ref{prop:seven-competitor-band} and Corollary~\ref{cor:seven-entropy-eigen-cap-497} apply to $z$, so
+Proposition~\ref{prop:seven-joint-entropy-target} and
+Theorem~\ref{thm:seven-entropy-localized-identity} give
+$E_*\le\mathcal P_5(z)\le E_*$. Every term of the positive identity
+therefore vanishes; since each $C_b$ is positive definite, so does every face
+$W_b^{\mathsf T}\Gamma_b(X_5^+(z))W_b$. Apply
+Theorem~\ref{thm:fivecopy-family-equality} with $y=x_*$, which lies in its
+interval by Proposition~\ref{prop:entropy-seven-stationarity}: the spanning
+hypothesis is the last assertion of
+Theorem~\ref{thm:seven-entropy-localized-identity}. The converse follows from
+local-unitary and permutation invariance and $E_3(\phi)=E_*$.
+\end{proof}

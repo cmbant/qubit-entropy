@@ -1,0 +1,68 @@
+\subsection{The minimum-purity slice}
+\label{sec:fqe-p1-sharp}
+Statements are proved; the finite verifications are interval-certified (outward-rounded ball
+arithmetic, every sign decision a certain comparison) or exact, and are listed in
+Section~\ref{sec:sup-verifiers} (PM, PS).
+This section gives the coordinates, symmetries and equality geometry on the slice $P=1$ ($\tau=0$) that
+Section~\ref{sec:fqe-critical-sharp} uses for the whole critical locus.
+
+\paragraph{Geometry of the equality states.}
+At an equality point $\delta$ is stationary in every direction, because one Bloch vector is an axis
+ and $\delta$ is even in the vanishing coordinate of the other, while four
+admissible cube pairs tie (PM-4) and, computationally, their $d^2$-gradients form a regular tetrahedron around $0$ (explanatory; not used). The distance $d^2$
+therefore has a conical corner and $\delta-C_*d^2$ has a conical minimum in the three transverse directions;
+the one smooth direction, which rotates the second vector within its coordinate plane, is the wall of
+Lemma~\ref{lem:fqe-p1-wall}, where the wall function $G_w$ is stationary.  This picture is explanatory; the proof uses the
+exact identities of Lemma~\ref{lem:fqe-critical-local-cone}.
+
+\subsubsection*{Coordinates and inputs}
+Let $r,s$ be the unit auxiliary Bloch vectors of \eqref{eq:fqe-null-critical-bloch}; indices are taken mod $3$.
+\begin{lemma}[Cut spectra; PM-1]\label{lem:fqe-p1-cuts}
+For $k\in\mathbb Z/3$ put $u^{(k)}_a=r_{a+k}s_a$ and let
+\[
+ \mathcal S=\{(-,-,-),(-,+,+),(+,-,+),(+,+,-)\}.
+\]
+The three physical cuts have the spectra $\{(1+\sigma\cdot u^{(k)})/4:\sigma\in\mathcal S\}$, $k=0,1,2$ in some order.
+Hence $E=\frac13\sum_kg(u^{(k)})$, $g(u)=\sum_{\sigma\in\mathcal S}\eta\bigl((1+\sigma\cdot u)/4\bigr)$,
+$\eta(x)=-x\log_2x$, $\delta=1+\tfrac12\log_23-E$, and $\sum_k|u^{(k)}|^2=|r|^2|s|^2=1$.
+\end{lemma}
+\begin{proof}
+Let $h_{ji}=H_j^Te_i$ be the unit vectors of Lemma~\ref{lem:fqe-critical-real-density}. Since $h_{ji}$ is real,
+$Mh_{ji}$ is a Bell ray; write
+$C^{ji}_{\alpha\beta}=\langle Mh_{ji}|\sigma_\alpha\otimes\sigma_\beta|Mh_{ji}\rangle$ for its correlation matrix, which is real
+orthogonal with determinant $-1$. Its projector is $\tfrac14(I+\sum_{\alpha\beta}C^{ji}_{\alpha\beta}\sigma_\alpha\otimes\sigma_\beta)$, so
+the probability $\lambda_{ji}=|h_{ji}^Tv|^2=|\langle Mh_{ji},Mv\rangle|^2$ is $(1+r^TC^{ji}s)/4$, as $Mv=a\otimes b$.
+\emph{Cut $0$.} From the definitions of the $m_k$, $(\sigma_\alpha\otimes\sigma_\alpha)m_k=s^\alpha_km_k$ with
+$s^x=(+,+,-,-)$, $s^y=(-,+,-,+)$, $s^z=(+,-,-,+)$. So $C^{0i}$ has diagonal $(s^x_i,s^y_i,s^z_i)$, entries $\pm1$, and being
+orthogonal it is diagonal; the four diagonals $(+,-,+),(+,+,-),(-,-,-),(-,+,+)$ are the elements of $\mathcal S$.
+\emph{Cuts $1,2$.} Let $u=\tfrac12\bigl(-I+i(\sigma_z-\sigma_x-\sigma_y)\bigr)$, a unitary with $u\sigma_\beta u^\dagger=\sum_\alpha
+R_{\alpha\beta}\sigma_\alpha$, where $Re_1=e_2$, $Re_2=-e_3$, $Re_3=-e_1$. Direct multiplication gives
+$MH_2M^\dagger=u\otimes u^\dagger$ and $MH_1M^\dagger=(u\otimes u^\dagger)\,\mathrm{SWAP}$, where SWAP exchanges the two auxiliary
+qubits and transposes correlation matrices. Since $Mh_{ji}=(MH_jM^\dagger)^\dagger m_i$, this gives
+$C^{2i}=R^TC^{0i}R^T$ and $C^{1i}=RC^{0i}R$. As $R_{\alpha\beta}\ne0$ only for $\alpha=\beta+1$, these are the signed
+permutations $C^{ji}_{\alpha\beta}=\sigma_\beta[\alpha=\beta+k_j]$ with $(k_j)=(0,2,1)$; the four column-sign triples $\sigma$ of
+each cut are distinct and have product $\det C^{ji}=-1$, so they run over $\mathcal S$. Hence
+$r^TC^{ji}s=\sigma\cdot u^{(k_j)}$. PM-1 recomputes all twelve $C^{ji}$ exactly from the physical magic basis.
+\end{proof}
+\begin{lemma}[Symmetries; PM-2]\label{lem:fqe-p1-sym}
+$\delta$ and $d^2$ are invariant under: even sign changes of the six coordinates; cyclic shifts of $r$ alone and of $s$
+alone; and the exchange $r\leftrightarrow s$.  (The stated operations permute both the admissible cube pairs and the twelve
+probabilities. Fidelity alone is also invariant under arbitrary coordinate permutations
+of either vector.)
+\end{lemma}
+
+\subsubsection*{The wall}
+Let $h(t)=H_{\rm b}((1+t)/2)$, with $H_{\rm b}$ the binary entropy defined in Appendix~\ref{sec:fqe-critical-orbit-stability}.
+For $r=e_1$ and $s=(\cos\theta,0,\sin\theta)$ (a point of the wall) write
+$\delta_w(\theta)=\frac12\log_23-\frac13(1+h(\cos\theta)+h(\sin\theta))$,
+$d_w^2(\theta)=2-\sqrt{B(1+(\cos\theta+\sin\theta)/\sqrt3)}$, $B=1+1/\sqrt3$, and $G_w=\delta_w-C_*d_w^2$.
+\begin{lemma}[Wall]\label{lem:fqe-p1-wall}
+$G_w(\pi/4)=0$ by \eqref{eq:fqe-p1-cstar}, and $G_w(\theta)=G_w(\pi/2-\theta)$; hence $G_w'(\pi/4)=0$.
+\end{lemma}
+\begin{proof}
+The reflection $\theta\mapsto\pi/2-\theta$ exchanges $\cos\theta$ and $\sin\theta$, so it exchanges $h(\cos\theta)$ and
+$h(\sin\theta)$ and fixes $\cos\theta+\sin\theta$; thus $\delta_w$ and $d_w^2$ are both invariant.  $G_w$ is smooth near
+$\pi/4$ (there $\cos\theta,\sin\theta\in(0,1)$, where $h$ is analytic), and an even function of $\theta-\pi/4$ has zero
+derivative at $\pi/4$.
+\end{proof}
+

@@ -1,0 +1,208 @@
+\section{Quantitative stability of the maximising LU orbits}
+\label{sec:fqe-orbit-stability}
+
+The entropy deficit $\delta(\psi)=E(M_4)-E(\psi)$ controls the
+squared Hilbert-space distance to the two HS orbits. The gap identity
+\eqref{eq:fqe-entropy-gap} controls $W_1$ and the spin-flip overlap
+$\tau$, but both also vanish at cluster states; the sextic moment
+defect is needed to distinguish the maximisers.
+
+The defect $Q$ below bounds HS infidelity with sharp coefficient one
+(Theorem~\ref{thm:fqe-global-overlap}). This gives a uniform, nonoptimal
+entropy-distance bound, while the optimal coefficient on critical
+states is known (Theorem~\ref{thm:fqe-orbit-stability};
+Appendix~\ref{sec:fqe-critical-orbit-stability}). We also transfer the
+bounds to other spectral functionals
+(Appendix~\ref{sec:fqe-orbit-consequences}). Complete proofs and
+further stability estimates are in
+Sections~\ref{sec:fqe-stability-proofs} and~\ref{sec:sup-stability}
+of the supplement~\cite{Companion}.
+Write
+\[
+ \mathcal M=\{e^{i\theta}(U_1\otimes\cdots\otimes U_4)\xi:
+       U_i\in SU(2),\ \xi\in\{M_4,\overline{M_4}\}\},\qquad
+ d(\psi)=\min_{\chi\in\mathcal M}\|\psi-\chi\|.
+\]
+Thus global phase is included, qubits are labelled, and
+$d^2\le2(1-1/\sqrt6)$ for unit states
+(Lemma~\ref{lem:fqe-hs-fidelity-floor} of the supplement). Equivalently, if $\Phi(\psi)=\max_{\chi\in\mathcal M}
+|\langle\psi,\chi\rangle|^2$, then $d^2=2(1-\sqrt{\Phi})$.
+Use $N,P,T,F$ from Theorem~\ref{thm:fqe-moment}, and put
+\[
+ Q(z)=F(z)+N(P(z)-N^2)=18NP-12T-13N^3,\qquad
+ k=\frac{\ln3-1}{2\ln2}>\frac{16}{225}.
+\]
+This nonnegative homogeneous sextic vanishes on the unit sphere precisely at $\mathcal M$. On unit states also set
+$\mathcal D=F+3(W_1+\tau)=F+6(P-1)=Q+5(W_1+\tau)/2$.
+The entropy-gap identity \eqref{eq:fqe-entropy-gap} gives
+\begin{equation}\label{eq:fqe-orbit-surrogate}
+ \delta(\psi):=1+\tfrac12\log_2 3-E(\psi)\ \ge\ k\mathcal D(\psi)\ge k Q(\psi).
+\end{equation}
+Indeed the left side of \eqref{eq:fqe-entropy-gap} is $3\ln2\,\delta(\psi)$, and its coefficients
+$\alpha=15/2-6\ln3$ of $P-1$ and $\beta=3(\ln3-1)/2$ of $F$ satisfy $\alpha>6\beta$, since $\ln3=1.0986\ldots<11/10$.
+As $k=\beta/(3\ln2)$, dropping $\Delta_H\ge0$ gives
+$\delta\ge(\alpha(P-1)+\beta F)/(3\ln2)\ge k(6(P-1)+F)=k\mathcal D$.
+Rational series bounds for $\ln2,\ln3$ give $k>16/225$ (GO-4).
+
+\begin{theorem}[Sharp HS overlap stability]\label{thm:fqe-global-overlap}
+For every unit pure four-qubit state,
+\begin{equation}\label{eq:fqe-global-overlap-sharp}
+ Q(\psi)\ge1-\Phi(\psi)
+ \ge\frac{6+\sqrt{6(1+\sqrt{\tau(\psi)})}}{12}\,d(\psi)^2
+ \ge\frac{6+\sqrt6}{12}\,d(\psi)^2,\qquad \frac{6+\sqrt6}{12}>\frac7{10}.
+\end{equation}
+Equality in $Q\ge1-\Phi$ holds on $\mathcal M$ ($Q=0$, $\Phi=1$) and on the three Bell-pair-product LU orbits
+($Q=\Phi=1/2$), so the coefficient one is optimal.
+\end{theorem}
+\noindent[Exact rational certificate, GO-1--GO-3; proof in Section~\ref{sec:fqe-global-overlap} of the supplement.]
+
+\begin{theorem}[Explicit global LU-orbit stability]\label{thm:fqe-orbit-stability}
+For every unit pure four-qubit state,
+\[
+ d(\psi)^2\le\frac{12}{6+\sqrt6}\,Q(\psi),\qquad
+ \boxed{\ \delta(\psi)\ge k\,\frac{6+\sqrt6}{12}\,d(\psi)^2\ },\qquad k\,\frac{6+\sqrt6}{12}>\frac1{20}.
+\]
+For every critical state the optimal bound is $\delta\ge C_*d^2$, with
+$C_*\approx0.19058$ (Theorem~\ref{thm:fqe-p1-sharp}).
+On an explicit neighbourhood of the two orbits the coefficient improves:
+\[
+ d(\psi)\le1/20\quad\Longrightarrow\quad
+ \delta(\psi)\ge\frac3{10}d(\psi)^2.
+\]
+Its sharp limiting coefficient is
+$c_*=(2-\ln3)/(2\ln2)$, in the precise sense of
+\eqref{eq:fqe-entropy-local-sharp}. The power two is optimal.
+No optimal global coefficient is claimed; the equality states of
+Theorem~\ref{thm:fqe-p1-sharp} show that it is at most $C_*$.
+\end{theorem}
+\noindent[Uses Theorem~\ref{thm:fqe-global-overlap}; proof in Section~\ref{sec:fqe-stability-proofs} of the supplement.]
+
+The overlap bound is an exact positivity certificate for $Q-(1-\Phi)$ on a $19$-variable closest-orbit normal slice
+(Section~\ref{sec:fqe-global-overlap} of the supplement): a degree-six polynomial identity writing it as $277$ rational
+Gram forms weighted by the slice's positive constraints, each Gram matrix certified positive by an integer diagonal-dominance test,
+plus two explicit nonnegative remainders; the entropy bound then follows from
+\eqref{eq:fqe-orbit-surrogate}. The local radius comes from the
+transverse quadratic forms of $Q$ and of the entropy at the orbit.
+Brierley and Higuchi~\cite{BH} previously proved local maximality of entropy.
+The proofs are in Sections~\ref{sec:fqe-stability-proofs} and~\ref{sec:sup-stability} of the supplement.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}p{.22\linewidth}p{.22\linewidth}p{.44\linewidth}@{}}
+\toprule
+Domain & Coefficient in $\delta\ge Cd^2$ & Status and proof \\
+\midrule
+All unit pure states & $C=1/20$ & Certified, nonoptimal; Theorem~\ref{thm:fqe-global-overlap} and \eqref{eq:fqe-orbit-surrogate}. \\[3pt]
+$d\le1/20$ & $C=3/10$ & Explicit local bound; \eqref{eq:fqe-entropy-local-radius} of the supplement. \\[3pt]
+$d\to0$ & $c_*=(2-\ln3)/(2\ln2)$ & Sharp limiting coefficient; \eqref{eq:fqe-entropy-local-sharp} of the supplement. \\[3pt]
+Critical states & $C=C_*$ & Optimal on the whole critical locus; Theorem~\ref{thm:fqe-p1-sharp}, analytic bounds and interval certificates. \\[3pt]
+All unit pure states & $C=C_*$ & Open; the critical equality states give an upper bound on any universal coefficient. \\
+\bottomrule
+\end{tabular}
+\caption{Distance stability: domains, constants and proof methods. The elementary polarisation and
+spin-flip defect bounds follow directly from \eqref{eq:fqe-entropy-gap}; they do not yet control $d$.}
+\label{tab:fqe-stability-scope}
+\end{table}
+
+\subsection{Sharp constants on the critical locus}
+\label{sec:fqe-critical-orbit-stability}
+A state is critical when all four one-qubit marginals are $I/2$. This locus contains $M_4$, the cluster state and the
+Bell-pair products, and on it the constants can be made sharp. Both theorems below are proved in the
+supplement~\cite{Companion} (Sections~\ref{sec:fqe-critical-orbit-proof}, \ref{sec:fqe-p1-sharp} and~\ref{sec:fqe-critical-sharp} there).
+
+\begin{theorem}[Sharp critical-state orbit stability]
+\label{thm:fqe-critical-orbit-sharp}
+For every critical unit pure four-qubit state, with $\Phi,d,Q,k$
+as in Appendix~\ref{sec:fqe-orbit-stability},
+\begin{align}
+ Q(\psi)&\ge\max\{1-\Phi(\psi),\;3/2-2\Phi(\psi)\},
+                 \label{eq:fqe-critical-fidelity}\\
+ Q(\psi)&\ge\frac{2+\sqrt2}{4}d(\psi)^2,
+                 \label{eq:fqe-critical-distance}\\
+ \delta(\psi)&\ge k\bigl(\max\{1-\Phi,3/2-2\Phi\}+5\tau/2\bigr)
+       \ge k\,\frac{2+\sqrt2}{4}\,d(\psi)^2.
+                 \label{eq:fqe-critical-entropy}
+\end{align}
+The coefficient one in $Q\ge1-\Phi$, and the coefficient
+$(2+\sqrt2)/4$ in \eqref{eq:fqe-critical-distance}, are both optimal:
+Bell-pair products attain them. The comparison $Q\ge1-\Phi$ holds for all states
+(Theorem~\ref{thm:fqe-global-overlap}).
+If the critical state also has $\tau=0$, equivalently if $P=1$, then
+\begin{equation}\label{eq:fqe-null-critical-sharp}
+ \Phi\ge\frac{2+\sqrt3}{6},\qquad
+ Q\ge\frac3{4-\sqrt3}(1-\Phi)\ge\frac{3+\sqrt3}{4}d^2.
+\end{equation}
+These coefficients and the fidelity floor are optimal, attained by cluster states.
+\end{theorem}
+\noindent[Checks CO-1--CO-3. Uses Theorem~\ref{thm:fqe-global-overlap}; proof in Section~\ref{sec:fqe-critical-orbit-proof} of the supplement.]
+
+\noindent The moment route thus gives the entropy coefficient $k(2+\sqrt2)/4$ on the critical locus. On the slice $P=1$ a critical normal form is described by two auxiliary Bloch vectors
+$r,s\in S^2$ (equation~\eqref{eq:fqe-null-critical-bloch} of the supplement), in which Section~\ref{sec:sup-nullsharp} of the
+supplement proves a one-parameter sharpening of \eqref{eq:fqe-null-critical-sharp}. The optimal entropy coefficient
+on the critical locus is larger. Put $p=\cos^2(\pi/8)=(2+\sqrt2)/4$, $H_{\rm b}(x)=-x\log_2x-(1-x)\log_2(1-x)$ and
+\begin{equation}\label{eq:fqe-p1-cstar}
+ C_*=\frac{\tfrac12\log_23-\tfrac13\bigl(1+2H_{\rm b}(p)\bigr)}
+          {2-\sqrt{(1+1/\sqrt3)(1+\sqrt{2/3})}}
+    =0.190578947\ldots
+\end{equation}
+
+\begin{theorem}[Sharp entropy stability on the critical locus]
+\label{thm:fqe-p1-sharp}
+Every critical unit pure four-qubit state satisfies
+\[
+ \delta(\psi)\ \ge\ C_*\,d(\psi)^2 ,
+\]
+and equality with $d>0$ holds exactly for states whose critical normal form has
+one of the following $144$ Bloch-coordinate pairs, all with $P=1$. In the auxiliary Bloch coordinates $(r,s)\in S^2\times S^2$ of the null-critical normal form they are: one of $r,s$ is a signed
+coordinate axis and the other is $(\pm e_b\pm e_c)/\sqrt2$, $b\ne c$ ($6\cdot12$ pairs, twice for the swap).
+These pairs attain the bound, so $C_*$ is the optimal coefficient on the critical locus. Consequently every universal coefficient in
+$\delta\ge Cd^2$ is at most $C_*$, and the question left open is whether $C_*$ is optimal over all states.
+\end{theorem}
+\noindent[Interval-certified; proof in Sections~\ref{sec:fqe-p1-sharp} and~\ref{sec:fqe-critical-sharp} of the supplement.]
+
+\noindent The equality states explain the formula~\eqref{eq:fqe-p1-cstar}. For $r=e_1$, $s=(e_2+e_3)/\sqrt2$ one cut is maximally
+mixed and the other two have spectrum $(p,p,1-p,1-p)/2$ (Lemma~\ref{lem:fqe-p1-cuts} of the supplement), so the
+numerator is the entropy deficit $\delta=1+\frac12\log_23-\frac13\bigl(2+2(1+H_{\rm b}(p))\bigr)$; the closest cube pair gives
+$2\sqrt\Phi=\sqrt{(1+1/\sqrt3)(1+\sqrt{2/3})}$, so the denominator is $d^2=2-2\sqrt\Phi$.
+The proof represents a critical state by a $3\times3$
+correlation matrix in a six-parameter chart, settles $\tau\ge0.36$ analytically, and covers the rest by an
+interval-certified bisection together with a local cone lemma at the equality points.
+
+\subsection{Spectral functionals and limitations}
+\label{sec:fqe-orbit-consequences}
+\begin{corollary}[Spectral-majorant stability]\label{cor:fqe-orbit-spectral}
+In Proposition~\ref{prop:fqe-majorant}, suppose $a>0$ and
+$\alpha=-b-17a/12>0$. Then
+\[
+ \mathcal E_f(M_4)-\mathcal E_f(\psi)
+ \ge\frac{c_O}{3}\min(\alpha,a/12)d(\psi)^2,\qquad c_O=\frac{6+\sqrt6}{12}.
+\]
+For critical states, $c_O$ can be replaced by $(2+\sqrt2)/4$.
+For $d\le2^{-10}$ the local bound $Q\ge3d^2$ replaces $c_O/3$ by $1$.
+In particular this applies to every fixed Tsallis parameter $0<q<2$,
+including its von Neumann limit in nats. At $q=2$, the enlarged
+maximiser set prevents such stability relative to $\mathcal M$.
+The same holds for every defect estimate of this shape: the R\'enyi
+defect estimate \eqref{eq:fqe-renyi-defect} in the proof of
+Theorem~\ref{thm:fqe-renyi-above-one} of the supplement,
+$3m_q\ln2\,(\mathcal E_q(M_4)-\mathcal E_q(\psi))\ge\alpha_q(P-1)+\frac{a_q}{12}F$
+with $m_q=2^{-q}+3\cdot6^{-q}$ and $a_q,\alpha_q>0$ the cubic and purity coefficients defined there, gives for $1<q\le5/4$
+\[
+ \mathcal E_q(M_4)-\mathcal E_q(\psi)
+ \ge\frac{c_O\min(\alpha_q,a_q/12)}{3m_q\ln2}\,d(\psi)^2 .
+\]
+\end{corollary}
+\noindent[Uses Theorem~\ref{thm:fqe-global-overlap}.]
+\begin{proof} Drop the scalar remainder in \eqref{eq:fqe-spectral}. Since $P\ge1$, $F\ge0$ and $Q=F+P-1$ on unit states,
+$\alpha(P-1)+\frac a{12}F\ge\min(\alpha,a/12)\,Q$; this is also the R\'enyi case. Then use $Q\ge c_Od^2$
+(Theorem~\ref{thm:fqe-global-overlap}), \eqref{eq:fqe-critical-distance} for critical states, or, for the local
+statement, $Q\ge3d^2$ when $d\le2^{-10}$ (Section~\ref{sec:fqe-orbit-local} of the supplement). \end{proof}
+
+\paragraph{Limitations.}
+The global coefficient remains a worst-case bound. Bell-pair products have
+$F=0$ but $Q=1/2$, and the cluster state has $W_1=\tau=0$ but
+$Q=F=1/2$, so neither term of $\mathcal D=F+3(W_1+\tau)$ alone controls the distance. The sharp local entropy
+coefficient is $c_*$; the quadratic coefficients of $Q$ at the orbit are $6$ and $20$.
+The comparison $Q(\psi)\ge1-\Phi(\psi)$ is sharp (Theorem~\ref{thm:fqe-global-overlap}), but $1-\Phi$ and
+$d^2$ are comparable only up to the factor $(1+\sqrt\Phi)/2\in[\frac{6+\sqrt6}{12},1]$, and $\mathcal D\ge Q$ discards the
+spin-flip and polarisation terms.

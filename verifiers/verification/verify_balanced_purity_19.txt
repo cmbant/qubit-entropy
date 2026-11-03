@@ -1,0 +1,11 @@
+LP-19 PASS: 20 exact rational dual coefficients; pi_9 >=93/38896.
+LP-19 PASS: equality forces all Pauli weights A1,...,A7 to vanish.
+GS-19 PASS: exact stabilizer enumerator, normalized cut purity 449/173888
+GS-19 full Pauli weight distribution: [1, 0, 0, 0, 0, 0, 6, 190, 1078, 3636, 10138, 25178, 51376, 82872, 105914, 105874, 79577, 42196, 14054, 2198]
+GS-19 PASS: all 92378 binary cut ranks, histogram [(6, 2), (7, 975), (8, 26811), (9, 64590)]
+GS-19 upper bound: min pi_9(n=19) <= 449/173888.
+EXTERNAL THEOREM (Angles Munne--Huber, arXiv:2603.19901):
+Pure ((13,1,6))_2 and ((19,1,8))_2 quantum codes do not exist.
+CONSEQUENCE: LP equality impossible at n=13 and n=19, so
+25/1408 < min pi_6(13) <= 85/4576;
+93/38896 < min pi_9(19) <= 449/173888.

@@ -1,0 +1,3 @@
+CC-1 aggregate: 35 pi_3 = 7/2 - 4x + 64x^2 + 4 sum p_i^2 + 48 sum |t_ij|^4 + 24 sum |(TT^dag)_ij|^2 (x = b^2, unit norm); scalar completion identity exact
+CC-1 PASS: exact complex SOS identity, 226 nonzero quartic monomials
+For normalized states: pi_3 >= 121/917 throughout the pair/complement family.

@@ -1,0 +1,4 @@
+Direct spin-flip/Pauli contraction: h_s=-94/131, h_o=-56/131; transverse h=0; PASS
+Phase-flip negative regression: same pair marginals, different S1; PASS
+S1= 27652/17161 Q= 137081872/294499921 R= 37315032/294499921 L= 1117536/2248091
+Gc=h and c^T h=1 exactly; projected residual vanishes; PASS

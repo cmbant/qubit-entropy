@@ -1,0 +1,119 @@
+\paragraph{Area-weighted covering calibration.}
+We prove the profile in \eqref{eq:fqe-critical-fidelity-floor} using an
+explicit probability measure on the sixteen HS planes. Its only
+polynomial positivity input is the following finite exact certificate.
+
+\begin{lemma}[Four-point cubic inequality; exact rational certificate]
+\label{lem:fqe-four-point-cubic}
+If $X,Y\in\mathbb R^4$ satisfy
+$\sum_iX_i=\sum_iY_i=0$ and $\sum_iX_i^2=\sum_iY_i^2=4$, then
+\begin{equation}\label{eq:fqe-four-point-cubic}
+ \sum_{i,j=1}^4|X_i-Y_j|^3\ge64.
+\end{equation}
+Equality holds at $X=Y=(-1,-1,1,1)$.
+\end{lemma}
+
+\begin{proof}
+Put $X=Er$, $Y=Es$, where
+\[
+ E=\begin{pmatrix}1&1&1\\1&-1&-1\\-1&1&-1\\-1&-1&1\end{pmatrix},
+ \qquad E^TE=4I,
+\]
+so that $\|r\|=\|s\|=1$. Every zero-sum four-vector is represented.
+Sort $X$ and $Y$ separately and interleave their entries in increasing
+order. There are $\binom84=70$ words with four letters of each kind.
+Swapping $X,Y$ and simultaneously negating both vectors reduce these
+to exactly twenty-three classes (FP-1). Ties may use either order.
+For each word let $z_1,\ldots,z_8$ be its ordered entries and
+$g_i=z_{i+1}-z_i\ge0$. The absolute values then give a cubic polynomial
+$p=\sum_{ij}|X_i-Y_j|^3/16-4$.
+For each of the twenty-three words the supplied rational data give
+the identity
+\begin{equation}\label{eq:fqe-four-point-cubic-sos}
+ p=B_0^TG_0B_0+\sum_{i=1}^7g_i B_i^TG_iB_i
+       +(\|r\|^2-1)\ell_r+(\|s\|^2-1)\ell_s.
+\end{equation}
+The $\ell$ are quadratic polynomials and all eight $G_i$ are positive
+definite. FP-2 rebuilds all $210$ coefficients through degree four
+in each class and proves positivity of all $184$ Grams using integer
+arithmetic. Thus the right side is nonnegative on each ordering cone
+and the two spheres, proving the full inequality. The bases and exact
+matrix representation are specified in Section~\ref{sec:sup-verifiers}.
+The stated equality follows by substitution.
+\end{proof}
+
+Let $U=(U_1,U_2)$ be a real orthonormal $4\times2$ frame with plane projector
+$\Pi=UU^T$. For each HS plane $P$ use its orthonormal frame
+$V_P=(e_k,u)$ and put $c_P=|\det(U^TV_P)|$. The sixteen planes obey
+\begin{equation}\label{eq:fqe-area-weighted-fusion}
+ \sum_Pc_P^2=\frac83,\qquad
+ \sum_Pc_P^2P=\frac89(I+\Pi).
+\end{equation}
+Indeed, the bivector $\Delta=U_1U_2^T-U_2U_1^T$ satisfies $\Delta\Delta^T=\Delta^T\Delta=\Pi$, and
+$\det(U^TV_P)=e_k^T\Delta u$. Fix $k$, put $g=\Delta^Te_k$ (so $g_k=0$,
+$|g|^2=\Pi_{kk}$) and sum over the four lines $u$ for this $k$, using $u_j=\pm1/\sqrt3$ ($j\ne k$):
+$\sum_u(g\cdot u)^2=\frac43|g|^2$ and
+$\sum_u(g\cdot u)^2uu^T=\frac49|g|^2(I-e_ke_k^T)+\frac89(gg^T-\operatorname{diag}(g_j^2))$.
+Summing over $k$ with $\sum_kgg^T=\Pi$ and $\sum_k\operatorname{diag}(g_j^2)=\operatorname{diag}(\Pi)$ gives
+both identities. FP-3 also checks them without
+assuming orthonormality first, using the homogeneous squared area and
+its associated matrix. Therefore the explicit weights
+$w_P=3c_P^2/8$ satisfy
+\begin{equation}\label{eq:fqe-plane-calibration}
+ \sum_Pw_P=1,\qquad \sum_Pw_PU^TPU=\frac23I_2,\qquad
+ \sum_Pw_Pc_P\ge\frac1{\sqrt3}.
+\end{equation}
+
+To prove the last inequality, let $M$ be the magic-basis matrix defined before
+\eqref{eq:fqe-null-critical-bloch}. Form the null critical vector
+$z=(U_1+iU_2)/\sqrt2$. Its auxiliary product representation
+$Mz=a\otimes b$ has unit Bloch vectors $r,s$, as in
+\eqref{eq:fqe-null-critical-bloch}.
+For the two HS rays $\eta_P=(e_k+iu)/\sqrt2$ and $\bar\eta_P$,
+expansion gives
+\[
+ c_P=\bigl||\langle\eta_P,z\rangle|^2
+                 -|\langle\bar\eta_P,z\rangle|^2\bigr|.
+\]
+In the cube-pair description of the HS rays given after \eqref{eq:fqe-null-critical-bloch}, conjugation reverses both cube vertices.
+Indeed $M=\epsilon^{\otimes2}\bar M$, where
+$\epsilon=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)$
+(FP-3), and the qubit spin flip reverses the Bloch vector.
+Choose the four even-parity cube vertices $e_i$, the rows of $E$.
+The sixteen conjugate pairs are represented once by
+$(\varepsilon,\eta)=(e_i,-e_j)$, and hence
+\[
+ c_P=\frac{|e_i\cdot r-e_j\cdot s|}{2\sqrt3}.
+\]
+The four numbers $X_i=e_i\cdot r$, and likewise $Y_j=e_j\cdot s$,
+have sum zero and sum of squares four. Lemma~\ref{lem:fqe-four-point-cubic}
+therefore gives
+\[
+ \sum_Pc_P^3=\frac{\sum_{ij}|X_i-Y_j|^3}{24\sqrt3}
+       \ge\frac8{3\sqrt3},
+\]
+which proves the last calibration inequality.
+
+Now write the real density matrix of any critical state as
+$A=U\Lambda U^T$, with $\operatorname{tr}\Lambda=1$ and
+$\det\Lambda=(1-\tau)/4$. Rank one is included by completing its
+support to any plane. The exact Bures formula gives
+\begin{align*}
+ \Phi
+ &\ge\sum_Pw_P F_{\rm B}(A,P/2)\\
+ &=\frac12\operatorname{tr}\!\left(\Lambda\sum_Pw_PU^TPU\right)
+                  +\sqrt{\det\Lambda}\sum_Pw_Pc_P\\
+ &\ge\frac13+\frac{\sqrt{1-\tau}}{2\sqrt3}.
+\end{align*}
+This proves the profile for the entire critical locus.
+
+Finally, for $a,b\ge0$, $a+b>0$, the critical normal family
+\begin{equation}\label{eq:fqe-covering-equality-family}
+ v=\frac{(a+ib,-a+ib,0,0)}{\sqrt{2(a^2+b^2)}},\qquad
+ \tau=\frac{(a^2-b^2)^2}{(a^2+b^2)^2},\qquad
+ \Phi=\frac13+\frac{ab}{\sqrt3(a^2+b^2)}
+\end{equation}
+attains equality. FP-4 checks every one of the $32$ ray overlaps against
+this maximum. The parameters cover $0\le\tau\le1$, proving pointwise
+optimality and the conditional covering radius. The endpoint $a=b$
+is a cluster state; $b=0$ is GHZ up to LU.

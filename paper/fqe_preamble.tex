@@ -1,0 +1,26 @@
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=23mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array,graphicx}
+\graphicspath{{figures/}}
+\usepackage{xcolor,xurl}
+\usepackage{xr-hyper}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\setlength{\emergencystretch}{2em}
+\allowdisplaybreaks
+\newcommand{\Psiico}{\Psi_{\mathrm{ico}}}
+\newcommand{\Sussex}{Department of Physics \& Astronomy, University of Sussex, Brighton BN1 9QH, UK}
+\newcommand{\affiliation}[1]{\\[2pt]{\small\normalfont #1}}
+\newcommand{\tr}{\operatorname{tr}}
+% A statement of the paper, restated in the supplement ahead of its full proof: kind, paper label, optional title.
+\newenvironment{restated}[3][]{\par\addvspace{\medskipamount}\noindent\textbf{#2~\ref{#3}}%
+  \ifx\relax#1\relax\else\textbf{ (#1)}\fi\textbf{.}\ \itshape}{\par\addvspace{\medskipamount}}

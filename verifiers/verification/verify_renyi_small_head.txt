@@ -1,0 +1,4 @@
+SHD-1 PASS: eight node values of A_q, H_q(1/3,2/3)<1751/2000 (so D_q(1/9)>1/9)
+SHD-2 PASS: grouping-factor identity and 64/65 bound, concavity chord constant and dual identities
+SHD-3 PASS: eight staircase quartics have positive Bernstein coefficients (minimum 1/6400)
+SHD-4 PASS: uniform rectangle (SHD column, shared check), derivative bounds, point comparisons and full-domain constants

@@ -1,0 +1,12 @@
+ME-1 monomials: F 3984 SOS 3984 mismatches 0
+ME-2 full polynomial identity 32F = 15nW1 + 3||R||^2; local-moment contraction exact
+ME-3 P = 1 + Delta/2, Delta = sum_i |r_i|^2 + |z^T Y z|^2; local spin-flip inversion: exact
+ME-4 a=18(ln3-1)>0, b=18-39ln3/2, 17a/12+b=6ln3-15/2<0; usable slope bound 1.92839366465
+ME-4 E(M4) - E(psi) >= (15/2-6ln3)(P-1)/(3ln2) + (ln3-1)F/(2ln2); E(M4) = 1 + log2(3)/2
+ME-5 M4 P = 1 T = 5/12 F = 0
+ME-5 Bell(12)Bell(34) P = 3/2 T = 9/8 F = 0
+ME-5 so T <= 5/12 + s(P-1) holds for all states only with s >= 17/12 (Bell pair), used s = 17/12
+ME-6 G(v): cut spectra |v|^2, |H1 v|^2, |H2 v|^2 and spin-flip amplitude = sum v_k^2 (exact)
+ME-6 Clifford local unitaries realise generators of W(D4) on G(v): (b d), (a d), (a b)(c d), (c,d)->(-c,-d)
+ME-6 the 8 solutions (sqrt3, +-i, +-i, +-i)/sqrt6 have tau = 0 and all spectra (1/2,1/6,1/6,1/6); M4 = G((1,-1,i sqrt3,-1)/sqrt6), a phase and W(D4) image of the class eps1 eps2 eps3 = -1
+ALL ME-1..ME-6 PASS

@@ -1,0 +1,213 @@
+\paragraph{Strategy.}
+On the critical locus the twelve cut probabilities are linear in a $3\times3$ correlation matrix $T$, and
+$\delta=\delta(T)$ is convex. The fidelity is the maximum of sixteen explicit plane functions. A critical state is
+determined by $(r,s,w)$ with unit vectors $r,s$ (the $P=1$ coordinates) and a disc coordinate $w\in\mathbb R^2$,
+$|w|^2=\tau$; the equality states sit at $w=0$. Analytic bounds settle $\tau\ge0.36$ (their crossing is at $\tau\approx0.35879$, TC-6); for $\tau\le0.37$ a
+six-dimensional interval covering, together with a local cone lemma at the equality points, closes the proof.
+
+\subsubsection*{Critical states as correlation matrices}
+Let $M$ be the magic matrix, $v$ a unit critical normal vector, $A=\operatorname{Re}(vv^\dagger)$, and
+$\psi=Mv$ the auxiliary two-qubit vector.  Put $T_{\alpha\beta}=\langle\psi|\sigma_\alpha\otimes\sigma_\beta|\psi\rangle$,
+$t_{ji}=4\lambda_{ji}-1$ with $\lambda_{ji}$ the cut probabilities of Lemma~\ref{lem:fqe-critical-real-density}.
+\begin{lemma}[Correlation-matrix model; analytic, exact check TC-1]\label{lem:fqe-critical-correlation}
+\begin{enumerate}
+\item The twelve rays $Mh_{ji}$ are Bell rays without local terms; their correlation matrices $C^{ji}$ are signed
+permutation matrices (those of Lemma~\ref{lem:fqe-p1-cuts}), and $t_{ji}=\langle C^{ji},T\rangle$.
+Consequently, by \eqref{eq:fqe-critical-real-tomography},
+$A=\tfrac14I+\tfrac14\sum_{j,i}t_{ji}B_{ji}$: $A$ is an affine function of $T$.
+\item $T=R_a\operatorname{diag}(\kappa,-\kappa,1)R_b^{T}$ with $R_a,R_b\in SO(3)$ and $\kappa=\sqrt\tau$.  Writing
+$r=R_ae_3$, $s=R_be_3$ and $x_a,y_a$ ($x_b,y_b$) for the first two columns of $R_a$ ($R_b$),
+\[
+ T=rs^T+\kappa\bigl(x_ax_b^T-y_ay_b^T\bigr).
+\]
+Rotating the frames about $r$ and $s$ by $\theta_a,\theta_b$ turns $\kappa(x_ax_b^T-y_ay_b^T)$ into
+$w_1(x_ax_b^T-y_ay_b^T)+w_2(x_ay_b^T+y_ax_b^T)$ with $w=\kappa(\cos(\theta_a+\theta_b),\sin(\theta_a+\theta_b))$.
+\item For a plane $\Pi=VV^T$ of Lemma~\ref{lem:fqe-critical-real-density} the matrix $m_\Pi=V^TAV$ is affine in $T$ and
+$\Phi=\max_\Pi\Phi_\Pi$, $\Phi_\Pi=\tfrac12\operatorname{tr}m_\Pi+\sqrt{\det m_\Pi}$.  Equivalently
+$\Phi=\max\tfrac14\bigl(1+\sqrt{1-\tau}\,(\varepsilon\!\cdot\! r+\eta\!\cdot\! s)/\sqrt3+\varepsilon^TT\eta/3\bigr)$ over the
+$32$ cube pairs of \eqref{eq:fqe-null-critical-bloch}.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(1) The projector onto a maximally entangled ray is $\tfrac14(I+\sum C_{\alpha\beta}\sigma_\alpha\otimes\sigma_\beta)$,
+with no local terms; the proof of Lemma~\ref{lem:fqe-p1-cuts} derives the twelve $C^{ji}$, and $t_{ji}=\langle C^{ji},T\rangle$
+because $\lambda_{ji}$ is the expectation of that projector in $\psi$ (PM-1 and TC-1 recompute them, TC-1 together
+with the identity $\lambda_{ji}=(\|v\|^2+\langle C^{ji},T\rangle)/4$ exactly for a random rational $v$).
+(2) A pure two-qubit vector is $(U\otimes V)(\cos\varphi|00\rangle+\sin\varphi|11\rangle)$ with $0\le\varphi\le\pi/4$; its
+correlation matrix is $\operatorname{diag}(\sin2\varphi,-\sin2\varphi,1)$ in the frames rotated by $U,V$, and the concurrence
+$\sin2\varphi=|\sum_jv_j^2|=\sqrt\tau$ (the coefficient matrix of $Mv$ has determinant $\sum_jv_j^2/2$).  The local Bloch
+vectors are $\cos2\varphi\,r$ and $\cos2\varphi\,s$, of length $\sqrt{1-\tau}$.
+(3) $m_\Pi$ is affine in $A$.  The first formula is \eqref{eq:fqe-critical-bures-orbit}.  The second is the overlap of
+$\psi$ with a product ray with Bloch vectors $\varepsilon/\sqrt3,\eta/\sqrt3$:
+$\langle\psi|\tfrac12(1+\hat\varepsilon\cdot\sigma)\otimes\tfrac12(1+\hat\eta\cdot\sigma)|\psi\rangle
+=\tfrac14(1+\hat\varepsilon\cdot r_A+\hat\eta\cdot r_B+\hat\varepsilon^TT\hat\eta)$.
+TC-2 and TC-3 check the affine representation of $A$, the equality of the two maxima for 200 random states, and the singular
+values $(1,\kappa,\kappa)$, $\det T=-\kappa^2$.
+\end{proof}
+Thus $\tau=|w|^2$, and a critical state is determined (up to the discrete choices) by $(r,s,w)$.  At $\tau=0$ one recovers the
+auxiliary Bloch vectors of \eqref{eq:fqe-null-critical-bloch}.  In these variables
+\[
+ \begin{gathered}
+ \delta=\mathrm{EMAX}-\tfrac13\sum_{j,i}\operatorname{ent}\bigl(\tfrac{1+t_{ji}}4\bigr),\qquad
+ d^2=2-2\sqrt{\max_\Pi\Phi_\Pi},\\
+ G:=\delta-C_*d^2=\max_\Pi G_\Pi,\qquad G_\Pi=\delta-C_*(2-2\sqrt{\Phi_\Pi}),
+ \end{gathered}
+\]
+with $\mathrm{EMAX}=1+\frac12\log_23$ and $\operatorname{ent}(x)=-x\log_2x$.  Each $G_\Pi$ is analytic wherever all $\lambda_{ji}>0$ and
+$\det m_\Pi>0$, and $\delta$ is a convex function of $T$.
+
+\subsubsection*{The chart}
+For $\zeta_1,\zeta_2,\zeta_1',\zeta_2'\in[0,1]$ and a sign $\mathrm{sg}=\pm1$ put
+\begin{align*}
+ r&=\tfrac1N(1,\zeta_1,\zeta_2),\ x_a=\tfrac1n(\zeta_1,-1,0),\ y_a=r\times x_a,\\
+ s&=\tfrac1{N'}(\mathrm{sg},\zeta_1',\zeta_2'),\ x_b=\tfrac1{n'}(\zeta_1',-\mathrm{sg},0),\ y_b=s\times x_b,
+\end{align*}
+$N=\sqrt{1+\zeta_1^2+\zeta_2^2}$, $n=\sqrt{1+\zeta_1^2}$ (and primed), and for $w\in\mathbb R^2$, $|w|\le1$,
+\begin{equation}\label{eq:fqe-critical-chart}
+ T(y)=rs^T+w_1(x_ax_b^T-y_ay_b^T)+w_2(x_ay_b^T+y_ax_b^T),\qquad y=(\zeta_1,\zeta_2,\zeta_1',\zeta_2',w_1,w_2).
+\end{equation}
+\begin{lemma}[Reduction to the chart; analytic]\label{lem:fqe-critical-chart}
+$\delta$ and $d$ are invariant under $T\mapsto S_aTS_b^T$, where $S_a=D_a\Pi_a$, $S_b=D_b\Pi_b$ with
+$\Pi_a,\Pi_b$ cyclic permutation matrices and $D_a,D_b$ diagonal sign matrices, $\det D_a\det D_b=1$ (an even total number of
+sign changes), and under the transposition $T\mapsto T^T$.  Every critical state is equivalent under such maps to one
+with $T=T(y)$, $y$ in the chart $[0,1]^4\times\{|w|\le1\}$ and $\mathrm{sg}=\pm1$, and then $\tau=|w|^2$.
+In the chart the transposition is $(\zeta_1,\zeta_2,\zeta_1',\zeta_2',w_1,w_2)\mapsto(\zeta_1',\zeta_2',\zeta_1,\zeta_2,w_1,\mathrm{sg}\,w_2)$, so it suffices to treat $\zeta_1\le\zeta_1'$.
+\end{lemma}
+\begin{proof}
+The $t_{ji}$ are permuted: this is a linear identity in $T$, and holds on the rank-one matrices $rs^T$ by
+Lemma~\ref{lem:fqe-p1-sym}, which span all matrices.  The set of $32$ cube pairs is invariant (PM-2: the parity
+$\prod\varepsilon_j\eta_j$ is preserved because $\det D_a\det D_b=1$), the local vectors transform with $S_a,S_b$ up to a
+common sign which is absorbed by $(\varepsilon,\eta)\mapsto-(\varepsilon,\eta)$, and $\varepsilon^TT\eta$ is invariant;
+so $\Phi$ is invariant by Lemma~\ref{lem:fqe-critical-correlation}(3).  Given $T$, take $r,s$ as in
+Lemma~\ref{lem:fqe-critical-correlation}(2); cyclic shifts of $r$ alone and of $s$ alone make $|r_1|,|s_1|$ maximal, and
+flips of an even number of the six coordinate signs make $r_1,r_2,r_3,s_2,s_3\ge0$ (the sign of $s_1$ is then determined and
+is $\mathrm{sg}$).  The sign patterns of $r$ and of $s$ may have $\det D_a=\det D_b=-1$; then $D_a=-D_a'$, $D_b=-D_b'$ with
+$\det D_a'=\det D_b'=1$ and $D_aTD_b^T=D_a'TD_b'^T$, i.e.\ the common sign flip of $(r,s)$, which leaves $rs^T$ fixed, is absorbed.
+$(r,s)$ is determined by $T$ up to this common sign when $\tau<1$; at $\tau=1$ the top singular value is degenerate and $r,s$ are
+not unique, but $\tau=1$ lies in the analytic range and the chart is used only for $\tau\le0.37$.  Then $r=(1,\zeta_1,\zeta_2)/N$, $s=(\mathrm{sg},\zeta_1',\zeta_2')/N'$ with $\zeta_1,\zeta_2,\zeta_1',\zeta_2'\in[0,1]$, and $T-rs^T$ lies in the
+span of the two matrices of \eqref{eq:fqe-critical-chart} by Lemma~\ref{lem:fqe-critical-correlation}(2), with $|w|=\kappa$.
+Transposition permutes the twelve $t_{ji}$ (again a linear identity, on rank-one matrices Lemma~\ref{lem:fqe-p1-sym} gives the swap
+$r\leftrightarrow s$) and exchanges the roles of the two cube vertices in $\Phi$. Its action on the chart coordinates follows by
+direct substitution: $T(y)^T=DT(y')D$, with $y'$ the image coordinates displayed in the lemma and $D=I$ for $\mathrm{sg}=1$,
+$D=\operatorname{diag}(1,-1,-1)$ for $\mathrm{sg}=-1$, an admissible sign change (TC-4 also checks it numerically).
+\end{proof}
+
+\subsubsection*{Large $\tau$}
+\begin{lemma}[Analytic range; TC-6]\label{lem:fqe-critical-large-tau}
+If $\tau\ge0.36$ then $\delta\ge C_*d^2$, strictly.
+\end{lemma}
+\begin{proof}
+Put $k=(\ln3-1)/(2\ln2)$.  By \eqref{eq:fqe-critical-entropy} and \eqref{eq:fqe-critical-fidelity},
+$\delta\ge k(1-\Phi+5\tau/2)$, and $\Phi\ge f_{\rm cov}(\tau)$ by \eqref{eq:fqe-critical-fidelity-floor}.  With
+$x=\sqrt{\Phi}$ the function $k(1-x^2)+5k\tau/2-2C_*(1-x)$ is concave in $x$, hence on $[\sqrt{f_{\rm cov}},1]$ it
+is at least its smaller endpoint value; at $x=1$ it is $5k\tau/2>0$.  At $x=\sqrt{f_{\rm cov}(\tau)}$, writing
+$\tau=1-u^2$, $f=f_{\rm cov}=\frac13+\frac u{2\sqrt3}$, it is
+$\psi(u)=k(1-f)+\frac52k(1-u^2)-2C_*(1-\sqrt f)$, which is concave on $0\le u\le4/5$: $k(1-f)$ is affine,
+$-\frac52ku^2$ is concave, and $\sqrt f$ is the square root of a positive affine function, hence concave, with coefficient
+$2C_*>0$.  So $\psi$ is positive on $[0,4/5]$ once it is positive at the two endpoints, which TC-6 encloses in ball
+arithmetic ($\psi(0)>0.064$, $\psi(4/5)>1.7\cdot10^{-4}$).
+\end{proof}
+
+\subsubsection*{The local cone lemma}
+At $w=0$ the equality points of Theorem~\ref{thm:fqe-p1-sharp} lie in the chart at the eight points
+$(\zeta_1,\zeta_2,\zeta_1',\zeta_2')\in\{(0,0,0,1),(0,0,1,0),(0,1,0,0),(1,0,0,0)\}$, one set for each sign $\mathrm{sg}$.
+Let $z_i=|y_i-y^{\rm eq}_i|$ for the four chart coordinates and $z_{5,6}=w_{1,2}$; the box $\mathcal B_\rho$ is
+$|z|_\infty\le\rho$, $\rho=1/256$.
+\begin{lemma}[Local cone; LCC]\label{lem:fqe-critical-local-cone}
+At each equality point exactly four planes $\Pi$ are tied: $G_\Pi=0$ and the others are below $-0.05$.  Their gradients (in $z$)
+sum to $0$ and have rank three.  In $\mathcal B_\rho$ one has $G>0$ except at the point itself.
+\end{lemma}
+\begin{proof}
+By Taylor's formula with the Hessian enclosed over the box, $G_\Pi(t\omega)=t\,g_\Pi\!\cdot\!\omega+\frac{t^2}2\omega^T H_\Pi(\xi)\omega$
+for $\omega$ on the unit sphere of $|\cdot|_\infty$ (in the orthant of the four chart coordinates) and $0<t\le\rho$, with
+$H_\Pi(\xi)$ in an interval matrix $[H_\Pi]$, and $G\ge\sum_\Pi\mu_\Pi G_\Pi$ for weights $\mu_\Pi\ge0$ summing to one on the tied planes.
+Write $\mu=\frac14+\nu$.  Because $\sum g_\Pi=0$, the first-order term of the average depends on $\nu$ only.  The tie and this identity are exact, and
+are proved symbolically (EX, no floating point or enclosures) at all eight points: exactly four planes have $\Phi_\Pi=\Phi_*$, where
+$4\Phi_*=(1+1/\sqrt3)(1+\sqrt{2/3})$ and all other $\Phi_\Pi$ are smaller; the twelve probabilities are $(2\pm\sqrt2)/8$ and $\frac14$, so
+$\delta=\frac12\log_23-\frac13(1+2H_{\rm b}(p))$ and $\delta=C_*(2-2\sqrt{\Phi_*})$, i.e.\ $G_\Pi=0$ at the point for the four tied planes, which
+is the definition of $C_*$ in \eqref{eq:fqe-p1-cstar}; and $\sum_{\Pi\ \rm tied}\partial_kG_\Pi=0$ for all six $k$, as an identity in
+$C_*,\ln p,\ln(1-p),\ln2$.  The reason is the sign symmetry
+$z\mapsto(s_1z_1,s_2z_2,s_1s_2z_3,z_4,s_2z_5,s_1z_6)$ at $(0,0,0,1)$, which EX also checks exactly: $T(\sigma y)=DT(y)D'$ with
+$D=\operatorname{diag}(1,s_1,s_2)$, $D'=\operatorname{diag}(1,s_1s_2,1)$ permutes the twelve $t_{ji}$ inside each cut and the sixteen
+planes, so $G_\Pi\circ\sigma=G_{\pi(\Pi)}$ and only the $z_4$ component of $\sum_\Pi g_\Pi$ can survive; the $z_4$ component vanishes in EX
+(it is the derivative of the wall function $G_w$ at $\pi/4$, zero by the reflection symmetry of Lemma~\ref{lem:fqe-p1-wall}).  By the sign symmetry the tied
+gradients have the sign form $(s_1a,s_2a,-s_1s_2c,0,-s_2d,-s_1d)$ of the remark below, so their rank is exactly three
+(the characters $s_1,s_2,s_1s_2$ carry independent vectors, as the enclosures give $a,c\ne0$); the bound $-0.05$ for the other planes
+and the Hessian enclosures are ball arithmetic (LCC).  A piece $\Omega$ of the sphere is
+discharged if, for some $\nu$, $\ell=\sum\nu_\Pi g_\Pi\!\cdot\!\omega\ge0$ and $\ell+\rho q>0$ (or $q>0$) with
+$q=\frac12\omega^T[H_\mu]\omega$, evaluated in ball arithmetic. This suffices: on $\Omega$ the average is at least
+$t\ell+t^2q=t(\ell+tq)$, and $\ell+tq$ is positive for $0<t\le\rho$, being affine in $t$ with $\ell\ge0$ at $t=0$ and
+$\ell+\rho q>0$ at $t=\rho$ (or increasing if $q>0$).  LCC finds such weights on $9012$ cells for the eight points.
+\end{proof}
+
+\subsubsection*{The covering}
+\begin{proposition}[Interval covering; CCV]\label{prop:fqe-critical-covering}
+Let $\mathcal R$ be the part of the chart with $|w|^2\le37/100$, both signs $\mathrm{sg}$.  Every box of the bisection tree is
+discharged by one of: (G) a certified positive lower bound of $\delta-C_*d^2$; (HS) $d^2\le1/400$ (then
+$\delta\ge\frac3{10}d^2$, strictly greater than $C_*d^2$ when $d>0$, by Theorem~\ref{thm:fqe-orbit-stability}); (core) it lies in a box $\mathcal B_\rho$ of
+Lemma~\ref{lem:fqe-critical-local-cone}.
+\end{proposition}
+\begin{proof}
+The starting closed boxes cover $[0,1]^4\times[-5/8,5/8]^2$ in each sign sector, hence the required disc.
+A split replaces one box by two closed children whose union is the parent; their common boundary is retained.
+Boxes crossing the disc or ordering boundary are retained unless they are wholly outside the domain reduced by symmetry.
+Thus complete coverage means that every retained branch ends in one of the three certified alternatives in the statement.
+A failed or inconclusive sign test only triggers subdivision; it never certifies a box.
+
+There is no need to choose a unique maximising fidelity plane. Since $G=\max_\Pi G_\Pi$,
+any convex combination $G_\mu$ is a lower bound for $G$, including on a tie.
+Near equality, the exact contacts and gradient cancellation of the local cone lemma replace a strict sign test at the apex.
+
+On a box with centre $c$ and half-widths $h$ (in $y$) use the weights $\mu$ uniform on the best one to four planes.
+(i) $\delta$ is convex in the twelve numbers $t_{ji}$, hence $\delta(y)\ge\delta(c)+\sum_iD_i(t_i(y)-t_i(c))$ with
+$D_i=(1+\ln\lambda_i(c))/(12\ln2)$, valid for every point of the box since every chart point is a state, so that $t_i(y)\ge-1$
+(the tangent of a convex function holds on its whole domain); a ray whose probability at $c$ is not certified positive is left
+out of the tangent and bounded by the maximum of $-x\log_2x$ over its probability box ($-x\log_2x$ increases on $[0,1/e]$).
+(ii) $\Phi_\Pi$ is concave in the three entries $m$ of $m_\Pi$, so $d_\Pi^2=2-2\sqrt{\Phi_\Pi}$ is convex there:
+$d_\Pi^2(m)\le d_\Pi^2(m_c)+a_\Pi\!\cdot\!(m-m_c)+B$, where the Bregman remainder $B$ is convex in $m-m_c$ and so at most its maximum at the
+corners of the box $|m-m_c|\le r$; $r$ is a bound for $|m(y)-m(c)|$.
+(iii) $t(y)-t(c)$ and $m(y)-m(c)$ are expanded in $y-c$ to second order, with the exact gradient at $c$ and the interval second
+derivatives of the nine entries $T_{\alpha\beta}(y)$ over the box (closed forms, ball arithmetic).
+With $g_k=\partial_kG_\mu(c)$ this gives $G\ge G_\mu(c)-\sum_k|g_k|h_k-R$, where $R$ is the sum of the second-order terms of (iii)
+inserted into the tangent of (i) and, with factor $C_*$, into the linear term of (ii), and of $C_*\max B$, the first-order terms being exact.
+Bisection of the widest side (the floating-point routine \texttt{critical\_float.py} only orders the attempts and certifies nothing)
+discharges the chart region $\zeta_1\le\zeta_1'$, $|w|^2\le37/100$ with $208953$ boxes (G) in the sector $\mathrm{sg}=+1$, and
+$246044$ (G) and $436$ (HS) for $\mathrm{sg}=-1$, besides $42$ boxes inside the local cone boxes in each sector;
+the ordering comparison $\zeta_1>\zeta_1'$ is exact on the dyadic endpoints, while the outside-disc screen has a conservative
+positive margin exceeding its floating-point roundoff, so it discards only boxes strictly outside $|w|^2\le37/100$.
+The orbit point of the chart ($d=0$, for
+$\mathrm{sg}=-1$) is covered by (HS).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:fqe-p1-sharp} for critical states]
+If $\tau\ge0.36$, apply Lemma~\ref{lem:fqe-critical-large-tau}.  Otherwise Lemma~\ref{lem:fqe-critical-chart} reduces to
+the chart with $|w|^2\le37/100$, which Proposition~\ref{prop:fqe-critical-covering} and Lemma~\ref{lem:fqe-critical-local-cone}
+cover: $G>0$, or $d>0$ and $\delta\ge\frac3{10}d^2>C_*d^2$, or $d=0$, except at the equality points $y^{\rm eq}$ where $G=0$ by
+\eqref{eq:fqe-p1-cstar}.  The equality points have $w=0$ and are the $144$ points of Theorem~\ref{thm:fqe-p1-sharp}.
+\end{proof}
+
+\begin{remark}[Structure at the equality points; numerical picture]\label{rem:fqe-critical-structure}
+In the coordinates $z=(\zeta_1,\zeta_2,\zeta_1',1-\zeta_2',w_1,w_2)$ at the equality point with $(\zeta_1,\zeta_2,\zeta_1',\zeta_2')=(0,0,0,1)$, the four tied
+plane functions have the gradients $g=(s_1a,\,s_2a,\,-s_1s_2c,\,0,\,-s_2d,\,-s_1d)$, $s_1,s_2=\pm1$, with
+$a=0.059039$, $c=0.036251$, $d=0.018765$ (ball enclosures, LCC).  They sum to zero and have rank three, with singular values
+$0.1239,0.1239,0.0725$: $G$ has a conical minimum in three directions and is smooth in the other three.  The average of the
+four tied Hessians is positive definite on the three-dimensional kernel of the gradients, with eigenvalues
+$0.0725$ (the wall direction $\theta$) and $0.7285,0.7285$ (two combinations of the chart coordinates with the $w$-plane).
+In particular the dependence on $w$ is first order, in the shape of a square $(\pm1,\pm1)$, so that the loss of
+fidelity under moving off $\tau=0$ is compensated at first order by the cone and costs nothing along the smooth directions.
+Numerically (not a proof; numerical evidence, NV-1) the minimum of $\delta-C_*d^2$ over critical states with fixed
+$\tau$ is about $0.31\,\tau$ for every $\tau\in(0,1]$ (about $0.30\tau$ at $\tau=0.4$ and $0.5$), attained near the equality points for small $\tau$ and,
+at $\tau=1$, at a real state with $d^2=2-\sqrt2$.
+\end{remark}
+
+\begin{remark}[Non-critical states; numerical evidence only]\label{rem:fqe-critical-noncritical}
+The theorem is for critical states; whether $C_*$ is optimal over all states is open.  Evidence (not a proof):
+at the equality state, random positive local filters of size $\varepsilon\le0.2$ (the twelve non-critical directions of the
+$18$-dimensional LU quotient; $12$ directions per size) give $\delta-C_*d^2\ge3\varepsilon^2$ (NV-2); on states obtained by filtering critical states within $0.4$ of the equality state
+(normal-form coordinates) with filters of size $0.05$ to $0.4$ the minimum of $\delta/d^2$ is $0.27$.
+These sampled tests found no value below $C_*$. Reduction of a non-critical state to its critical representative does not preserve
+$\delta$ (by Section~\ref{sec:fqe-renyi-filter-limit}, one filter on one qubit of a critical state cannot raise any
+balanced-cut entropy, but filters on two qubits can raise the mean R\'enyi entropy of order $3/2$), and the general coefficient $k(6+\sqrt6)/12\approx0.05$ is a factor $3.8$ below
+$C_*$, so a proof needs a quantitative treatment of the filter directions: near the critical locus a Taylor bound in the filter
+variables over this six-parameter chart (a covering of the same size), far from it a stronger distance--entropy comparison.
+\end{remark}

@@ -1,0 +1,3 @@
+JI-1 PASS: exact implication identity and sextic-purity algebra
+JI-2 PASS: all three purity-box residual formulas and boundary signs
+JI-3 PASS: exact tight data for HS, cluster, and Bell; Rényi-2 purity-product endpoint

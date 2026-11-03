@@ -1,0 +1,1 @@
+PASS SC-2: E3(psi_7/100) > 2.96535 = 59307/20000 by exact logarithm enclosures

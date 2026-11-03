@@ -1,0 +1,320 @@
+\subsection{Closest-orbit geometry and the sharp overlap bound}
+\label{sec:fqe-global-overlap}
+We prove the global overlap comparison by a rational polynomial certificate on a normal slice.
+The first step shows that this slice contains a closest representative of every state; the second identifies
+the constraints that make the certificate nonnegative there.
+
+\begin{restated}[Sharp HS overlap stability; exact rational certificate, GO-1--GO-3]{Theorem}{thm:fqe-global-overlap}
+For every unit pure four-qubit state,
+\begin{equation*}
+ Q(\psi)\ge1-\Phi(\psi)
+ \ge\frac{6+\sqrt{6(1+\sqrt{\tau(\psi)})}}{12}\,d(\psi)^2
+ \ge\frac{6+\sqrt6}{12}\,d(\psi)^2,\qquad \frac{6+\sqrt6}{12}>\frac7{10}.
+\end{equation*}
+Equality in $Q\ge1-\Phi$ holds on $\mathcal M$ ($Q=0$, $\Phi=1$) and on the three Bell-pair-product LU orbits
+($Q=\Phi=1/2$), so the coefficient one is optimal.
+\end{restated}
+
+\paragraph{Coverage by the normal slice.}
+Take a closest HS representative and transform it to
+$Z_*=\operatorname{diag}(\sqrt3,i,i,i)/\sqrt6$ (here and in the rest of the supplement, magic-matrix indices run over $0,\dots,3$, index $i$ labelling the magic
+vector $m_{i+1}$ of Appendix~\ref{sec:fqe-normal-form} of the paper); choose phase so
+$h=\langle Z_*,Z\rangle\ge0$ is real. Up to global phase, the union
+$\mathcal M$ is the $O(4)\times O(4)$ orbit of $Z_*$: the proof of Proposition~\ref{prop:fqe-onecut} of the paper
+puts every HS state in the $SO(4)\times SO(4)$ orbit of $Z_*$ or of $\overline{Z_*}$, and $\operatorname{diag}(1,-1,-1,-1)$
+on one side maps $Z_*$ to $\overline{Z_*}$.
+The arbitrary-state identity \eqref{eq:fqe-bell-cubic} gives
+\begin{equation}\label{eq:fqe-global-intrinsic}
+ \begin{split}
+ Q(Z)&=27N\operatorname{tr}[(ZZ^\dagger)^2]
+      -18\operatorname{tr}[(ZZ^\dagger)^3]
+      -18\|ZZ^TZ-sZ/2\|_F^2-4N^3,\\
+ s&=\operatorname{tr}(Z^TZ),\\
+ W_1(Z)&=\|ZZ^\dagger-\overline{ZZ^\dagger}\|_F^2
+          +\|Z^\dagger Z-\overline{Z^\dagger Z}\|_F^2.
+ \end{split}
+\end{equation}
+The $W_1$ formula follows because the six one-qubit Pauli matrices
+on either magic pair form an orthogonal basis of imaginary skew matrices,
+each with Frobenius norm squared four (BF-2).
+These formulas show directly that $N$, $Q$, $W_1$ and $s$ are invariant under
+both real orthogonal factors. Thus the transformation preserves every
+quantity needed below.
+
+A closest representative maximises the real height
+$\sqrt6\operatorname{Re}\langle Z_*,Z\rangle=3X_{00}+\sum_jY_{jj}$ over phase and both orthogonal
+factors. Write $Z=\sqrt3X+iY$ with $X,Y$ real. The first-order conditions for the six left
+and six right generators and for the phase have rank ten (simultaneous lower rotations fix
+$Z_*$), and are exactly
+\begin{equation}\label{eq:fqe-slice-stationary}
+ Y_{00}=\sum_{j}X_{jj},\qquad X_{j0}=Y_{0j}/3,\qquad Y_{j0}=3X_{0j},\qquad Y_{jk}=Y_{kj}
+\end{equation}
+($1\le j<k\le3$ in the last relation). Simultaneous lower rotations preserve
+\eqref{eq:fqe-slice-stationary} and conjugate the symmetric matrix
+$\operatorname{Sym}(X_{jk})+2(Y_{jk})$, so one of them makes it diagonal: three further linear
+conditions (NSL-1--NSL-3).
+Consequently every closest-orbit problem has a representative
+$Z=\sqrt3X+iY$ with exactly the following 19 real coordinates:
+\begin{align*}
+ X_{00}&=t,&Y_{00}&=u_1+u_2+u_3,\\
+ X_{jj}&=u_j,&Y_{jj}&=t+a_j,\\
+ X_{0j}&=p_j,&Y_{0j}&=q_j,\\
+ X_{j0}&=q_j/3,&Y_{j0}&=3p_j,\\
+ X_{jk}&=e_{jk}+b_{jk},&X_{kj}&=e_{jk}-b_{jk},\\
+ Y_{jk}&=Y_{kj}=-e_{jk}/2\qquad(1\le j<k\le3).
+\end{align*}
+Here and below $1\le j\le3$ for cross-block and diagonal entries.
+Set
+\[
+ h_0=6t+a_1+a_2+a_3=\sqrt6h,\quad
+ N=3\|X\|_F^2+\|Y\|_F^2,\quad e=N-h_0^2/6.
+\]
+For a normalised state, $e=1-\Phi$.
+This coverage does not assume criticality or distinct singular values.
+
+\paragraph{Positive constraints at a closest point.}
+For any unit HS ray $\eta$ put
+\[
+ g_\eta=h^2-|\langle\eta,Z\rangle|^2\ge0.
+\]
+Write $Y_3=(Y_{jk})_{j,k=1}^3$.
+
+Fixing either orthogonal factor and reflecting the other across an arbitrary
+real hyperplane gives the stronger one-factor Procrustes constraints
+\[
+ K_0=\begin{pmatrix}3t&q^T\\q&Y_3\end{pmatrix}\succeq0,\qquad
+ K_1=\begin{pmatrix}3t&3p^T\\3p&Y_3\end{pmatrix}\succeq0.
+\]
+Indeed these are $\sqrt6\operatorname{Re}(ZZ_*^\dagger)$ and
+$\sqrt6\operatorname{Re}(Z_*^\dagger Z)$, respectively, and both are
+symmetric on the normal slice. A reflection $I-2vv^T$ changes the real
+height by $-2v^TK_i v$, which cannot be positive at a closest
+point. Reflections are admissible because both HS orbits are included.
+Their principal blocks also give $t\ge0$ and $Y_3\succeq0$.
+These constraints retain the correlation between each cross block and
+the positive lower block.
+
+Let $G_{ij}$ be the real skew matrix with entries $(i,j)=1$,
+$(j,i)=-1$. Use the following ten infinitesimal actions on $Z$:
+left $Z\mapsto G_{0j}Z$ and right $Z\mapsto-ZG_{0j}$, left $G_{jk}$ for $1\le j<k\le3$, and
+phase multiplication by $i\sqrt3$. Denote them by $T_\ell$.
+The height Hessian satisfies
+\begin{equation}\label{eq:fqe-height-matrix}
+ H_{\ell m}(Z)=-\sqrt6\operatorname{Re}
+  \left\langle Z,\frac{T_\ell T_m+T_mT_\ell}{2}Z_*\right\rangle,
+ \qquad H(Z)\succeq0.
+\end{equation}
+Indeed the chosen representative maximises real height along each group
+curve. Every entry of $H$ is rational linear in the 19 coordinates.
+
+A final family tests a continuous set of lower-block axes. Put
+$S=\operatorname{Sym}(X_{jk})_{j,k=1}^3$. For
+$\sigma_0,\sigma\in\{\pm1\}$ and
+$(c,s)\in\{(1,0),(1/2,1/2),(-1/2,1/2),(-1,0),
+(-1/2,-1/2),(1/2,-1/2)\}$, define
+\begin{align*}
+ r_0&=\sigma_0Y_{00}+\sigma\operatorname{tr}Y_3,&
+ i_0&=-\sigma_0X_{00}-\sigma\operatorname{tr}S,\\
+ L_{\sigma_0,\sigma,c,s}
+   &=(h_0-cr_0-3si_0)I-c(3S-\sigma Y_3)-3s(Y_3+\sigma S).
+\end{align*}
+Then $L_{\sigma_0,\sigma,c,s}\succeq0$. To prove this, for each real
+unit $v\in\mathbb R^3$ use the HS matrix with top component
+$\sigma_0i/\sqrt6$ and lower block
+$v v^T/\sqrt2+\sigma i(I-vv^T)/\sqrt6$.
+The closest-height inequality at phase $\phi$, where
+$\cos\phi=c$ and $\sin\phi=\sqrt3s$, is exactly $v^TLv\ge0$.
+
+The fidelity floor in Lemma~\ref{lem:fqe-hs-fidelity-floor} also gives a
+positive quadratic matrix. Put
+\[
+ s_R=3\|X\|_F^2-\|Y\|_F^2,\quad
+ s_I=2\sum_{ij}X_{ij}Y_{ij},\quad \ell=h_0^2-N,\qquad
+ B_0=\begin{pmatrix}\ell+s_R&s_I\\s_I&(\ell-s_R)/3\end{pmatrix}\succeq0.
+\]
+Indeed $s=s_R+i\sqrt3s_I$ and the homogeneous fidelity floor gives
+$\ell\ge|s|$. Both diagonal entries of $B_0$ are nonnegative and
+$3\det B_0=\ell^2-|s|^2\ge0$.
+
+\paragraph{The positive module.}
+Below, $n=N=3\|X\|_F^2+\|Y\|_F^2$ denotes the homogeneous norm squared, so every block has total degree six.
+Let $\mathcal A$ average over simultaneous lower signed permutations.
+They preserve $Z_*$, the normal slice and all closest-point inequalities.
+The target polynomial is invariant under this averaging.
+For a positive matrix $B$ and a positive rational Gram matrix $G$, write
+\[
+ \mathcal T_G(B;v)=\sum_{a,b}G_{ab}v_a^TBv_b\ge0.
+\]
+A factorisation of $G$ makes this a sum of nonnegative quadratic forms;
+no exact factorisation is required in the certificate checker.
+The weighted matrices used below are
+\begin{equation}\label{eq:fqe-global-module}
+ \begin{split}
+ \mathcal C_0=\bigg\{&1,\frac{g_\eta}6,\frac{h_0t}6,\frac{B_0}{36},
+       \frac{nh_0H}{216},\frac{nh_0Y_3}{36},\\
+ &\frac{h_0H}{216},\frac{h_0Y_3}{36},
+       \frac{h_0K_0}{216},\frac{h_0K_1}{216}\bigg\}.
+ \end{split}
+\end{equation}
+Here $\eta$ ranges over the supplied HS rays. All members are positive at a closest point.
+The supplied HS rays are checked independently by $N=1,W_1=\tau=Q=0$,
+so the established equality classification proves that every one is HS.
+
+\begin{lemma}[An HS fidelity floor from real singular values]\label{lem:fqe-hs-fidelity-floor}
+For every unit pure four-qubit state,
+\[
+ \Phi\ge\frac{1+\sqrt\tau}{6}\ge\frac16,\qquad
+ d^2\le2\left(1-\sqrt{\frac{1+\sqrt\tau}{6}}\right)
+      \le2(1-1/\sqrt6).
+\]
+The fidelity inequality is attained by the GHZ state, for which
+$\tau=1$ and $\Phi=1/3$.
+\end{lemma}
+\begin{proof}
+Choose phase so that $s=\operatorname{tr}(Z^TZ)$ is real and nonnegative.
+Then $\|\operatorname{Re}Z\|_F^2=(1+|s|)/2$.
+Apply a real singular-value decomposition to $\operatorname{Re}Z$, writing
+its nonnegative diagonal entries as $m\ge x\ge y\ge z$.
+The transformed imaginary part can be arbitrary. Two HS representatives,
+with large real component $1/\sqrt2$ in the $m$ position and the other
+three components all $+i/\sqrt6$ or all $-i/\sqrt6$, give
+\[
+ \Phi\ge\tfrac12m^2+\tfrac16(x+y+z)^2
+       \ge\tfrac13(m^2+x^2+y^2+z^2).
+\]
+The first inequality follows by averaging their squared overlaps; the
+imaginary diagonal entries contribute further nonnegative squares.
+For the second, six times its difference is
+\[
+ m^2+(x+y+z)^2-2(x^2+y^2+z^2)
+ =(m^2-x^2)+y(2x-y)+z(2x-z)+2yz\ge0.
+\]
+Both real orthogonal transformations preserve the phase-inclusive union
+of the two HS orbits, so these comparisons are admissible. Finally
+$|s|=\sqrt\tau$, since $\tau=|\operatorname{tr}Z^TZ|^2$ in the magic basis. For GHZ the magic
+diagonal is $(1,0,0,-1)/\sqrt2$, signed-permutation equivalent to $(1,1,0,0)/\sqrt2$.
+Formula~\eqref{eq:fqe-signed-diagonal-overlap}
+gives maximum squared overlap $1/3$ over the 32 HS representatives
+(RP-3), proving the equality claim.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:fqe-global-overlap}]
+Place a closest HS representative at
+$Z_*=\operatorname{diag}(\sqrt3,i,i,i)/\sqrt6$ so that the state has a
+representative $Z=\sqrt3X+iY$ on the $19$-real-coordinate stationary normal
+slice \eqref{eq:fqe-slice-stationary},
+with $h_0=6t+a_1+a_2+a_3=\sqrt6h\ge0$, $n=3\|X\|_F^2+\|Y\|_F^2$, and
+$e=n-h_0^2/6$. For a unit state, $n=1$ and $e=1-\Phi(\psi)\ge0$ by
+Cauchy--Schwarz. The homogeneous sextic target $(Q-n^2e)/36$ is a polynomial in the
+$19$ slice coordinates.
+
+Enlarge the positive module $\mathcal C_0$ of \eqref{eq:fqe-global-module} to
+\begin{equation}\label{eq:fqe-global-overlap-module}
+ \mathcal C_Q
+ =\mathcal C_0\cup\left\{\frac{e}{6},\;\frac{h_0L_{\sigma_0,\sigma,c,s}}{216}\right\},
+\end{equation}
+where $\eta$ ranges over $50$ supplied unit HS rays, checked independently in GO-1 by
+$n=1$ and $Q=W_1=\tau=0$. Only the four lower-frame choices
+\[\begin{gathered}
+ (\sigma_0,\sigma,c,s)\in\{(-1,-1,-1/2,1/2),\ (-1,1,1/2,1/2),\\
+ (1,-1,-1,0),\ (1,1,1,0)\}
+\end{gathered}\]
+are needed in this module. The additional scalar constraint $e/6\ge0$ is
+multiplied by quadratic polynomial vectors in the slice coordinates, and the
+lower-frame matrices $h_0L_{\sigma_0,\sigma,c,s}/216\succeq0$ are paired with
+quadratic matrix multipliers; on the $B_0/36$ and lower-frame blocks where the
+simultaneous signed lower-permutation representation splits into conjugate
+two-dimensional $S_3$ characters, both paired character components are
+retained in the polynomial-vector bases $p_B$.
+
+The certificate supplies $277$ blocks $B\in\mathcal C_Q$ with explicit rational
+polynomial-vector bases $p_B$ and positive rational Gram matrices $G_B$ such
+that, with the two explicit nonnegative terms below, the polynomial identity
+\begin{equation}\label{eq:fqe-global-overlap-sos}
+ \frac{Q-n^2e}{36}
+ =R_{\rm sq}+R_{\rm ax}+\mathcal A\sum_{B\in\mathcal C_Q}\mathcal T_{G_B}(B;p_B)
+\end{equation}
+holds identically in $\mathbb Q[x_1,\dots,x_{19}]$ across all $3{,}277$
+degree-$\le6$ signed-permutation monomial orbits (including the six dependent
+core equations as well as the $3{,}271$ independent ones). GO-2 checks every
+Gram matrix $G_B\succ0$ by the compact integer test below, expands every block, applies the signed Reynolds average
+$\mathcal A$, and verifies that all $3{,}277$ orbit coefficients match
+$(Q-n^2e)/36$ identically over $\mathbb Q$. Evaluating
+\eqref{eq:fqe-global-overlap-sos} at a closest representative of a unit state
+gives $Q(\psi)\ge e=1-\Phi(\psi)$.
+
+\paragraph{Analytic replacement of the linear lower-frame blocks.}
+Put $\gamma=10^{-7}$, $\omega=794424/10^{12}$ and define
+\begin{align*}
+ J={}&5\left[\sum_j(p_j^2+q_j^2)+\sum_{j<k}(e_{jk}^2+b_{jk}^2)\right]
+       +2\sum_{j<k}\left[(u_j-u_k)^2+(a_j-a_k)^2\right],\\
+ z={}&(b_{23},-b_{13},b_{12})^T,\qquad L_*=L_{-1,-1,-1/2,1/2},\\
+ R_{\rm sq}={}&\frac{\gamma}{27}nh_0^2J,\qquad
+ R_{\rm ax}=\frac{\omega}{216}nh_0z^TL_*z.
+\end{align*}
+The first term is manifestly nonnegative, and the second is nonnegative because $n,h_0\ge0$ and $L_*\succeq0$.
+Together they replace all $96$ linear lower-frame Gram blocks, so none of those blocks is supplied numerically.
+
+The reduction follows from linearity in $L$. For each of four common polynomial-vector bases, the $24$ lower-frame
+matrices have the same Gram contribution $\gamma I$, and
+\[
+ \sum_{\sigma_0,\sigma,\,(c,s)}L_{\sigma_0,\sigma,c,s}=24h_0I,
+\]
+where the sum is over both independent signs and the six phase pairs used in the lower-frame construction.
+The signed-permutation average of the sum of squared components of those four bases is $J/3$:
+coefficients $(2,2,1)$ on each of the $p,q,e,b$ triples average to $5/3$, and coefficients $(1,1,0)$ on each
+of the $u,a$ difference triples average to $2/3$. Their contribution is
+$(\gamma nh_0/216)(24h_0)(J/3)=R_{\rm sq}$.
+The only additional Gram contribution is $\omega vv^T$, with $v=(0,1,0,-1,0,1)$ in the six-vector basis
+whose selected components are $b_{23},b_{13},b_{12}$. Its contribution is $R_{\rm ax}$.
+Both remainders are invariant under the signed lower permutations: $z$ is the axial vector of the real
+antisymmetric lower block, so it transforms by $(\det O)O$, while $L_*$ transforms by conjugation.
+GO-2 independently checks their invariance and the complete reduced polynomial identity.
+The lower-frame conditions used by the finite certificate are consequently reduced from $24$ to $4$.
+
+\paragraph{Compact integer Gram data.}
+The remaining Gram matrices and their positivity witnesses are stored compactly.
+Write $g=10^{12}$, $c$ for the supplied correction denominator, and $s=2^{46}$.
+For each block of size $m$, the data consist of a rectangular integer matrix $A$, symmetric integer matrices
+$\Delta,C$ (the latter sparse), and the reconstruction rule
+\[
+ H_{ij}=\left\lfloor\frac{g(AA^T)_{ij}}{s^2}+\frac12\right\rfloor,
+ \qquad G_{ij}=\frac{H_{ij}+\Delta_{ij}+C_{ij}/c}{g}.
+\]
+Put $D_{ij}=c\Delta_{ij}+C_{ij}$. The only positivity test is
+\begin{equation}\label{eq:fqe-compact-gram-test}
+ 2\left(D_{ii}-\sum_{j\ne i}|D_{ij}|\right)>mc\qquad\text{for every }i.
+\end{equation}
+Indeed each rounding error $H_{ij}-g(AA^T)_{ij}/s^2$ has absolute value at most $1/2$.
+Thus \eqref{eq:fqe-compact-gram-test} makes $G-AA^T/s^2$ strictly diagonally dominant with positive diagonal.
+Its positive definiteness follows, for example, by applying $2|v_iv_j|\le v_i^2+v_j^2$ to its quadratic form;
+adding $AA^T/s^2\succeq0$ proves $G\succ0$.
+No square roots, eigenvalues, divisions in an ordered field, or matrix factorisation are needed in this finite check:
+rounding is integer quotient and the final tests are integer inequalities.
+The $277$ numerical blocks use $2{,}222$ factor columns and $178{,}221$ factor entries; $11$ need no factor.
+The exact polynomial identity uses $50$ HS comparisons and the two explicit remainders (GO-1--GO-2).
+
+\paragraph{Integer identity check.}
+All basis coefficients have denominators dividing $6$ and all constraint coefficients become integral after
+multiplication by the supplied map denominator, so GO-2 compares the identity at a common integer scale, keeping the
+integer Gram parts $H+\Delta$ and the sparse corrections $C$ in separate integer accumulators; the correction
+denominator $c$ enters only the final coefficient comparisons.
+
+Finally, since $d(\psi)^2=2(1-\sqrt{\Phi(\psi)})$, we have
+\[
+ 1-\Phi(\psi)=\frac{1+\sqrt{\Phi(\psi)}}{2}\,d(\psi)^2.
+\]
+Lemma~\ref{lem:fqe-hs-fidelity-floor} gives
+$\Phi(\psi)\ge(1+\sqrt{\tau(\psi)})/6\ge1/6$, which yields the two middle
+inequalities in \eqref{eq:fqe-global-overlap-sharp}. Because
+$(2/5)^2=4/25<1/6$, we have $1/\sqrt6>2/5$ and
+$(6+\sqrt6)/12=(1+1/\sqrt6)/2>(1+2/5)/2=7/10$ (GO-3). Attainment of
+$Q=1-\Phi$ at the HS orbits and the Bell-pair-product orbits is established in
+Theorem~\ref{thm:fqe-critical-orbit-sharp}.
+\end{proof}
+
+\begin{proof}[Global part of Theorem~\ref{thm:fqe-orbit-stability}]
+Theorem~\ref{thm:fqe-global-overlap} gives $d^2\le12Q/(6+\sqrt6)$, and \eqref{eq:fqe-orbit-surrogate} gives
+$\delta\ge kQ\ge k\frac{6+\sqrt6}{12}d^2$. With $k>16/225$ and $\sqrt6>2449/1000$,
+$k(6+\sqrt6)/12>\frac{16}{225}\cdot\frac{8449}{12000}>\frac1{20}$ (GO-4).
+\end{proof}

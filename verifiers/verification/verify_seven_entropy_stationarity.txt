@@ -1,0 +1,4 @@
+PASS ES-1: exact phase support and two conference switching symmetries
+PASS ES-1: common real fixed space 4 -> 2 after the local complement symmetry; basis U,V
+Analytic conclusion: every differentiable LU/permutation/conjugation-invariant functional
+is fully stationary at each interior stationary point of its conference-family restriction.

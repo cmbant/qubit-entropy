@@ -1,0 +1,19 @@
+dimensions {0: 1, 1: 4, 2: 5} weight multiplicities {0: 6, 1: 4, 2: 2}
+Gram determinants {0: 1, 1: 5, 2: 162}
+exact matrix units checked 42
+copies (4,) denominator 30 max numerator 40 physical reconstruction PASS involution PASS
+copies (3, 4) denominator 30 max numerator 45 physical reconstruction PASS involution PASS
+S5-1 PASS
+exact [4,2] model and 148 H-invariant coordinates
+exact D5 pentagon placement covariance PASS
+t 0 three placement reps complete; max entry 170514570240
+t 1 three placement reps complete; max entry 201372687360
+t 2 three placement reps complete; max entry 306343042560
+t 3 three placement reps complete; max entry 682974138240
+t 4 three placement reps complete; max entry 1364395560960
+t 5 three placement reps complete; max entry 2434757020800
+integer coefficient maxima [170514570240, 175501231872, 34990118400, 20843131392, 2931133440, 0] target pair maxima 56855593728000 35164434654720
+rational kernel coefficients PASS
+target exact rank 20 of 148; exact left kernel 128, full-column annihilation PASS
+committed compact artifacts reproduced exactly
+PASS

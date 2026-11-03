@@ -1,0 +1,7 @@
+[PASS] NC-1 auxiliary magic transform is unitary; determinant=sum(v_j^2)/2
+[PASS] NC-2 all 32 HS rays are exactly the opposite-parity auxiliary cube pairs
+[PASS] NC-3 all Bell projectors and the exact Q=(1+27 prod(r_j s_j))/2 identity
+[PASS] NC-4 exact scalar positive remainders, sharp constants and cluster equality
+[PASS] NC-5 all three physical cut transforms, fourth moments and Schur remainder
+[PASS] NC-6 exact positive Hermite-remainder kernel
+All NC checks passed; two-sphere geometry and the kernel argument are analytic.

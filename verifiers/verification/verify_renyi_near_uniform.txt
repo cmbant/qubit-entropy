@@ -1,0 +1,3 @@
+NU-1 PASS: fifth-order moment identities and projection remainder, exact symbolic
+NU-2 PASS: rational log bounds and the (MR1)-(MR2) constants of the NU column; no subdivisions
+NU-3 PASS: HT moment-rectangle column; analytic dual slack >= (1/125)*(p-1/4)

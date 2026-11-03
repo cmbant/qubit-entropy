@@ -1,0 +1,6 @@
+[PASS] ER-1 one-cut spectrum |v|^2 and spin-flip amplitude = sum v_k^2 on G(v) (real Hadamard diagonalisation); X1X3, Z1Z3, Z1Z2, X3X4 act as (ab)(cd), (ad)(bc), flip(b,c), flip(c,d); M4 = G((1,-1,i sqrt3,-1)/sqrt6) ~ (sqrt3, i, -i, i)/sqrt6
+[PASS] ER-2 exact weighted triangle-deficit identity: at positive weights, equality forces all unit phases equal
+[PASS] ER-3 3 ln2 (E(M4)-E) = (15/2 - 6 ln3)(P-1) + (3/2)(ln3-1) F + sum_{cuts,eigenvalues}(h-f) with h-f>=0; a = 18(ln3-1), b = 18 - 39 ln3/2; the only spectrum in {1/6,1/2} with trace 1 is (1/2,1/6,1/6,1/6)
+[PASS] ER-4 critical-slice twelve-term factorization and sign-average moment formulas; all coefficients compared against direct reduced matrices
+[PASS] ER-5 all HS sign representatives, coordinate Bell products and both Hadamard Bell-product sign families satisfy the sextic equality; D13/D12 at M4 = (1-i sqrt3)/2 distinguishes its conjugate
+All ER checks passed

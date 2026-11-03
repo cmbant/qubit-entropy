@@ -1,0 +1,5 @@
+[PASS] MS-1 strengthened sphere norm algebra and all 16 multiaffine vertices
+[PASS] MS-2 exact same-parity parameterization, monotonicity in wt, and polynomial minorants
+[PASS] MS-3 exact univariate decompositions for q1(x), q2(y), and diagonal q3(y) on [0, 1]
+[PASS] MS-4 sharp interpolation and cluster equality for every theta in the interval
+All MS checks passed; both parity sectors and the interpolation family are verified analytically.

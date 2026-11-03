@@ -1,0 +1,159 @@
+\subsection{A positive-kernel proof of the joint entropy majorant}
+\label{sec:seven-joint-analytic-proof}
+
+We now prove the scalar-majorant inequality of Lemma~\ref{lem:seven-joint-scalar-majorant}
+for the polynomial $H$ defined there. The proof separates the diagonal Hermite remainder from
+a binary entropy correction, then reduces nonnegativity of the combined gap to the
+sign of one univariate polynomial. Only the fixed coefficient bounds in
+Table~\ref{tab:seven-joint-discriminant} require arithmetic verification
+(AH-6, exact-rational interval enclosures); no subdivision of the entropy gap is used.
+
+Retain $A(e)=\sum_{j=0}^3\alpha_je^j$, $B(e)=\beta_0+\beta_1e$,
+$e_0=48u$ and $v_0=e_0^2/9$ from the definition of $H$ before~\eqref{eq:seven-joint-H}, and put
+\[
+ q(e)=(e-8a)(e-8c)(e-8d),\qquad
+ K(e)=\frac{P(e)-f(e/8)}{q(e)^2}.
+\]
+At the three apparent singularities take the continuous extensions.
+The family bound $x_*/u_*<37/15$ places $e_0$ strictly above these three nodes.
+The Stieltjes remainder formula for quintic Hermite interpolation gives
+\begin{equation}\label{eq:seven-joint-stieltjes}
+ K(e)=\frac1{8\ln2}\int_0^\infty
+ \frac{s\,ds}{(s+e)(s+8a)^2(s+8c)^2(s+8d)^2}>0.
+\end{equation}
+Indeed, $-t\ln t=\int_0^\infty[t/(t+s)-t/(1+s)]\,ds$, and only the term
+$-s/(t+s)$ is not affine in $t$; the affine difference between $f(e/8)$ and
+$f(e)/8$ contributes no interpolation error. The Hermite remainder of
+$e\mapsto1/(s+e)$ at the double nodes $8a,8c,8d$ is
+$q(e)^2/[(s+e)(s+8a)^2(s+8c)^2(s+8d)^2]$, which gives the identity.
+
+Set
+\[
+ k_0=K(e_0),\qquad \gamma=-K'(e_0)/k_0,
+ \qquad L(e)=1+\gamma(e-e_0).
+\]
+The kernel has the rational lower bound
+\begin{equation}\label{eq:seven-joint-kernel-jensen}
+ K(e)\ge\frac{k_0}{L(e)},\qquad e\ge0,
+ \qquad k_0>0,\quad0<\gamma<1/e_0.
+\end{equation}
+To see this, normalise the positive integrand of $K(e_0)$ to a probability
+measure. Then $K(e)/k_0$ is the mean of $\phi(y)=[1+(e-e_0)y]^{-1}$ at
+$y=1/(s+e_0)$. Since $1+(e-e_0)y=(s+e)/(s+e_0)>0$ for $e\ge0$, $\phi$ is
+convex on the support, and Jensen's inequality gives
+\eqref{eq:seven-joint-kernel-jensen}, because the mean of $y$ is
+$\gamma$. Its support also gives $0<\gamma<1/e_0$, so $L(e)>0$ for
+all $e\ge0$. Both value and first derivative agree at $e_0$.
+
+For the binary correction define
+\[
+ \Phi(z)=\frac{(1+\sqrt z)\ln(1+\sqrt z)
+                    +(1-\sqrt z)\ln(1-\sqrt z)}2,
+ \qquad 0\le z\le1.
+\]
+Its cubic Hermite interpolant, with double contacts at $0$ and $1/9$, is
+\begin{equation}\label{eq:seven-joint-binary-minorant}
+ \Phi(z)\ge\frac z2+\eta_2z^2+\eta_3z^3,
+ \quad
+ \eta_2=\frac{1593}4\ln2-243\ln3-9,
+ \quad
+ \eta_3=\frac{81}2-\frac{9477}4\ln2+1458\ln3>0.
+\end{equation}
+The interpolation data at $1/9$ are
+$\Phi(1/9)=\tfrac53\ln2-\ln3$ and
+$\Phi'(1/9)=\tfrac34\ln2$. The power series
+$\Phi(z)=\sum_{j\ge1}z^j/[2j(2j-1)]$ gives
+$\Phi^{(4)}>0$ on $[0,1)$, so the Hermite error has the sign of
+$z^2(z-1/9)^2$. Continuity includes $z=1$.
+The positive third divided difference also gives $\eta_3>0$.
+
+For $\lambda,\mu\ge0$, put $e=4(\lambda+\mu)$,
+$v=16(\lambda-\mu)^2$. If $e>0$ then $0\le v/e^2\le1$ and
+\[
+ \frac{f(\lambda)+f(\mu)}2
+ =f(e/8)-\frac{e}{8\ln2}\Phi(v/e^2).
+\]
+Consequently, for $e>0$, the entropy gap is bounded below by a cubic in $v$:
+\begin{equation}\label{eq:seven-joint-cubic-reduction}
+ H(\lambda,\mu)-\frac{f(\lambda)+f(\mu)}2
+ \ge\frac{F(e,v)}{8\ln2\,e^5L(e)},
+\end{equation}
+where
+\begin{align*}
+ U(e)&=8\ln2\,k_0q(e)^2,\\
+ V(e)&=\tfrac12+8\ln2\,eA(e),\\
+ W(e)&=\eta_2+8\ln2\,e^3B(e),\\
+ F(e,v)&=e^5U(e)+e^4L(e)V(e)v
+                 +e^2L(e)W(e)v^2+\eta_3L(e)v^3.
+\end{align*}
+This follows by substituting the two lower bounds above into
+$q(e)^2K(e)+vA(e)+v^2B(e)+e\Phi(v/e^2)/(8\ln2)$.
+
+\paragraph{Reduction to one polynomial sign.}
+The discriminant of $F(e,\cdot)$ is
+\begin{equation}\label{eq:seven-joint-discriminant}
+ \operatorname{disc}_v F(e,v)
+    =-e^{10}L(e)^2(e-e_0)^2\Pi(e),
+\end{equation}
+where $\Pi$ is the degree-eighteen polynomial obtained by dividing
+\begin{equation}\label{eq:seven-joint-discriminant-polynomial}
+\begin{split}
+ R(e)={}&27\eta_3^2U^2+4eLUW^3+4\eta_3e^2L^2V^3\\
+       &-e^2L^2V^2W^2-18\eta_3eLUVW
+\end{split}
+\end{equation}
+by $(e-e_0)^2$; $U,V,W,L$ in this expression are evaluated at $e$.
+The factor is exact. The contact $(\lambda,\mu)=(b,c)$ of the Lemma maps
+to $(e_0,v_0)$, and since $b\ne c$ (so $v_0>0$) the map
+$(\lambda,\mu)\mapsto(e,v)$ is a local diffeomorphism there. The entropy gap
+has value and gradient zero at this contact, and both minorant defects vanish
+to second order there: $q^2(K-k_0/L)$ at $e_0$, and the binary defect at
+$v/e^2=1/9$. Hence $F=F_v=F_e=0$ at $(e_0,v_0)$. The cubic $F(e_0,\cdot)$
+has a double root at $v_0$, so its discriminant vanishes; and the
+differential of the discriminant at a cubic with double root $r$ is a
+multiple of $\delta p\mapsto\delta p(r)$, so its $e$-derivative is a
+multiple of $F_e(e_0,v_0)=0$. Dividing out $e^{10}L(e)^2$ preserves this
+double zero (AH-6b checks the cubic identity symbolically).
+
+The sign needed is $\Pi(e)>0$ for every $e\ge0$. On each finite interval $[l,h]$ of
+Table~\ref{tab:seven-joint-discriminant}, expand $\Pi(l+(h-l)t)$ in the degree-eighteen Bernstein
+basis; on the final half-line expand $\Pi(5/4+t)$ in powers of $t$. Every coefficient is strictly positive.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{ccc}
+\toprule
+$e$ range & basis & lower bound on every coefficient\\
+\midrule
+$[0,3/4]$ & Bernstein & $2\cdot10^{-7}$\\
+$[3/4,1]$ & Bernstein & $5\cdot10^{-10}$\\
+$[1,5/4]$ & Bernstein & $9\cdot10^{-11}$\\
+$[5/4,\infty)$ & powers of $e-5/4$ & $2\cdot10^{-10}$\\
+\bottomrule
+\end{tabular}
+\caption{Exact rational coefficient certificate AH-6c for $\Pi>0$.
+Each row checks nineteen coefficients.}
+\label{tab:seven-joint-discriminant}
+\end{table}
+
+AH-6 computes outward dyadic rational enclosures of the coefficients of $\Pi$ from the exact root
+equation for $x_*$ and atanh series with rational tails, converts them to the bases of the table, and
+verifies the bounds by integer comparisons. These are coefficient signs of a fixed polynomial, not sampled
+values of the entropy inequality.
+
+\paragraph{Completion and equality.}
+For $e>0$, $e\ne e_0$, the discriminant is strictly negative. Thus the
+cubic $F(e,\cdot)$ has exactly one real root. Its leading coefficient
+is positive, and $F(e,0)=e^5U(e)\ge0$, so that root is nonpositive
+and $F(e,v)\ge0$ for $v\ge0$. Equality requires $v=0$ and
+$e\in\{8a,8c,8d\}$.
+At $e=e_0$, the double contact gives
+\[
+ F(e_0,v)=(v-v_0)^2(\eta_3v+m),\qquad
+ m=e_0^5U(e_0)/v_0^2>0,
+\]
+so equality requires $v=v_0$. Equation~\eqref{eq:seven-joint-cubic-reduction}
+therefore proves the majorant, with exactly the five asserted contacts.
+For $e=0$, $\lambda=\mu=0$ and the gap is $P(0)=q(0)^2K(0)>0$
+by~\eqref{eq:seven-joint-stieltjes}.
+This completes the proof on the full nonnegative quadrant.

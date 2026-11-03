@@ -1,0 +1,12 @@
+E13L-0 PASS: exact roundoff, amplitude-derivative and local-existence constants.
+E13L-1: 256 exact Pauli decompositions, Arb spectra/gradient and SVD residuals.
+E13L-1: 512 exact Pauli decompositions, Arb spectra/gradient and SVD residuals.
+E13L-1: 768 exact Pauli decompositions, Arb spectra/gradient and SVD residuals.
+E13L-1: 1024 exact Pauli decompositions, Arb spectra/gradient and SVD residuals.
+E13L-1: 1280 exact Pauli decompositions, Arb spectra/gradient and SVD residuals.
+E13L-1: 1536 exact Pauli decompositions, Arb spectra/gradient and SVD residuals.
+E13L-1 PASS: cut types {1: 312, 2: 1404}; all reduced eigenvalues >1/2100^2.
+E13L-2 PASS: E6=[5.8336058383627019939735024139202836117480 +/- 1.11e-41]; full real gradient norm=[2.6837385854887247924155616485313790795431767575e-19 +/- 2.19e-66]; <Z12>=[0.00771678744750510367985238620316785108411542 +/- 4.74e-45].
+E13L-3 PASS: assembled representation error <[5.252779094689014578098025144458e-8 +/- 1.84e-39]; arithmetic budget 1e-6.
+E13L-4: assembled 128/512 simultaneous Hessian columns.
+E13L-4: assembled 256/512 simultaneous Hessian columns.

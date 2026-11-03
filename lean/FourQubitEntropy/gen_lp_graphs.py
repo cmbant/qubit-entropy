@@ -1,0 +1,353 @@
+"""Generate the graph-state data modules of the paper purity-minima formalisation:
+  PurityLPGraphDataA.lean  (n = 4, 5, 6, 8, 9, 10, 11, 12)      PurityLPGraphDataB.lean (n = 14, 15)
+  PurityLPGraphData16.lean, PurityLPGraphData17.lean, PurityLPGraphData18.lean
+  PurityLPMain.lean        (the exact minima `minPurity<n>`)
+Sources: even_qubit_purity_minima.tex (tab:graphs, thm:fourteenfifteen, thm:sixteenseventeen),
+balanced_purity_18.tex (thm:eighteen).  The graphs are those of code/verify_balanced_purity_lp_graph_states.py,
+verify_balanced_purity_13_15.py, verify_graph_purity_16_17.py, verify_balanced_purity_18.py.
+
+For every graph this script recomputes, in exact integer arithmetic (an independent bitmask elimination),
+the multiset of ranks of all k-subset cuts, asserts it equals the paper's rank histogram, and asserts that the mean
+purity equals the Rains-LP value L.  The Lean modules re-check the packed rank sums (hence the histograms and the rank sums) by `decide +kernel`.
+Run from anywhere: python3 gen_lp_graphs.py"""
+import os
+import sys
+from fractions import Fraction as F
+from itertools import combinations
+from math import comb
+from collections import Counter
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+from gen_spinflip_tradeoff_even import emit_sym     # orbit-representative proofs of the rank sums (dihedral symmetry)
+
+
+def circ(n, D, mod=None):
+    mod = mod or n
+    adj = [0] * n
+    for i in range(n):
+        for d in D:
+            for j in ((i + d) % mod, (i - d) % mod):
+                if j < n and j != i:
+                    adj[i] |= 1 << j
+                    adj[j] |= 1 << i
+    return adj
+
+
+def from_edges(n, E):
+    adj = [0] * n
+    for i, j in E:
+        adj[i] |= 1 << j
+        adj[j] |= 1 << i
+    return adj
+
+
+def from_hex(s):
+    return [int(x, 16) for x in s.split()]
+
+
+E8 = [(2, 0), (2, 1), (3, 1), (3, 2), (4, 1), (4, 3), (5, 0), (5, 1), (5, 2), (5, 4), (6, 0), (6, 1), (6, 3),
+      (6, 4), (7, 0), (7, 1), (7, 6)]
+E11 = [(2, 0), (2, 1), (3, 1), (4, 0), (4, 1), (4, 2), (5, 1), (5, 3), (5, 4), (6, 0), (6, 1), (6, 3), (6, 4),
+       (7, 0), (7, 1), (7, 6), (8, 1), (8, 3), (8, 4), (8, 5), (8, 6), (8, 7), (9, 2), (9, 3), (9, 6), (9, 8),
+       (10, 0), (10, 1), (10, 2), (10, 3), (10, 4), (10, 5), (10, 6), (10, 9)]
+E4 = [(0, 1), (1, 2), (2, 3)]
+HEX14 = '38e8 1bf0 0d68 3855 3a0a 0487 318f 2563 2ac6 1512 32a4 011f 265b 15d9'
+HEX15 = '41d4 37bc 7dcb 6a96 580b 6742 4625 730f 16a7 49ea 3966 061c 0596 04ae 02fd'
+HEX18 = '36e72 0fb7d 1b80a 0cad6 25e0b 30583 1c10b 2b228 1a262 3999b 27031 3221f 2a696 1dd87 2a45b 273ce 22b65 1deb1'
+
+# n: (L, name, adjacency, spec, paper histogram {rank: count})
+G = {
+    4: (F(1, 3), "path `P_4` (linear cluster)", from_edges(4, E4), ("edges", E4), {1: 2, 2: 4}),
+    5: (F(1, 4), "`C_5(1)`", circ(5, [1]), ("circ", [1], 5, 5), {2: 10}),
+    6: (F(1, 8), "`C_6(2,3)`", circ(6, [2, 3]), ("circ", [2, 3], 6, 6), {3: 20}),
+    8: (F(3, 35), "the 17-edge graph of `tab:graphs`", from_edges(8, E8), ("edges", E8), {2: 6, 3: 8, 4: 56}),
+    9: (F(1, 14), "`C_9(3,4)`", circ(9, [3, 4]), ("circ", [3, 4], 9, 9), {3: 18, 4: 108}),
+    10: (F(1, 21), "`C_10(1,2,4)`", circ(10, [1, 2, 4]), ("circ", [1, 2, 4], 10, 10), {4: 132, 5: 120}),
+    11: (F(1, 28), "the 34-edge graph of `tab:graphs`", from_edges(11, E11), ("edges", E11), {4: 66, 5: 396}),
+    12: (F(5, 224), "`C_12(3,5,6)`", circ(12, [3, 5, 6]), ("circ", [3, 5, 6], 12, 12), {4: 6, 5: 378, 6: 540}),
+    14: (F(331, 27456), "the 47-edge graph of `thm:fourteenfifteen` (hexadecimal rows)", from_hex(HEX14), ("hex",),
+         {5: 60, 6: 1684, 7: 1688}),
+    15: (F(1, 104), "the 56-edge graph of `thm:fourteenfifteen` (hexadecimal rows)", from_hex(HEX15), ("hex",),
+         {5: 35, 6: 1380, 7: 5020}),
+    16: (F(1, 156), "`C_17(1,3,4,5)` induced on the vertices `0..15`", circ(16, [1, 3, 4, 5], 17),
+         ("circ", [1, 3, 4, 5], 16, 17), {5: 10, 6: 500, 7: 6680, 8: 5680}),
+    17: (F(1, 208), "`C_17(1,3,4,5)`", circ(17, [1, 3, 4, 5]), ("circ", [1, 3, 4, 5], 17, 17),
+         {6: 510, 7: 4080, 8: 19720}),
+    18: (F(7, 2288), "the graph of `thm:eighteen` (hexadecimal rows)", from_hex(HEX18), ("hex",),
+         {7: 9180, 9: 39440}),
+}
+SYM_N = (17,)  # the full circulant: `pack<n>` over orbit representatives of its dihedral group (`sum_cuts_reps`)
+PACK = 65536   # B = 2^16 > C(n, n/2) for every n <= 18 (the packed rank sum is sum_S B^rank(S))
+LEAF = 2000    # target number of cuts per `decide +kernel` declaration (kernel memory grows with the cuts evaluated)
+MIN_SPLIT_N = 14   # smaller n are evaluated in one declaration
+
+
+def plan(n):
+    """(mode, depth): mode 'halve' (n even: complement symmetry, then `depth` splits below vertex n-1) or 'split'
+    (n odd: `depth` splits on the top vertices); depth is the least with C(n,n/2) / (2^depth [/ 2]) <= LEAF."""
+    if n < MIN_SPLIT_N:
+        return None, 0
+    k = n // 2
+    cuts_ = comb(n, k) // (2 if n % 2 == 0 else 1)
+    d = 0
+    while cuts_ / 2 ** d > LEAF:
+        d += 1
+    return ("halve" if n % 2 == 0 else "split"), d
+
+
+def rank2(rows):
+    piv = {}
+    for r in rows:
+        while r:
+            i = r.bit_length() - 1
+            if i not in piv:
+                piv[i] = r
+                break
+            r ^= piv[i]
+    return len(piv)
+
+
+def cuts(n, k, adj):
+    full = (1 << n) - 1
+    for S in combinations(range(n), k):
+        mask = sum(1 << i for i in S)
+        yield S, rank2([adj[i] & (full ^ mask) for i in S])
+
+
+def tree(n, k, mode, depth):
+    """Leaves (i, kk, m_expr, split_vertices_bits) of the split tree and the rewrite steps (pre-order)."""
+    if mode == "halve":
+        root = (n - 1, k - 1, f"2 ^ {n - 1}")
+    else:
+        root = (n, k, "0")
+    leaves, steps = [], []
+
+    def rec(i, kk, m, d, bits):
+        if d == 0:
+            leaves.append((i, kk, m, bits))
+            return
+        steps.append((i - 1, kk, kk - 1, m))
+        rec(i - 1, kk, m, d - 1, bits + ((i - 1, False),))
+        rec(i - 1, kk - 1, f"{m} + 2 ^ {i - 1}", d - 1, bits + ((i - 1, True),))
+
+    rec(*root, depth, ())
+    return root, leaves, steps
+
+
+def check_graph(n, L, adj, hist_paper):
+    """Returns (hist, packed total, N, leaf values) after asserting the paper's histogram and the LP value L."""
+    k = n // 2
+    assert len(adj) == n
+    assert all(not (adj[i] >> i) & 1 for i in range(n))
+    assert all(((adj[i] >> j) & 1) == ((adj[j] >> i) & 1) for i in range(n) for j in range(n))
+    mode, depth = plan(n)
+    root, leaves, steps = tree(n, k, mode, depth)
+    hist = Counter()
+    leafval = {tuple(b for b in lf[3]): 0 for lf in leaves}
+    for S, r in cuts(n, k, adj):
+        hist[r] += 1
+        if mode and (mode == "split" or (n - 1) in S):
+            key = tuple((v, v in S) for v, _ in leaves[0][3])
+            leafval[key] += PACK ** r
+    assert dict(hist) == hist_paper, (n, dict(hist), hist_paper)
+    N = sum(c * 2 ** (k - r) for r, c in hist.items())
+    assert F(N, 2 ** k * comb(n, k)) == L, (n, F(N, 2 ** k * comb(n, k)), L)
+    assert max(hist.values()) < PACK
+    total = sum(c * PACK ** r for r, c in hist.items())
+    if mode:
+        assert (2 if mode == "halve" else 1) * sum(leafval.values()) == total
+    return hist, total, N, leafval
+
+
+def lean_set(T, n):
+    return "(∅ : Finset (Fin %d))" % n if not T else "({%s} : Finset (Fin %d))" % (", ".join(map(str, T)), n)
+
+
+def spec_stmt(n, name, spec):
+    if spec[0] == "circ":
+        D, nn, mod = spec[1], spec[2], spec[3]
+        return (f"theorem adj{n}_spec : ∀ i j : Fin {n}, (adj{n} i).testBit j = decide ((i : ℕ) ≠ j ∧ "
+                f"(((j : ℕ) + {mod} - i) % {mod} ∈ ({D} : List ℕ) ∨ ((i : ℕ) + {mod} - j) % {mod} ∈ ({D} : List ℕ))) := by\n"
+                f"  decide +kernel\n")
+    if spec[0] == "edges":
+        return (f"theorem adj{n}_spec : ∀ i j : Fin {n}, (adj{n} i).testBit j = decide "
+                f"(((i : ℕ), (j : ℕ)) ∈ ({spec[1]} : List (ℕ × ℕ)) ∨ ((j : ℕ), (i : ℕ)) ∈ ({spec[1]} : List (ℕ × ℕ))) := by\n"
+                f"  decide +kernel\n")
+    return ""
+
+
+HEADER = """module
+
+public import FourQubitEntropy.PurityLPRankHist%s
+
+/-!
+# Graph-state witnesses of the purity minima: %s
+
+GENERATED by `gen_lp_graphs.py`; do not edit.  Sources: `even_qubit_purity_minima.tex` (`thm:lptable`(2),
+`tab:graphs`, `thm:fourteenfifteen`, `thm:sixteenseventeen`), `balanced_purity_18.tex` (`thm:eighteen`).
+
+For each `n` the graph is given by its neighbourhood bitmasks `adj<n>` (bit `j` of `adj<n> i` set iff `i ~ j`);
+`adj<n>_spec` checks that they are the stated circulant / edge list (where the paper gives one),
+`adj<n>_symm`, `adj<n>_irrefl` that the graph is simple.  `pack<n>` is the kernel-checked packed sum
+`Σ_{|S| = k} 65536^{rk_2 Γ[S,S^c]}` (bitmask recursion `maskSum`, `PurityLPMaskSum.lean`; for even `n >= 16` over the
+cuts containing the last vertex only, by complement symmetry%s), `rankHist<n>` the full rank histogram read off from it,
+`rankSum<n>` the sum `Σ_{|S| = k} 2^{k - rk_2 Γ[S,S^c]}` and `meanRdmPurity_graph<n>` the resulting value of `π_k` of the
+(normalised) graph state `graphStateNorm`, which equals the Rains-LP value.  Claim class: exact finite certificate (`decide +kernel`).
+-/
+
+@[expose] public section
+
+open scoped BigOperators
+open FormalResearch.NQubit
+
+-- one kernel evaluation at a time: the kernel's cache grows with the number of cuts evaluated, so concurrent
+-- `decide +kernel` declarations (the default asynchronous elaboration) multiply the peak memory
+set_option Elab.async false
+
+namespace FourQubitEntropy.PurityLP
+
+open FormalResearch.NQubit.Pauli FormalResearch.NQubit.Reduced FormalResearch.NQubit.TimeReversal FormalResearch.NQubit.Graph
+"""
+FOOT = "\nend FourQubitEntropy.PurityLP\n"
+
+
+parts = {}
+base = {}
+
+
+def emit_graph(n, rec, out):
+    L, name, adj, spec, hist_paper = rec
+    k = n // 2
+    hist, total, N, leafval = check_graph(n, L, adj, hist_paper)
+    cl = [hist.get(r, 0) for r in range(k + 1)]
+    out.append(f"/-- Neighbourhood bitmasks of {name} on {n} vertices (hexadecimal / list form). -/")
+    out.append(f"def adj{n}L : List ℕ := {adj}\n")
+    out.append(f"/-- The adjacency function of {name} on {n} vertices. -/")
+    out.append(f"def adj{n} : Fin {n} → ℕ := fun i => adj{n}L.getD i.1 0\n")
+    s = spec_stmt(n, name, spec)
+    if s:
+        out.append(s)
+    out.append(f"theorem adj{n}_symm : ∀ i j : Fin {n}, (adj{n} i).testBit j = (adj{n} j).testBit i := by\n  decide +kernel\n")
+    out.append(f"theorem adj{n}_irrefl : ∀ i : Fin {n}, (adj{n} i).testBit i = false := by\n  decide +kernel\n")
+    P = f"((Finset.univ : Finset (Fin {n})).powersetCard {k})"
+    full = f"(2 ^ {n} - 1)"
+    if n in SYM_N:
+        emit_sym(n, adj, total, out, adjn=f"adj{n}", g="packG", wfun=lambda r: PACK ** r, thm=f"pack{n}")
+        emit_rest(n, k, P, hist, cl, total, N, L, name, out)
+        return
+    mode, depth = plan(n)
+    ms = lambda i, kk, m: f"maskSum packG {n} adj{n}L {full} {i} {kk} ({m})"
+    head = f"theorem pack{n} : ∑ S ∈ {P}, packG (graphCutRankBits adj{n} S) = {total} := by\n"
+    if mode:
+        root, leaves, steps = tree(n, k, mode, depth)
+        names = []
+        for idx, (i, kk, m, bits) in enumerate(leaves):
+            out.append(f"theorem pack{n}_{idx} : {ms(i, kk, m)} = {leafval[bits]} := by\n  decide +kernel\n")
+            names.append(f"pack{n}_{idx}")
+        splits = ", ".join([f"maskSum_split packG {n} adj{n}L {full} {i} {i + 1} {kk} {kk1} ({m}) rfl rfl"
+                            for i, kk, kk1, m in steps] + names)
+        if mode == "halve":
+            p, j = n - 1, k - 1
+            out.append(head +
+                       f"  refine (sum_cuts_half packG {n} {k} {p} {j} rfl rfl rfl adj{n}L adj{n} (fun i => rfl) adj{n}_symm {full} rfl).trans ?_\n"
+                       f"  rw [{splits}]\n")
+        else:
+            out.append(head +
+                       f"  rw [sum_cuts_eq_maskSum packG {n} adj{n}L adj{n} (fun i => rfl) {full} rfl {k}, {splits}]\n")
+    else:
+        out.append(head +
+                   f"  rw [sum_cuts_eq_maskSum packG {n} adj{n}L adj{n} (fun i => rfl) {full} rfl {k}]\n"
+                   f"  decide +kernel\n")
+    emit_rest(n, k, P, hist, cl, total, N, L, name, out)
+
+
+def emit_rest(n, k, P, hist, cl, total, N, L, name, out):
+    cls = "[" + ", ".join(map(str, cl)) + "]"
+    out.append(f"/-- The rank histogram of `tab:graphs` / the theorem: "
+               f"{', '.join(f'rank {r} on {hist[r]} cuts' for r in sorted(hist))} (and no other rank). "
+               f"Kernel-checked from the packed sum `pack{n}` (`hist_of_packed`). -/\n"
+               f"theorem rankHist{n} : ∀ r, ({P}.filter fun S => graphCutRankBits adj{n} S = r).card"
+               f" = ({cls} : List ℕ).getD r 0 :=\n"
+               f"  hist_of_packed adj{n} {k} 65536 (by norm_num [Nat.choose]) {cls} (by decide) rfl\n"
+               f"    (pack{n}.trans (by decide +kernel))\n")
+    out.append(f"theorem rankSum{n} : ∑ S ∈ {P}, 2 ^ ({k} - graphCutRankBits adj{n} S) = {N} := by\n"
+               f"  rw [rankSum_of_hist adj{n} {k} {cls} rankHist{n}]\n  decide +kernel\n")
+    num, den = L.numerator, L.denominator
+    out.append(f"/-- The graph state of {name} has `π_{k} = {L}`. -/\n"
+               f"theorem meanRdmPurity_graph{n} : meanRdmPurity (graphStateNorm (adjGraph adj{n})) {k} = {num} / {den} := by\n"
+               f"  rw [meanRdmPurity_graphStateNorm adj{n} adj{n}_symm {k} {N} (by norm_num) rankSum{n}]\n"
+               f"  norm_num [Nat.choose]\n")
+
+
+def write(fname, title, ns):
+    if any(n in SYM_N for n in ns):
+        imp = "\npublic import FourQubitEntropy.PurityLPSymmetry"
+        how = ("; for `n = 17` over one representative of each orbit of the\n"
+               "dihedral automorphism group of the circulant, weighted by the orbit size: `sum_cuts_reps`, `NQubit/Graph/Symmetry.lean`;\n"
+               "`symQ<n>` lists the group, `symR<n>` the representatives with their orbit sizes")
+    else:
+        imp, how = "", ""
+    out = [HEADER % (imp, title, how)]
+    for n in ns:
+        emit_graph(n, G[n], out)
+    out.append(FOOT)
+    text = "\n".join(out)
+    with open(os.path.join(HERE, fname), "w") as f:
+        f.write(text)
+
+
+write("PurityLPGraphDataA.lean", "n = 4, 5, 6, 8, 9, 10, 11, 12", [4, 5, 6, 8, 9, 10, 11, 12])
+write("PurityLPGraphDataB.lean", "n = 14, 15", [14, 15])
+for n in (16, 17, 18):
+    write(f"PurityLPGraphData{n}.lean", f"n = {n}", [n])
+
+
+# ---- main theorems
+main = ["""module
+
+public import FourQubitEntropy.PurityLPCertData
+public import FourQubitEntropy.PurityLPGraphDataA
+public import FourQubitEntropy.PurityLPGraphDataB
+public import FourQubitEntropy.PurityLPGraphData16
+public import FourQubitEntropy.PurityLPGraphData17
+public import FourQubitEntropy.PurityLPGraphData18
+
+/-!
+# Exact minima of the mean balanced-cut purity of `n`-qubit pure states (the paper, Rains LP tables)
+
+GENERATED by `gen_lp_graphs.py`; do not edit.  For `n ∈ {4,5,6,8,9,10,11,12,14,15,16,17,18}` and
+`k = ⌊n/2⌋`, `minPurity<n>` states, for **unit vectors `ψ` of `(ℂ²)^{⊗n}`** and the **actual marginal purities**
+`meanRdmPurity ψ k = C(n,k)^{-1} Σ_{|S|=k} tr (ρ_S²)` (`ρ_S = rdm ψ S` the explicit partial trace),
+
+  `IsLeast {x | ∃ ψ, ‖ψ‖ = 1 ∧ π_k(ψ) = x} L`,
+
+with `L` the entry of `tab:minima` (`thm:lptable`, `thm:fourteenfifteen`, `thm:sixteenseventeen`, `thm:eighteen`).
+The lower bound is `lpBound<n>` (shadow inequalities `shadow_nonneg`, `a_s = a_{n-s}`, exact rational dual
+certificate); the attaining state is the normalised graph state `graphStateNorm (adjGraph adj<n>)` (`meanRdmPurity_graph<n>`, from
+`purity_gsn : tr ρ_S² = 2^{-rk_2 Γ[S,S^c]}` and the kernel-checked cut ranks).  `n = 7, 13` are out of scope.
+-/
+
+@[expose] public section
+
+namespace FourQubitEntropy.PurityLP
+
+open FormalResearch.NQubit.Pauli FormalResearch.NQubit.Reduced FormalResearch.NQubit.TimeReversal FormalResearch.NQubit.Shadow FormalResearch.NQubit.Graph
+open FormalResearch.NQubit
+"""]
+for n, rec in G.items():
+    L = rec[0]
+    k = n // 2
+    main.append(f"""/-- **Exact minimum of `π_{k}` for `n = {n}` qubits**: `min π_{k} = {L}`, attained by {rec[1]}. -/
+theorem minPurity{n} :
+    IsLeast {{x : ℝ | ∃ ψ : Ψ {n}, nsq ψ = 1 ∧ meanRdmPurity ψ {k} = x}} ({L.numerator} / {L.denominator}) :=
+  ⟨⟨graphStateNorm (adjGraph adj{n}), nsq_graphStateNorm _, meanRdmPurity_graph{n}⟩, fun _ ⟨ψ, hψ, hx⟩ => hx ▸ lpBound{n} ψ hψ⟩
+
+/-- info: 'FourQubitEntropy.PurityLP.minPurity{n}' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms minPurity{n}
+""")
+main.append(FOOT)
+with open(os.path.join(HERE, "PurityLPMain.lean"), "w") as f:
+    f.write("\n".join(main))
+print("wrote graph data modules and PurityLPMain.lean; all rank histograms and means verified in exact arithmetic")

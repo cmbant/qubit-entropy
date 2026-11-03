@@ -1,0 +1,25 @@
+\subsubsection*{Orbit-stability certificates}\label{sec:fqe-stability-verifiers}
+The entropy-maximum proof is analytic; the quantitative stability comparisons use exact or
+outward-rounded interval certificates. The global overlap identity is checked by GO-2 in exact integer arithmetic. The local quadratic forms (OS, EH), the
+Bell-frame witness (BF) and the closest-point normal slice (NSL) check proofs in this supplement and are listed below. The two sharp critical-locus
+theorems are proved in this supplement, and their checks, listed below, are the analytic
+critical-moment comparison supported by the exact symbolic checks CO-1--CO-3 and the covering profile FP-2 over $\mathbb Q$, the analytic mixed null-critical proof supported by the exact symbolic checks MS-1--MS-4, and for the sharp entropy coefficient the interval certificates PS, TC, LCC and CCV on the
+critical locus, with the exact checks PM (the slice $P=1$) and EX. Normal-form coverage, constraint positivity,
+chart reductions and entropy-transfer arguments are analytic. Interval certificates use outward-rounded
+ball arithmetic, and every sign decision is a certain comparison of balls; no floating tolerance decides
+anything. Certificate data files give every Gram matrix as integers over a stated denominator, with an
+integer Cholesky approximation whose residual is checked to be strictly diagonally dominant with positive
+diagonal, using integer arithmetic; no search solver is a verification input.
+\begin{description}
+\item[GO-1--GO-4] The sharp overlap certificate for Theorem~\ref{thm:fqe-global-overlap}:
+independent verification of all $50$ used unit HS rays ($46$ baseline plus four rational two-factor
+skew-rotation rays) by $n=1$ and $Q=W_1=\tau=0$ (GO-1); exact rounded low-rank reconstruction and the integer dominance test
+\eqref{eq:fqe-compact-gram-test} for all $277$ remaining rational Gram blocks in $\mathcal C_Q$;
+invariance of the two explicit analytic remainders; and exact equality
+of \eqref{eq:fqe-global-overlap-sos} for $(Q-n^2e)/36$ across all $3{,}277$ degree-$\le6$ signed
+lower-permutation monomial orbits on the $19$-variable closest-point normal slice (GO-2); the
+ordered-singular-value remainder of Lemma~\ref{lem:fqe-hs-fidelity-floor} and the rational chain giving
+$Q\ge1-\Phi\ge\frac{6+\sqrt6}{12}d^2>\frac7{10}d^2$ (GO-3); rational series bounds giving $k>16/225$, and the
+margin $k(6+\sqrt6)/12>1/20$ of Theorem~\ref{thm:fqe-orbit-stability} (GO-4). Normal-slice coverage and the
+positivity of the closest-point constraints are analytic (Section~\ref{sec:fqe-global-overlap}).
+\end{description}

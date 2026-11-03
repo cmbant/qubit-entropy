@@ -1,0 +1,71 @@
+\section{Proofs for R\'enyi orders above one}\label{sec:fqe-renyi-proofs}
+
+The proof separates physical compatibility from a classical entropy problem.
+For a triple of four-point spectra, let $p_j$ be the purity of spectrum $j$ and write
+\[
+ \varepsilon=P-1,\qquad F=17P-12T-12,\qquad
+ V_P=\sum_j(p_j-P/3)^2.
+\]
+Every pure four-qubit state supplies a triple in the relaxation
+\[
+ \mathcal R=\left\{\varepsilon\ge0,\quad F\ge0,\quad
+                  6V_P\le F^2+\tfrac92\varepsilon\right\}.
+\]
+The first two constraints are the purity and sextic bounds; the third is (QK), Corollary~\ref{thm:fqe-quadratic-variance} of the sharp bound~\eqref{eq:fqe-quadratic-variance}. No spectral cap is imposed.
+
+\input{renyi_high_order}
+
+\subsection{Plan of the anchor proof}\label{sec:fqe-renyi-anchor-plan}
+\paragraph{Two anchors suffice.}
+Set $q_s=1587/1000<q_*<q_u=8/5$. The anchors must bracket $q_*$, because an HS bound transfers only to lower orders
+and a cluster bound only to higher ones, and they are rational so that the supporting inequalities are statements
+with exact rational data. Since $\mathcal E_q$ decreases in $q$, the cluster bound is easier to prove as $q$ increases towards $q_*$: $q_s$ is the
+lower end of the certified enclosure $1587/1000<q_*<1589/1000$ of Proposition~\ref{prop:fqe-renyi-crossing}, and it
+exceeds the threshold $q_b$ that the cubic envelope requires
+(Corollary~\ref{cor:fqe-renyi-high-f}). The upper anchor $q_u=8/5$, the end of the interval in
+that proposition, is a simple order at which the HS supporting inequality has explicit constants
+(Lemma~\ref{lem:fqe-hs-polynomial} of the supplement). Theorem~\ref{thm:fqe-renyi-classical}
+partitions $\mathcal R$ into just two regions for order transfer:
+\[
+\begin{array}{c|c|c}
+\text{region}&\text{anchor bound}&\text{anchor equality}\\\hline
+F<3/20,\quad20\varepsilon+2F<1
+ &\mathcal E_{q_u}\le h_{q_u}&\text{three HS spectra}\\
+\text{complement in }\mathcal R
+ &\mathcal E_{q_s}\le5/3&\text{cluster triple}.
+\end{array}
+\]
+Here $h_q=H_q(1/2,1/6,1/6,1/6)$ and the cluster triple is
+$((1/2,1/2,0,0),(1/4)^4,(1/4)^4)$, up to cut order.
+Single crossing (Corollary~\ref{cor:fqe-renyi-order-transfer}) transfers an HS
+bound to every lower order above one; ordinary order monotonicity transfers
+a constant bound to every higher order. Since $h_{q_s}>5/3>h_{q_u}$,
+the two anchors give $\mathcal E_q\le\max\{h_q,5/3\}$ for all $q>1$.
+With the anchor equality cases, and single crossing strict off HS spectra,
+equality is HS below $q_*$, cluster above it, and both at $q_*$. The proof of Corollary~\ref{cor:fqe-renyi-gw} below gives
+the order transfer and physical rigidity explicitly. Orders $0<q\le1$
+were settled in Section~\ref{sec:fqe-spectral}.
+
+\paragraph{How the anchor proof is organised.}
+The subsections below give single crossing, (QV) and (QK), determinant reduction,
+the cubic envelope and the Lagrangian dual. Determinant replacement keeps
+each cut's second and third moments and does not decrease its entropy, so the
+supporting bounds need only two double-root charts, which include spectra
+with an eigenvalue above $1/2$. The supplement proves the anchors through the
+disjoint partition of Table~\ref{tab:fqe-renyi-coverage} of the supplement, then the supporting
+inequalities in order of use.
+
+The physical input (QK) follows from (QV), which has an exact-rational
+certificate and an independent analytic proof on critical states (Section~\ref{sec:fqe-critical-quadratic-variance} of the
+supplement). The entropy estimates use calculus and explicit polynomial arithmetic, with exact polynomial sign checks.
+An independent near-one defect estimate, critical-locus variance refinements and a shorter proof for states with a
+rank-two cut, with further purity-controlled bounds, are in Sections~\ref{sec:fqe-renyi-above-one}--\ref{sec:fqe-renyi-filter-limit} of the supplement; the proof here does not use them.
+
+\input{renyi_hs_cluster_crossing}
+\input{renyi_single_crossing}
+\input{quadratic_variance_certificate}
+\input{renyi_determinant}
+\input{renyi_cubic_bound}
+\input{renyi_uncapped_covering}
+
+\input{renyi_uncapped_reduction}

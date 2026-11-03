@@ -1,0 +1,173 @@
+\subsection{The large-head chart by two Hermite bounds}
+\label{sec:fqe-large-head-dual}
+Throughout this subsection $q=1587/1000$, $r=q-1$, $L=\ln2$ and
+$\theta=(397/100,3/20,159/100)$. Put
+\begin{gather*}
+ f(a,z)=\Lambda_\theta\left(a,\frac{(1-a)(1+2z)}3,
+              \frac{(1-a)(1-z)}3,\frac{(1-a)(1-z)}3\right),\\
+ B=\frac{1+2z^2}3,\qquad C=\frac{1+6z^2+2z^3}9,\qquad
+ K=\frac{(1+2z)^q+2(1-z)^q}{3^q}.
+\end{gather*}
+Here $1/2\le a\le4/5$, $0\le z\le1$, and the purity and third moment are
+$p=a^2+B(1-a)^2$, $t=a^3+C(1-a)^3$.
+The objective is $f<T=2507333/1500000$. The first lemma supplies the
+shape condition $f_{aaa}\le0$. The second then bounds $f$ by a quadratic
+in $a$, replaces $K(z)$ by one cubic minorant, and proves positivity of
+that quadratic's gap by completing the square. Thus the two-dimensional
+chart reduces to univariate polynomial signs.
+
+\begin{lemma}[Largest-entry curvature; exact polynomial sign certificates]\label{lem:fqe-large-head-curvature}
+On this whole chart, $f_{aaa}\le0$.
+\end{lemma}
+\begin{proof}
+Write $h(a,K)=-\ln(a^q+K(1-a)^q)/(rL)$. The remaining part of $f$ is a polynomial in $a$
+whose only fourth derivative comes from $-\gamma p^2$, so
+$f_{aaaa}=h_{aaaa}-24\gamma(1+B)^2$.
+
+\emph{The shape of $h_{aaaa}$ in $K$.}
+Set $x=2a-1\in[0,3/5]$, $\rho=(1-a)/a=(1-x)/(1+x)\in[1/4,1]$, $w=K\rho^q$ and
+\[
+ y=\frac{a^q-K(1-a)^q}{a^q+K(1-a)^q}=\frac{1-w}{1+w}.
+\]
+Apart from the positive factor $16q/(rL(1-x^2)^4)$, $h_{aaaa}$ is
+\begin{align*}
+ J(y)={}&6q^3y^4-24q^2xy^3+(-8q^3+36qx^2+8q)y^2\\
+ &+(24q^2x-24x^3-24x)y+2q^3-36qx^2-8q+6x^4+36x^2+6.
+\end{align*}
+On $0\le x\le3/5$,
+\[
+ J'(y)\big|_{y=x}=8x(q-1)\{3(q-1)^2x^2-2q^2+q+3\}\le0,\qquad
+ J'''(y)=144q^2(qy-x)\ge0\quad(y\ge x).
+\]
+So on $[x,1]$ the derivative $J'$ is convex and starts nonpositive. Hence $J$ decreases and then
+increases, and has no interior maximum on any subinterval:
+\[
+ J(y)\le\max\{J(y_\ell),J(y_h)\}\qquad(x\le y_\ell\le y\le y_h\le1).
+\]
+
+\emph{Envelopes for $y$.}
+Write $K=\lambda_1^q+2\lambda_2^q$ with $\lambda=\bigl(\frac{1+2z}3,\frac{1-z}3,\frac{1-z}3\bigr)$.
+Convexity of $s^q$ gives $K\ge3^{-r}>1/2$, since $3^r<2$.
+Concavity of $s^r$ with weights $\lambda_i$ gives $K=\sum\lambda_i\lambda_i^r\le B^r\le1$.
+If $B\le1/2$, then $K\le2^{-r}<2/3$, because $2^q>3$.
+For $0<\rho\le1$ we have $\rho^2\le\rho^q\le\rho^{3/2}\le\rho(1+\rho)/2$ and $\rho^q\le\rho$.
+Hence $w\ge\rho^2/2$, $w\le\rho(1+\rho)/2=(1-x)/(1+x)^2$ always, and $w\le2\rho/3$ when $B\le1/2$.
+Since $y=(1-w)/(1+w)$ decreases in $w$, we get $y_\ell\le y\le y_h$ with
+\[
+ y_h=\frac{(1+x)^2-(1-x)^2/2}{(1+x)^2+(1-x)^2/2},\quad
+ y_A=\frac{(1+x)-\frac23(1-x)}{(1+x)+\frac23(1-x)},\quad
+ y_B=\frac{(1+x)^2-(1-x)}{(1+x)^2+(1-x)},
+\]
+and $y_\ell=y_A$ if $B\le1/2$, $y_\ell=y_B$ otherwise.
+Moreover $y_A-x$ and $y_B-x$ have the numerators $\frac13(1-x^2)$ and $(1-x)(x+x^2)$ over the
+positive denominators, so $x\le y_\ell$, and $y_h\le1$.
+
+\emph{Three polynomial inequalities.}
+Let $L_0=0.693147<L$. For $0\le x\le3/5$,
+\begin{align*}
+ J(x,y_A)&\le\tfrac{1696}{25}\,\frac{rL_0(1-x^2)^4}{16q},\qquad
+ J(x,y_h)\le\tfrac{1696}{25}\,\frac{rL_0(1-x^2)^4}{16q},\\
+ J(x,y_B)&\le\tfrac{4293}{50}\,\frac{rL_0(1-x^2)^4}{16q}.
+\end{align*}
+Clearing the denominators ($D_A^4$ with $D_A$ linear, $D_B^4$ and $D_h^4$ with quadratic denominators)
+turns each into a polynomial inequality of degree $12$, $16$ and $16$ in $x$.
+Each is certified by the Bernstein expansion on $[0,3/5]$, all of whose coefficients are positive (LHD-1).
+Thus $h_{aaaa}<1696/25=24\gamma(16/9)$ if $B\le1/2$, and $h_{aaaa}<4293/50=24\gamma(9/4)$ otherwise.
+Since $B\ge1/3$, respectively $B\ge1/2$, this is $h_{aaaa}<24\gamma(1+B)^2$, that is, $f_{aaaa}<0$.
+
+\emph{The point $a=1/2$.}
+There, with $v=(1-K)/(1+K)$,
+\[
+ f_{aaa}=\frac{16q(q+1)v-16q^3v^3/r}{L}
+             -\frac{54}5(1-C)-\frac{477}{25}(1-B^2).
+\]
+The first term increases with $v\le1/3$. Since $K^{(4)}>0$ (because $q(q-1)(q-2)(q-3)>0$),
+cubic Hermite interpolation at $0,1$ gives, with $k=5247/10000<K(0)=3^{-r}$,
+\[
+ K\ge K_*(z)=k+(3-3k-2q/3)z^2+(2q/3-2+2k)z^3.
+\]
+Replacing $K$ by $K_*$ and $L$ by $L_0$, and clearing
+$r(1+K_*)^3$, reduces $-f_{aaa}(1/2,z)\ge0$ to $(1-z)\sum_{j=0}^{12}c_jz^j\ge0$, where every $c_j$ is
+positive (LHD-2). Lowering $K(0)$ to $k$ preserves the minorant because its coefficient is
+$1-3z^2+2z^3=(1-z)^2(1+2z)\ge0$. Together with $f_{aaaa}<0$ this proves the lemma.
+\end{proof}
+
+\begin{lemma}[The whole large-head chart; exact polynomial sign certificates]\label{lem:fqe-large-head-dual}
+Every spectrum on the above chart satisfies
+$\Lambda_\theta<T=2507333/1500000$.
+\end{lemma}
+\begin{proof}
+Put $a_0=127/200$, $S=1-a_0=73/200$, $d=a_0-1/2=27/200$ and $\xi=(a-a_0)/d\in[-1,11/9]$.
+By Lemma~\ref{lem:fqe-large-head-curvature}, the quadratic Hermite interpolant in $a$
+at the single node $1/2$ and the double node $a_0$ is a global upper bound,
+since its remainder has the sign of $f_{aaa}(\eta,z)(a-1/2)(a-a_0)^2\le0$:
+\[
+ f(a,z)\le Q=f_0(1-\xi^2)+f_l\xi^2+dD(\xi+\xi^2),\quad
+ f_0=f(a_0,z),\ f_l=f(\tfrac12,z),\ D=f_a(a_0,z).
+\]
+Write $f=h(a,K)+P$, where $P$ is a polynomial in $(a,B,C)$ and does not depend on $K$.
+Then only the three values $h(a_0,K)$, $h(\tfrac12,K)$, $h_a(a_0,K)$ in $Q$ depend on $K$.
+
+\emph{$Q$ decreases in $K$ on $[.52,1]$.}
+Let $R=(a_0/S)^q\in[12/5,5/2]$, $c=rL$ and $\lambda=dq/(a_0S)=42849/46355$.
+Differentiating,
+\[
+ h_K(a_0,K)=\frac{-1}{c(R+K)},\quad h_K(\tfrac12,K)=\frac{-1}{c(1+K)},\quad
+ h_{aK}(a_0,K)=\frac{qR}{c\,a_0S(R+K)^2},
+\]
+and therefore
+\[
+ -c(R+K)^2(1+K)\,Q_K=(1+K)\,(R+K-\lambda R\xi)+\xi^2\{(R+K)(R-1)-\lambda R(1+K)\}.
+\]
+For $-1\le\xi\le11/9$ both terms are nonnegative, the first strictly positive. The first is linear in $\xi$, positive at both ends:
+$\frac{11}9\lambda<1.13$ and $K>.13R$. The brace increases in $R$ and decreases in $K$, and is
+$\frac{17}5\cdot\frac75-\frac{24}5\lambda>0$ at $R=12/5$, $K=1$ (LHD-3).
+
+\emph{A cubic minorant of $K$.}
+Because $K^{(4)}>0$, cubic Hermite interpolation at the double nodes $3/20,17/20$ gives
+\[
+ K(z)\ge\kappa(z)=.5238033+.0142244z+.4204281z^2+.0384307z^3,
+ \qquad .52<\kappa<1.                                      \tag{LH1}
+\]
+Each coefficient of $\kappa$ is a rational lower rounding of the interpolant's coefficient (LHD-3).
+Since $.52<\kappa\le K\le1$, we have $Q(K)\le Q(\kappa)$.
+
+\emph{Rational bounds for the logarithms.} Set
+\[
+ \rho=2.40792594,\quad u=2.45774282,\quad H_0=1.10489073,\quad H_l=1.32818582.
+\]
+They approximate $R$, $1/(rL)$, $h(a_0,3/4)$, $h(\tfrac12,3/4)$ respectively with error less than $2\cdot10^{-8}$.
+For $v\in[.52,1]$ define
+\[
+ \widehat h_0=H_0-2u\frac{v-3/4}{2\rho+v+3/4},\quad
+ \widehat h_l=H_l-2u\frac{v-3/4}{v+11/4},\quad
+ \widehat h_a=-\frac{2qu}{1-(27/100)^2}\Bigl(\frac{\rho-v}{\rho+v}-\frac{27}{100}\Bigr).
+\]
+The identity $\ln((1+y)/(1-y))=2y+e_y$ has $|e_y|\le2|y|^3/(3(1-y^2))$.
+Here $h(a_0,v)-h(a_0,\tfrac34)=-\frac1{rL}\ln\frac{R+v}{R+3/4}$ and
+$h(\tfrac12,v)-h(\tfrac12,\tfrac34)=-\frac1{rL}\ln\frac{1+v}{7/4}$. The logarithms equal $\ln\frac{1+y}{1-y}$ with
+$y=(v-\frac34)/(2R+v+\frac34)$, respectively $y=(v-\frac34)/(v+\frac{11}4)$, and $|y|<.0383$, respectively $|y|<.0704$.
+Rounding the constants and the remainder give
+\[
+ |h(a_0,v)-\widehat h_0|<e_0=10^{-4},\quad
+ |h(\tfrac12,v)-\widehat h_l|<e_l=6\cdot10^{-4},\quad
+ |h_a(a_0,v)-\widehat h_a|<e_a=10^{-6}.                         \tag{LH2}
+\]
+These include the rounding errors; LHD-3 checks the scalar arithmetic.
+On $[-1,11/9]$ we have $|1-\xi^2|\le1$ and $|d(\xi+\xi^2)|\le11/30<1$, so with
+$P_0=P(a_0)$, $P_l=P(\tfrac12)$ and $P_a=\partial_aP(a_0)$,
+\[
+ Q(\kappa)\le F=(\widehat h_0+P_0)(1-\xi^2)+(\widehat h_l+P_l)\xi^2+d(\widehat h_a+P_a)(\xi+\xi^2)
+   +e_0+e_a+e_l\xi^2,\qquad v=\kappa(z).
+\]
+
+\emph{The completed square.}
+Put $E=(v+2\rho+3/4)(v+11/4)(v+\rho)>0$. Then $E\,(T-F)=c_0+c_1\xi+c_2\xi^2$, where after
+substituting $v=\kappa(z)$ and the polynomials $B,C$ the $c_i$ are polynomials in $z$.
+On $[0,1]$,
+\[
+ c_2\ge\tfrac1{10},\qquad 4c_0c_2-c_1^2\ge\tfrac3{100},
+\]
+because all Bernstein coefficients of $c_2$ (degree $13$) and of $4c_0c_2-c_1^2$ (degree $26$) are at least
+these values (LHD-4). Thus the quadratic in $\xi$ is positive for every real $\xi$, so $f\le Q\le F<T$.
+\end{proof}

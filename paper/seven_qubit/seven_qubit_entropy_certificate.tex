@@ -1,0 +1,276 @@
+\subsection{The localised five-copy inequality}
+\label{sec:seven-entropy-certificate}
+
+The scalar majorant bounds entropy by a five-copy functional. We now prove the matching bound on that
+functional using a quantum compatibility identity.
+Write $\nu=\|z\|^2$, $R_S=\operatorname{tr}_{S^c}|z\rangle\langle z|$,
+and $\Pi(z)=35^{-1}\sum_{|S|=3}\operatorname{tr}R_S^2$.
+Let $\mathcal H(z)$ be the homogeneous lift of
+$\mathcal P_5$: its term $h_{kl}\operatorname{tr}(R_S^k\widetilde R_S^l)$
+is multiplied by $\nu^{5-k-l}$. Thus
+$\mathcal H(z)=\mathcal P_5(z)$ when $\nu=1$.
+Put $p_0=121/917$, $p_c=8693/64000$, and $\kappa=497/1000$.
+For a vector that need not be normalised, $X_5^+(z)$ denotes the unnormalised twirled moment
+$\nu^5X_5^+(z/\|z\|)$, with $X_5^+(0)=0$; it is a real polynomial of degree ten in $z,\bar z$, so both sides
+of the identity below are homogeneous of degree ten.
+
+\begin{theorem}[Localised entropy identity; verified-arithmetic certificate E7-1]
+\label{thm:seven-entropy-localized-identity}
+There are seventeen positive definite real Gram matrices $C_b$, two
+nonnegative cubic-moment polynomials $K_+,K_-$, and quadratic marginal
+matrix covariants $A_j,B_j$, such that the following polynomial identity
+holds for every complex seven-qubit vector $z$:
+\begin{align}
+ E_*\nu^5-\mathcal H(z)
+ &=\sum_{b=1}^{17}\operatorname{tr}[C_bG_b(z)]
+   +(p_c\nu^2-\Pi(z))K_+(z)
+   +(\Pi(z)-p_0\nu^2)K_-(z)\notag\\
+ &\quad+\frac1{35}\sum_{|S|=3}\left[
+       \nu\sum_j\operatorname{tr} A_j(R_S)^\dagger A_j(R_S)
+       +\sum_j\operatorname{tr}B_j(R_S)^\dagger
+                   (\kappa\nu I-R_S)B_j(R_S)\right].
+ \label{eq:seven-entropy-localized-identity}
+\end{align}
+Here $G_b(z)=W_b^{\mathsf T}\Gamma_b(X_5^+(z))W_b\succeq0$ are Gram
+matrices of five-copy features: $\Gamma_b$ is a block of the twirled
+five-copy moment with zero, one or two spin-flipped copies, as in
+Section~\ref{sec:fivecopy}, and the columns of $W_b$ lie in its kernel at
+$\phi=\psi_{x_*}$. Every term on the right vanishes at $\phi$, and the
+functionals $X\mapsto\operatorname{tr}[W_bSW_b^{\mathsf T}\Gamma_b(X)]$
+($b\le12$, $S$ symmetric) span the $3283$-dimensional space of linear
+functionals vanishing on $X_5^+(\phi)$ and on its family derivative. In
+particular,
+\begin{equation}\label{eq:seven-entropy-compatible-bound}
+ p_0\le\pi_3(z)\le p_c,\qquad R_S\preceq\kappa I\quad(|S|=3),
+ \qquad \nu=1
+ \quad\Longrightarrow\quad \mathcal P_5(z)\le E_*.
+\end{equation}
+\end{theorem}
+
+\paragraph{The positive sources.}
+The construction uses the one-site multiplicity modules
+$F=\mathbb R^4$ and $V=\mathbb R^5$ of the five-copy qubit Schur algebra
+from Section~\ref{sec:fivecopy-kernels}. In the following table
+$[a,b]V$ denotes the two-row Young module inside
+$\operatorname{Sym}^aV\otimes\operatorname{Sym}^bV$.
+The middle column is the number of spin-flipped copies; the last column
+is the number of kernel features.
+\begin{center}\small
+\begin{tabular}{lrr@{\qquad}lrr}
+\toprule
+module & flips & features & module & flips & features\\
+\midrule
+$\operatorname{Sym}^7V$ &2&31&
+$F\otimes\operatorname{Sym}^6V$ &2&69\\
+$F\otimes[5,1]V$ &2&125&$F\otimes[4,2]V$ &2&128\\
+$[6,1]V$ &2&57&$[5,2]V$ &2&72\\
+$\operatorname{Sym}^7V$ &0&2&$[6,1]V$ &0&3\\
+$[5,2]V$ &0&6&$\operatorname{Sym}^7V$ &1&14\\
+$[6,1]V$ &1&27&$[5,2]V$ &1&36\\
+$\operatorname{Sym}^2F\otimes\operatorname{Sym}^5V$ &2&94&
+$\bigwedge^2F\otimes\operatorname{Sym}^5V$ &2&46\\
+$[4,3]V$ &0&2&$[4,3]V$ &1&20\\
+$[4,3]V$ &2&44&&&\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each feature is projected onto the exact physical kernel at $\phi$;
+$G_b$ includes the positive multiplicity weight and the average over
+local unitaries and site permutations. Positivity holds for every
+complex pure state. The last five modules supply directions absent
+from the twelve-face purity certificate.
+
+For three copies the corresponding one-site multiplicity module has
+dimension two. The modules $\operatorname{Sym}^7\mathbb R^2$,
+$[6,1]\mathbb R^2$, and the one-spin-$3/2$
+$\operatorname{Sym}^6\mathbb R^2$ module have respectively two, one and
+one exact kernel features at $\phi$. Positive sums of their squared
+norms give $K_+$ and $K_-$. In the invariant bases $U_b$ of E7-K3, the kernel
+features in $[6,1]\mathbb R^2$ and one-spin-$3/2$ $\operatorname{Sym}^6\mathbb R^2$
+are constant rational vectors annihilating the entire family $\psi_x$,
+while the two kernel features in $\operatorname{Sym}^7\mathbb R^2$ depend on $x$
+and are taken at $x=x_*$. E7-K3 checks their physical coordinate forms directly.
+Section~\ref{sec:sextic-general} gives a structural interpretation of these features:
+the spin-$3/2$ feature is the one-site focused covariant $\Phi_{i,0}$ of
+Lemma~\ref{lem:focus-pauli}, and the $\operatorname{Sym}^7\mathbb R^2$ pair
+are the one-body and purity-gradient Wronskian
+relations~\eqref{eq:zero-focus-family} of Proposition~\ref{prop:zero-focus}.
+That proposition also proves their completeness analytically: the entire
+symmetric scalar cubic Gram has rank two on $0<x<1/2$, with the
+positive two-source determinant $72x(1-2x)$ in
+\eqref{eq:zero-focus-gradient-gram}. Thus its kernel is exactly this pair.
+
+To define the marginal sources put, for normalised $R$,
+\[
+ E=(R+\widetilde R)/2,\quad O=(R-\widetilde R)/2,\quad
+ p=\operatorname{tr}R^2,\quad q=\operatorname{tr}R\widetilde R,
+\]
+\[
+ p_o=6c^2+2a^2,\quad p_i=b^2+5c^2+2d^2,\quad
+ \alpha=(p_i-p_o)/c^2,
+\]
+and set
+\[
+ Q_0=((p-p_o)-\alpha(p-q))I,\quad
+ Q_1=O(E-6u_*I),\quad Q_2=[E,O].
+\]
+The $A_j$ and $B_j$ are fixed real linear combinations of these three
+covariants. Homogenisation replaces $p_o$ by $p_o\nu^2$ and $6u_*$ by
+$6u_*\nu$. Lemma~\ref{lem:seven-joint-spinflip} gives
+$Q_0=Q_1=Q_2=0$ for every marginal of $\phi$: in the out-class
+$p=q=p_o$, while in the in-class $p=p_i$ and $p-q=c^2$.
+Consequently both the ordinary and cap-weighted Gram matrices of the
+$Q_j$ are tight at $\phi$.
+
+\begin{proof}
+We describe the finite verification and the exact identity it establishes.
+All choices of bases and fixed coefficients are supplied as integers,
+rationals or binary rationals. The only other constants are $x_*$,
+its positive square root ratios, and the logarithms in $H$.
+
+Let $U_b$ be an integer basis fixed by the copy subgroup, $D_b$ its
+physical Gram matrix, and $Y_b(t)$ the degree-five physical image of
+$U+tV$. With $S_b=U_b^{\mathsf T}D_bU_b$ and
+$X_b(t)=U_b^{\mathsf T}D_bY_b(t)$, select independent columns $X_b^0$.
+The physical kernel projector in invariant coordinates is
+\begin{equation}\label{eq:seven-entropy-kernel-projector}
+ P_b=I-S_b^{-1}X_b^0
+       \bigl((X_b^0)^{\mathsf T}S_b^{-1}X_b^0\bigr)^{-1}
+       (X_b^0)^{\mathsf T},\qquad
+ t=\sqrt{x_*/u_*}.
+\end{equation}
+The fixed target factors $B_b$ are lower-trapezoidal dyadic matrices
+in invariant coordinates; the exact features are $U_bP_bB_b$, with the
+rational diagonal-Gram transport used in the purity certificate.
+These baselines need no justification of their own: the complete repair
+check below establishes the identity for them. Repeated image columns are
+stored once and expanded exactly, and no least squares or QR is performed
+during verification.
+E7-K0 checks the added two-row Young modules. E7-K1 verifies the image polynomials by
+integer contractions at six determining homogeneous amplitude pairs,
+and checks subgroup fixedness. E7-K2 proves the asserted generic image
+rank $r_b$: all $(r_b+1)$-minors have degree at most $5(r_b+1)$,
+and exact rank factorisations at $5(r_b+1)+1$ integer points make those
+minors identically zero. Modular elimination only selects pivots;
+the factorisations themselves use integers. Arb verifies invertibility
+of the displayed $r_b$-column Gram matrix at $x_*$. The symmetric cubic
+kernel instead follows from the closed Gram and its two analytic
+relations in Proposition~\ref{prop:zero-focus}. E7-K3 checks their
+physical coordinates, the other cubic kernels and the exact generating
+polynomials. These steps prove
+kernel membership exactly, rather than inferring it from small singular values.
+
+Let $\mathcal C_*$ be the real, conjugation-even, permutation-invariant
+five-copy polynomial space annihilating the moment of $\phi$ and its
+family tangent. The invariant space has dimension $3285$, by
+Proposition~\ref{prop:fivecopy-finite-probes}. Evaluation and family
+differentiation are independent: normalisation has value one and zero
+derivative, while $\pi_3'(x_*)\ne0$ by the explicit family quadratic.
+Hence $\dim\mathcal C_*=3283$. Every source above belongs to
+$\mathcal C_*$, since its kernel feature vanishes at $\phi$.
+The target belongs to $\mathcal C_*$ by first-order scalar contact and
+the entropy stationarity equation for $x_*$.
+
+Start with the identity Gram in each projected five-copy basis, and
+with the fixed positive cubic and marginal sources. Repair only the
+first twelve Grams, using the same rational orthogonal frames $Q_b$ as in
+Theorem~\ref{thm:fivecopy-sharp-certificate}:
+\[
+ C_b=I+Q_b\begin{pmatrix}J_b&E_b\\E_b^{\mathsf T}&0\end{pmatrix}Q_b^{\mathsf T}
+ \quad(b\le12),\qquad C_b=I\quad(b>12),
+\]
+where $J_b=J_b^{\mathsf T}$ has size $r_b=\min(7,k_b)$.
+Let $z_b$ list the upper triangle of $J_b$ and all entries of $E_b$.
+Then $\|C_b-I\|_2\le\sqrt2\|z_b\|_2\le\tfrac32\|z\|_2$.
+There are $3754$ independent real repair coordinates $z=(z_b)_{b\le12}$,
+with the same exact frame and coordinate audit as FP5-4.
+The columns of the evaluation matrix are the repair functionals
+$X\mapsto\operatorname{tr}[W_bSW_b^{\mathsf T}\Gamma_b(X)]$, $b\le12$, which
+lie in $\mathcal C_*$: each face $W_b^{\mathsf T}\Gamma_b(X_5^+(\psi_x))W_b$ is
+positive semidefinite along the family and vanishes at $\phi$, so its
+derivative vanishes there too.
+We apply Lemma~\ref{lem:positive-repair} over $K=\mathbb R$ with
+$\mathcal C=\mathcal C_*$ ($d=3283$) inside the $3285$-dimensional invariant space, $N=3754$,
+$\Phi(z)=\sum_{b\le12}\operatorname{tr}[(C_b-I)G_b]$,
+$\Delta_b(z)=C_b-I$ with $c=3/2$, and $\rho$ the left side
+of~\eqref{eq:seven-entropy-localized-identity} minus the baseline right side
+(identity Grams and the fixed cubic and marginal sources). Then
+$\rho\in\mathcal C_*$, since the target, every source and each identity Gram $\operatorname{tr}G_b$ (the $S=I$ repair functionals above) lie in $\mathcal C_*$.
+Let $\mathcal E$ evaluate, with fixed dyadic row weights, at the $3424$ rational direct probes of
+Proposition~\ref{prop:fivecopy-finite-probes}. E7-1 encloses every
+entry of the exact evaluation matrix $A$ and residual $r$ by explicit
+forward rounding bounds and Arb input enclosures. Its proposed binary
+matrices $L,R$ satisfy
+\[
+ \|I-LAR\|_2\le\delta<1,\qquad
+ \frac{3\|R\|_2\|Lr\|_2}{2(1-\delta)}<1,
+\]
+which are \eqref{eq:positive-repair-inverse} and~\eqref{eq:positive-repair-margin}.
+The complete cold log gives verified upper bounds $\delta<0.0311$ and
+a Gram correction below $0.1354$.
+Lemma~\ref{lem:positive-repair} shows that these repair functionals span
+$\mathcal C_*$, that evaluation is injective there, and that
+$z=R(LAR)^{-1}Lr$ yields the exact identity with $C_b\succ0$ for every repaired
+block. The unmodified Grams are identities. This proves
+\eqref{eq:seven-entropy-localized-identity}; every term is nonnegative
+under the hypotheses of~\eqref{eq:seven-entropy-compatible-bound}.
+\end{proof}
+
+\paragraph{Arithmetic bounds in E7-1.}
+E7-1 uses the IEEE-754 arithmetic model and the row-norm companions
+of the purity certificate (the paragraphs following
+Theorem~\ref{thm:fivecopy-sharp-certificate}). Large-face traces use the
+multiplier $V_RV_L^{\mathsf T}$ formed once, while both repair actions
+use at most seven columns. The symmetric and exterior $F^2$ actions
+are quadratic products of the local $4\times4$ matrix; replacing their
+signs by plus gives their positive companions, and their depth is bounded
+by the same $6g$ degree allowance. In particular the exterior action
+retains its alternating sign in the signed contraction.
+The coefficient and factored-trace depths are $a+f+6g+s$ and
+$a+h+6g+s$, with chunks $(128,256,128)$; multiplier traces use the
+corresponding squared-factor dimensions, as in FP5-1.
+Here $g=7$, and the positive-companion budget is
+$b=Dk+\sum_i d_i+42+2\binom5j^2+64$.
+The extra summation allowance covers all seventeen faces. Every signed
+path has depth at least $64$, asserted by the verifier.
+
+The entropy certificate also has Arb input radii $E_W$ on the feature
+bases. Replace each $|W|$ by $|W|+E_W/(64u)$, rounded upwards,
+\emph{before} forming its row norms or left companions.
+Since $\gamma_m\ge64u$, the bilinear terms containing $E_W$ bound
+input errors, and the $|W|$ term bounds rounding errors. Minkowski and
+Cauchy therefore give the same coefficient Frobenius and trace bounds
+for the exact Arb-enclosed features. The input guards and explicit
+$2^{-500}$ allowances for propagated subnormal errors are those of
+FP5-1. The rectangular coefficients are then rotated and packed using
+the exact rational frames and the rigorous transformation radius in
+that certificate; this yields one row radius for the $3754$ independent
+coordinates. The validated inverse uses these row radii, the source
+radii and the unchanged $3283$-dimensional critical space.
+The joint trace products have local degree seven and at
+most $120^2$ copy-coset terms, with integer dot products below $2^{53}$ before rational division. The two
+cubic localisers are combined into one degree-seven polynomial in ten local variables ($5560$ monomials),
+built from rational local maps that E7-K3 checks. These bound the exact functions in the identity.
+
+\begin{theorem}[Sharp seven-qubit mean entropy; verified-arithmetic certificate E7-1]
+\label{thm:seven-entropy-global-maximum}
+Every pure seven-qubit state satisfies
+\begin{equation}\label{eq:seven-entropy-global-maximum}
+ \boxed{\quad E_3(z)\le E_3(\psi_{x_*})
+ =\frac{39f(c)+8f(a)+6f(d)+3f(b)}7
+ =2.965356029477675899\ldots\quad}
+\end{equation}
+where $x_*$ is the root specified in
+Proposition~\ref{prop:entropy-seven-stationarity}. Equality holds if and only if $z$ is local-unitarily and site-permutation
+equivalent to $\psi_{x_*}$. With the qubit labels fixed, this equality set
+consists of exactly $42$ LU orbits.
+\end{theorem}
+\begin{proof}
+It suffices to consider $E_3(z)\ge E_*$. Proposition~\ref{prop:seven-competitor-band}
+and Corollary~\ref{cor:seven-entropy-eigen-cap-497} put every such state
+in the region of~\eqref{eq:seven-entropy-compatible-bound}. Therefore
+Proposition~\ref{prop:seven-joint-entropy-target} and
+Theorem~\ref{thm:seven-entropy-localized-identity} give
+$E_3(z)\le\mathcal P_5(z)\le E_*$, with equality at $\phi$. Proposition~\ref{prop:seven-entropy-equality-moment}
+and Corollary~\ref{cor:icosahedral-labelled-orbits} prove the equality assertions.
+\end{proof}

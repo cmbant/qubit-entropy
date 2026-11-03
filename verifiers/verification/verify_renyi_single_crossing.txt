@@ -1,0 +1,5 @@
+OT-1 one-large family formula, derivative through R(z), gradient and stationarity profile: PASS
+OT-2 Euler identity sum lambda_i d_i phi = -beta and equal-coordinate second variation 2g'(a)/Z: PASS
+OT-3 hyperbolic ratio (SR), contact, sinh(s z)/z derivative, and integrating factor: PASS
+OT-4 negative control: kappa + 1/1000 at q = 2 gives phi'(ln 3) = -1/2000, so HS is not stationary: PASS
+ALL OT ALGEBRA CHECKS PASSED (global signs and maximisation proved analytically)

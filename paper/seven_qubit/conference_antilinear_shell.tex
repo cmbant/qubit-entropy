@@ -1,0 +1,55 @@
+\begin{proposition}[an exact spin-flip equation forces the conference shell]
+\label{prop:kramers-conference-shell}
+Let $J=J_7$. Choose a distinguished qubit $s$
+and local $Z$ axes, and define
+\[
+ H_s=-\frac12Z_s-\frac14\sum_{i\ne s}Z_i,
+ \qquad {\cal A}_s=H_sJ.
+\]
+A normalised pure seven-qubit state satisfying
+$z={\cal A}_sz$ lies in the \emph{complex
+pair/complement family} of
+Theorem~\ref{thm:complexsos},
+up to a special-qubit diagonal $SU(2)$ phase.
+Conversely all members of that family
+satisfy this equation in that phase frame.
+Thus every such $z$ has $\pi_3(z)\ge121/917$, with equality
+only on the icosahedral LU/permutation orbit.
+In its displayed conference frame the
+icosahedral state satisfies
+$\Psiico=H_sJ\Psiico$.
+\end{proposition}
+\begin{proof}
+Since $J^2=-I$ and $JH_sJ^{-1}=-H_s$,
+the real-linear operator $\mathcal A_s=H_sJ$
+obeys $\mathcal A_s^2=H_s^2$.
+For a computational string with
+special-site bit $x_s$ and ordinary
+Hamming weight $w$, the eigenvalue
+of $H_s$ is
+\[
+ h(x)=\begin{cases}
+ -2+w/2,&x_s=0,\\
+ -1+w/2,&x_s=1.
+ \end{cases}
+\]
+Hence $z=\mathcal A_sz$ implies $H_s^2z=z$,
+restricting support to $h(x)^2=1$:
+exactly $15+1+1+15=32$ strings, those of
+ordinary weights $2,6$ at $x_s=0$ and $0,4$ at $x_s=1$.
+
+On this shell the equation identifies the
+weight-four amplitudes with the
+\emph{negative complex conjugates}
+of the complementary weight-two amplitudes,
+and makes the two endpoint amplitudes complex conjugates.
+A diagonal $SU(2)$ phase at the special site
+makes both endpoint amplitudes real and
+nonnegative. This is exactly the complex
+pair/complement ansatz, and the converse
+follows by the same spin-flip sign calculation.
+Theorem~\ref{thm:complexsos} and
+Proposition~\ref{prop:confphase} give the purity
+assertions. The icosahedral relation follows
+coefficientwise from~\eqref{eq:ico}.
+\end{proof}

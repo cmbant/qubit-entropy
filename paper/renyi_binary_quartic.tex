@@ -1,0 +1,96 @@
+\begin{lemma}[Binary quartic correction; analytic]\label{lem:fqe-binary-quartic}
+Let $1<q<2$. Put $v=(1-2u)^2$,
+\[
+ m_q(v)=\frac{(1+\sqrt v)^q+(1-\sqrt v)^q}{2},\qquad
+ D_q(v)=\frac{\ln m_q(v)}{(q-1)\ln2}=1-H_q(u,1-u).
+\]
+Then $D_q'''(v)>0$ on $0<v<1$, and
+\[
+ A_q(u)=\frac{4u(1-u)-H_q(u,1-u)}{u(1-u)(1-2u)^2}
+\]
+is strictly increasing on $0<u<1/2$.
+Consequently, a quartic bound
+$H_q(u,1-u)\le4u(1-u)-a u(1-u)(1-2u)^2$
+at $u=u_0$ holds throughout $u_0\le u\le1/2$.
+\end{lemma}
+\begin{proof}
+Write $a=\tan^2\!\bigl(\tfrac{\pi}{2q}\bigr)$; since $\pi/4<\pi/(2q)<\pi/2$, $a>1$. Put $f=\ln m_q$.
+The proof is Cauchy's formula for $\ln m_q$ on the slit plane, after removing the one zero of $m_q$.
+
+\emph{Analyticity.} Let $g(w)=\tfrac12\bigl((1+w)^q+(1-w)^q\bigr)$ with principal powers. It is holomorphic on
+$\mathbb C\setminus\bigl((-\infty,-1]\cup[1,\infty)\bigr)$ and even, so $m_q(v)=g(\sqrt v)$ does not depend on the
+sign of the root and is holomorphic on $\Omega=\mathbb C\setminus[1,\infty)$; at $v=0$ it is the convergent series
+$\sum_k\binom q{2k}v^k$. It is real on the real axis and $m_q(\bar v)=\overline{m_q(v)}$.
+For $\operatorname{Im}v\ge0$ take $w=\sqrt v$ in the closed first quadrant. Then $\arg(1-w)=\arg(w-1)-\pi$, so
+\begin{equation}
+ m_q(v)=\tfrac12\bigl[(1+w)^q+e^{-i\pi q}(w-1)^q\bigr],\qquad \arg(w-1)\in[0,\pi].
+ \label{eq:fqe-bq-upper}
+\end{equation}
+The right side is continuous on the closed first quadrant, so $m_q$ extends continuously to the closed upper
+half-plane, and to the closed lower half-plane by conjugation.
+
+\emph{Zeros.} Let $m_q(v)=0$ and $\operatorname{Im}v\ge0$, $w=\sqrt v$. Then $|1+w|^q=|1-w|^q$, so $\operatorname{Re}w=0$ and $v=-y^2$
+is real, $w=iy$, $y\ge0$. Now $(1\pm iy)^q=(1+y^2)^{q/2}e^{\pm iq\arctan y}$, so
+$m_q(-y^2)=(1+y^2)^{q/2}\cos(q\arctan y)$. As $0<q\arctan y<q\pi/2<\pi$ for $y>0$, this vanishes only at
+$q\arctan y=\pi/2$, that is $v=-a$. (For $v\in[0,1)$, $m_q>0$.) The zero is simple:
+$g'(w)=\tfrac q2\bigl((1+w)^{q-1}-(1-w)^{q-1}\bigr)$, and at $w=iy_0$, $y_0=\sqrt a$,
+\[
+ g'(iy_0)=iq(1+y_0^2)^{(q-1)/2}\sin\bigl((q-1)\arctan y_0\bigr)\ne0,
+\]
+since $0<(q-1)\arctan y_0<\pi/2$; and $m_q'(v)=g'(w)/(2w)$. Hence
+$h(v)=m_q(v)/(1+v/a)$ is holomorphic and zero-free on $\Omega$, and continuous and zero-free on the closed upper
+half-plane away from the cut; on the cut see the next step.
+
+\emph{Boundary values on the cut.} For $t>1$, \eqref{eq:fqe-bq-upper} gives
+$2m_q(t+i0)=(1+\sqrt t)^q+e^{-i\pi q}(\sqrt t-1)^q$ with
+$\operatorname{Im}\,2m_q(t+i0)=-\sin(\pi q)(\sqrt t-1)^q>0$, because $\pi<\pi q<2\pi$.
+So $m_q(t+i0)\ne0$ and
+\[
+ \theta_q(t)=\arg\bigl(2m_q(t+i0)\bigr)\in(0,\pi)
+\]
+is continuous on $[1,\infty)$, with $\theta_q(t)\to0$ as $t\downarrow1$, since $m_q(1)=2^{q-1}>0$.
+
+\emph{The logarithm.} $\Omega$ is simply connected and $h$ is zero-free on it with $h>0$ on $(-\infty,1)$
+(there $m_q$ and $1+v/a$ change sign together at $-a$). So $F=\ln h$ with $F(0)=0$ is holomorphic on $\Omega$,
+real on $(-\infty,1)$, and $F(\bar v)=\overline{F(v)}$. The closed upper half-plane is simply connected and $h$
+is continuous and zero-free on it, so $F$ extends continuously to it. On the cut, $\operatorname{Im}F(t+i0)$ is
+continuous and equals $\theta_q(t)$ modulo $2\pi$ (as $1+t/a>0$). Both vanish at $t=1$, so
+$\operatorname{Im}F(t+i0)=\theta_q(t)$ for all $t\ge1$ and $F(t+i0)-F(t-i0)=2i\theta_q(t)$.
+In particular $F$ is bounded near $v=1$.
+
+\emph{Growth.} For $|w|>1$ in the first quadrant, $(1+w)^q=w^q(1+1/w)^q$ and $(w-1)^q=w^q(1-1/w)^q$ (the
+arguments add without wrapping), so by \eqref{eq:fqe-bq-upper}
+\[
+ m_q(v)=w^q\bigl(c+\varepsilon(1/w)\bigr),\qquad c=\tfrac12\bigl(1+e^{-i\pi q}\bigr)\ne0,
+\]
+with $\varepsilon$ holomorphic on $|z|<1$ and $\varepsilon(0)=0$; $c\ne0$ because $q$ is not an odd integer.
+Hence $F(v)-\bigl(\tfrac q2\mathrm{Log}\,v-\mathrm{Log}(1+v/a)+\mathrm{Log}\,c\bigr)$ has exponential tending to
+$1$ as $|v|\to\infty$ in the closed half-plane, which is connected, so it tends to a constant in $2\pi i\mathbb Z$.
+Thus $|F(v)|\le C\ln|v|$ for large $|v|$, in both half-planes.
+
+\emph{The integral formula.} Fix $0<v<1$. By Cauchy's formula for $F'''$ on the region
+$\{|\zeta|<R\}$ with the strip $\{\operatorname{Re}\zeta\ge1,\ |\operatorname{Im}\zeta|\le\epsilon\}$ removed,
+\[
+ F'''(v)=\frac{3!}{2\pi i}\oint\frac{F(\zeta)}{(\zeta-v)^4}\,d\zeta .
+\]
+Let $\epsilon\downarrow0$ and then $R\to\infty$. $F$ is bounded near $1$, so the short segment near the
+tip $\zeta=1$ contributes $O(\epsilon)$; the arc contributes $O(R^{-3}\ln R)$; and by the jump of $F$ across the cut
+the two edges contribute $2i\int_1^R\theta_q(t)(t-v)^{-4}\,dt$. Therefore
+\[
+ F'''(v)=\frac6\pi\int_1^\infty\frac{\theta_q(t)}{(t-v)^4}\,dt>0 .
+\]
+Since $m_q=(1+v/a)e^F$ and $(\ln(1+v/a))'''=2/(a+v)^3$,
+\[
+ f'''(v)=(\ln m_q)'''(v)=\frac2{(a+v)^3}+\frac6\pi\int_1^\infty\frac{\theta_q(t)}{(t-v)^4}\,dt>0
+ \qquad(-a<v<1),
+\]
+which is $D_q'''>0$ on $0<v<1$.
+
+\emph{Monotonicity of $A_q$.} $D_q(0)=0$ and $D_q(1)=1$, so
+\[
+ \frac{A_q(u)}4=\frac{D_q(v)-v}{v(1-v)}=-[0,v,1]D_q .
+\]
+For $0<v<v'<1$, $[0,v,1]D_q-[0,v',1]D_q=(v-v')[0,v,v',1]D_q$, and by the mean value theorem for
+divided differences (Rolle's theorem; $D_q$ is continuous on $[0,1]$) the last factor is
+$D_q'''(\xi)/6>0$. So $A_q$ decreases in $v=(1-2u)^2$: it is strictly increasing in $u$.
+\end{proof}

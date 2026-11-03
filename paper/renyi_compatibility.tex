@@ -1,0 +1,114 @@
+\subsection{Critical-locus variance refinements}\label{sec:fqe-renyi-compatibility}
+The universal bound (QK) suffices for the anchor argument. We now give its sharper
+critical-locus refinements: the fixed-variance profile on $P=1$, used to classify equality
+in (QK), and the analytic proof of the sharp bound~\eqref{eq:fqe-quadratic-variance} on every critical state.
+Put $p_j=\operatorname{tr}\rho_{1j}^2$ and $U=\sum_jp_j^2$.
+
+\begin{proposition}[Sharp purity-variance tradeoff at minimal purity]
+\label{prop:fqe-critical-variance}
+Suppose a pure four-qubit state has $P=1$. Set
+\[
+V=\sum_{j=2}^4(p_j-1/3)^2,\qquad s=(24V)^{1/4}.
+\]
+Then $0\le s\le1$ and the sharp bound at each fixed $V$ is
+\[
+\boxed{\quad F\ge\frac32s^2-s^3.\quad}
+\tag{RF}\label{eq:fqe-critical-variance}
+\]
+For $a=(1+2s)/3$, $b=(1-s)/3$, equality holds exactly when, up to ordering of
+cuts and eigenvalues, the three spectra are
+\[
+\begin{split}
+&\left(\frac12,\frac a2,\frac b2,\frac b2\right),\\
+&\left(\frac{1+b+2\sqrt{ab}}4,\frac{1+b-2\sqrt{ab}}4,
+\frac{1-b}4,\frac{1-b}4\right)\quad\text{on each of the other two cuts}.
+\end{split}
+\tag{RF-eq}\label{eq:fqe-variance-spectra}
+\]
+These spectra are attained for every $s\in[0,1]$.
+In particular, $T+U\le3/4$, equivalently $F\ge12V$; equality in this weaker
+bound occurs only at the HS spectra ($s=0$) or cluster spectra ($s=1$).
+\end{proposition}
+\noindent[Proved under the hypothesis $P=1$.]
+\begin{proof}
+By Lemma~\ref{lem:fqe-purity}, the state is critical with $\tau=0$. As in the proof of
+Proposition~\ref{prop:fqe-critical-envelope}, its Bloch correlation matrix is then $\Theta=\mathbf m\mathbf n^T$ with unit
+$\mathbf m,\mathbf n\in\mathbb R^3$ (Lemma~\ref{lem:fqe-critical-correlation}(2) at $\kappa=0$), and the cut $c\in\mathbb Z/3$ has the
+four eigenvalues $(1+\sigma\cdot g^{(c)})/4$, $g^{(c)}_a=m_{a+c}n_a$, as $\sigma$ runs over the sign triples with
+$\sigma_1\sigma_2\sigma_3=-1$ (Lemma~\ref{lem:fqe-p1-cuts}). Put $A_a=m_a^2$, $B_a=n_a^2$ and $k=-m_1m_2m_3n_1n_2n_3$.
+The three vectors $g^{(c)}$ have squared norms
+\[
+u_c=\sum_aA_{a+c}B_a,\qquad \sum_cu_c=1,
+\]
+and the same coordinate product $-k$. The sign sums $\sum_\sigma\sigma\cdot g=0$, $\sum_\sigma(\sigma\cdot g)^2=4|g|^2$ and
+$\sum_\sigma(\sigma\cdot g)^3=-24g_1g_2g_3$ give, for the corresponding cut,
+\[
+p_j=\frac{1+u_c}{4},\qquad
+\operatorname{tr}\rho_{1j}^3=\frac{1+3u_c+6k}{16}.
+\]
+Set $X=1-3e_2(A)$ and $Y=1-3e_2(B)$, where $e_2(A)=\sum_{i<j}A_iA_j$.
+Then $0\le X,Y\le1$, and expanding the three cyclic sums gives
+\[
+\sum_c u_c^2=\frac{1+2XY}{3}.
+\]
+We sharpen the elementary Schur estimate by keeping $X$ and $Y$.
+For any nonnegative triple $A$ of sum one and $X=1-3e_2(A)$,
+\[
+27e_3(A)\le h(X),\qquad
+h(X)=1-3X+2X^{3/2}=(1-\sqrt X)^2(1+2\sqrt X).
+\tag{RP}\label{eq:fqe-triple-product}
+\]
+This is the cubic discriminant identity
+\[
+ 4X^3-\bigl(27e_3(A)-1+3X\bigr)^2
+   =27\prod_{i<j}(A_i-A_j)^2\ge0.
+\]
+Taking the upper square-root bound proves~\eqref{eq:fqe-triple-product}.
+Equality requires two equal coordinates, and the upper sign selects
+$((1+2r)/3,(1-r)/3,(1-r)/3)$, $r=\sqrt X$, up to permutation.
+This includes the uniform triple and coordinate-vector endpoints.
+
+The transfer from $X,Y$ to their geometric mean is algebraic as well.
+Set $g(t)=(1-t)^2(1+2t)$, $\xi=X^{1/4}$, $\zeta=Y^{1/4}$,
+$q=\xi\zeta$, $d=(\xi-\zeta)^2$, and
+$w=(1-\xi^2)(1-\zeta^2)$. Direct factorisation gives
+\begin{equation}\label{eq:fqe-product-transfer-remainder}
+ \begin{split}
+ h(\sqrt{XY})^2-h(X)h(Y)
+ &=g(\xi\zeta)^2-g(\xi^2)g(\zeta^2)\\
+ &=d\bigl\{w[6q(q+2)+2d]+d(1+2q)^2\bigr\}\ge0.
+ \end{split}
+\end{equation}
+Every factor is nonnegative for $0\le X,Y\le1$, and the difference
+is strictly positive when $X\ne Y$. Consequently
+\[
+27k\le27\sqrt{e_3(A)e_3(B)}
+\le\sqrt{h(X)h(Y)}\le h(\sqrt{XY}).
+\]
+The moment formulas above give
+\[
+V=\frac{XY}{24},\qquad F=\frac12-\frac{27}{2}k.
+\]
+Thus $s=(XY)^{1/4}$ and $F\ge(1-h(s^2))/2=3s^2/2-s^3$.
+For $0<s<1$, equality requires $X=Y=s^2$, $k>0$, and both $A,B$ to be
+permutations of $(a,b,b)$. The shift $c$ that aligns their distinguished
+coordinates gives $|g^{(c)}_a|=(a,b,b)$ up to order; the other two shifts give
+$(\sqrt{ab},\sqrt{ab},b)$. As every $g^{(c)}$ has negative coordinate product,
+all sign choices give the same spectral multisets, and the eigenvalue formula
+proves \eqref{eq:fqe-variance-spectra}.
+At $s=0$, equality forces $k=1/27$ and hence both triples uniform; at $s=1$
+both are coordinate vectors. These give the stated endpoint spectra.
+
+For attainability, take $\mathbf m=-\mathbf n=(\sqrt a,\sqrt b,\sqrt b)$, so $A=B=(a,b,b)$ and $k=ab^2=e_3(A)$.
+The product auxiliary vector with Bloch vectors $\mathbf m,\mathbf n$ has $\Theta=\mathbf m\mathbf n^T$ and $\tau=0$, and it is
+$\sum_kv_km_k$ for a critical $G(v)$, as at the end of the proof of Proposition~\ref{prop:fqe-critical-envelope}.
+Finally,
+\[
+\frac32s^2-s^3-12V=\frac{s^2}{2}(1-s)(3+s)\ge0,
+\]
+with equality exactly at $s=0,1$. This proves the weaker bound and its
+exhaustive equality statement as a corollary.
+\end{proof}
+
+\input{critical_quadratic_variance}
+

@@ -1,0 +1,4 @@
+UR-1 PASS: exact logarithmic-curvature factorization
+UR-2 PASS: 8/5-endpoint reduction and strictly positive polynomial data
+UR-3 PASS: fixed-trace second/third moments determine the quartic up to det
+UR-4 PASS: unrestricted crossed-purity W1/4 term and critical rank-two saturation identity

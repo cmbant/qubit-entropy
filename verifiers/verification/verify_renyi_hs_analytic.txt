@@ -1,0 +1,6 @@
+HD-1 fixed-purity A path, increasing third moment toward one-large and sharp endpoint identities: PASS
+HD-2 slope constant: 105^5 < 3*2^32, hence eta > 1 for p <= 9/16: PASS
+HD-3 family reduction and the full displayed curvature identity; P5 + R P6 >= 148445 for 0<=R<=8: PASS
+HD-4 uniform gap Delta > 1/5000 and the nonnegative outer dual on F<=3/20: PASS
+HD-5 enlarged L band has the identical supporting target; wrong slope and excessive tilt controls: PASS
+ALL HD ALGEBRA CHECKS PASSED (maximisation, divided-difference and curvature inference proved in the home)

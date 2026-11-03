@@ -1,0 +1,371 @@
+[
+  {
+    "index": 0,
+    "tag": "7",
+    "flip": 2,
+    "fac": [
+      [
+        5,
+        7
+      ]
+    ],
+    "dims": [
+      330
+    ],
+    "coef": 128,
+    "wedge": false,
+    "rank": 2
+  },
+  {
+    "index": 1,
+    "tag": "6",
+    "flip": 2,
+    "fac": [
+      [
+        4,
+        1
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "dims": [
+      4,
+      210
+    ],
+    "coef": 1792,
+    "wedge": false,
+    "rank": 8
+  },
+  {
+    "index": 2,
+    "tag": "51",
+    "flip": 2,
+    "fac": [
+      [
+        4,
+        1
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        1
+      ]
+    ],
+    "dims": [
+      4,
+      126,
+      5
+    ],
+    "coef": 8960,
+    "wedge": false,
+    "rank": 12
+  },
+  {
+    "index": 3,
+    "tag": "42",
+    "flip": 2,
+    "fac": [
+      [
+        4,
+        1
+      ],
+      [
+        5,
+        4
+      ],
+      [
+        5,
+        2
+      ]
+    ],
+    "dims": [
+      4,
+      70,
+      15
+    ],
+    "coef": 16128,
+    "wedge": false,
+    "rank": 20
+  },
+  {
+    "index": 4,
+    "tag": "61",
+    "flip": 2,
+    "fac": [
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        1
+      ]
+    ],
+    "dims": [
+      210,
+      5
+    ],
+    "coef": 768,
+    "wedge": false,
+    "rank": 3
+  },
+  {
+    "index": 5,
+    "tag": "52",
+    "flip": 2,
+    "fac": [
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        2
+      ]
+    ],
+    "dims": [
+      126,
+      15
+    ],
+    "coef": 1792,
+    "wedge": false,
+    "rank": 3
+  },
+  {
+    "index": 6,
+    "tag": "0-7",
+    "flip": 0,
+    "fac": [
+      [
+        5,
+        7
+      ]
+    ],
+    "dims": [
+      330
+    ],
+    "coef": 128,
+    "wedge": false,
+    "rank": 2
+  },
+  {
+    "index": 7,
+    "tag": "0-61",
+    "flip": 0,
+    "fac": [
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        1
+      ]
+    ],
+    "dims": [
+      210,
+      5
+    ],
+    "coef": 768,
+    "wedge": false,
+    "rank": 3
+  },
+  {
+    "index": 8,
+    "tag": "0-52",
+    "flip": 0,
+    "fac": [
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        2
+      ]
+    ],
+    "dims": [
+      126,
+      15
+    ],
+    "coef": 1792,
+    "wedge": false,
+    "rank": 3
+  },
+  {
+    "index": 9,
+    "tag": "1-7",
+    "flip": 1,
+    "fac": [
+      [
+        5,
+        7
+      ]
+    ],
+    "dims": [
+      330
+    ],
+    "coef": 128,
+    "wedge": false,
+    "rank": 2
+  },
+  {
+    "index": 10,
+    "tag": "1-61",
+    "flip": 1,
+    "fac": [
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        1
+      ]
+    ],
+    "dims": [
+      210,
+      5
+    ],
+    "coef": 768,
+    "wedge": false,
+    "rank": 3
+  },
+  {
+    "index": 11,
+    "tag": "1-52",
+    "flip": 1,
+    "fac": [
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        2
+      ]
+    ],
+    "dims": [
+      126,
+      15
+    ],
+    "coef": 1792,
+    "wedge": false,
+    "rank": 3
+  },
+  {
+    "index": 12,
+    "tag": "twoF-sym2-sym5",
+    "flip": 2,
+    "fac": [
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "dims": [
+      10,
+      126
+    ],
+    "coef": 10752,
+    "wedge": false,
+    "rank": 22
+  },
+  {
+    "index": 13,
+    "tag": "twoF-wedge2-sym5",
+    "flip": 2,
+    "fac": [
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "dims": [
+      6,
+      126
+    ],
+    "coef": 10752,
+    "wedge": true,
+    "rank": 14
+  },
+  {
+    "index": 14,
+    "tag": "allV43-flip0",
+    "flip": 0,
+    "fac": [
+      [
+        5,
+        4
+      ],
+      [
+        5,
+        3
+      ]
+    ],
+    "dims": [
+      70,
+      35
+    ],
+    "coef": 1792,
+    "wedge": false,
+    "rank": 2
+  },
+  {
+    "index": 15,
+    "tag": "allV43-flip1",
+    "flip": 1,
+    "fac": [
+      [
+        5,
+        4
+      ],
+      [
+        5,
+        3
+      ]
+    ],
+    "dims": [
+      70,
+      35
+    ],
+    "coef": 1792,
+    "wedge": false,
+    "rank": 2
+  },
+  {
+    "index": 16,
+    "tag": "allV43-flip2",
+    "flip": 2,
+    "fac": [
+      [
+        5,
+        4
+      ],
+      [
+        5,
+        3
+      ]
+    ],
+    "dims": [
+      70,
+      35
+    ],
+    "coef": 1792,
+    "wedge": false,
+    "rank": 2
+  }
+]

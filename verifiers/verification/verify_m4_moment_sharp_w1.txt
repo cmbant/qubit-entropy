@@ -1,0 +1,3 @@
+SI-1 ok: tensors U_i, V_i and pair vectors built from L, M, S and the marginals; 5120 monomials in sum ||V_i-8U_i||^2, 4848 in the pair sum
+SI-2: 3984 monomials in F; nonzero coefficients of 8F - 6NW1 - 3 sum||V_i-8U_i||^2 - 12 sum||(R_i-R_j)z||^2: 0
+SI-3 ok: product state has F = 3 = (3/4) N W1, so 3/4 is the best constant

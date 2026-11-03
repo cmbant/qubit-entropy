@@ -1,0 +1,3 @@
+NSL-1 PASS: the 13 first-order conditions have rank 10 and equal the ten stated relations
+NSL-2 PASS: lower rotations fix Z_*, preserve stationarity and conjugate Sym(X_3)+2Y_3
+NSL-3 PASS: the stationary and gauge conditions cut out exactly the 19-dimensional slice span

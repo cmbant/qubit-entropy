@@ -1,0 +1,260 @@
+\section{The five-copy level at seven qubits}\label{sec:fivecopy}
+The five-copy certificate proves that $\Psi_{\rm ico}$ minimises $\pi_3$ over all pure
+seven-qubit states, uniquely up to local unitaries and qubit permutations
+(Corollary~\ref{cor:seven-global-from-fivecopy}). The proof has three
+parts.
+\begin{enumerate}
+\item \emph{Value.} A rational five-copy dual supported on twelve exact
+  physical icosahedral kernels, with every Gram positive definite
+  (Theorem~\ref{thm:fivecopy-sharp-certificate}). The identity is determined by
+  $3424$ direct probes (Section~\ref{sec:fivecopy-direct-probes}) and a
+  verified right-inverse repair of an identity-Gram baseline, using $3754$
+  independent symmetric coordinates and at most seven columns per frame.
+\item \emph{Equality moment.} The repair directions span the whole
+  critical space, so at equality the five-copy moment lies on the
+  tangent line of the icosahedral family
+  (Lemma~\ref{lem:fivecopy-tangent-line}); an invariant and its square
+  fix the tangent parameter at zero
+  (Theorem~\ref{thm:fivecopy-family-equality}).
+\item \emph{Orbit.} Thirteen invariants of bidegree at most $(4,4)$
+  already determine the icosahedral orbit
+  (Theorem~\ref{thm:moment-orbit-rigidity}).
+\end{enumerate}
+Steps 2 and 3 hold at every family point with $1/32<x<1/12$ and combine into
+Theorem~\ref{thm:fivecopy-family-equality}, which the entropy proof of
+Section~\ref{sec:seven-entropy-equality} uses as well.
+Levels two, three and four of the hierarchy are provably not sharp
+(\S\S\ref{sec:hierarchy}--\ref{sec:fourcopy}; for level four,
+Proposition~\ref{prop:fourcopy-not-sharp}), so five copies is the first
+sharp level.
+
+\subsection{Site algebra and the icosahedral kernels}\label{sec:fivecopy-kernels}
+
+\begin{lemma}[Exact five-copy site algebra; S5-1]\label{lem:fivecopy-site-algebra}
+On one qubit's five-copy space, the commutant of collective $\mathrm{SU}(2)$ is
+$\mathcal A_5\simeq\mathbb C\oplus M_4(\mathbb C)\oplus M_5(\mathbb C)$.
+Choose rational bases of the highest-weight spaces in Hamming weights
+$m=0,1,2$ by taking the kernels of the qubit raising operator.  In the
+resulting matrix-unit coordinates, the spin-flip partial-transpose maps
+on copy sets $\{5\}$ and $\{4,5\}$ are rational $42\times42$ involutions;
+every entry has denominator dividing $30$.
+\end{lemma}
+\begin{proof}
+The highest-weight kernels have dimensions $1,4,5$; the corresponding
+$\mathrm{SU}(2)$ irreducibles have dimensions $6,4,2$, giving $1\cdot6+4\cdot4+5\cdot2=32$.
+Schur--Weyl duality gives the stated commutant.  For a weight-$m$ integer
+representation $\rho_m$ of $S_5$, its matrix unit is
+$E^{(m)}_{ij}=\frac{d_m}{120}\sum_{\sigma\in S_5}
+\rho_m(\sigma^{-1})_{ji}U_\sigma$.
+Apply $M\mapsto (\epsilon_J^{\mathsf T}M\epsilon_J)^{T_J}$ to these units,
+then read the transformed highest-weight blocks.  The exact integer
+calculation S5-1 checks all $42$ matrix units against their physical
+$32\times32$ operators, reconstructs each transformed operator, and checks
+both involutions and the denominator claim.
+\end{proof}
+
+\begin{lemma}[Rational coordinates for the leading two-flip blocks; Y5-1]
+\label{lem:fivecopy-young-blocks}
+Let $F\cong\mathbb Q^4$ and $V\cong\mathbb Q^5$ carry the $S_5$
+representations $[4,1]$ and $[3,2]$ from Lemma~\ref{lem:fivecopy-site-algebra}.
+For the seven-site type with one $F$ sector and six $V$ sectors, the
+$\mathrm{GL}(V)$ modules of shapes $(5,1)$ and $(4,2)$ both have dimension
+$420$.  Under the two-flip copy subgroup $H=S_3\times S_2$, their
+$F$-tensored invariant spaces have dimensions $137$ and $148$,
+respectively.  Both invariant spaces have explicit rational bases.
+\end{lemma}
+\begin{proof}
+Pieri decomposition identifies the two modules as
+\[
+ \ker\bigl(\operatorname{Sym}^5V\otimes V\to\operatorname{Sym}^6V\bigr),
+ \qquad
+ \ker\bigl(\operatorname{Sym}^4V\otimes\operatorname{Sym}^2V
+       \xrightarrow{\delta}\operatorname{Sym}^5V\otimes V\bigr),
+\]
+where the first map is multiplication and $\delta$ polarises one factor
+of the second symmetric power.  Both are surjective, so their kernel
+dimensions are $5\binom94-\binom{10}4=420$ and
+$\binom84\binom62-5\binom94=420$.
+Y5-1 gives sparse integer generators annihilated by each map, checks
+rank $420$ over a prime field, and hence obtains rational bases of the
+full kernels.  Averaging their tensor products with $F$ over the twelve
+elements of $H$ gives invariant bases.  The character averages are
+$137$ and $148$, and Y5-1 checks that many independent averaged columns
+and their invariance under every element of $H$ exactly.
+\end{proof}
+
+\begin{proposition}[Exact leading icosahedral five-copy kernels; IK5-1--IK5-4, PK5-1--PK5-3]
+\label{prop:ico-fivecopy-g34-kernels}
+At $\Psi_{\rm ico}$, twelve five-copy moment blocks have the
+following ranks and kernel dimensions in their $H$-invariant
+multiplicity spaces, where $j$ is the number of flipped copies:
+\[
+\begin{array}{cc|c|cc}
+ j&\text{site type}&\mathrm{GL}(5)\text{ shape} & \operatorname{rank} & \dim\ker\\ \hline
+0&(0,0,7)&(7)&2&2\\
+0&(0,0,7)&(6,1)&3&3\\
+0&(0,0,7)&(5,2)&3&6\\
+1&(0,0,7)&(7)&2&14\\
+1&(0,0,7)&(6,1)&3&27\\
+1&(0,0,7)&(5,2)&3&36\\
+2&(0,0,7)&(7)&2&31\\
+2&(0,0,7)&(6,1)&3&57\\
+2&(0,0,7)&(5,2)&3&72\\
+2&(0,1,6)&(6)&8&69\\
+2&(0,1,6)&(5,1)&12&125\\
+2&(0,1,6)&(4,2)&20&128
+\end{array}
+\]
+For the four original blocks (the $j=2$ rows of shapes $(7)$, $(6)$, $(5,1)$ and $(4,2)$), each physical kernel is $F^{-\mathsf T}K$ for the stored rational
+feature-annihilator basis $K$ and the rational Gram transport $F$
+of the proof. PK5-1 constructs compact integer physical bases for all four
+blocks.
+PK5-2 directly constructs physical integer bases for the two additional
+all-$V$ blocks, with maximum coefficient $3$ in both cases.
+PK5-3 constructs exact physical kernel bases for the six $j=0,1$ blocks.
+The stored feature-annihilator bases are sparse; the two one-$F$ Young blocks have at most
+$13$ and $21$ nonzero coordinates per vector, respectively.
+\end{proposition}
+\begin{proof}
+In the explicit gauge of Theorem~\ref{thm:ico}, write
+$\Psi_{\rm ico}=(\sqrt{15}\,u+\sqrt{37}\,v)/\sqrt{524}$,
+where $u$ has thirty signed unit entries and $v$ has two unit entries.
+The flipped rank-one moment is generated by
+$\Psi_{\rm ico}^{\otimes3}\otimes(J_7\Psi_{\rm ico})^{\otimes2}$.
+The pentagon-site cycle preserves $u$ and $v$.  For the three blocks
+with one $[4,1]$ site it permutes the six ordinary-site tensor slots,
+acting only on Young and spin-multiplicity \emph{columns}.  The
+$\mathrm{GL}(5)$ and $H$-invariant row coordinates stay fixed.  Hence
+the seven site placements have the same joint row span as three
+representatives.  The fully symmetric block has one placement.  The
+scripts IK5-1--IK5-4 check the appropriate pentagon-cycle covariance entrywise
+in integer tensors.
+
+Using the exact local maps of Lemma~\ref{lem:fivecopy-site-algebra}, the
+four scripts contract those representatives at six integer amplitude ratios
+and interpolate the resulting degree-five polynomial matrix.  Every
+binary64 tensor contraction is integer-exact: an absolute-sum bound is
+$32^5 5^5\cdot24\cdot3^6<2^{53}$.  The subsequent binary64 matrix
+products are chunked below $2^{52}$, and integer accumulations are
+checked against their type bounds.  The four feature matrices have
+sizes $33\times128$, $77\times768$, $137\times3840$ and
+$148\times11520$, respectively.  For the last, the integral projector numerator
+$40I-14FE+(FE)^2$ selects the kernel of the polarisation map of
+Lemma~\ref{lem:fivecopy-young-blocks}.
+
+At the physical ratio each matrix is, up to a nonzero scalar,
+$15A+\sqrt{555}\,B$ with integral $A,B$ collecting the even and the odd
+powers of $t$ in the degree-five polynomial matrix $C(t)=\sum_{d=0}^5 t^d C_d$.
+The key simplification is that these two parts have disjoint column supports. To see this, note that the diagonal local unitary
+\[
+ D=\operatorname{diag}(-i,-1)_s\otimes\operatorname{diag}(1,e^{i\pi/4})^{\otimes6}
+\]
+multiplies $|s,\mathbf a\rangle$ by $e^{i\pi(6-2s+|\mathbf a|)/4}$, which is $1$ on the
+pair and complement strings and $-1$ on the two endpoints, so $Du=u$ and $Dv=-v$.
+For the spin flip $J_7=\epsilon^{\otimes7}K$, with
+$\epsilon=\bigl(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\bigr)$ and $K$ complex
+conjugation, every diagonal unitary $G$ satisfies $\epsilon\bar G\epsilon^{-1}=\overline{\det G}\,G$,
+so $J_7D=cDJ_7$ with $|c|=1$. Hence $D$ maps
+$(u+tv)^{\otimes(5-j)}\otimes(J_7(u+tv))^{\otimes j}$ to a constant multiple of the
+same tensor at $-t$. On each site, $D^{\otimes5}$ commutes with the copy permutations
+and multiplies every weight vector of the highest-weight bases of
+Lemma~\ref{lem:fivecopy-site-algebra} by a scalar, so it fixes the row coordinates
+and acts on the columns by a diagonal unimodular matrix $\Delta$. Thus
+$C(-t)=C(t)\Delta$. Since $C(t)$ is real, each column that is not identically zero is
+either even or odd in $t$. In particular
+\[
+ C_{\mathrm{even}}(t)\,C_{\mathrm{odd}}(s)^{\mathsf T}=0\quad(\forall t,s),
+ \qquad A B^{\mathsf T}=0,
+\]
+for the Euclidean column pairing and for any diagonal column weighting.
+For any $k=x+\sqrt{555}\,y\in\mathbb Q(\sqrt{555})^n$, the relation
+$k^{\mathsf T}(15A+\sqrt{555}\,B)=(15x^{\mathsf T}A+555y^{\mathsf T}B)+\sqrt{555}(x^{\mathsf T}B+15y^{\mathsf T}A)=0$
+forces both summands, which are supported on disjoint columns, to vanish in each component, so
+$x^{\mathsf T}A=x^{\mathsf T}B=y^{\mathsf T}A=y^{\mathsf T}B=0$.
+Every left kernel over $\mathbb Q(\sqrt{555})$ is therefore the scalar extension of the rational
+intersection $\ker A^{\mathsf T}\cap\ker B^{\mathsf T}$ (explaining why all
+$\sqrt{555}$ coefficients vanish across all twelve blocks), and
+$\operatorname{rank}_{\mathbb Q(\sqrt{555})}(15A+\sqrt{555}\,B)=\operatorname{rank}_{\mathbb Q}[A\ B]$.
+IK5-1 checks that the integer
+realification for shape $(5,1)$ has rational rank $24$.  For shape $(4,2)$, IK5-2 checks a nonzero $20\times20$
+minor over $\mathbb Q(\sqrt{555})$ and $128$ independent annihilators of
+all $11520$ columns.  IK5-3 and IK5-4 check rational realification
+ranks $4$ and $16$ for shapes $(7)$ and $(6)$.  All four scripts verify their sparse annihilators
+against every column in both field components.  To identify the physical kernels,
+let $U$ be the integer invariant basis in the appropriate Young module,
+$H$ its rational positive-definite physical Gram, and $Y$ a column of
+the contracted moment.  The scripts store $A_{\rm feat}=U^{\mathsf T}Y$.
+Since $Y\in\operatorname{im}U$, its physical covariant column is
+\[
+ U^{\mathsf T}HY=F A_{\rm feat},\qquad
+ F=(U^{\mathsf T}HU)(U^{\mathsf T}U)^{-1}\in\operatorname{GL}_d(\mathbb Q).
+\]
+Thus, if $K$ is the stored rational basis satisfying
+$K^{\mathsf T}A_{\rm feat}=0$, then $F^{-\mathsf T}K$ is a rational
+basis of the physical moment kernel.  The invertible change preserves all
+four ranks and kernel dimensions.  This distinction matters: the stored $K$ itself need not be a
+physical kernel.
+
+PK5-1 avoids forming the dense rational transport. Select $r$ independent
+columns $Q$ from the common feature image, whose exact dimension $r$ is
+already certified above. Reconstruct their ambient columns as
+$Y_Q=U(U^{\mathsf T}U)^{-1}Q$, then form the physical column basis
+$C_Q=U^{\mathsf T}H Y_Q$. The reconstruction is integral and
+$\ker C_Q^{\mathsf T}$ is the physical moment kernel. Integer Hermite
+normal form and lattice reduction give bases whose largest absolute
+coefficients are respectively $3,8,14,28$ in the four original blocks' order.
+The compact artifact stores the selected columns, their exact physical
+images and the four kernel bases. PK5-1 reconstructs those images and
+checks both ranks and exact annihilation. These data do not assert any
+dual equality or positive multiplier.
+
+
+For the two additional all-$V$ shapes, use the complete Young models
+\[
+ \mathcal Y_{61}=\ker(\operatorname{Sym}^6V\otimes V\to\operatorname{Sym}^7V),
+ \qquad
+ \mathcal Y_{52}=\ker(\operatorname{Sym}^5V\otimes\operatorname{Sym}^2V
+       \xrightarrow{\delta}\operatorname{Sym}^6V\otimes V).
+\]
+The maps are surjective and the model dimensions are $720,840$.
+Their characters are $h_6h_1-h_7$ and $h_5h_2-h_6h_1$; averaging over
+$H$ gives invariant dimensions $60,75$. PK5-2 constructs integral invariant
+bases $U$, checks these characters exactly, and verifies the spanning
+ranks by nonzero modular minors and matching dimension upper bounds.
+
+Contract the all-$V$ physical tensor and row-symmetrise its six-plus-one
+or five-plus-two multiplicity indices. The seven choices of singleton
+have three pentagon-cycle orbits, and the twenty-one choices of pair
+have five. Taking one representative of each therefore captures every
+Young and spin column. Projection against $U$ with the \emph{physical}
+Gram gives covariant features $U^{\mathsf T}H Y$ directly; other Pieri
+summands are orthogonal and need no explicit projector. The six integer
+amplitude ratios and interpolation above give physical feature pairs
+$15A+\sqrt{555}B$ of sizes $60\times384$ and $75\times640$, with $A B^{\mathsf T}=0$
+by the same column-parity argument.
+In each case PK5-2 checks the exact rational rank
+$\operatorname{rank}[A\ B]=3$ (which already equals the rank over $\mathbb Q(\sqrt{555})$
+by row orthogonality $A B^{\mathsf T}=0$, and is also checked by a nonzero
+three-dimensional minor after mapping $\sqrt{555}$ into a finite prime field).
+Integer HNF and
+lattice reduction then give $57$ and $72$ independent rational physical
+annihilators, checked against every column of both $A$ and $B$.
+
+For $j=0,1$, use the same three all-$V$ Young modules with the invariant
+subgroups $S_5$ and $S_4\times S_1$. Projection of their two-flip invariant
+spaces onto these subgroups gives complete rational bases: their exact
+character dimensions are respectively $(4,6,9)$ and $(16,30,39)$.
+PK5-3 repeats the physical contraction with
+$\psi^{\otimes(5-j)}\otimes(J_7\psi)^{\otimes j}$.
+The common feature ranks are $(2,3,3)$ in both cases, determined by
+$\operatorname{rank}[A\ B]$ via $A B^{\mathsf T}=0$ and checked against
+matching finite-field lower bounds and full rational annihilators.
+
+\end{proof}
+
+A compact rational baseline uses all twelve kernels. Its Gram matrices are
+identities in the supplied dyadic bases; PK5-4 checks their exact support
+and nonsingularity. Thus its multipliers are strictly positive on every
+listed kernel. The baseline is repaired to an exact sharp dual by the verified
+bounds of Section~\ref{sec:fivecopy-positive-repair}.
+

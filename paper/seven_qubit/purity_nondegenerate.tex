@@ -1,0 +1,178 @@
+\subsection{Nondegeneracy of the purity minimiser}\label{sec:seven-purity-nondegenerate}
+We now quantify the purity increase near the minimising orbit of Corollary~\ref{cor:seven-global-from-fivecopy}.
+The Lagrange Hessian is positive transverse to the local-unitary orbit, giving an explicit quadratic basin.
+
+\begin{theorem}[exact full-space Hessian spectrum; LH-1--LH-4]
+\label{thm:icolocal}
+The state $\Psiico$ is a strict local minimiser of $\pi_3$ on
+$\mathbb CP^{127}$ modulo the action of local unitaries. The real
+$256\times256$ Lagrange-Hessian of the purity functional at $\Psiico$ is
+positive semidefinite, with kernel exactly the $22$-dimensional span
+of $i\Psiico$ and the $21$ one-site Pauli rotations
+$iX_j\Psiico,iY_j\Psiico,iZ_j\Psiico$, $j\in\{s,0,\ldots,5\}$ (qubits labelled as in~\eqref{eq:ico}).
+For the constrained quadratic form $Q$ described below and every
+nonzero real vector $v$ orthogonal to those rotations,
+\[
+             Q(v)\ge\frac{350-6\sqrt{2005}}{4585}\|v\|^2>\frac{78}{4585}\|v\|^2,
+\]
+with equality in the first bound on the $18$-dimensional eigenspace inside the special-qubit spin-flip sector described below.
+Global minimality is Corollary~\ref{cor:seven-global-from-fivecopy}; this theorem adds nondegeneracy.
+\end{theorem}
+\begin{proof}
+For each $|S|=3$, flatten $z$ into $M_S$ and set
+$R_S=M_SM_S^\dagger$. Direct differentiation of the homogeneous
+quartic objective gives the stationary equation
+\[
+   \frac1{35}\sum_{|S|=3}(R_S\otimes I_{S^c})z=\pi_3(z)z,
+\]
+where the operator notation includes the canonical reshuffling of tensor
+factors. The family quadratic in Theorem~\ref{thm:ico} is stationary at
+$x=37/524$, so Lemma~\ref{lem:seven-family-symmetric-criticality} (Section~\ref{sec:entropy-local-seven}, which uses only the symmetry of the family) proves
+full-space stationarity. LH-1 independently checks the displayed equation
+for $z=\Psiico=\sqrt{15/524}\,U+\sqrt{37/524}\,V$ (where $U$ and $V$ are the parts of~\eqref{eq:ico} multiplying $\alpha$ and $\beta$), with the signed
+integer support tensors from~\eqref{eq:ico}.
+
+Write $v$ for a variation and $N_S$ for its flattening. The Lagrange
+second-variation form (half the usual real Hessian) is
+\[
+ Q(v)=\frac1{35}\sum_{|S|=3}
+ \left(\tr\bigl[(N_SM_S^\dagger+M_SN_S^\dagger)^2\bigr]+
+ 2\tr(R_SN_SN_S^\dagger)\right)-2\pi_3(\Psiico)\|v\|^2.
+\]
+LH-2 produces a real symmetric integer-matrix representation
+$H=(A+\sqrt{555}\,B)/18340$ of this form on all $256$ real amplitude
+directions, and LH-3 verifies that the $22$ displayed symmetry tangent
+vectors are annihilated in $\mathbb Q(\sqrt{555})$.
+
+To analyse $H$ and the entropy Hessian along the family~\eqref{eq:ico}, we use a common symmetry decomposition defined over $\mathbb Z$.
+First observe that the local diagonal unitary
+$T=-Z_s\otimes\operatorname{diag}(1,i)^{\otimes6}$ of Lemma~\ref{lem:seven-family-symmetric-criticality}
+acts on $|s,b_0\cdots b_5\rangle$ with eigenvalue $-(-1)^s i^w$, where $w=\sum_{j=0}^5 b_j$.
+Hence $T$ has eigenvalue $+1$ on the $32$-dimensional support subspace
+$\mathcal H_{\mathrm{supp}}$ ($(s,w)\in\{(0,2),(1,4),(0,6),(1,0)\}$), eigenvalue $-1$ on the
+$32$-dimensional special-qubit flip subspace $\mathcal H_{\mathrm{flip}}=X_s\mathcal H_{\mathrm{supp}}$
+($(s,w)\in\{(1,2),(0,4),(1,6),(0,0)\}$), and eigenvalues $\pm i$ on the $64$-dimensional odd-weight
+subspace $\mathcal H_{\mathrm{odd}}$ ($w\in\{1,3,5\}$). Both objectives are invariant under local unitaries and complex conjugation. Since $T\psi_x=\psi_x$ and
+$\psi_x$ is real, their Hessians commute with these two symmetries, decoupling into the six computational-basis blocks
+\begin{equation}\label{eq:ico-hessian-six-blocks}
+ \mathbb R\mathcal H_{\mathrm{supp}}\oplus i\mathbb R\mathcal H_{\mathrm{supp}}\oplus
+ \mathbb R\mathcal H_{\mathrm{flip}}\oplus i\mathbb R\mathcal H_{\mathrm{flip}}\oplus
+ \mathbb R\mathcal H_{\mathrm{odd}}\oplus i\mathbb R\mathcal H_{\mathrm{odd}}
+\end{equation}
+of dimensions $32,32,32,32,64,64$. $T$ maps $\mathbb R\mathcal H_{\mathrm{odd}}$ isometrically onto
+$i\mathbb R\mathcal H_{\mathrm{odd}}$, and on $\mathcal H_{\mathrm{flip}}$ a signed bit-complement $DX^{\otimes7}$
+($D=+1$ on $(0,4),(1,6)$, $-1$ on $(1,2),(0,0)$) conjugates the real block into the imaginary one.
+
+Two signed incidence structures of the conference matrix finish the reduction (LH-4 checks every identity below).
+On the $15$ ordinary pairs, the disjoint-pair matching matrix $(L_{\mathrm{disj}})_{p,q}=s_ps_qs_{(p\cup q)^c}$
+($p\cap q=\emptyset$) satisfies $(L_{\mathrm{disj}}-2)(L_{\mathrm{disj}}-3)(L_{\mathrm{disj}}+1)(L_{\mathrm{disj}}+3)=0$,
+with integer eigenprojectors $P_2,P_3,P_{-1},P_{-3}$ of ranks $1,5,5,4$. Pairing each pair string with its
+bit-complement and adding the two endpoints reduces $\mathcal H_{\mathrm{supp}}$ and $\mathcal H_{\mathrm{flip}}$ to a
+$4\times4$ block on $P_2$ and the endpoints and $2\times2$ blocks on $P_3,P_{-1},P_{-3}$ (superscripts $\pm$ below
+denote the bit-complement sign). On the $20$ ordinary triples, the vertex-incidence matrices
+$(E_{\mathrm{in}})_{T,i}=s_{kl}$ ($T=\{i,k,l\}$) and $(E_{\mathrm{out}})_{T,i}=(E_{\mathrm{in}})_{T^c,i}$ satisfy
+$E_{\mathrm{in}}^{\mathsf T}E_{\mathrm{in}}=E_{\mathrm{out}}^{\mathsf T}E_{\mathrm{out}}=10I_6$ and
+$E_{\mathrm{in}}^{\mathsf T}E_{\mathrm{out}}=2C$ by $C^2=5I_6$. The orthogonal columns of $F_1=E_{\mathrm{in}}$ and
+$F_2=E_{\mathrm{out}}C-E_{\mathrm{in}}$ and their rank-$8$ complement $P_{8,40}$ reduce $\mathcal H_{\mathrm{odd}}$
+to scalars on $P_{8,40}^\pm$ and two $4\times4$ blocks tensored with $I_6$.
+
+In every block of $18340Q=A+\sqrt{555}\,B$, $A$ preserves and $B$ exchanges the $U$- and $V$-type subspaces. Changing the sign on one of
+them is orthogonal and sends $\sqrt{555}\mapsto-\sqrt{555}$, so each characteristic polynomial is Galois-invariant
+and lies in $\mathbb Z[t]$ (LH-4):
+\begin{itemize}
+\item on $\mathbb R\mathcal H_{\mathrm{supp}}$ (dimension $32$), $18340Q$ is strictly positive definite with eigenvalues
+$1440^4$ (on $P_{-3}^+$), $1648^9$ (on $P_3^-\oplus P_{-3}^-$), $3600^5$ (on $P_3^+$), $4080^5$ (on $P_{-1}^+$),
+$5488^5$ (on $P_{-1}^-$), $4440^1$ and $9680^1$ (on $\operatorname{span}\{U,V\}$),
+and $6864\pm16\sqrt{10726}$ (on the complementary $P_2$/endpoint plane);
+\item on $i\mathbb R\mathcal H_{\mathrm{supp}}$ (dimension $32$), the eigenvalues are $0^8$ (spanned by $i\Psiico$ and
+$iZ_s\Psiico,iZ_0\Psiico,\ldots,iZ_5\Psiico$: three in the $P_2$/endpoint block and five on $P_{-1}^-$), $688^5$ (on $P_{-1}^+$),
+$1048^1$ (in the $P_2$/endpoint block), $1440^5$ (on $P_3^-$), $1648^9$ (on $P_3^+\oplus P_{-3}^+$), and
+$3600^4$ (on $P_{-3}^-$);
+\item on $\mathbb R\mathcal H_{\mathrm{flip}}\cong i\mathbb R\mathcal H_{\mathrm{flip}}$ ($32$ dimensions each),
+they are $1400\pm24\sqrt{2005}$ on $P_3\oplus P_{-3}$ (multiplicity $9$ per sector, $18$ total),
+$1400\pm24\sqrt{1195}$ on $P_{-1}$ (multiplicity $5$ per sector, $10$ total), $0^1$ ($iY_s\Psiico$ and
+$iX_s\Psiico$), and the three roots of $t^3-13600t^2+55582720t-63383040000=0$ (all $>1900$) on the $P_2$/endpoint
+$4\times4$ block;
+\item on $\mathbb R\mathcal H_{\mathrm{odd}}\cong i\mathbb R\mathcal H_{\mathrm{odd}}$ ($64$ dimensions each),
+they are the scalars $2248^8$ and $840^8$ on $P_{8,40}^\pm$ (multiplicity $16$ each across real and imaginary
+parts), $0^6$ ($iY_0\Psiico,\ldots,iY_5\Psiico$ and $iX_0\Psiico,\ldots,iX_5\Psiico$), $2248^6$, and
+$2484\pm4\sqrt{286081}$ (multiplicity $6$ each per sector) on the first $4\times4$ block, and the
+four roots of $t^4-10400t^3+32376000t^2-37446912000t+14433914880000=0$ (multiplicity $6$ per sector, $12$ total,
+all $>900$) on the second $4\times4$ block.
+\end{itemize}
+The kernel therefore has dimension $0+8+2+12=22$, spanned by $i\Psiico$ and the $21$ one-site Pauli rotations. Since
+$44^2=1936<2005<2025=45^2$, the smallest positive eigenvalue of $18340Q$ is
+$1400-24\sqrt{2005}>1400-24\cdot45=320>312=4\cdot78$, giving the exact transverse minimum
+$(1400-24\sqrt{2005})/18340=(350-6\sqrt{2005})/4585>312/18340=78/4585$.
+The usual nondegenerate transverse-Hessian argument gives strict local
+minimality modulo the compact local-unitary group.
+\end{proof}
+
+
+\begin{lemma}[quantitative orbit basin for quartic swap observables]
+\label{lem:quarticbasin}
+Let $F(z)=\langle z^{\otimes2},Gz^{\otimes2}\rangle$ for a
+Hermitian $G$ with $\|G\|_{\mathrm{op}}\le1$. Suppose $F$ is invariant
+under a compact group of unitary transformations, and $z_0$ is a
+unit stationary point of $F$ on the unit sphere. Let
+$\mathcal O$ be the orbit of $z_0$ including global phases.
+If the Lagrange second-variation form satisfies
+$Q(v)\ge h\|v\|^2$ on the real orthogonal complement of the
+orbit tangent space at $z_0$, then every unit vector $z$
+satisfies, with $\delta=\min_{\phi\in\mathcal O}\|z-\phi\|$,
+\[
+             F(z)-F(z_0)\ge(h-4\delta-\delta^2)\delta^2.
+\]
+\end{lemma}
+\begin{proof}
+The compact orbit contains a closest point $\phi$ to $z$.
+Put $v=z-\phi$. Differentiating the squared-distance
+function along the orbit shows that $v$ is real orthogonal to
+every orbit tangent at $\phi$. Because the group preserves
+$F$, the same transverse Hessian bound holds at $\phi$.
+Write $p=F(\phi)$ and expand the quartic polynomial
+$F(\phi+v)-2p\|\phi+v\|^2+p$. Its constant and linear
+terms vanish by normalisation and stationarity, and its
+quadratic term is exactly $Q(v)$. The remaining terms have
+degrees three and four in $v$. In the two-copy matrix-element
+expression, each multilinear term is bounded by the product
+of its input vector norms because $\|G\|_{\rm op}\le1$.
+There are $\binom43=4$ cubic terms and one quartic term, so
+their total absolute value is at most
+$4\|v\|^3+\|v\|^4$.
+Finally $\|\phi+v\|=\|z\|=1$, so the polynomial on the
+left equals $F(z)-p$. Combining the bounds proves the claim.
+\end{proof}
+
+\begin{theorem}[exact quantitative basin; QB-1--QB-2]
+\label{thm:icoquantbasin}
+Let $\mathcal O_{\mathrm{ico}}$ be the full local-unitary orbit
+of $\Psiico$ including global phase, and for any normalised pure
+seven-qubit state $z$ put
+\[
+ \delta(z)=\min_{\phi\in\mathcal O_{\mathrm{ico}}}\|z-\phi\|_2.
+\]
+If $\delta(z)\le1/250$, then
+\[
+ \boxed{\quad \pi_3(z)\ge\frac{121}{917}
+             +\frac{\delta(z)^2}{1024}.\quad}
+\]
+Here $\delta(z)^2=2-2\max_{U\in\mathrm{LU}}|\langle z|U\Psiico\rangle|$.
+\end{theorem}
+\begin{proof}
+Take $G=\binom73^{-1}\sum_{|S|=3}F_S$ where $F_S$
+is the unitary two-copy subsystem swap. Thus
+$\|G\|_{\mathrm{op}}\le1$, and its quartic expectation
+is the unnormalised mean three-body purity.
+The exact full-space Hessian certificate
+Theorem~\ref{thm:icolocal} gives $h=78/4585$ in
+Lemma~\ref{lem:quarticbasin}. QB-1 checks the rational
+strict inequality
+\[
+ \frac{78}{4585}-\frac4{250}-\frac1{250^2}
+  -\frac1{1024}=\frac{285123}{14672000000}>0.
+\]
+Since $4\delta+\delta^2$ increases with $\delta\ge0$,
+the displayed quadratic basin follows. For unit vectors,
+minimising the distance over global phase gives the overlap form of $\delta$ (QB-2).
+\end{proof}

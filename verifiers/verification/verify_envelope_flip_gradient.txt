@@ -1,0 +1,10 @@
+[PASS] FG-1 T=V-6U is fixed by both generating input transpositions (Schouten)
+[PASS] FG-2 copy-label selection rules, moment operators and cubic polarization defect on every invariant sector; the sector table (K, j, Y^2) and its operator values are complete and exact
+[PASS] FG-3 harmonic cubic has squared scale 54; Klein-four selection forbids the quartic spin-one covariant
+[PASS] FG-4 mixed cubic norm identities and one polarization give (FGI), with all mismatch terms cancelling
+[PASS] FG-5 negative controls: wrong factor leaves y/8; omitted correction leaves 2s n^2
+[PASS] FG-6 numerical sanity only: (FG) at general z by finite differences, and (GE) at random states
+[PASS] FG-7 (FGI) + purity gives (FG); pencil derivative, W1 scaling, integrating factor and envelope algebra
+[PASS] FG-8 exact calibration derivative and both closed positive-norm integrals (SC-SOS)
+[PASS] FG-9 exact Gaussian-integer checks of (CP), (CY), the quartic covariant, u, q, d-y and L = DH
+ALL PASS

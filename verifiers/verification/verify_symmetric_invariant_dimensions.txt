@@ -1,0 +1,13 @@
+[PASS] SD-1 d = 3: invariants 20 = 17 even + 3 odd; qubit-symmetric 5 = 5 even + 0 odd
+[PASS] SD-2 for d = 1..8 the swap-trace count agrees with sum g^2 (total) and sum g(g-1)/2 (odd), g the multiplicity of each SU(2)^4 irrep in Sym^d; at d = 3 the odd count 3 is the three odd invariants at the first odd copy number
+    d : full (total, even, odd) | qubit-symmetric (total, even, odd)
+    1 : (1, 1, 0) | (1, 1, 0)
+    2 : (8, 8, 0) | (3, 3, 0)
+    3 : (20, 17, 3) | (5, 5, 0)
+    4 : (98, 79, 19) | (18, 16, 2)
+    5 : (293, 200, 93) | (37, 30, 7)
+    6 : (1128, 728, 400) | (115, 85, 30)
+    7 : (3409, 1993, 1416) | (273, 183, 90)
+    8 : (10846, 6148, 4698) | (761, 480, 281)
+[PASS] SD-4 qubit-symmetric conjugation-even invariants: 5 at d = 3 (n^3, nS1, nP, T, Pi2), 16 at d = 4, 30 at d = 5, 85 at d = 6 (the space of the quadratic variance certificate, QG-5)
+All SD checks passed

@@ -1,0 +1,193 @@
+\subsection{A sharp complex conference family}\label{sec:conference-phase}
+
+The icosahedral family has the two-branch form $\Omega_{u,v}$ of Theorem~\ref{thm:spinflip-double}, with branch supports far apart in
+Hamming distance. This separation makes the low-weight odd Pauli correlations vanish, as the first result shows. We then
+apply that cancellation to the family with complex pair amplitudes, which contains the icosahedral state.
+In Corollary~\ref{cor:ordinary-triples} through Theorem~\ref{thm:complexsos} below, the distinguished qubit is labelled $0$ and the
+ordinary qubits $1,\ldots,6$; in Proposition~\ref{prop:confphase} matrix indices are the ordinary labels $0,\ldots,5$
+of~\eqref{eq:ico}.
+
+\begin{theorem}[spin-flip-doubled odd-weight selection]\label{thm:spinflip-double}
+Let $u,v$ be vectors on $m$ qubits whose computational-basis
+supports have minimum Hamming distance $D>0$. Let
+$J_m=\epsilon^{\otimes m}K$, where $K$ is complex conjugation, and set
+\[
+ |\Omega_{u,v}\rangle=
+ \frac{|0\rangle(u+v)+|1\rangle J_m(v-u)}
+ {\sqrt{2(\|u\|^2+\|v\|^2)}}.
+\]
+Every Pauli expectation supported entirely on the last $m$ qubits
+of odd weight $q<D$ vanishes. If $u$ is supported at Hamming weight
+$w$ and $v=b|1^m\rangle$ with $0<w\le m-2$ and $2w\ne m$,
+then \emph{all} $m+1$ one-qubit marginals of $\Omega_{u,v}$
+are maximally mixed.
+\end{theorem}
+\begin{proof}
+A Pauli word of weight $q<D$ cannot connect the support of $u$
+to that of $v$. Thus its expectations in $u+v$ and in $v-u$
+are equal. Spin flip reverses the sign of every odd-weight
+Hermitian Pauli expectation:
+$\langle J_m a|P|J_m a\rangle
+=(-1)^{\operatorname{wt}P}\langle a|P|a\rangle$.
+The two branches therefore cancel. For the last assertion,
+$D=m-w\ge2$ gives maximal mixing on each of the ordinary
+sites. The two branches have equal norm, while their supports
+are disjoint when $w\notin\{0,m/2,m\}$, so the distinguished
+qubit also has marginal $I/2$.
+\end{proof}
+
+\begin{corollary}[ordinary triple reductions in the complex conference
+ansatz; SDS-1--SDS-3]\label{cor:ordinary-triples}
+The seven-qubit pair/complement family of
+Theorem~\ref{thm:complexsos}, which contains the
+icosahedral family of Theorem~\ref{thm:ico}, is $\Omega_{u,v}$ with
+$m=6$, $w=2$, $u=\sum_{i<j}t_{ij}|ij\rangle$ and
+$v=b|1^6\rangle$. For every three ordinary sites
+$I=\{i,j,k\}\subseteq\{1,\ldots,6\}$:
+\[
+ \langle P_I\rangle=0
+ \quad\text{for every Pauli word of exact weight }3,
+ \qquad \Phi_{I,0}=0,
+\]
+and
+\begin{equation}\label{eq:ordinary-triple-purity}
+ \tr\rho_{ijk}^2=
+ \frac12\bigl(\tr\rho_{ij}^2+\tr\rho_{ik}^2+
+                 \tr\rho_{jk}^2\bigr)-\frac14.
+\end{equation}
+This holds for all complex pair amplitudes, not only for
+conference matrices or the optimal parameter.
+\end{corollary}
+\begin{proof}
+The Hamming separation is $D=4$, so all ordinary-site
+Pauli weights one and three vanish by
+Theorem~\ref{thm:spinflip-double}. Lemma~\ref{lem:focus-pauli}, where the focused covariants $\Phi_{I,r}$ are
+defined (Section~\ref{sec:sextic-general}), then proves the focused-covariant zero.
+The Pauli expansion of the normalised triple purity is
+$8\tr\rho_{ijk}^2=1+\sum_{\{a,b\}\subseteq I}
+(4\tr\rho_{ab}^2-1)$, giving~\eqref{eq:ordinary-triple-purity}.
+SDS-1--SDS-3 check Pauli cancellation and
+all $20$ triple-purity relations using Gaussian integer amplitudes.
+\end{proof}
+
+
+\begin{theorem}[proved; CC-1]\label{thm:complexsos}
+Let $T=(t_{ij})$ be any complex symmetric $6\times6$ matrix with zero
+diagonal, and let $b\geq0$ be real. Define the normalised seven-qubit state
+\[
+ z_{T,b}=|0\rangle\left(\sum_{i<j}t_{ij}|ij\rangle+b|1^6\rangle\right)
+  +|1\rangle\left(b|0^6\rangle-
+       \sum_{i<j}\overline{t_{ij}}|\overline{ij}\rangle\right),
+ \quad 2\left(b^2+\sum_{i<j}|t_{ij}|^2\right)=1.
+\]
+Here $|ij\rangle$ is the six-bit weight-two vector supported on $i,j$,
+and $|\overline{ij}\rangle$ its complement. Put
+$x=b^2$, $\sigma=\sum_{i<j}|t_{ij}|^2$, $p_i=\sum_{j\ne i}|t_{ij}|^2$. Then
+\begin{equation}\label{eq:complexsos}
+\begin{split}
+ \pi_3(z_{T,b})-\frac{121}{917}
+ ={}&\frac{(524x-37)^2}{137550}
+ +\frac4{35}\sum_i(p_i-\sigma/3)^2\\
+ &+\frac{48}{35}\sum_{i<j}(|t_{ij}|^2-\sigma/15)^2
+ +\frac{24}{35}\sum_{i<j}|(TT^\dagger)_{ij}|^2.
+\end{split}
+\end{equation}
+Consequently the minimum on this entire complex-amplitude family is
+$121/917$. Equality requires $x=37/524$, uniform magnitudes $|t_{ij}|$
+and $TT^\dagger=(\sigma/3)I$: $T$ is a scaled complex symmetric conference
+matrix. The icosahedral state is one equality case.
+\end{theorem}
+\begin{proof}
+Fix an ordinary pair $\{i,j\}\subset\{1,\ldots,6\}$ and let $K=\{1,\ldots,6\}\setminus\{i,j\}=\{k,l,m,n\}$.
+When $K$ is traced out to form $\rho_{0ij}$, the five Hamming-weight sectors on $K$ map to four orthogonal two-dimensional subspaces of $\mathcal H_{0ij}$:
+\begin{itemize}
+\item weights $0$ and $4$ on $K$ give orthogonal kets $t_{ij}|011\rangle+b|100\rangle$ and $b|011\rangle-\overline{t_{ij}}|100\rangle$, contributing $(|t_{ij}|^2+b^2)I_2$ on $\operatorname{span}\{|011\rangle,|100\rangle\}$;
+\item weight $1$ on $K$ (at $r\in K$) gives $|0\rangle(t_{ir}|10\rangle+t_{jr}|01\rangle)$, contributing $M_{ij}=\bigl(\begin{smallmatrix}p_i-|t_{ij}|^2&(TT^\dagger)_{ij}\\\overline{(TT^\dagger)_{ij}}&p_j-|t_{ij}|^2\end{smallmatrix}\bigr)$ on $\operatorname{span}\{|010\rangle,|001\rangle\}$, and weight $3$ on $K$ gives $\overline{M_{ij}}$ in the ordered basis $(|101\rangle,|110\rangle)$;
+\item weight $2$ on $K$ gives $\bigl(\begin{smallmatrix}Q_K&-2\operatorname{Hf}(T_K)\\-2\overline{\operatorname{Hf}(T_K)}&Q_K\end{smallmatrix}\bigr)$ on $\operatorname{span}\{|000\rangle,|111\rangle\}$, where $Q_K=\sum_{\{u,v\}\subset K}|t_{uv}|^2=\sigma-p_i-p_j+|t_{ij}|^2$ and $\operatorname{Hf}(T_K)=t_{kl}t_{mn}+t_{km}t_{ln}+t_{kn}t_{lm}$.
+\end{itemize}
+Hence
+\[
+ \tr\rho_{0ij}^2=2(|t_{ij}|^2+b^2)^2+2(p_i-|t_{ij}|^2)^2+2(p_j-|t_{ij}|^2)^2+4|(TT^\dagger)_{ij}|^2+2Q_K^2+8|\operatorname{Hf}(T_K)|^2.
+\]
+Tracing out qubit $0$ from $\rho_{0ij}$ leaves $\rho_{ij}$ diagonal on $\{|00\rangle,|11\rangle\}$ with entry $\tfrac12-d_{ij}$ ($d_{ij}=p_i+p_j-2|t_{ij}|^2$, using $\sigma+b^2=\tfrac12$) and equal to $\bigl(\begin{smallmatrix}d_{ij}&2(TT^\dagger)_{ij}\\2\overline{(TT^\dagger)_{ij}}&d_{ij}\end{smallmatrix}\bigr)$ on $\operatorname{span}\{|10\rangle,|01\rangle\}$, so $\tr\rho_{ij}^2=\tfrac12-2d_{ij}+4d_{ij}^2+8|(TT^\dagger)_{ij}|^2$. Summing~\eqref{eq:ordinary-triple-purity} over the $20$ ordinary triples gives $\sum_{i<j<k}\tr\rho_{ijk}^2=2\sum_{i<j}\tr\rho_{ij}^2-5$.
+
+To combine the marginal purities, expand $|\operatorname{Hf}(T_K)|^2$ and $|(TT^\dagger)_{ij}|^2$. Both contain the same $4$-cycle cross terms $2\operatorname{Re}(t_{kl}\overline{t_{km}}t_{mn}\overline{t_{ln}})$, while the squared moduli partition edge pairs of $K_6$ into disjoint and adjacent pairs:
+\[
+ 2\sum_{|K|=4}|\operatorname{Hf}(T_K)|^2-\sum_{i<j}|(TT^\dagger)_{ij}|^2
+ =\sigma^2-\frac32\sum_{i=1}^6p_i^2+2\sum_{i<j}|t_{ij}|^4.
+\]
+Adding the $20$ ordinary triples and the $15$ cuts $\{0,i,j\}$, with $\sum_ip_i=2\sigma$ and $\sigma=\tfrac12-x$, gives
+\[
+ 35\,\pi_3(z_{T,b})=\frac72-4x+64x^2+4\sum_ip_i^2+48\sum_{i<j}|t_{ij}|^4+24\sum_{i<j}|(TT^\dagger)_{ij}|^2.
+\]
+Since $\sum_i(p_i-\sigma/3)^2=\sum_ip_i^2-2\sigma^2/3$ and $\sum_{i<j}(|t_{ij}|^2-\sigma/15)^2=\sum_{i<j}|t_{ij}|^4-\sigma^2/15$,
+\eqref{eq:complexsos} reduces to the scalar identity
+$\frac72-4x+64x^2=\frac{35\cdot121}{917}+\frac{7(524x-37)^2}{27510}-\frac{88}{15}\bigl(\tfrac12-x\bigr)^2$, checked by expansion.
+CC-1 independently checks all $226$ formal quartic coefficients. Each term on the right of~\eqref{eq:complexsos} is nonnegative, and equality holds iff $x=37/524$, $|t_{ij}|^2=\sigma/15$, $p_i=\sigma/3$, and $(TT^\dagger)_{ij}=0$ ($i\ne j$).
+\end{proof}
+
+
+The classification of order-six complex symmetric conference matrices is due to
+Et-Taoui and Makhlouf~\cite{EtTaouiMakhlouf}, who classify the complex symmetric, skew-symmetric and Hermitian
+conference matrices of order six. We give the diagonal-congruence form needed here,
+with a self-contained proof, and then identify its action on the seven-qubit state.
+The application is an equality classification within the pair/complement ansatz.
+
+\begin{proposition}[order-six symmetric conference matrices and restricted-ansatz equality;
+proved, CP-4]\label{prop:confphase}
+Let $C$ be the real icosahedral $6\times6$ conference matrix ($C_{ij}=s_{ij}$ for $i\ne j$) of Theorem~\ref{thm:ico}.
+Every complex symmetric matrix $\widetilde C$ of order six with $\widetilde C_{ii}=0$,
+$|\widetilde C_{ij}|=1$ for $i\ne j$, and $\widetilde C\widetilde C^\dagger=5I$ has the form
+\[
+                 \boxed{\ \widetilde C=DPCP^{\mathsf T}D\ },
+\]
+where $D$ is diagonal unitary and $P$ is a permutation matrix.
+Consequently, \emph{every} state attaining $\pi_3=121/917$ within
+the complete complex pair/complement ansatz of
+Theorem~\ref{thm:complexsos} is related to $\Psiico$ by
+single-qubit diagonal unitaries and a permutation of the six
+ordinary qubits. This is a complete \emph{restricted-ansatz} equality
+classification; the unrestricted equality statement is
+Corollary~\ref{cor:seven-global-from-fivecopy}, proved independently by
+moment-orbit rigidity.
+\end{proposition}
+\begin{proof}
+A diagonal unitary congruence first makes the five off-diagonal
+entries in row and column $0$ all equal to $1$. Write the remaining
+$5\times5$ symmetric core as $B$, with zero diagonal. Because $B^{\mathsf T}=B$, the conference equation $\widetilde C\widetilde C^\dagger=5I_6$ on the core reads
+\[
+ B\mathbf 1=0,\qquad B\overline B=5I_5-J_5,
+\]
+where $J_5=\mathbf 1\mathbf 1^{\mathsf T}$. Four unit complex numbers summing to zero form two opposite pairs: for any three unit complex numbers $z_1,z_2,z_3$, the identity $|z_1+z_2+z_3|^2-1=(z_1+z_2)(z_2+z_3)(z_3+z_1)/(z_1z_2z_3)$ shows that $|z_1+z_2+z_3|=1$ iff two of them sum to zero and the third equals the sum.
+
+After removing the common unit phase $B_{12}$ from $B$ and relabelling vertices $\{2,3,4,5\}$, row~$1$ of $B$ is $(0,1,-1,t,-t)$ with $|t|=1$. The off-diagonal equation $(B\overline B)_{12}=-1$ reads
+\[
+ -\overline{B_{23}}+t\overline{B_{24}}-t\overline{B_{25}}=-1.
+\]
+The three unit summands on the left sum to $-1$, so one equals $-1$ and the other two sum to zero.
+The relabelling $(2\,3)(4\,5)$ followed by $B\mapsto-B$ fixes row~$1$ and sends $B_{23}$ to $-B_{23}$, so
+every configuration with $B_{23}=-1$ is carried to one with $B_{23}=1$. Hence the excluded subcases $B_{23}=-1$ of the first two cases below reduce to the third case, $B_{23}=1$, and need no
+separate argument.
+\begin{itemize}
+\item If $t\overline{B_{24}}=-1$ and $-\overline{B_{23}}-t\overline{B_{25}}=0$, then $B_{24}=-t$ and $B_{25}=-B_{23}t$, so the sum of row~$2$ is $1+B_{23}-t-B_{23}t=(1+B_{23})(1-t)=0$, forcing $t=1$ unless $B_{23}=-1$.
+\item If $-t\overline{B_{25}}=-1$ and $-\overline{B_{23}}+t\overline{B_{24}}=0$, then $B_{25}=t$ and $B_{24}=B_{23}t$, so the sum of row~$2$ is $1+B_{23}+B_{23}t+t=(1+B_{23})(1+t)=0$, forcing $t=-1$ unless $B_{23}=-1$.
+\item Otherwise $-\overline{B_{23}}=-1$, so $B_{23}=1$. Then $(B\overline B)_{12}=-1$ gives $B_{24}=B_{25}$, and zero row-$2$ sum gives $B_{24}=B_{25}=-1$; meanwhile $(B\overline B)_{13}=1+t\overline{B_{34}}-t\overline{B_{35}}=-1$ gives $t\overline{B_{34}}-t\overline{B_{35}}=-2$, forcing $B_{34}=-t$ and $B_{35}=t$. Zero row-$4$ sum ($t-1-t+B_{45}=0$) then gives $B_{45}=1$, and $(B\overline B)_{14}=-1+\overline t-t=-1$ forces $t=\overline t=\pm1$.
+\end{itemize}
+Hence $t=\pm1$ in all cases. Applying the same argument to each row $i$ shows that row $i$ is a unit phase $\omega_i$ times a real sign vector; since $B_{ij}=\pm\omega_i=\pm\omega_j$, all $\omega_i$ agree up to sign, so $B$ is a single unit phase times a real $\{\pm1\}$ matrix (also checked by CP-4 across all $3^5$ row-matching patterns).
+
+A diagonal congruence removes this common core phase while preserving
+row $0$. The now-real core has exactly two negative and two positive
+entries per row. Therefore its negative-edge graph is a simple
+$2$-regular graph on five vertices, necessarily a pentagon.
+All such pentagons differ by a permutation, so the real conference
+matrix is $PCP^{\mathsf T}$. Restoring the removed diagonal phases
+proves the boxed classification.
+
+Finally, if $D=\operatorname{diag}(e^{i\phi_i})$ and
+$\Sigma=\sum_i\phi_i$, applying
+$\operatorname{diag}(e^{i\Sigma/2},1)$ to the distinguished qubit,
+and $\operatorname{diag}(1,e^{i(\phi_i-\Sigma/4)})$
+to ordinary qubit $i$, realises $C\mapsto DCD$ on the
+pair/complement state without changing either endpoint amplitude.
+Ordinary-qubit permutations implement $P$.
+\end{proof}

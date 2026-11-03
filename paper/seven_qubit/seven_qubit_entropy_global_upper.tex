@@ -1,0 +1,57 @@
+\subsection{The fixed-purity entropy envelope}
+\label{sec:seven-entropy-envelope}
+
+For \(1/8\le p\le1\), let
+\begin{equation}\label{eq:seven-entropy-envelope}
+ t(p)=\frac{1+\sqrt{7(8p-1)}}8,\qquad
+ g_8(p)=-t(p)\log_2t(p)
+ -(1-t(p))\log_2\frac{1-t(p)}7.
+\end{equation}
+
+To bound entropy at fixed purity, we use a quadratic majorant of \(f(x)=-x\ln x\), in the spirit of the
+Hermite majorants of the four-qubit sections.
+
+\begin{lemma}[Quadratic majorant of \(-x\ln x\); proved]
+\label{lem:seven-entropy-quadratic-majorant}
+Let \(0<b<a\), let \(T(x)=f(b)+f'(b)(x-b)\) be the tangent of \(f\) at \(b\), and put
+\(c=(f(a)-T(a))/(a-b)^2\) and \(Q(x)=T(x)+c(x-b)^2\). Then \(f(x)\le Q(x)\) for
+\(0\le x\le a\), with equality only at \(x\in\{b,a\}\).
+\end{lemma}
+\begin{proof}
+Put \(R=f-T\), so \(R(b)=R'(b)=0\) and \(R'(y)=-\ln(y/b)\).
+The function \(u(y)=R(y)+(y-b)^2/(2b)\) has \(u(b)=0\) and
+\(u'(y)=y/b-1-\ln(y/b)\ge0\), with equality only at \(y=b\). Hence
+\(R(x)<-(x-b)^2/(2b)\) for \(0\le x<b\), and \(R(a)>-(a-b)^2/(2b)\), that is
+\(c>-1/(2b)\); together, \(R(x)<c(x-b)^2\) on \([0,b)\). On \((b,\infty)\) the
+divided difference \(\varrho(y)=R(y)/(y-b)^2\) has
+\(\varrho'(y)=N(y)/(y-b)^3\) with \(N(y)=(y+b)\ln(y/b)-2(y-b)\). Since \(N(b)=0\)
+and \(N'(y)=\ln(y/b)+b/y-1>0\) for \(y\ne b\), \(\varrho\) is strictly increasing, so
+\(R(x)<\varrho(a)(x-b)^2=c(x-b)^2\) for \(b<x<a\).
+\end{proof}
+
+\begin{lemma}[Entropy envelope at fixed purity; all dimensions]
+\label{lem:seven-fixed-purity-envelope}
+For every $d\ge2$ and every $d$-dimensional density matrix $\rho$,
+\[
+ S(\rho)\le g_d(\operatorname{tr}\rho^2),\qquad
+ t_d(p)=\frac{1+\sqrt{(d-1)(dp-1)}}d,
+\]
+where $g_d(p)$ is the entropy of
+$(t_d(p),((1-t_d(p))/(d-1))^{d-1})$.
+Equality holds exactly at that spectrum, including the uniform
+and pure endpoints. For $d=8$ this is~\eqref{eq:seven-entropy-envelope}.
+\end{lemma}
+\begin{proof}
+The cases $p=1/d$ and $p=1$ are immediate. Otherwise put
+$a=t_d(p)$, $b=(1-a)/(d-1)$, so $a^2+(d-1)b^2=p$.
+Cauchy--Schwarz on all eigenvalues except $\lambda_i$ gives
+$p\ge\lambda_i^2+(1-\lambda_i)^2/(d-1)$, hence $\lambda_i\le a$.
+The preceding dimension-independent quadratic majorant gives
+\[
+ S(\rho)\ln2\le\sum_iQ(\lambda_i)=g_d(p)\ln2,
+\]
+since the sum depends only on the trace and purity and can
+be evaluated on $(a,b^{d-1})$. Equality requires every
+$\lambda_i\in\{a,b\}$; if $j$ eigenvalues equal $a$, the trace
+forces $(j-1)(da-1)=0$, hence $j=1$.
+\end{proof}

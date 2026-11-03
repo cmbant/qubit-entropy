@@ -1,0 +1,4 @@
+E18-1 PASS: exact Rains dual pi_9>=7/2288; positive Pauli weights [(1, '7/4576'), (2, '25/38896'), (3, '171/622336'), (4, '211/2333760'), (5, '1/34944'), (6, '19/3267264'), (7, '1/1867008')]
+E18-2 PASS: 2^18 stabilizer words, exact Type II distance-eight enumerator {0: 1, 8: 2754, 10: 18360, 12: 77112, 14: 110160, 16: 50949, 18: 2808}
+E18-3 PASS: all 48620 9|9 ranks {7: 9180, 9: 39440}
+E18-4 PASS: exact graph purity 7/2288 = exact Rains bound

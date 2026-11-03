@@ -1,0 +1,7 @@
+[PASS] GO-1 19 variables: 50 independently checked HS rays
+[PASS] GO-2 packed monomials and separate integer base/correction identities; 3277 coefficient keys; 109 maximum main-sum bits
+[PASS] GO-2 compact factors: 2222 columns; 178221 factor entries; 11 blocks without factors
+[PASS] GO-2 19 variables: 277 positive rational Gram blocks plus two analytic remainders; exact identity for (Q - n^2 e)/36
+[PASS] GO-3 fidelity-floor remainder; Q >= 1 - Phi >= ((6+sqrt(6))/12) * distance^2 > (7/10) * distance^2
+[PASS] GO-4 k > 16/225 by rational log bounds; k (6+sqrt(6))/12 > (16/225)(6+2449/1000)/12 > 1/20
+All GO checks passed.

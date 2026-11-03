@@ -1,0 +1,140 @@
+\subsection{A strengthened cubic bound below purity $47/100$}
+\label{sec:fqe-capped-cubic}
+We now fix $q=1587/1000$, $r=q-1$, $L=\ln2$ and $x=p-1/4$.
+\begin{lemma}[Capped cubic slack; analytic with explicit scalar arithmetic]
+\label{lem:fqe-capped-cubic}
+Every four-point probability vector with $p\le47/100$ satisfies
+\[
+H_q(\lambda)\le \frac{10}3-6p+\frac83t
+-\frac{11}{10}(p-1/4)(1/2-p).
+\tag{CG}\label{eq:fqe-capped-cubic}
+\]
+Equality holds only at the uniform-four spectrum.
+\end{lemma}
+\begin{proof}
+In centred moments $y=\sum_i(\lambda_i-1/4)^3$, the assertion is
+\[
+2-H_q\ge \frac{171}{40}x-\frac83y-\frac{11}{10}x^2.
+\]
+We first prove it for $p\le21/50$, then use binary grouping for the rest.
+
+\emph{The moment argument, $x\le17/100$.}
+The claim follows from~\eqref{eq:fqe-moment-rectangle} of Lemma~\ref{lem:fqe-moment-rectangle} with $b=8/3$,
+$c=171/40$, $\gamma=11/10$ and $\mu>0$; we apply that lemma with the CG column of
+Table~\ref{tab:fqe-moment-rectangle}. Here $N=1+xV+x^2W$, $V=A+Bv+Cv^2$, $W=C/4+D_5v$, $v=y/x$, and
+$A,B,C,D_5$ are those of Lemma~\ref{lem:fqe-near-uniform-moment}; the rectangle lemma does not require
+its smaller purity domain. The third-moment bound gives $|v|<6/25$.
+On $0\le x\le X=17/100$, $|v|\le6/25$, direct rational bounds give
+\[
+5/3<V<9/4,\quad -21/100<W<1,\quad 1\le N<3/2,\qquad
+V^2-2W\ge\frac{1706}{625}-\frac9{10}|v|+5v^2>\frac83,
+\]
+and $|B+2Cv+XD_5|<213/100$. Then $(8/3-2X(9/4)(21/100))/(3/2)^2>1=m$, so $(\ln N)_{xx}<-1$, and
+$m>(11/5)\rho=2\rho\gamma$; $C>144/100$ gives $\Phi_{vv}(X,v)\ge(2C-X(213/100)^2)/(\rho(3/2)^2)>2=\kappa$.
+At $v_*=0$ put
+$z=XA+X^2C/4$, use the eight-term lower sum
+$\ln(1+z)\ge\sum_{j=1}^8(-1)^{j+1}z^j/j$, and use
+$693147/10^6<L<693148/10^6$: then $\Phi(X,0)>1/250$ and $|\Phi_v(X,0)|<1/20$.
+The lemma gives $\mu\ge1/250-(1/20)^2/4>0$. This proves the claim strictly
+when $x>0$; $x=0$ is the uniform spectrum.
+
+\emph{Two binary bounds from endpoint values.}
+Write $h(u)=H_q(u,1-u)$ and $d_0=u(1-u)$.
+The monotonicity of $A_q$ in Lemma~\ref{lem:fqe-binary-quartic} (proved there by Cauchy's formula) gives
+\[
+ h(u)\le4d_0-\frac{11}{40}d_0(1-4d_0)\quad(3/100\le u\le1/2),
+\qquad
+ h(u)\le4d_0-\frac38d_0(1-4d_0)\quad(1/12\le u\le1/2).
+\tag{BQ}\label{eq:fqe-capped-binary}
+\]
+Only the two lower endpoints require checking. Explicit sufficient bounds are
+\[
+\begin{array}{c|c|c|c}
+u_0&u_0^q>&(1-u_0)^q>&h(u_0)<\\\hline
+3/100&19/5000&1191/1250&1093/10000\\
+1/12&193/10000&871/1000&5713/20000
+\end{array}
+\]
+The power bounds follow by raising to the thousandth power. The power sums are then at least
+$S=4783/5000$ and $S=8903/10000$, and the entropy caps follow from
+$-\ln(1-z)\le z+z^2/2+z^3/(3(1-z))$ with $z=1-S$; the two quartics exceed them (CG-2).
+
+It follows that $4u(1-u)-h(u)>(11/10)d(1/4-d)$ whenever
+$3/100\le u\le4/15$ and $3/100\le d\le\min\{2/25,d_0\}$.
+For $u\le1/12$, use the first quartic and the fact that
+$d(1/4-d)$ increases on $[0,1/8]$.
+For $u\ge1/12$, use the second quartic: the concave function $d_0(1-4d_0)$
+has its minimum at an endpoint of $11/144\le d_0\le44/225$, and
+\[
+\frac38\min\left\{\frac{11}{144}\frac{25}{36},
+\frac{44}{225}\frac{49}{225}\right\}
+>\frac{187}{12500}
+\ge\frac{11}{10}d(1/4-d).
+\]
+
+\emph{The two pairs, $21/50\le p\le47/100$.}
+Determinant monotonicity preserves $p,t$ and increases $H_q$, so it suffices
+to use the two ordered charts in \eqref{eq:fqe-sliver-coordinates}.
+Put $v=\delta^2$, $d=1/2-p=u-u^2-v/2\in[3/100,2/25]$.
+Ordering gives $3/100<u<4/15$ on S and $3/100<u<3/32$ on B.
+For S use $p\le1-3u+3u^2$; for B use
+$p\le1/2-u+3u^2/2$, $u\le1/2$, and convexity of this quadratic on
+$[3/32,1/2]$. Also on S,
+\[
+\frac{v}{(1-u)^2}\le\frac{2(u-u^2-3/100)}{(1-u)^2}<\frac23.
+\]
+For two conditional probability vectors, Jensen's inequality for the logarithm gives
+\[
+H_q((1-u)a,ub)\le h(u)+(1-w)H_q(a)+wH_q(b),\qquad
+w=\frac{u^q}{(1-u)^q+u^q}.
+\]
+One conditional vector in each chart is uniform-two. We claim
+\[
+H_q(\lambda_S)\le1+h(u)-(1+2u)v,\qquad
+H_q(\lambda_B)\le1+h(u)-(3-2u)v.
+\tag{CG3}\label{eq:fqe-capped-pairs}
+\]
+For S, the conditional squared imbalance $z=v/(1-u)^2$ is less than $2/3$.
+Its smaller probability is therefore greater than $1/12$; the second bound in
+\eqref{eq:fqe-capped-binary} gives a deficit
+$z+(3/32)z(1-z)\ge(33/32)z$.
+Its weight times $z$ is $v/[(1-u)^2(1+\rho^q)]$ with $\rho=u/(1-u)<1$, and
+$\rho^q\le\rho^{3/2}\le\rho(\rho+1/4)$ because $\sqrt\rho\le\rho+1/4$. Hence
+$(1-u)^2(1+\rho^q)\le(1-u)^2+u^2+u(1-u)/4$, and the S inequality follows from
+\[
+ 32(1+2u)\Bigl((1-u)^2+u^2+\frac{u(1-u)}4\Bigr)=32+8u(1-7u+14u^2)\le33 .
+\]
+Indeed $1-7u+14u^2=14(u-1/4)^2+1/8$ is at most $1$ for $u\le1/8$ and at most $11/32$ for
+$1/8\le u\le4/15$, so $8u(1-7u+14u^2)\le\max\{1,11/15\}$.
+
+For B the binary cubic bound gives deficit at least $z$ at order $q$.
+Here $M=(1-u)^q+u^q\le1-u$, because $q\ge3/2$, $\sqrt u<1/3$, and
+$(1-u)^{3/2}\le(1-u)(1-u/2)$.
+Thus $u^{q-2}/M\ge u^{-2/5}/(1-u)\ge3-2u$ on $u\le3/32$, as $u^2((1-u)(3-2u))^5\le1$ there:
+its logarithmic derivative has the sign of $24u^2-35u+6>0$, and at $u=3/32$ the inequality is
+$(3/32)^2(1305/512)^5<1$.
+This proves \eqref{eq:fqe-capped-pairs}.
+
+In these coordinates the cubic bound is
+$1+4u-4u^2-(1+2u)v$ on S and
+$1+4u-4u^2-(3-2u)v$ on B, and the correction is $(11/10)d(1/4-d)$.
+By~\eqref{eq:fqe-capped-pairs} the slack is at least $4u(1-u)-h(u)$, which exceeds the correction
+by the binary estimate above, since $d\le u-u^2=d_0$. This completes the proof, with strictness.
+\end{proof}
+
+\begin{corollary}[The capped cluster region; analytic]
+\label{cor:fqe-capped-cluster}
+For three four-point spectra with $1\le P\le101/100$, $F\ge11/25$ and every
+$p_j\le47/100$, one has $\mathcal E_{q_s}<5/3$.
+No quadratic variance bound is required.
+\end{corollary}
+\begin{proof}
+Put $\varepsilon=P-1$. Convexity gives
+$U\le(47/100)^2+(7/25+\varepsilon)^2+1/16$.
+The sum of the corrections in \eqref{eq:fqe-capped-cubic} is therefore at least
+$(11/10)(33/2500+19\varepsilon/100-\varepsilon^2)$.
+The cubic envelope gives the uncorrected bound
+$3\mathcal E_{q_s}\le5+(1-20\varepsilon-2F)/9$.
+Subtracting the correction leaves at most $5-89/75000<5$:
+the maximum is at $F=11/25$, $\varepsilon=0$.
+\end{proof}

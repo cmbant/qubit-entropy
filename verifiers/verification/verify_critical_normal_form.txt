@@ -1,0 +1,5 @@
+[PASS] CN-1 six generators real antisymmetric and independent in the magic basis; rho_12 = Z Z^dagger, rho_34 = (Z^dagger Z)^T; Bloch vectors of qubits 1,2 (3,4) are an exact invertible linear function of Im(Z Z^dagger) (Im(Z^dagger Z))
+[PASS] CN-2 sum_k v_k m_k x m_k = G_abcd with (a,b,c,d) = (v1,-v2,v3,-v4)
+[PASS] CN-3 two real Gram conditions eliminate unequal singular-value blocks; equal positive blocks are symmetric; positive/null couplings vanish
+[PASS] CN-4 exact rectangular examples: repeated positive block, unequal nullspaces, rank deficiency, transpose and zero real part
+All CN checks passed

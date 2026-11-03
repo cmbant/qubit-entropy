@@ -1,0 +1,112 @@
+\section{Critical four-qubit states: an elementary normal form}\label{sec:fqe-normal-form}
+
+The equality proof needs an LU normal form for \emph{critical} states, whose one-qubit marginals are all
+maximally mixed. We derive it by elementary linear algebra, including all ranks and singular-value multiplicities. No orbit-closure or Kempf--Ness argument is needed. Exact checks are listed in Appendix~\ref{sec:fqe-verifiers}.
+
+\subsection{Setting}\label{sec:fqe-critical_four_qubit_normal_form-setting}
+
+Let \(m_1,\dots,m_4\) be the magic basis of two qubits, \[
+m_1=\tfrac1{\sqrt2}(\lvert00\rangle+\lvert11\rangle),\quad
+m_2=\tfrac{i}{\sqrt2}(\lvert01\rangle+\lvert10\rangle),\quad
+m_3=\tfrac1{\sqrt2}(\lvert01\rangle-\lvert10\rangle),\quad
+m_4=\tfrac{i}{\sqrt2}(\lvert00\rangle-\lvert11\rangle).
+\] A four-qubit state is \(\psi=\sum_{j,k}Z_{jk}\,m_j\otimes m_k\) with \(Z\in\mathbb C^{4\times4}\)
+(qubits 1,2 index the rows, qubits 3,4 the columns), \(\|Z\|_F=1\). In this basis \(u\otimes u'\in
+SU(2)\otimes SU(2)\) acts as a real rotation, \(SU(2)\otimes SU(2)\to SO(4)\) onto, so the local
+unitaries act as \(Z\mapsto O_1ZO_2^{T}\), \(O_1,O_2\in SO(4)\). For \(v\in\mathbb C^4\) put \[
+G(v)=\sum_{k=1}^4v_k\,m_k\otimes m_k .
+\] Expanding the \(m_k\) shows \(G(v)=G_{abcd}\), the family
+\(\tfrac{a+d}2(\lvert0000\rangle+\lvert1111\rangle)+\tfrac{a-d}2(\lvert0011\rangle+\lvert1100\rangle)+\tfrac{b+c}2(\lvert0101\rangle+\lvert1010\rangle)+\tfrac{b-c}2(\lvert0110\rangle+\lvert1001\rangle)\)
+with \((a,b,c,d)=(v_1,-v_2,v_3,-v_4)\) (CN-2).
+
+\paragraph{Spin flip on the normal form.} The invariant \(\tau=|\psi^T\sigma_y^{\otimes4}\psi|^2\) of
+Lemma~\ref{lem:fqe-purity} is LU invariant, because \(u^T\sigma_yu=(\det u)\sigma_y\) for
+\(u\in U(2)\): a product unitary multiplies \(\psi^T\sigma_y^{\otimes4}\psi\) by
+\(\prod_i\det u_i\). Directly from the definitions, \(\sigma_y^{\otimes2}m_k=s_km_k\) with
+\(s=(-,+,-,+)\), and \(m_k^Tm_l=\eta_k\delta_{kl}\) with \(\eta=(+,-,+,-)\) (the \(m_k\) are
+orthonormal and real up to the phases \(1,i,1,i\)). Hence
+\(m_k^T\sigma_y^{\otimes2}m_l=s_l\eta_k\delta_{kl}=-\delta_{kl}\), and for \(\psi=G(v)\)
+\[
+\psi^T\sigma_y^{\otimes4}\psi=\sum_{k,l}v_kv_l\,\bigl(m_k^T\sigma_y^{\otimes2}m_l\bigr)^2=\sum_kv_k^2,
+\qquad\text{so}\qquad \tau=\Bigl|\sum_kv_k^2\Bigr|^2. \tag{$\tau_G$}\label{eq:fqe-spin-flip-normal-form}
+\]
+
+\begin{theorem}[Critical normal form]\label{thm:fqe-critical-normal-form}
+
+For a unit four-qubit state $\psi$ with matrix $Z$ the following are equivalent.
+
+\begin{enumerate}
+\item All four one-qubit marginals of $\psi$ equal $I/2$ ($\psi$ is \emph{critical}).
+\item $ZZ^\dagger$ and $Z^\dagger Z$ are real matrices. Equivalently, for $Z=X+iY$ with $X,Y$ real,
+$XY^T$ and $X^TY$ are symmetric.
+\item $Z=O_1\operatorname{diag}(v)\,O_2^T$ with $O_1,O_2\in SO(4)$ and $v\in\mathbb C^4$.
+\item $\psi$ is local-unitarily equivalent to $G(v)$ for some $v$ with $\|v\|=1$.
+
+\end{enumerate}
+\end{theorem}
+
+\begin{lemma}[Simultaneous real singular values]\label{lem:fqe-real-gram}
+
+For any complex $m\times n$ matrix $Z$, the two Gram matrices $ZZ^\dagger$
+and $Z^\dagger Z$ are real if and only if
+\[
+Z=O_1 D O_2^T,\qquad O_1\in O(m),\quad O_2\in O(n),
+\]
+where $D$ is a complex rectangular diagonal matrix. This includes all ranks
+and multiplicities.
+\end{lemma}
+
+\begin{proof} Write \(Z=X+iY\). The Gram conditions are precisely \(XY^T=YX^T\) and \(X^TY=Y^TX\).
+Take a real SVD of \(X\) and apply its two orthogonal factors to \(Y\) too. On the nonzero diagonal
+of \(X\), write \(d_i>0\). The two symmetry equations give \[
+d_iY_{ji}=d_jY_{ij},\qquad d_iY_{ij}=d_jY_{ji},
+\qquad (d_i^2-d_j^2)Y_{ij}=0.
+\] Thus different positive singular-value blocks do not mix, each equal-value block of \(Y\) is
+symmetric, and its entries joining a positive block to either nullspace vanish. Diagonalise each
+positive block of \(Y\) by the same real orthogonal transformation on its left and right; this
+leaves \(X=dI\) fixed. On the remaining, possibly rectangular nullspace block, take a real SVD of
+\(Y\). Both \(X\) and \(Y\) are now diagonal. The converse is immediate from the two Gram products.
+\end{proof}
+
+\subsection{Proof of the critical normal form}\label{sec:fqe-critical_four_qubit_normal_form-proof-of-theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:fqe-critical-normal-form}]
+\textit{Marginals are moment maps.}\label{lem:fqe-moment-map}
+
+In the magic basis the six operators \(i\sigma_a\otimes1\), \(i\,1\otimes\sigma_a\) (\(a=x,y,z\))
+have real antisymmetric matrices, and they are linearly independent, hence span \(\mathfrak{so}(4)\)
+(CN-1: check of the explicit \(4\times4\) matrices). The reduced state of qubits 1,2 is
+\(\rho_{12}=ZZ^\dagger\) in the magic basis. For a real antisymmetric \(L\) and Hermitian
+\(H=ZZ^\dagger\), \(\operatorname{tr}(L\,\mathrm{Re}H)=0\), so
+\(\langle\sigma\otimes1\rangle=\operatorname{tr}(H(-iL))=\operatorname{tr}(L\,\mathrm{Im}H)\). The
+six expectations \(\langle\sigma_a\otimes1\rangle,\langle1\otimes\sigma_a\rangle\) are therefore the
+six independent components of the antisymmetric matrix \(\mathrm{Im}(ZZ^\dagger)\) under an invertible
+linear change of coordinates, and they vanish iff \(\mathrm{Im}(ZZ^\dagger)=0\). Thus the marginals of qubits 1 and 2
+are both \(I/2\) iff \(ZZ^\dagger\) is real. In the same way \(\rho_{34}=(Z^\dagger Z)^T\), so
+qubits 3 and 4 are maximally mixed iff \(Z^\dagger Z\) is real. This proves
+(1)\(\Leftrightarrow\)(2). (Writing \(ZZ^\dagger=XX^T+YY^T+i(YX^T-XY^T)\) and \(Z^\dagger
+Z=X^TX+Y^TY+i(X^TY-Y^TX)\) gives the symmetry form of (2).)
+
+\textbf{(3)\(\Rightarrow\)(2).} \(ZZ^\dagger=O_1\operatorname{diag}(|v_k|^2)O_1^T\) and \(Z^\dagger
+Z=O_2\operatorname{diag}(|v_k|^2)O_2^T\) are real.
+
+\textbf{(2)\(\Rightarrow\)(3).} Apply the lemma with \(m=n=4\). If an orthogonal factor has
+determinant \(-1\), change its first column's sign and the first diagonal entry's sign; thus both
+factors can be taken in \(SO(4)\).
+
+\textbf{(3)\(\Leftrightarrow\)(4).} \((U_{12}\otimes U_{34})\,G(v)\) has matrix
+\(O_1\operatorname{diag}(v)O_2^T\) when \(U_{12},U_{34}\) act as \(O_1,O_2\) in the magic basis.
+\end{proof}
+
+\subsection{Consequences}\label{sec:fqe-critical_four_qubit_normal_form-consequences}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  On the unitary slice \(Z=W/2\), the lemma is the real-orthogonal KAK factorisation. Here
+\(|v_k|=1/2\) and the \(v_k^2\) are the eigenvalues of \(ZZ^T\).
+\item
+  The \hyperref[sec:fqe-sextic]{sextic zero classification} and
+Proposition~\ref{prop:fqe-onecut} use this theorem.
+\end{enumerate}
+

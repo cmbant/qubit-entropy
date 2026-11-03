@@ -1,0 +1,186 @@
+\emph{The cubic and its polarisation defect.}
+Symmetrise $U_i$ in its first two inputs and put $\mathcal T_i=V_i-6U_i$.
+Its ordinary-site operator is
+\[
+ \prod(L+M)-3(\prod L+\prod M).
+\]
+It is invariant under $(L,M)\mapsto(M,L)$ and
+$(L,M)\mapsto(-L,M-L)$, the two generating input transpositions
+(the latter is Schouten). Thus $\mathcal T_i$ is fully symmetric, while
+$U_i$ has zero fully symmetric part. Write
+\[
+ C_i(z)=\mathcal T_i(z,z,z),\qquad
+ Y_i=\mathcal T_i(z,z,\tilde z),\qquad X_i=Y_i-2U_i,
+ \qquad K_c=\sum_{i<j}\|c_{ij}\|^2.
+\]
+The key identity is a polarisation defect of this one cubic:
+\[
+ \boxed{\quad \sum_i\|C_i(z)\|^2-\sum_i\|Y_i\|^2
+ =\frac{32}{3}N(N^2-|s|^2)-4NW_1-\frac83K_c.\quad}
+ \tag{CP}\label{eq:fqe-cubic-polarization-defect}
+\]
+We derive it by angular momentum of the copy labels, then polarise once.
+This gives the flip derivative directly, without a state normal form.
+
+\emph{Why the cubic has this norm.}
+At a site, three copies decompose into the symmetric spin-$3/2$ space
+and spin $1/2$ with the two-dimensional standard representation of $S_3$.
+Let $P_3$ select three standard sites and one symmetric site inside the
+global symmetric cube. Then
+\[
+ \sum_i\|C_i(z)\|^2=54\langle z^{\otimes3},P_3z^{\otimes3}\rangle.
+\]
+Indeed the cubic annihilates the symmetric component at its three ordinary
+sites and selects the unique invariant in three standard factors.
+In an orthonormal standard basis, the local maps $L,M$ have rows
+$\ell=(\sqrt{3/2},-1/\sqrt2)$ and $m=(\sqrt{3/2},1/\sqrt2)$.
+The row $(\ell+m)^{\otimes3}-3(\ell^{\otimes3}+m^{\otimes3})$ is
+$\frac{3\sqrt6}{2}(1,0,0,-1,0,-1,-1,0)$, with squared norm $54$ [FG-3].
+This fixes the normalisation on the whole spin module.
+The sector also has a direct test interpretation: a state product across
+a balanced cut has matching $S_3$ labels at the two sites of each side,
+hence an even number of standard sites and zero $P_3$ projection.
+
+Here is the copy-label calculation relating $P_3$ to the physical moments.
+Let $K$ count standard sites. On those $K$ factors write
+$\mathbf J=\frac12\sum\boldsymbol\sigma$ and $Y=\sum\sigma_y$;
+these Pauli matrices act on copy multiplicities, not physical qubits.
+A three-cycle is a rotation by $2\pi/3$ in the standard plane.
+Global copy invariance therefore forces $Y$ to be a multiple of $3$.
+For $K\le4$, the only nonzero possibility is $Y=\pm3$ at $K=3$:
+\[
+ Y^2=9P_3,\qquad
+ K^2-4K+2\mathbf J^2=\tfrac12Y^2+12P_+ .
+\]
+For the second identity, two standard factors have their invariant in
+spin $1$, three in spin $3/2$, and four in spin $2$ or spin $0$;
+$P_+$ denotes the spin-$2$ invariant line in the last case.
+There is no invariant with one standard factor or in the spin-$1$
+summands of four standard factors.
+These statements follow by restricting the usual spins to the triangle's
+rotation and reflection; at $K=3$ only the symmetric cube contains the
+rotation charges $\pm3$, and at $K=4$ spin $1$ has no invariant.
+
+For completeness the associated moment operators are
+\[
+ \begin{aligned}
+ NW_1&\longleftrightarrow4I-2K,&
+ N|s|^2&\longleftrightarrow6P_+,\\
+ K_c&\longleftrightarrow 2K-K^2+\mathbf J^2-\tfrac14Y^2,&
+ F&\longleftrightarrow3I-\tfrac52K(K+1)+\tfrac{17}2\mathbf J^2+\tfrac18Y^2.
+ \end{aligned}\tag{CM}\label{eq:fqe-cubic-copy-moments}
+\]
+All operators are compressed to the global symmetric cube.
+The first is the one-body purity identity. The second follows by summing
+the three four-singlet projectors: their compression is $9P_+/8$, while
+each has expectation $N|s|^2/16$ (a reflection-antisymmetric fourth
+tensor power has invariant projection norm $(2+4/16)/6=3/8$).
+To derive the other two, set $\Pi=\sum_{i<j}\operatorname{tr}[R_{ij}(R_i\otimes R_j)]$.
+Its operator is the average of distinct transpositions at sites $i,j$.
+The three standard reflections have vanishing sum and angles $2\pi/3$, so
+\[
+ \Pi\longleftrightarrow
+ \tfrac12(4-K)(3-K)-\tfrac12\mathbf J^2+\tfrac18Y^2+\tfrac14K.
+\]
+Insert this in~(Pr) for $K_c$. For $F$, the symmetrised swap expression
+is $(17/6)A-3B-12I$, where $A$ sums equal transpositions over site pairs
+and $B$ sums equal three-cycles and their inverses. Using
+$\sum\text{reflections}=3S$ and
+$c+c^{-1}=3S-I$, $c-c^{-1}=\pm i\sqrt3\sigma_y$ for the slot permutations at one site, with
+$S$ the projector onto its symmetric component and $\sigma_y$ acting on its two-dimensional standard component, gives explicitly
+\[
+ A=\tfrac32(4-K)(3-K)+3\mathbf J^2-\tfrac34Y^2-\tfrac32K,
+ \qquad B=12-\tfrac{21}2K+\tfrac94K^2-\tfrac34Y^2.
+\]
+Their combination is the displayed operator for $F$.
+Thus~(CM) uses only the standard-representation Casimirs [FG-2].
+The globally invariant sectors and the values of these operators on them are:
+\[
+\begin{array}{cccc|ccccc}
+ K & j & Y^2 & \text{projector} & NW_1 & N|s|^2 & K_c & F & 54P_3\\\hline
+ 0 & 0 & 0 & & 4 & 0 & 0 & 3 & 0\\
+ 2 & 1 & 0 & & 0 & 0 & 2 & 5 & 0\\
+ 3 & \tfrac32 & 9 & P_3 & -2 & 0 & -\tfrac32 & 6 & 54\\
+ 4 & 2 & 0 & P_+ & -4 & 6 & -2 & 4 & 0\\
+ 4 & 0 & 0 & & -4 & 0 & -8 & -47 & 0
+\end{array}
+\]
+Here $K$ counts standard sites, $j$ is the copy-label spin of those $K$
+factors, $P_3$ is the $K=3$ line and $P_+$ the spin-$2$ line at $K=4$;
+$N^3$ acts as $1$. For each choice of the $K$ standard sites, the
+$K=4$, $j=0$ sector has multiplicity two; the other listed sectors have
+multiplicity one. The displayed operators are scalar on both copies of
+the spin-$0$ sector. No invariant occurs with $K=1$ or with $j=1$ at $K=4$ [FG-2].
+Substitution of the two selection rules gives
+\[
+ 54P_3\longleftrightarrow
+ \frac83F+\frac{32}{3}N(N^2-|s|^2)-\frac{14}{3}NW_1-12K_c.
+\]
+On the other hand, the already proved contractions~(C), (U), (Pr) give
+\[
+ \sum\|Y_i\|^2=\frac83F-\frac23NW_1-\frac{28}{3}K_c,
+ \quad \sum\|U_i\|^2=\frac13NW_1,
+ \quad \operatorname{Re}\sum\langle U_i,Y_i\rangle
+       =\frac23NW_1-\frac43K_c.
+ \tag{CY}\label{eq:fqe-cubic-mixed-norms}
+\]
+Subtract the first of~(CY) to obtain~(CP) [FG-2, FG-4].
+No new contraction table is required.
+
+\emph{A vanishing quartic covariant.}
+Use the bilinear output pairing $B(v,w)=v^T\epsilon^{\otimes6}w$.
+For every $i$, $B(C_i(z),U_i(z,z,w))=0$.
+Indeed the local formula $U_i=-S_i(z\otimes R_i\epsilon^T)$ makes this
+pairing a contraction of $R_i$ with a holomorphic quartic spin-$1$
+covariant at site $i$, singlet at the other sites. Such a covariant is zero:
+in four copy labels, the singlets have multiplicity representation
+$[22]$, on which the Klein four group acts trivially. Spin $1$ has
+multiplicity $[31]$, the standard traceless representation on four letters,
+which has no Klein-four fixed vector. Hence their tensor product has
+no globally symmetric component [FG-3]. This is the only vanishing statement
+needed below.
+
+\emph{One polarisation gives the transport identity.}
+Now regard $w=\tilde z$ as independent of $z$ and differentiate in the
+$w$ direction $z$, denoting this derivative by $\mathcal D$.
+With the four-qubit pairing $B_4(x,y)=x^T\epsilon^{\otimes4}y$, write $\bar s=B_4(w,w)$, $n=B_4(z,w)$; physically these are $\bar s,N$.
+All Hermitian expressions above extend polynomially by replacing their
+conjugate tensors by their spin flips with $z,w$ exchanged.
+Put
+\[
+\begin{gathered}
+ u=\sum B(U_i,U_i),\quad q=\sum B(Y_i,U_i),\quad
+ p=\sum c_{ij}^T\epsilon^{\otimes4}c_{ij},\\
+ y=\sum B(Y_i,Y_i),\quad d=\sum B(C_i(z),\mathcal T_i(z,w,w)).
+\end{gathered}
+\]
+Since the fully symmetric parts of $U$ and $c$ vanish,
+$\mathcal D\sum\|U_i\|^2=-u$ and $\mathcal DK_c=-p$.
+The vanishing quartic covariant, differentiated in $z$ along $w$, gives
+$\sum B(C_i(z),U_i(w,w,z))=3q$.
+Consequently $\mathcal D\operatorname{Re}\sum\langle U_i,Y_i\rangle=2q$.
+Using $\mathcal Dn=s$, $\mathcal DW_1=0$ and~(CY) yields
+\[
+ u=-\tfrac13sW_1,\qquad q=\tfrac13sW_1+\tfrac23p.
+\]
+The derivative of the left side of~(CP) is $2(d-y)$.
+Its right side gives
+\[
+ d-y=\tfrac{16}{3}s(n^2-s\bar s)-2sW_1+\tfrac43p.
+\]
+Finally $X=Y-2U$ and the same cubic polarisation give
+\[
+ \begin{aligned}
+ \Delta:=\mathcal DH&=\tfrac38(d+2y-8q-4u)-\tfrac32p,\\
+ b:=\sum B(X_i,X_i)&=y-4q+4u.
+ \end{aligned}
+\]
+The cancellation is now transparent:
+\[
+ \Delta-\tfrac98b=\tfrac38(d-y)+\tfrac32q-6u-\tfrac32p
+ =s\bigl(2n^2-2s\bar s+\tfrac74W_1\bigr).
+\]
+The purity identity $P=n^2+(W_1+s\bar s)/2$ turns this precisely into~(FGI) [FG-4, FG-9].
+Thus the spin-flip transport law follows from cubic symmetry, the copy-label
+Casimirs, and one absent quartic representation, rather than normal-form
+block evaluations.

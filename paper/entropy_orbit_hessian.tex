@@ -1,0 +1,165 @@
+\subsection{The sharp entropy Hessian and a larger local neighbourhood}
+\label{sec:fqe-entropy-orbit-local}
+Let
+\[
+ c_* =\frac{2-\ln3}{2\ln2}.
+\]
+The transverse quadratic coefficients of the entropy gap are
+\begin{equation}\label{eq:fqe-entropy-hessian-spectrum}
+ \begin{array}{c|ccc}
+ \text{coefficient}&c_*&1/\ln2&(2+3\ln3)/(3\ln2)\\\hline
+ \text{real multiplicity}&10&2&9
+ \end{array}
+\end{equation}
+(the Hessian eigenvalues are twice these coefficients). The ten orbit
+tangents are its kernel on the unit sphere. In particular
+\begin{equation}\label{eq:fqe-entropy-local-sharp}
+ \lim_{r\downarrow0}\ \inf_{0<d(\psi)\le r}
+                  \frac{\delta(\psi)}{d(\psi)^2}=c_*.
+\end{equation}
+The Hessian determines the limiting coefficient. To obtain a bound on a whole neighbourhood, we also
+control the higher-order terms through the following radius estimate.
+\begin{lemma}[Explicit local radius]\label{lem:fqe-entropy-local-radius}
+For $0<r\le1/20$ put
+\[
+ \epsilon_r=2\sqrt6\,r+6r^2,\qquad
+ c(r)=\frac{1-r^2/4}{3\ln2}
+ \left[(3-\epsilon_r)
+       \left(1-\sqrt3\,r-\frac{r^2}2\right)^2
+       -\frac32\ln3\right].
+\]
+Then
+\begin{equation}\label{eq:fqe-entropy-local-radius}
+ d(\psi)\le r\quad\Longrightarrow\quad
+ \delta(\psi)\ge c(r)d(\psi)^2,\qquad c(1/20)>3/10.
+\end{equation}
+The bracket is positive and decreasing on this interval, and
+$c(r)\to c_*$.
+\end{lemma}
+
+\begin{proof}
+Fix a closest $\chi\in\mathcal M$, and write
+$\psi=h\chi+s\nu$, where $h=1-d^2/2$, $s^2=d^2-d^4/4$,
+$\|\nu\|=1$. The vector $\nu$ is complex-orthogonal to $\chi$
+and real-orthogonal to its orbit tangents. On cut $j$ write $C_j,B_j$
+for the flattenings of $\chi,\nu$, and set
+\[
+ \sigma_j=C_jC_j^\dagger=I/6+\Pi_j/3,\quad
+ L_j=C_jB_j^\dagger+B_jC_j^\dagger,\quad
+ V_j=B_jB_j^\dagger,\quad
+ K=\sum_j\Pi_j\otimes I-\frac32 I.
+\]
+The sum is over the three cuts, with $\Pi_j$ acting on the corresponding
+pair containing qubit one. Direct substitution at $Z_*$ gives $K\chi=0$.
+The relative entropy identity, with natural logarithms, is exact:
+\begin{equation}\label{eq:fqe-entropy-relative}
+ 3\ln2\,\delta(\psi)=\ln3\,\langle\psi,K\psi\rangle
+                         +\sum_jD(\rho_j\|\sigma_j).
+\end{equation}
+Let $\mathcal L_j$ be the derivative of matrix logarithm at $\sigma_j$,
+and put $U(\nu)=\sum_j\operatorname{tr}(L_j\mathcal L_j(L_j))$.
+The quadratic entropy term is most simply diagonalised before estimating
+$U$. Put $\Pi=\Pi_j$, $\Pi^\perp=I-\Pi$ on each cut and define the rational forms
+\[
+ \mathfrak a=\sum_j\bigl(\operatorname{tr}[(\Pi L_j\Pi)^2]
+                         +3\operatorname{tr}[(\Pi^\perp L_j\Pi^\perp)^2]\bigr),\qquad
+ \mathfrak b=\langle\nu,K\nu\rangle
+                         +3\sum_j\|\Pi L_j\Pi^\perp\|_F^2.
+\]
+The divided differences of $\ln$ at $1/2,1/6$ give
+\[
+ U=2\bigl[\mathfrak a+\ln3\,(\mathfrak b-\langle\nu,K\nu\rangle)\bigr].
+\]
+Thus the coefficient of $s^2$ in \eqref{eq:fqe-entropy-relative} is
+$(\mathfrak a+\ln3\,\mathfrak b)/(3\ln2)$: the $K$ terms cancel.
+
+Here are explicit coordinates for the full real normal space at $Z_*$:
+\begin{equation}\label{eq:fqe-entropy-normal-blocks}
+ H=\begin{pmatrix}
+ i\sqrt3\,z&(b\xi+ia\eta)^T\\
+ b\eta+ia\xi&zI_3+E+A
+ \end{pmatrix},\qquad a=1/\sqrt2,\quad b=1/\sqrt6,
+\end{equation}
+where $z\in\mathbb C$, $E$ is complex symmetric and traceless,
+$A$ is real antisymmetric, and $\xi,\eta\in\mathbb R^3$.
+Indeed complex orthogonality to $Z_*$ imposes $H_{00}=i\sqrt3\,z$;
+orthogonality to lower rotation tangents makes the antisymmetric part
+real; the two cross-block tangents impose the displayed relations.
+These mutually orthogonal blocks have real dimensions $10,2,9$ and
+norm squares
+\[
+ N_0=\|E\|_F^2,\qquad N_1=6|z|^2,\qquad
+ N_2=\|A\|_F^2+\tfrac23(|\xi|^2+|\eta|^2).
+\]
+Substitution in the cut formulas gives
+\begin{equation}\label{eq:fqe-entropy-normal-forms}
+ \mathfrak a=3N_0+3N_1+2N_2,\qquad
+ \mathfrak b=-\tfrac32N_0+3N_2.
+\end{equation}
+This proves the three coefficients and multiplicities in
+\eqref{eq:fqe-entropy-hessian-spectrum} without spectral projectors.
+For reproducibility, use the two unit traceless diagonal matrices and
+three unit symmetric off-diagonal matrices in $E$, and their imaginary
+multiples; use $z=1/\sqrt6,i/\sqrt6$; use the three unit antisymmetric
+matrices in $A$; finally use each coordinate axis for $\xi,\eta$, scaled
+by $\sqrt{3/2}$. EH-1 substitutes this orthonormal basis in all cut
+forms and checks every coefficient of \eqref{eq:fqe-entropy-normal-forms}.
+
+Direct substitution gives $K=-3/2$ on the $E$ block and $K=0$ on the
+$z$ block. Hermiticity makes their orthogonal complement invariant.
+On that complement $K\le3/2$, since it is the sum of three projectors
+minus $3I/2$. Consequently $U=6$ per unit norm on the first two blocks
+($\mathfrak b-\langle\nu,K\nu\rangle=0$ there),
+and $U\ge4+3\ln3>6$ per unit norm on the last block. By \eqref{eq:fqe-entropy-normal-forms}, $\mathfrak a$ and $\mathfrak b$
+have no cross terms between the three blocks, and neither has $\langle\nu,K\nu\rangle$, since the first two blocks are
+eigenspaces of $K$; so $U\ge6\|\nu\|^2$ on all normals,
+the least value being on the $E$ and $z$ blocks. The radius estimate below needs only the
+bound $K\ge-3/2$, which holds on the whole space by the definition of $K$.
+
+For the radius bound use the norm induced by $\mathcal L_j$.
+Since $\|\mathcal L_j\|\le6$, $\operatorname{tr}\sigma_j^2=1/3$
+and $\operatorname{tr}(V_j\sigma_j)\ge1/6$,
+\[
+ \sum_j\|V_j-\sigma_j\|_{\mathcal L_j}^2
+ \le6\sum_j\operatorname{tr}[(V_j-\sigma_j)^2]\le18.
+\]
+Also $\rho_j\le(1+\epsilon_r)\sigma_j$: write the cut matrix as
+$C_j+E_j$ with $\|E_j\|\le d$. The least singular value of $C_j$ is
+$1/\sqrt6$, so $\|C_j^{-1}E_j\|\le\sqrt6\,d$, and
+$\rho_j=C_j(I+C_j^{-1}E_j)(I+C_j^{-1}E_j)^\dagger C_j^\dagger
+\le(1+\sqrt6\,r)^2\sigma_j=(1+\epsilon_r)\sigma_j$.
+The resolvent formula for the logarithmic derivative implies
+$\|X\|_{\mathcal L_A}^2\ge a^{-1}\|X\|_{\mathcal L_\sigma}^2$
+when $A\le a\sigma$. To see the order directly, inverse resolvents
+are ordered, their tensor squares are ordered, and integration with
+a rescaled variable gives the factor $a^{-1}$.
+Twice integrating the entropy Hessian along the segment therefore gives
+\[
+ D(\rho_j\|\sigma_j)\ge
+ \left(\int_0^1\frac{1-v}{1+v\epsilon_r}\,dv\right)
+           \|\rho_j-\sigma_j\|_{\mathcal L_j}^2
+ \ge\left(\frac12-\frac{\epsilon_r}{6}\right)
+           \|\rho_j-\sigma_j\|_{\mathcal L_j}^2.
+\]
+Now $\rho_j-\sigma_j=hsL_j+s^2(V_j-\sigma_j)$. The reverse
+triangle inequality in the sum of the three induced norms gives,
+since $h\sqrt6\ge s\sqrt{18}$ for $r\le1/20$,
+\[
+ \sum_j\|\rho_j-\sigma_j\|_{\mathcal L_j}^2
+ \ge s^2(h\sqrt6-s\sqrt{18})^2.
+\]
+Insert this into \eqref{eq:fqe-entropy-relative}, use
+$\langle\psi,K\psi\rangle=s^2\langle\nu,K\nu\rangle\ge-3s^2/2$,
+and substitute $h\ge1-r^2/2$, $s\le r$ and
+$s^2\ge d^2(1-r^2/4)$; since $(h\sqrt6-s\sqrt{18})^2=6(h-\sqrt3\,s)^2$ and
+$6(\frac12-\frac{\epsilon_r}6)=3-\epsilon_r$, this proves \eqref{eq:fqe-entropy-local-radius}.
+The rational bounds $\ln2<7/10$, $\ln3<1099/1000$,
+$\sqrt6<49/20$ and $\sqrt3<1733/1000$
+certify $c(1/20)>3/10$ (EH-2).
+
+Finally the unit normal $H=\operatorname{diag}(0,1,-1,0)/\sqrt2$
+belongs to the ten-dimensional least-coefficient space. Along
+$(Z_*+tH)/\|Z_*+tH\|$, the distance to $\mathcal M$ is
+$|t|+O(t^2)$ and the gap is $c_*t^2+O(t^3)$. This proves
+\eqref{eq:fqe-entropy-local-sharp}, and also optimality of the power two.
+\end{proof}

@@ -1,0 +1,113 @@
+% The most entangled states of four and seven qubits.
+% The paper and its supplement refer to each other: build the pair twice,
+%   latexmk -pdf four_qubit_entropy.tex; latexmk -pdf supplement.tex; latexmk -g -pdf four_qubit_entropy.tex; latexmk -g -pdf supplement.tex
+\documentclass[11pt]{article}
+\input{fqe_preamble}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+\externaldocument[][nocite]{four_qubit_entropy}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thetheorem}{S\arabic{theorem}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+% Pointers to material of the paper: the same macro names as the paper, so shared parts compile in both.
+\newcommand{\LNtab}[1]{Table~\ref{#1}}
+\newcommand{\LNtabs}[2]{Tables~\ref{#1} and~\ref{#2}}
+\hypersetup{pdfauthor={Antony Lewis},pdftitle={The most entangled states of four and seven qubits: supplement}}
+\title{The most entangled states\\of four and seven qubits:\\[0.4em]{\large Supplement}}
+\author{Antony Lewis \affiliation{\Sussex}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+This supplement gives full proofs and certificate tables for the intermediate-order R\'enyi bounds,
+stability estimates, and the seven-qubit purity and entropy optima stated in the paper~\cite{Paper}.
+It also records invariant-dimension counts needed for certificate verification and further results
+used in the paper. Like the paper, it was prepared by AI agents under human supervision.
+\end{abstract}
+
+{\small\setcounter{tocdepth}{1}\makeatletter\renewcommand*\l@section{\@dottedtocline{1}{0em}{2.6em}}\makeatother\tableofcontents}
+
+\section{About this supplement}\label{sec:sup-about}
+References without an S prefix, such as Theorem~\ref{thm:fqe-moment} or Appendix~\ref{sec:fqe-verifiers}, refer to the paper; numbers with
+the prefix S refer to this supplement. Each paper statement proved here is restated in full, under its paper number,
+immediately before the proof. The check labels (QG, SHD, MS, \dots) are described in Section~\ref{sec:sup-verifiers}; each identifies a verification check whose script and captured output are in the companion repository
+\href{https://github.com/cmbant/qubit-entropy}{\texttt{cmbant/qubit-entropy}}
+(the folder \texttt{verifiers/}; \texttt{verifiers/MAP.md} lists the script for each label). As in the paper, every stated result is proved, analytically or with the checks named in its proof; numerical observations are labelled as such.
+
+For the four-qubit von Neumann maximum, the paper already contains the complete analytic
+proof. This supplement first supplies invariant-dimension counts
+(Section~\ref{sec:fqe-invariant-dimensions}), the spin-flip gradient identity
+(Section~\ref{sec:sup-flip-gradient}), and an alternative proof of the sextic zero-set classification
+(Section~\ref{sec:sup-sextic-zeros}). Readers following the extensions should then turn to
+Section~\ref{sec:sup-renyi} for intermediate R\'enyi orders or to
+Sections~\ref{sec:fqe-stability-proofs} and~\ref{sec:sup-stability} for orbit stability.
+
+For seven qubits, Figure~\ref{fig:seven-proof-map} separates the two proof chains.
+The replica hierarchy and complex conference family lead to the five-copy purity bound and
+its equality orbit; the entropy proof adds a spectral majorant and a restricted
+competitor region before identifying a different equality orbit
+(Sections~\ref{sec:hierarchy}--\ref{sec:sup-seven-entropy}).
+Later sections develop further sextic covariants, purity--time-reversal
+inequalities, balanced-purity minima through eighteen qubits and an interval for the thirteen-qubit minimum, with an entropy witness at that size. Sections~\ref{sec:fqe-lean} and~\ref{sec:sup-verifiers} record the Lean
+formalisation and the verification checks.
+
+\paragraph{Seven-qubit notation.} For a pure state of $n$ qubits, $\pi_k(\psi)=\binom nk^{-1}\sum_{|S|=k}\operatorname{tr}\rho_S^2$
+is the mean $k$-qubit purity, and at $n=7$, $E_3$ is the mean von Neumann entropy (in bits) of the $35$ three-qubit marginals.
+The icosahedral family $\psi_x$, $0\le x\le1/2$, is that of Theorem~\ref{thm:ico} and equation~\eqref{eq:ico} of the paper;
+in the amplitude patterns $U,V$ of Section~\ref{sec:entropy-local-seven}, $\psi_x=\alpha U+\beta V$ with $\alpha=\sqrt{(1-2x)/30}$ and $\beta=\sqrt x$. Its
+member $\Psiico=\psi_{37/524}$ minimises $\pi_3$, and $\psi_{x_*}$, $x_*=0.0698\ldots$, maximises $E_3$. The twirled $m$-copy
+moment of Appendix~\ref{sec:fqe-seven} of the paper, written $X_m$ there, is written $X_m^+$ here.
+
+\input{invariant_dimensions}
+\input{sup_general_envelope}
+\input{sup_flip_gradient}
+\input{sup_sextic_zeros}
+\input{sup_renyi}
+\input{stability_proofs}
+\input{sup_stability}
+\input{sup_seven}
+\input{lean_formalisation}
+\input{sup_verification_map}
+
+\begin{thebibliography}{99}
+\bibitem{Paper} A.~Lewis, The most entangled states of four and seven qubits (the paper
+this document supplements).
+\bibitem{HGS} F.~Huber, O.~G\"uhne and J.~Siewert, Absolutely maximally entangled states of seven
+qubits do not exist, Phys.\ Rev.\ Lett.\ \textbf{118}, 200502 (2017),
+\href{https://arxiv.org/abs/1608.06228}{arXiv:1608.06228}.
+\bibitem{DPS} A.~C.~Doherty, P.~A.~Parrilo and F.~M.~Spedalieri, Complete family of separability criteria,
+Phys.\ Rev.\ A \textbf{69}, 022308 (2004), \href{https://arxiv.org/abs/quant-ph/0308032}{arXiv:quant-ph/0308032}.
+\bibitem{Rains} E.~M.~Rains, Quantum shadow enumerators, IEEE Trans.\ Inf.\ Theory \textbf{45}, 2361
+(1999), \href{https://arxiv.org/abs/quant-ph/9611001}{arXiv:quant-ph/9611001}.
+\bibitem{HEB} M.~Hein, J.~Eisert and H.~J.~Briegel, Multiparty entanglement in graph states, Phys.\
+Rev.\ A \textbf{69}, 062311 (2004), \href{https://arxiv.org/abs/quant-ph/0307130}{arXiv:quant-ph/0307130}.
+\bibitem{Scott} A.~J.~Scott, Multipartite entanglement, quantum-error-correcting codes, and entangling power of
+quantum evolutions, Phys.\ Rev.\ A \textbf{69}, 052330 (2004),
+\href{https://arxiv.org/abs/quant-ph/0310137}{arXiv:quant-ph/0310137}.
+\bibitem{DP} L.~E.~Danielsen and M.~G.~Parker, On the classification of all self-dual additive codes over GF(4)
+of length up to 12, J.\ Combin.\ Theory A \textbf{113}, 1351 (2006),
+\href{https://arxiv.org/abs/math/0504522}{arXiv:math/0504522}.
+\bibitem{HuberThesis17} F.~M.~Huber, Quantum states and their marginals: from multipartite entanglement to quantum
+error-correcting codes, Ph.D.\ thesis, Universit\"at Siegen (2017), \S5.11.4,
+\href{https://d-nb.info/1154308545/34}{d-nb.info/1154308545/34}.
+\bibitem{AMH26} G.~Angl\`es Munn\'e and F.~Huber, SDP bounds on quantum codes: rational certificates,
+\href{https://arxiv.org/abs/2603.19901}{arXiv:2603.19901} (2026).
+\bibitem{Zha14} X.-W.~Zha, J.-X.~Qi and Y.-G.~Zhang, Exploring maximally multipartite entanglement of even $n$ qubits
+with $N$-tangle, \href{https://arxiv.org/abs/1410.5049}{arXiv:1410.5049} (2014).
+\bibitem{Rico} A.~Rico, J.~Abellanet-Vidal, N.~B.~T.~Kothakonda, A.~Sanpera and G.~Angl\`es Munn\'e,
+Entangling a quantum system to disentangle its parts,
+\href{https://arxiv.org/abs/2604.13169}{arXiv:2604.13169} (2026).
+\bibitem{MNH} G.~Angl\`es Munn\'e, A.~Nemec and F.~Huber, SDP bounds on quantum codes,
+\href{https://arxiv.org/abs/2408.10323}{arXiv:2408.10323} (2024).
+\bibitem{EtTaouiMakhlouf} B.~Et-Taoui and A.~Makhlouf, Complex skew-symmetric conference matrices,
+Linear Multilinear Algebra \textbf{70}, 6648--6663 (2022),
+\href{https://doi.org/10.1080/03081087.2021.1967848}{doi:10.1080/03081087.2021.1967848}.
+\bibitem{HudsonMoody} R.~L.~Hudson and G.~R.~Moody, Locally normal symmetric states and an analogue of de~Finetti's theorem,
+Z.\ Wahrscheinlichkeitstheorie verw.\ Gebiete \textbf{33}, 343--351 (1976).
+\bibitem{SGM} E.~Serrano-Ens\'astiga, O.~Giraud and J.~Martin, Multiqubit monogamy relations beyond shadow inequalities,
+Phys.\ Rev.\ A \textbf{113}, 012415 (2026), \href{https://arxiv.org/abs/2507.12680}{arXiv:2507.12680}.
+\end{thebibliography}
+\end{document}

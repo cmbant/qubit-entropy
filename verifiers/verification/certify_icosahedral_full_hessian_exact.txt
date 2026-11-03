@@ -1,0 +1,43 @@
+PASS LH-1: exact stationarity in every complex amplitude direction
+PASS LH-2: 256x256 symmetric exact Hessian field decomposition H=(A+sqrt(555)B)/18340
+PASS LH-3: all 22 LU/global-phase tangent vectors are exact kernel vectors
+  sector R block supp+ P_3            size 1 x multiplicity  5, nullity 0
+  sector R block supp- P_3            size 1 x multiplicity  5, nullity 0
+  sector R block flip P_3             size 2 x multiplicity  5, nullity 0
+  sector R block supp+ P_-1           size 1 x multiplicity  5, nullity 0
+  sector R block supp- P_-1           size 1 x multiplicity  5, nullity 0
+  sector R block flip P_-1            size 2 x multiplicity  5, nullity 0
+  sector R block supp+ P_-3           size 1 x multiplicity  4, nullity 0
+  sector R block supp- P_-3           size 1 x multiplicity  4, nullity 0
+  sector R block flip P_-3            size 2 x multiplicity  4, nullity 0
+  sector R block supp U/V P_2         size 2 x multiplicity  1, nullity 0
+  sector R block supp endpoint P_2    size 2 x multiplicity  1, nullity 0
+  sector R block flip P_2/endpoint    size 4 x multiplicity  1, nullity 1
+  sector R block odd P_8,40 +         size 1 x multiplicity  8, nullity 0
+  sector R block odd P_8,40 -         size 1 x multiplicity  8, nullity 0
+  sector R block odd 4x4 first        size 4 x multiplicity  6, nullity 1
+  sector R block odd 4x4 second       size 4 x multiplicity  6, nullity 0
+PASS LH-4 sector R: 128 block columns of exact rank 128; block traces sum to tr A, tr B; kernel dim 7
+  sector I block supp+ P_3            size 1 x multiplicity  5, nullity 0
+  sector I block supp- P_3            size 1 x multiplicity  5, nullity 0
+  sector I block flip P_3             size 2 x multiplicity  5, nullity 0
+  sector I block supp+ P_-1           size 1 x multiplicity  5, nullity 0
+  sector I block supp- P_-1           size 1 x multiplicity  5, nullity 1
+  sector I block flip P_-1            size 2 x multiplicity  5, nullity 0
+  sector I block supp+ P_-3           size 1 x multiplicity  4, nullity 0
+  sector I block supp- P_-3           size 1 x multiplicity  4, nullity 0
+  sector I block flip P_-3            size 2 x multiplicity  4, nullity 0
+  sector I block supp U/V P_2         size 2 x multiplicity  1, nullity 1
+  sector I block supp endpoint P_2    size 2 x multiplicity  1, nullity 2
+  sector I block flip P_2/endpoint    size 4 x multiplicity  1, nullity 1
+  sector I block odd P_8,40 +         size 1 x multiplicity  8, nullity 0
+  sector I block odd P_8,40 -         size 1 x multiplicity  8, nullity 0
+  sector I block odd 4x4 first        size 4 x multiplicity  6, nullity 1
+  sector I block odd 4x4 second       size 4 x multiplicity  6, nullity 0
+PASS LH-4 sector I: 128 block columns of exact rank 128; block traces sum to tr A, tr B; kernel dim 15
+PASS LH-4: exact total kernel dimension 7 + 15 = 22 (= LU/global-phase tangent space, LH-3)
+PASS LH-4: exact integer block decomposition and closed-form characteristic polynomials verified
+THEOREM: Hessian is PSD, ker exactly the 22 LU/global-phase directions.
+THEOREM: exact minimum transverse curvature = (350 - 6*sqrt(2005))/4585 > 80/4585 > 78/4585.
+THEOREM: Psi_ico is a strict local minimum of pi_3 modulo LU in full 7q space.
+NOTE: local statement only; global minimality is the five-copy certificate (cor:seven-global-from-fivecopy).

@@ -1,0 +1,198 @@
+\section{Orbit stability: further proofs and results}\label{sec:sup-stability}
+We supplement the stability results of Appendix~\ref{sec:fqe-orbit-stability} of the paper and Section~\ref{sec:fqe-stability-proofs}
+with a constructive distance certificate, the proofs of the two sharp critical-locus theorems,
+a one-parameter refinement on $P=1$, and the proof of the sharp entropy coefficient on the critical locus.
+Throughout, $\mathcal M$ is the union of the two HS local-unitary orbits,
+including global phase, and
+\[
+ d(\psi)=\min_{\chi\in\mathcal M}\|\psi-\chi\|,\qquad
+ \Phi(\psi)=\max_{\chi\in\mathcal M}|\langle\psi,\chi\rangle|^2,\qquad
+ d^2=2(1-\sqrt{\Phi}).
+\]
+For unit states, $Q=F+(P-1)$ is the sextic moment defect and
+$\delta=E(M_4)-E$ is the entropy deficit, as in the paper.
+
+\subsection{A direct certificate from three Bell-pair products}\label{sec:sup-bellframe}
+Let $\tilde w=\epsilon^{\otimes4}\bar w$ be the spin flip, as in the paper; in the magic matrix coordinates it is ordinary
+conjugation (Section~\ref{sec:sup-general-envelope}). Hence a unit state $w$ with
+$\langle\tilde w,w\rangle=0$ has the form $(x+iy)/\sqrt2$ for orthonormal real vectors $x,y$ in the magic coordinates; put
+$V=\operatorname{span}_{\mathbb R}(x,y)$. A \emph{Bell-pair product} is a product of two maximally entangled Bell states with arbitrary local
+unitaries on the four qubits, with its pairing specified; it is real up to phase in these coordinates.
+
+\begin{proposition}[Three-Bell-frame certificate]\label{prop:fqe-bell-frame}
+Let $w$ be unit with $\langle\tilde w,w\rangle=0$. Choose one unit
+Bell-pair product $b_j$ in each of the three pairings, and put
+\[
+ \varepsilon_j=1-2|\langle b_j,w\rangle|^2,\qquad
+ E_B=\varepsilon_1+\varepsilon_2+\varepsilon_3.
+\]
+Then $\varepsilon_j\ge0$ and
+\[
+ \boxed{\quad d(w)^2\le\frac92 E_B.\quad}
+\]
+The vectors $b_j$ need not maximise their overlaps. The proof constructs
+at most six candidate HS states, two for each unordered pair of pairings.
+\end{proposition}
+\begin{proof}
+Choose phases so the $b_j$ are real. Their squared distances to $V$ are
+exactly $\varepsilon_j$. Bell-pair products in distinct pairings have
+$|\langle b_i,b_j\rangle|\le1/2$: in the magic matrix coordinates for
+the first pairing they are a real rank-one matrix and $O/2$, $O\in O(4)$.
+The proper and improper components describe the two other pairings.
+This description follows by expanding the standard Bell products and
+using $SU(2)\otimes SU(2)\to SO(4)$.
+
+Let $G$ be the $3\times3$ real Gram matrix of the $b_j$, and let
+$\lambda_3$ be its smallest eigenvalue. The rank-two projection on $V$
+gives $\lambda_3\le E_B$. Since $\operatorname{tr}G=3$,
+\[
+ \operatorname{tr}G^2\ge\frac{(3-\lambda_3)^2}{2}+\lambda_3^2
+                     \ge\frac92-3E_B.
+\]
+Consequently, for $\Delta_{ij}=1/4-|\langle b_i,b_j\rangle|^2$,
+\begin{equation}\label{eq:fqe-bell-gram}
+ \Delta_{ij}\ge0,\qquad \sum_{i<j}\Delta_{ij}\le\frac32 E_B.
+\end{equation}
+
+Fix a pair $(i,j)$ and use real rotations to make $b_i=E_{00}$
+and $b_j=O/2$. Adjust its real sign so
+$c=O_{00}/2=|\langle b_i,b_j\rangle|\in[0,1/2]$.
+The lower $3\times3$ block of $O$ has singular values $1,1,2c$:
+its product with its transpose is $I-zz^T$, with $\|z\|^2=1-4c^2$.
+Choose its polar factor $R\in O(3)$, including a factor on any nullspace,
+and put $O'=\operatorname{diag}(1,R)$, $b'_j=O'/2$.
+The real plane $S=\operatorname{span}(b_i,b'_j)$ is spanned by
+$E_{00}$ and $\operatorname{diag}(0,R)/\sqrt3$. Its two normalised
+complex-null rays are precisely HS states, since their magic matrices
+are $\operatorname{diag}(1/\sqrt2,\,\pm iR/\sqrt6)$.
+
+Put $S_0=\operatorname{span}(b_i,b_j)$. Its Gram matrix has
+smallest eigenvalue $1-c$.
+Consequently its leakage from $V$ satisfies
+\[
+ \ell_{ij}:=\operatorname{tr}(P_{S_0}(I-P_V))
+ \le\frac{\varepsilon_i+\varepsilon_j}{1-c}
+ \le2(\varepsilon_i+\varepsilon_j).
+\]
+The planes $S_0,S$ share $b_i$. Their other principal-angle cosine is
+\[
+ r_c=\frac{1+c}{\sqrt{3(1-c^2)}}
+     =\sqrt{\frac{1+c}{3(1-c)}}.
+\]
+Indeed the polar-aligned lower block of $O$ has trace $2+2c$.
+The distance squared between the nearer normalised null rays of these
+planes is $1-r_c$. Moreover
+\[
+ g(c):=1-r_c\le\frac74(1/4-c^2)=\frac74\Delta_{ij}.
+\]
+To check the last inequality, square its nonnegative right-hand
+comparison with $r_c$. After multiplication by $3(1-c)$ the difference
+is
+$(1-2c)[13+c(525-462c)+588c^3(1-2c)]/256\ge0$.
+
+For any two real two-planes with principal-angle cosines $s_1,s_2$,
+choose orthonormal bases in which their overlap matrix has singular values
+$s_1,s_2$. Reversing an orientation replaces a null ray
+$(x+iy)/\sqrt2$ by its conjugate. Thus the largest overlap between
+their normalised null rays is $(s_1+s_2)/2$, and their minimum
+squared distance (after a phase choice) is
+$2-s_1-s_2\le2-s_1^2-s_2^2$, the projection leakage.
+The triangle inequality therefore gives
+$d(w)\le\sqrt{\ell_{ij}}+\sqrt{g(c)}$.
+Average its square over the three unordered pairs, use
+\eqref{eq:fqe-bell-gram}, and apply Cauchy--Schwarz to the cross term:
+\[
+ d(w)^2\le\left(\sqrt{\frac43}+\sqrt{\frac78}\right)^2E_B
+          \le\frac92 E_B,
+\]
+since $(\sqrt{4/3}+\sqrt{7/8})^2<9/2$. The last inequality is strict when $E_B>0$.
+\end{proof}
+
+For a general unit state choose phase and real orthonormal $x,y$ so
+$\psi=\sqrt{(1+t)/2}\,x+i\sqrt{(1-t)/2}\,y$,
+where $t=|\langle\tilde\psi,\psi\rangle|$, and set $w=(x+iy)/\sqrt2$.
+At $t=1$, choose any real unit $y$ orthogonal to $x$.
+The same constructive certificate gives
+\[
+ d(\psi)\le\sqrt{2-\sqrt{1+t}-\sqrt{1-t}}+\sqrt{9E_B(w)/2}.
+\]
+This individual-state certificate requires only chosen Bell products and
+linear algebra; the entropy-only bound is proved in
+Section~\ref{sec:fqe-global-overlap}.
+
+% The proofs of the paper's two sharp critical-locus theorems (Section sec:fqe-critical-orbit-stability).
+\subsection{The critical locus: signed Birkhoff reduction and real-density model}
+\label{sec:fqe-critical-orbit-proof}
+A state is critical when all four one-qubit marginals are $I/2$. On this locus, both the overlap comparison and its Hilbert-space distance
+version have optimal constants.
+
+\begin{restated}[Sharp critical-state orbit stability; from Theorem~\ref{thm:fqe-global-overlap}, CO-1--CO-3]{Theorem}{thm:fqe-critical-orbit-sharp}
+For every critical unit pure four-qubit state, with $\Phi,d,Q,k$
+as in Appendix~\ref{sec:fqe-orbit-stability},
+\begin{align*}
+ Q(\psi)&\ge\max\{1-\Phi(\psi),\;3/2-2\Phi(\psi)\},\\
+ Q(\psi)&\ge\frac{2+\sqrt2}{4}d(\psi)^2,\\
+ \delta(\psi)&\ge k\bigl(\max\{1-\Phi,3/2-2\Phi\}+5\tau/2\bigr)
+       \ge k\,\frac{2+\sqrt2}{4}\,d(\psi)^2.
+\end{align*}
+The coefficient one in $Q\ge1-\Phi$, and the coefficient
+$(2+\sqrt2)/4$ in \eqref{eq:fqe-critical-distance}, are both optimal:
+Bell-pair products attain them. The comparison $Q\ge1-\Phi$ holds for all states
+(Theorem~\ref{thm:fqe-global-overlap}).
+If the critical state also has $\tau=0$, equivalently if $P=1$, then
+\begin{equation*}
+ \Phi\ge\frac{2+\sqrt3}{6},\qquad
+ Q\ge\frac3{4-\sqrt3}(1-\Phi)\ge\frac{3+\sqrt3}{4}d^2.
+\end{equation*}
+These coefficients and the fidelity floor are optimal, attained by cluster states.
+\end{restated}
+Section~\ref{sec:sup-nullsharp} below proves a one-parameter sharpening of
+\eqref{eq:fqe-null-critical-sharp} in the Bloch coordinates of \eqref{eq:fqe-null-critical-bloch}. The optimal entropy
+coefficient on the whole critical locus is larger: $\delta\ge C_*d^2$ with $C_*=0.19057894701\ldots$ \eqref{eq:fqe-p1-cstar}
+(Theorem~\ref{thm:fqe-p1-sharp}), optimal by its equality states; $k(2+\sqrt2)/4$ in \eqref{eq:fqe-critical-entropy}
+is the weaker coefficient of the moment route.
+
+\input{critical_orbit_stability}
+
+\subsection{A one-parameter family of sharp geometric inequalities on the slice $P=1$}\label{sec:sup-nullsharp}
+\begin{theorem}[Sharper geometric family on $P=1$; MS]\label{thm:sup-null-family}
+Let $\psi$ be a critical unit pure four-qubit state with $\tau=0$, equivalently $P=1$, and let $\Phi,d,Q$ be as in
+Theorem~\ref{thm:fqe-critical-orbit-sharp}. Use the two auxiliary Bloch vectors of \eqref{eq:fqe-null-critical-bloch} to put
+$X=3\sum r_j^4-1$ and $Y=3\sum s_j^4-1$. Then
+\begin{equation}\label{eq:fqe-null-critical-family}
+ \begin{gathered}
+ \Phi\ge\frac{2+\sqrt3}{6},\qquad 0\le\theta\le\frac1{24},\\
+ Q+\theta XY\ge(1+8\theta)\frac3{4-\sqrt3}(1-\Phi)
+       \ge(1+8\theta)\frac{3+\sqrt3}{4}d^2.
+ \end{gathered}
+\end{equation}
+For every $\theta$, both geometric coefficients and the fidelity floor are optimal, attained by cluster states.
+\end{theorem}
+The case $\theta=0$ is the inequality \eqref{eq:fqe-null-critical-sharp} of the paper. The endpoint $\theta=\tfrac1{24}$ is proved by
+an elementary multiaffine vertex check in the opposite-parity sector and a univariate polynomial minorant in the same-parity sector.
+\input{null_mixed_orbit_geometry}
+
+\input{p1_sharp_coefficient}
+\subsection{The sharp entropy coefficient on the whole critical locus}
+\label{sec:fqe-critical-sharp}
+Statements are proved; the finite verifications are interval-certified (outward-rounded ball arithmetic, every sign
+decision a certain comparison) or exact, and are listed in Section~\ref{sec:sup-verifiers} (TC, EX, LCC, CCV).
+This section proves Theorem~\ref{thm:fqe-p1-sharp} for all critical states.
+Section~\ref{sec:fqe-p1-sharp} supplies the coordinates, symmetries, wall function and equality geometry on the slice
+$\tau=0$ ($P=1$) that are used here.
+
+The constant $C_*$ is defined in \eqref{eq:fqe-p1-cstar}; the equality states attain it exactly (PM-4), and PS-1 encloses its decimal value.
+
+\begin{restated}[Sharp entropy stability on the critical locus; interval-certified]{Theorem}{thm:fqe-p1-sharp}
+Every critical unit pure four-qubit state satisfies
+\[
+ \delta(\psi)\ \ge\ C_*\,d(\psi)^2 ,
+\]
+and equality with $d>0$ holds exactly for states whose critical normal form has
+one of the following $144$ Bloch-coordinate pairs, all with $P=1$. In the auxiliary Bloch coordinates $(r,s)\in S^2\times S^2$ of the null-critical normal form they are: one of $r,s$ is a signed
+coordinate axis and the other is $(\pm e_b\pm e_c)/\sqrt2$, $b\ne c$ ($6\cdot12$ pairs, twice for the swap).
+These pairs attain the bound, so $C_*$ is the optimal coefficient on the critical locus. Consequently every universal coefficient in
+$\delta\ge Cd^2$ is at most $C_*$, and the question left open is whether $C_*$ is optimal over all states.
+\end{restated}
+
+\input{critical_sharp_coefficient}

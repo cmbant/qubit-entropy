@@ -1,0 +1,124 @@
+\subsection{A sharp cubic R\'enyi bound from binary grouping}
+\label{sec:fqe-renyi-cubic-bound}
+
+Binary grouping gives an independent entropy bound that will control the region of large moment slack. Set
+\[
+q_b=\frac{4\ln2}{4\ln2-1},\qquad
+r_b=q_b-1=\frac1{4\ln2-1},\qquad
+\frac32<q_b<\frac{313}{200}<\frac{1587}{1000}=q_s.
+\tag{BT}\label{eq:fqe-binary-threshold}
+\]
+Thus $q_b/(r_b\ln2)=4$ and $1/2<r_b<1$.
+The bounds on $q_b$ follow from three terms of the atanh series:
+$56/81+2/1215<\ln2<1123/1620<3/4$.
+
+\begin{lemma}[Binary grouping]
+\label{lem:fqe-renyi-grouping}
+For any finite probability vectors $u,v$ and $0\le a\le1$, set
+$w=a^2(3-2a)$. Then
+\[
+H_{q_b}(au,(1-a)v)
+\le4a(1-a)+wH_{q_b}(u)+(1-w)H_{q_b}(v).
+\tag{BG}\label{eq:fqe-renyi-grouping}
+\]
+For $0<a<1$, equality holds exactly when $a=1/2$ and
+$H_{q_b}(u)=H_{q_b}(v)$.
+In particular $H_q(a,1-a)\le4a(1-a)$ holds for every $a$ if and only if
+$q\ge q_b$; its equality cases are $a=0,1/2,1$.
+\end{lemma}
+\begin{proof}
+Write $q=q_b$, $r=r_b$, $L=\ln2$ and
+$h(w)=-w\ln w-(1-w)\ln(1-w)$.
+The log-sum inequality gives, for positive $A,B$,
+$\ln(A+B)\ge w\ln A+(1-w)\ln B+h(w)$.
+Apply it with $A=a^q2^{-rH_q(u)}$ and
+$B=(1-a)^q2^{-rH_q(v)}$. The required assertion follows if
+\[
+J(a):=q\{w\ln a+(1-w)\ln(1-a)\}+h(w)+4rL a(1-a)\ge0.
+\]
+The function $J$ is symmetric about $1/2$, and
+$J(1/2)=J(1)=0$, with the latter understood by continuity.
+Since $w-a=a(1-a)(2a-1)$ and $4rL=q$, differentiation cancels the
+terms outside the derivative of $w$:
+\[
+J'(a)=6a(1-a)\left(q\ln\frac a{1-a}-\ln\frac w{1-w}\right).
+\]
+For $a>1/2$, put $t=a/(1-a)>1$. Then
+\[
+\frac w{1-w}=t\,T_2(t),\qquad T_2(t)=\frac{t(t+3)}{3t+1},
+\qquad \operatorname{sgn}J'(a)=\operatorname{sgn}\{r\ln t-\ln T_2(t)\}.
+\]
+The function $s\mapsto\ln T_2(e^s)$ is strictly convex for $s>0$, since
+\[
+\left(t\frac d{dt}\right)^2\ln T_2(t)
+=\frac{24t(t^2-1)}{(t+3)^2(3t+1)^2}>0.
+\]
+Its derivative starts at $1/2$ and tends to $1$.
+Consequently $\ln T_2(e^s)-rs$ starts at zero with negative derivative,
+is strictly convex, tends to $+\infty$, and has exactly one further zero.
+Thus $J$ increases and then decreases between its zero endpoints $1/2,1$;
+it is strictly positive in between. Symmetry proves $J\ge0$ throughout.
+Equality in the log-sum inequality at $a=1/2$ requires $A=B$,
+which is precisely the stated entropy condition.
+
+Taking both conditional vectors pure proves the binary bound at $q_b$;
+order monotonicity proves it for every $q\ge q_b$ with the same equality
+cases. Necessity follows as $a=\epsilon\downarrow0$:
+$H_q(\epsilon,1-\epsilon)=q\epsilon/((q-1)\ln2)+o(\epsilon)$,
+whereas $4\epsilon(1-\epsilon)=4\epsilon+O(\epsilon^2)$.
+Orders $q\le1$ are excluded by monotonicity from any $1<q<q_b$.
+\end{proof}
+
+\begin{proposition}[Sharp cubic entropy bound]
+\label{prop:fqe-cubic-bound}
+For every four-point probability vector $\lambda$ and every $q\ge q_b$,
+\[
+H_q(\lambda)\le\frac{10}3-6p+\frac83t
+=4e_2(\lambda)+8e_3(\lambda),\qquad
+p=\sum_i\lambda_i^2,\quad t=\sum_i\lambda_i^3.
+\tag{CB}\label{eq:fqe-cubic-bound}
+\]
+The threshold $q_b$ is necessary for a bound valid on the entire simplex.
+Equality occurs exactly at pure, uniform-two and uniform-four spectra.
+\end{proposition}
+\begin{proof}
+By order monotonicity it suffices to take $q=q_b$.
+Group the entries as
+$\lambda=(au,a(1-u),(1-a)v,(1-a)(1-v))$.
+For $0<a<1$, Lemma~\ref{lem:fqe-renyi-grouping} and its binary consequence give
+\[
+H_q(\lambda)\le4a(1-a)
++4a^2(3-2a)u(1-u)+4(1-a)^2(1+2a)v(1-v).
+\]
+The right side is exactly $4e_2+8e_3$, by expanding across the two groups.
+If $a=0$ or $1$ the assertion is the binary bound.
+The identity with $(p,t)$ follows from Newton's identities and $\sum\lambda_i=1$.
+For equality with $0<a<1$, grouping forces $a=1/2$ and equal conditional
+entropies; binary equality then makes both conditional spectra pure or
+both uniform-two. This gives uniform-two or uniform-four. The boundary
+case also permits a pure spectrum. Each such spectrum stays an equality
+at every order, and all other spectra are strict already at $q_b$.
+The binary restriction proves sharpness of the threshold.
+\end{proof}
+
+\begin{corollary}[Analytic cubic envelope]
+\label{cor:fqe-renyi-high-f}
+Every triple of four-point probability vectors satisfies, for every $q\ge q_b$,
+\[
+\mathcal E_q\le\frac53-\frac{20}{27}(P-1)
+-\frac2{27}(F-1/2).
+\tag{HC}\label{eq:fqe-renyi-high-f}
+\]
+In particular $\mathcal E_q\le5/3$ whenever $20(P-1)+2F\ge1$.
+Equality in the $5/3$ ceiling holds exactly at a permutation of
+$((1/2,1/2,0,0),(1/4)^4,(1/4)^4)$.
+No quadratic variance bound or physical compatibility is required.
+\end{corollary}
+\begin{proof}
+Sum \eqref{eq:fqe-cubic-bound} over the three cuts, substitute
+$T=(17P-12-F)/12$, and divide by three.
+Equality in the ceiling requires $20(P-1)+2F=1$ and equality in all three
+scalar bounds. Each cut is then pure, uniform-two or uniform-four, with entropy
+$0$, $1$ or $2$ at every order, and a mean of $5/3$ forces exactly one uniform-two and two
+uniform-four spectra; these have $P=1$, $F=1/2$ and attain $5/3$ at every order.
+\end{proof}

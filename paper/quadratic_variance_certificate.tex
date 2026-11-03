@@ -1,0 +1,55 @@
+\subsection{The universal quadratic variance bound}\label{sec:fqe-quadratic-certificate}
+For $0\le r\le1$ the critical normal-form vector $v=(\sqrt{(1+r)/2},\,i\sqrt{(1-r)/2},\,0,\,0)$
+(Appendix~\ref{sec:fqe-normal-form}) has cut spectra
+\[
+\bigl((1+r)/2,(1-r)/2,0,0\bigr),\qquad(1/4)^4,\qquad(1/4)^4,
+\tag{QF}\label{eq:fqe-quadratic-family}
+\]
+since its two nonzero components are in quadrature. This \emph{cluster-to-Bell family} joins the cluster
+state ($r=0$) to a product of two Bell pairs ($r=1$).
+
+
+\begin{theorem}[Sharp quadratic purity variance]
+\label{thm:fqe-sharp-quadratic-variance}
+Every unit pure four-qubit state satisfies
+\[
+\boxed{\qquad F^2+3P(P-1)\ge6V_P,
+\qquad V_P=\sum_{j=2}^4(p_j-P/3)^2.\qquad}
+\tag{QV}\label{eq:fqe-quadratic-variance}
+\]
+Equality holds along the whole cluster-to-Bell family \eqref{eq:fqe-quadratic-family}, so the
+coefficient $3$ cannot be decreased.
+\end{theorem}
+\noindent[Exact-rational certificate, QVA.]
+
+\begin{corollary}[Quadratic purity variance]
+\label{thm:fqe-quadratic-variance}
+Every unit pure four-qubit state satisfies
+\[
+\boxed{\qquad F^2+\frac92(P-1)\ge6V_P.\qquad}
+\tag{QK}\label{eq:fqe-quadratic-variance-proved}
+\]
+Equality holds exactly for HS cut spectra, cluster cut spectra, or products
+of two Bell pairs, up to ordering of cuts and eigenvalues.
+The coefficient $9/2$ cannot be decreased, and the coefficient $6$ cannot
+be increased while retaining $9/2$.
+\end{corollary}
+\begin{proof}[Proofs in outline]
+On critical states Proposition~\ref{prop:fqe-critical-quadratic-variance} of the supplement
+proves (QV) by a joint-cut analytic argument, and an elementary box bound on the purities proves it whenever
+$F\ge3/2-P$. The certificate proves it for all states at once. Homogenised by $N=\lVert z\rVert^2$, the
+defect of (QV) is a qubit-symmetric, conjugation-even local-unitary invariant of bidegree $(6,6)$ that
+vanishes at HS and cluster; such invariants form an $83$-dimensional space, and $83$ explicit
+Gaussian-integer states determine its elements (Section~\ref{sec:fqe-invariant-dimensions} of the supplement).
+Ninety-five six-copy covariants, built from $z$ and its spin flip and vanishing at HS and cluster, have squared
+norms in that space. With positive integers $q_i$ and $D$, the certificate reads
+$2D\,(F^2+3P(P-1)-6V_P)=\sum_iq_i\lVert\Phi_i\rVert^2$ for unit states; its homogeneous
+form is~\eqref{eq:fqe-qv-allstate-sos} of the supplement. That homogeneous identity holds at the $83$ states, hence everywhere.
+Every term on the right is nonnegative.
+For the corollary, the defect of (QK) exceeds that of (QV) by $3(P-1)(3/2-P)\ge0$ on $1\le P\le3/2$, and the
+purity box makes (QK) strict above $3/2$; equality is then analysed at $P=1$ by
+Proposition~\ref{prop:fqe-critical-variance} of the supplement and at $P=3/2$ by the purity box, which leaves purities
+$(1,\tfrac14,\tfrac14)$ and hence products of two Bell pairs. The family \eqref{eq:fqe-quadratic-family} fixes both coefficients.
+The complete proofs are in Section~\ref{sec:sup-qk} of the supplement~\cite{Companion}
+(exact rational certificate; checks QVA-1--QVA-3, QG-1, QG-3, SD-4).
+\end{proof}

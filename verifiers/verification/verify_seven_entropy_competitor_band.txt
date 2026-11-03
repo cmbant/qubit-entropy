@@ -1,0 +1,2 @@
+PASS AH-1: entropy competitors obey 121/917 <= pi3 < 8693/64000; candidate lies strictly inside
+PASS AH-5: all 35 joint spin-flip matrix relations, degree <= 6, at seven determining ratios

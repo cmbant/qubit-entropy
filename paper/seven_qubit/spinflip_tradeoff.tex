@@ -1,0 +1,178 @@
+\section{Sharp purity--time-reversal tradeoffs}\label{sec:spinflip-tradeoffs}
+
+At four qubits, $\pi_2=\tfrac13+\tfrac16(W_1+\tau_4)$ (Lemma~\ref{lem:fqe-purity}): a large time-reversal overlap $\tau_4$ costs purity.
+This section proves the corresponding inequality for larger even $n$, using the exact minima of Section~\ref{sec:lp}. The paper's Discussion explains the motivation. For odd $n$, $\tau_n$ vanishes identically; Section~\ref{sec:odd-spinflip} gives the odd-$n$ tradeoff.
+
+For a normalised pure even-$n$ qubit vector $\psi$ let
+\[
+ \tau_n(\psi)=|\langle\psi,J_n\psi\rangle|^2=|\psi^T\sigma_y^{\otimes n}\psi|^2,
+ \qquad J_n=\epsilon^{\otimes n}K,
+\]
+so that $\tau_4$ is the four-tangle $\tau$ of Lemma~\ref{lem:fqe-purity}, and let
+$\pi_{n/2}$ be the mean purity of the $\binom n{n/2}$ balanced marginals. The Pauli weight distribution $A_j$, the mean
+$s$-site purities $a_s$ (so $\pi_{n/2}=a_{n/2}$, and $a_s=a_{n-s}$ for pure states) and Rains' non-negative shadow coefficients $S_i$
+are as in Section~\ref{sec:lp}. The new ingredient is the identity
+$\tau_n=2^{-n}\sum_j(-1)^jA_j$, since $\sum_j(-1)^jA_j=2^n\operatorname{tr}(\rho\,J_n\rho J_n^{-1})$. The inequalities below hold on the
+\emph{unrestricted} pure state space: no spin-flip symmetry is imposed.
+
+\begin{theorem}[exact certificates; ST-1--ST-6]
+\label{thm:purity-spinflip-tradeoff}
+For each $n$ in the table below, every normalised pure $n$-qubit state satisfies
+\[
+ \boxed{\qquad
+ \pi_{n/2}(\psi)\ge L_n+c_n\tau_n(\psi),\qquad}
+\]
+with
+\[
+\begin{array}{c|cccccc}
+n&4&8&10&14&16&20\\\hline
+L_n&1/3&3/35&1/21&331/27456&1/156&1193/739024\\
+c_n&1/6&1/70&1/168&5/6864&1/1716&103/1478048
+\end{array}
+\]
+For each $n$, $c_n$ is the largest coefficient compatible with the constant $L_n$: a graph state with
+every vertex of odd degree has $\tau_n=1$ and $\pi_{n/2}=L_n+c_n$.
+\end{theorem}
+\begin{proof}
+The checks ST-1--ST-6 supply rational multipliers $e_s$,
+$y_i\ge0$ and residual coefficients $w_j\ge0$ satisfying the exact coefficientwise identity
+\begin{equation}\label{eq:tradeoff-dual}
+ a_{n/2}(A)-L_nA_0-
+ c_n\,2^{-n}\sum_{j=0}^n(-1)^jA_j
+ =\sum_{s< n/2}e_s(a_s-a_{n-s})
+  +\sum_{i=0}^n y_iS_i+\sum_{j=0}^n w_jA_j
+\end{equation}
+of linear forms in $A$ (the $s=0$ term encodes the normalisation $a_0=A_0=1=2^{-n}\sum_jA_j=a_n$).
+For a pure state $A_0=1$, $a_s=a_{n-s}$ and $A_j,S_i\ge0$, and the left side is
+$\pi_{n/2}-L_n-c_n\tau_n$; this gives the inequalities. ST-1--ST-6 check every coefficient and sign in
+rational arithmetic, with no numerical solver.
+
+For sharpness, let $G$ be a graph whose vertices all have odd degree. The product of the stabilizer
+generators $X_vZ_{N(v)}$ of $|G\rangle$ is, up to a phase, $X^{\otimes n}Z^{\otimes n}$, a phase times
+$\sigma_y^{\otimes n}$, so $|G\rangle$ is an eigenvector of $\sigma_y^{\otimes n}$; as $|G\rangle$ is
+real, $\tau_n=|\langle G|\sigma_y^{\otimes n}|G\rangle|^2=1$. ST-1--ST-6 compute $\pi_{n/2}$ exactly
+for such a graph at each $n$ and find $L_n+c_n$: at $n=4,8,10,14$ the spin-flip extension of a graph on
+$n-1$ vertices, at $n=16,20$ the circulants $C_{16}(2,3,4,8)$ and
+$C_{20}(3,4,5,10)$.
+\end{proof}
+
+For $n\le16$ the constant $L_n$ is the minimum of $\pi_{n/2}$ over pure states, attained by a graph
+state (Theorems~\ref{thm:lptable}, \ref{thm:fourteenfifteen}
+and~\ref{thm:sixteenseventeen}); at $n=20$ it is an exact
+lower bound whose attainment is open.
+
+\begin{corollary}[time-reversal breaking and stability]
+\label{cor:spinflip-rigidity}
+For $n\in\{4,8,10,14,16\}$ every minimiser of $\pi_{n/2}$ has $\langle\psi,J_n\psi\rangle=0$, and for
+$n\in\{4,8,10,14,16,20\}$ every pure state with $\pi_{n/2}(\psi)\le L_n+\delta$ has
+$\tau_n(\psi)\le\delta/c_n$.
+\end{corollary}
+\begin{proof}
+Each $c_n>0$; subtract $L_n$ in Theorem~\ref{thm:purity-spinflip-tradeoff}.
+\end{proof}
+
+\begin{remark}[four qubits and the parity-preserving sizes]
+At $n=4$ the inequality is the identity $\pi_2=\tfrac13+\tfrac16\bigl(\sum_i\|\mathbf r_i\|^2+\tau_4\bigr)$
+of Lemma~\ref{lem:fqe-purity}, with the Bloch-vector term dropped. For larger $n$ the certificates
+come from Rains' shadow inequalities, not from an analogue of the four-qubit sextic remainder, and they
+exclude time-reversal-symmetric minimisers without any graph or conference-matrix ansatz. At $n=6$
+and $n=12$ the known balanced-purity minima are attained by states with $\tau_n=1$, so no positive
+coefficient can accompany the sharp constant there.
+\end{remark}
+
+\subsection{Odd $n$: the time-reversal overlap on single-qubit complements}\label{sec:odd-spinflip}
+
+For odd $n$ every pure state has $\tau_n=0$, but the time-reversal overlap survives on reduced states.
+For a $k$-qubit state $\rho$ put $\tilde\rho=\sigma_y^{\otimes k}\bar\rho\,\sigma_y^{\otimes k}$ and $R_\rho=\operatorname{tr}(\rho\tilde\rho)$, the spin-flip overlap of
+Serrano-Ens\'astiga, Giraud and Martin~\cite{SGM} (Lemma~\ref{lem:odd-sector} below is the odd-sector companion of their even-sector identity $\operatorname{tr}\rho^2+R_\rho=2^{1-k}\sum_{\mathrm{wt\ even}}\langle P\rangle^2$).
+For a pure state $\psi$ of $n$ qubits write $\rho_{\bar s}$ for the $(n-1)$-qubit reduction without qubit $s$, and
+\[
+ O(\psi)=\frac1n\sum_{s=1}^n\tfrac12\bigl(\operatorname{tr}\rho_{\bar s}^2-R_{\rho_{\bar s}}\bigr),
+\]
+the mean \emph{T-odd purity} of the single-qubit complements. As before $\pi_m$ is the mean purity of the $\binom nm$ marginals on
+$m$ qubits, and $A_j$ and $a_s$ are as above.
+
+\begin{lemma}[sector formulas; proved]\label{lem:odd-sector}
+For a state $\rho_S$ on a set $S$ of $k$ qubits with Pauli expectations $\langle P\rangle$,
+$\operatorname{tr}\rho_S^2=2^{-k}\sum_{P\subseteq S}\langle P\rangle^2$ and
+$\tfrac12(\operatorname{tr}\rho_S^2-R_{\rho_S})=2^{-k}\sum_{P\subseteq S,\ \mathrm{wt}P\ \mathrm{odd}}\langle P\rangle^2$.
+Hence $a_s=\sum_jA_j\binom{n-j}{s-j}/(2^s\binom ns)$ and, for odd $n$,
+$O=\sum_{j\ \mathrm{odd}}\dfrac{n-j}{n\,2^{n-1}}A_j$.
+\end{lemma}
+\begin{proof}
+The first formula is the Pauli expansion $\rho_S=2^{-k}\sum_P\langle P\rangle P$. For each of $\sigma=X,Y,Z$ one has $\sigma_y\bar\sigma\sigma_y=-\sigma$, so
+$\sigma_y^{\otimes k}\bar P\sigma_y^{\otimes k}=(-1)^{\operatorname{wt}P}P$ and
+$\tilde\rho_S=2^{-k}\sum_P(-1)^{\operatorname{wt}P}\langle P\rangle P$; therefore
+$R_{\rho_S}=2^{-k}\sum_P(-1)^{\operatorname{wt}P}\langle P\rangle^2$. A weight-$j$ Pauli word lies in $n-j$ of the $n$ complements
+$\bar s$ and in $\binom{n-j}{s-j}$ of the $s$-subsets.
+\end{proof}
+
+\begin{theorem}[odd-$n$ tradeoff; proved, exact checks ST-7, ST-8]\label{thm:odd-spinflip-tradeoff}
+Let $n=2m+1\ge5$ be odd, and put $c_5=1$ and $c_n=(n+1)/4$ for $n\ge7$. Every normalised pure $n$-qubit state satisfies the identity
+\begin{equation}\label{eq:odd-tradeoff}
+ \pi_m(\psi)+c_n\,O(\psi)=\frac12+\sum_{j\ \mathrm{odd},\,j<n}w_j^{(n)}A_j(\psi),
+\end{equation}
+where, with $\binom ab=0$ for $b<0$ or $b>a$,
+\begin{equation}\label{eq:odd-tradeoff-weights}
+ w_j^{(n)}=\frac{2^m\bigl[\binom m{j-1}+3\binom mj\bigr]+(-1)^{(n-j)/2}\binom m{(n-j)/2}+2c_n\binom{n-1}j-\binom nj}{2^n\binom nj}.
+\end{equation}
+For example $\pi_2+O=\tfrac12+\tfrac15A_1$ at $n=5$,
+$\pi_3+2O=\tfrac12+\tfrac3{28}A_1+\tfrac3{140}A_3$ at $n=7$, and
+$\pi_4+\tfrac52O=\tfrac12+\tfrac5{96}A_1+\tfrac5{448}A_3+\tfrac{11}{4032}A_5$ at $n=9$. The weights are positive on the odd $j\le n-4$
+and zero for $j=n-2,n$. Consequently
+\[
+ \pi_m(\psi)+c_n\,O(\psi)\ \ge\ \frac12 ,
+\]
+with equality if and only if $A_j(\psi)=0$ for every odd $j\le n-4$. The bound is attained by the GHZ state for every
+odd $n$. In particular, at $n=5$ equality holds exactly when all one-qubit marginals are maximally mixed.
+\end{theorem}
+\begin{proof}
+Put $B_j=A_j/\binom nj$. By Lemma~\ref{lem:odd-sector}, $a_s=2^{-s}\sum_j\binom sjB_j$ and $O=2^{1-n}\sum_{j\ \mathrm{odd}}\binom{n-1}jB_j$.
+For a pure state $A_0=1$ and $a_s=a_{n-s}$, so it suffices to find $e_s$ with
+\[
+ a_m+c\,O-\tfrac12A_0-\sum_{s=2}^me_s(a_s-a_{n-s})=\sum_{j\ \mathrm{odd}}w_jA_j
+\]
+as an identity of linear forms in $B$, for $c=c_n$. Multiply the coefficient of $B_j$ by $y^j$, sum over $j$, and put $x=(1+y)/2$. Since
+$\sum_j2^{-s}\binom sjy^j=x^s$ and $2^{1-n}\sum_{j\ \mathrm{odd}}\binom{n-1}jy^j=\tfrac12\bigl(x^{n-1}-(1-x)^{n-1}\bigr)$, the left side becomes
+$x^m+\tfrac c2(x^{n-1}-(1-x)^{n-1})-\tfrac12-\sum_se_s(x^s-x^{n-s})$. On the right, the four parts of the numerator
+of~\eqref{eq:odd-tradeoff-weights} sum over odd $j$ to the odd parts in $y$ of $2^m(3+y)(1+y)^m$, $y(y^2-1)^m$, $2c(1+y)^{n-1}$ and
+$-(1+y)^n$. In $x$, after division by $2^n$, these are $\tfrac12[(1+x)x^m-(2-x)(1-x)^m]$, $\tfrac12(-1)^m(2x-1)x^m(1-x)^m$,
+$\tfrac c2(x^{n-1}-(1-x)^{n-1})$ and $-\tfrac12(x^n-(1-x)^n)$. The terms in $c$ cancel, for every $c$, and the identity becomes
+$2\sum_{s=2}^me_s(x^s-x^{n-s})=Q(x)$, where
+\[
+ Q(x)=x^m-x^{m+1}-1+x^n+(2-x)(1-x)^m-(1-x)^n-(-1)^m(2x-1)x^m(1-x)^m .
+\]
+Each of the pairs $\{x^m,-x^{m+1}\}$ and $\{-1,x^n\}$ and the remaining three terms together change sign under
+$Q(x)\mapsto x^nQ(1/x)$ (for the last group use $(x-1)^n=-(1-x)^n$). Hence $Q=\sum_{s\le m}q_s(x^s-x^{n-s})$ with $q_s=[x^s]Q$, and
+reading off coefficients for $s\le m$,
+\[
+ q_s=(-1)^s\Bigl[2\tbinom ms+\tbinom m{s-1}-\tbinom ns\Bigr]-\delta_{s0}+\bigl(1+(-1)^m\bigr)\delta_{sm},
+\]
+so $q_0=q_1=0$ (as $n=2m+1$) and $e_s=q_s/2$ proves~\eqref{eq:odd-tradeoff}.
+
+Let $N_j=2^n\binom njw_j$ and $k=(n-j)/2$. At $j=n$, $N_n=0+1+0-1=0$. At $j=n-2$, $N_3=4-2+8-10=0$ for $n=5$, and for
+$m\ge3$ both binomials in the first term vanish and $2c_n=m+1$, so $N_{n-2}=-m+(m+1)2m-m(2m+1)=0$.
+For $j\le n-4$ ($k\ge2$, so $n\ge7$), $(m+1)\binom{n-1}j-\binom nj=\tfrac{2k(m+1)-n}n\binom nj$, which exceeds $\binom nj$ because
+$2k(m+1)-n\ge4(m+1)-n=2m+3>n$; and
+$\binom nj=\binom n{2k}\ge\binom mk$ (send a $k$-subset $T$ of $\{1,\dots,m\}$ to $T\cup(T+m)$). So $N_j>0$, and for $n=5$, $j=1$ directly
+$N_1=28+1+8-5=32$. The equality statement follows because $A_j\ge0$. For GHZ$_n=(|0\rangle^{\otimes n}+|1\rangle^{\otimes n})/\sqrt2$, a Pauli word with an $X$ or
+$Y$ on some but not all sites has zero expectation, and a $Z$-word of weight $j<n$ has $\langle P\rangle\ne0$ only if $j$ is even, so
+$A_j=0$ for odd $j<n$. ST-7 checks~\eqref{eq:odd-tradeoff-weights} and the multipliers $e_s$ against an independent exact
+elimination for odd $n\le41$; ST-8 evaluates both sides of \eqref{eq:odd-tradeoff} exactly on Gaussian-integer states at $n=5,7,9$
+(three random states, GHZ, the ring graph state and $W$) from the reduced density matrices and the Pauli expectations, without
+Lemma~\ref{lem:odd-sector}.
+\end{proof}
+
+\begin{remark}[interpretation]
+The inequality is the odd-$n$ counterpart of
+Theorem~\ref{thm:purity-spinflip-tradeoff}: a small balanced purity forces a large mean T-odd purity, $O\ge(\tfrac12-\pi_m)/c_n$, with $1/c_n=4/(n+1)$ for $n\ge7$.
+The coefficient $c_n$ is the least for which~\eqref{eq:odd-tradeoff}, with the same multipliers $e_s$, has nonnegative weights:
+$O$ carries the weight $(n-j)/(n2^{n-1})>0$ on $A_j$, so lowering $c_n$ makes $w_{n-2}^{(n)}=0$ negative. It is also optimal over all pure states. For
+$\Psi_n=\mathrm{GHZ}_{n-2}\otimes\Phi^+$ the only odd Pauli weights are $A_{n-2}=2^{n-3}$ (the full-support $X/Y$ words of
+the GHZ factor) and $A_n=3\cdot2^{n-3}$ (those words times the three Bell correlations), so the residual
+of~\eqref{eq:odd-tradeoff} vanishes, while $O=1/(2n)>0$ by Lemma~\ref{lem:odd-sector}. Any smaller coefficient therefore
+fails at $\Psi_n$ (ST-9).
+For example, at $n=7$ the hypothesis $\pi_3<19/140$, the purity of the best stabilizer states (Proposition~\ref{prop:stab7}), gives
+$O>51/280$.
+\end{remark}
+

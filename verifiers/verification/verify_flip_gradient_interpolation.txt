@@ -1,0 +1,6 @@
+[PASS] FI-1 dim of SU(2)^4 invariants: bidegree (4,2) = 19, (2,2) = 8 (purities: 8)
+[PASS] FI-2 19 contraction invariants, evaluation matrix 24x19 of exact rank 19
+[PASS] FI-3 ||A||^2 = F - (3/4)NW_1 exactly at all 24 points
+[PASS] FI-4 (FG) exact at all 24 points; sample lhs = 71318, rhs = 71318
+[PASS] FI-5 coefficient 1 fails at 4/4 points, lambda dropped fails at 4/4
+ALL PASS

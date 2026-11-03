@@ -1,0 +1,4 @@
+HI-1 PASS: six untwisted S3xS3 class determinants
+HI-2 PASS: conjugation-twisted determinants depend only on product class
+HI-3 PASS: exact rational Hilbert series and H_odd=t^6 H_even
+HI-4 PASS: exact sextic invariant counts through n=12 and no odd n<=5

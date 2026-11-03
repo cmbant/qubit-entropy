@@ -1,0 +1,5 @@
+EB-0 PASS: for theta <= 1/10000 all cut eigenvalues > 1/16; exact lower floor 1247/15000
+EB-1 PASS: |d^3 entropy / dtheta^3| < 2480/ln2 < 3720
+EB-2 PASS: Hessian curvature 239/1000 minus cubic Taylor error gives 23/400 > 1/20
+EB-3 PASS: for orbit distance <=1/20000, entropy is below the candidate by at least distance^2/20
+Scope: quantitative local basin; the global bound is thm:seven-entropy-global-maximum (E7-1).

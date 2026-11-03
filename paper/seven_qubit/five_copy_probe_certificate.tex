@@ -1,0 +1,93 @@
+\subsection{Direct probes for a sharp five-copy certificate}
+\label{sec:fivecopy-direct-probes}
+
+Let $W=(\mathbb C^2)^{\otimes5}$, let $U_\sigma$ permute its five
+copies, and let $G$ be any element of the rational local commutant
+$\mathcal A_5$. On seven sites put
+\[
+ P=\frac1{120}\sum_{\sigma\in S_5}U_\sigma^{\otimes7},\qquad
+ X(G)=PG^{\otimes7}P.
+\]
+These linear probes determine identities on the moment space; they need not themselves be positive moments. For $j=0,1,2$, let
+$H_j=S_{5-j}\times S_j$, let $\phi_j$ be the local $j$-copy spin-flip transpose,
+and put $\Phi_j=\phi_j^{\otimes7}$.
+
+\begin{lemma}[direct contracted dual probes; DP5-1]
+\label{lem:fivecopy-direct-probes}
+Suppose $Z$ is a site-permutation-invariant commutant operator supported
+on the global $H_j$-invariant subspace. Choose left-coset representatives
+$a\in H_j\backslash S_5$ and right-coset representatives
+$b\in S_5/H_j$. Then
+\[
+ \operatorname{tr}[Z\Phi_j(X(G))]
+ =\binom5j^{-2}\sum_{a,b}
+       \operatorname{tr}\left[Z\,\phi_j(U_aGU_b)^{\otimes7}\right].
+\]
+There are $1,25,100$ terms for $j=0,1,2$, respectively.
+The traces on the right are evaluated directly in the chosen Schur models;
+no full gamma map is needed. Write
+$a_\sigma=\operatorname{tr}(U_\sigma G)$, and let $\mathcal T$ be the
+ten transpositions in $S_5$. The sharp target on this probe is
+\[
+ q(G)=\frac1{1200}\sum_{\sigma\in S_5,\,t\in\mathcal T}
+       a_{t\sigma}^3a_\sigma^4
+       -\frac{121}{917\cdot120}\sum_{\sigma\in S_5}a_\sigma^7.
+\]
+Equality of this polynomial with the sum of the contracted dual probes
+for every $G\in\mathcal A_5$ is equivalent to the sharp dual identity
+on the real, site-averaged bosonic moment space.
+\end{lemma}
+\begin{proof}
+The spin-flip transpose is self-adjoint for the physical trace pairing.
+Expanding both copies of $P$ gives $120^2$ terms. Both $Z$ and $\Phi_j(Z)$
+have left and right $H_j$-invariant support: partial transpose exchanges
+left and right permutations of the flipped copies and preserves the
+unflipped ones. The terms therefore group into $\binom5j^2$ equal-weight
+coset pairs. Moving $\Phi_j$ back to the probe gives the first formula.
+The same proof applies with any numbers of copies and sites in place of $5$ and $7$.
+
+On the bosonic subspace, the purity operator may be averaged over all
+ten choices of the swapped global-copy pair. This average commutes with
+$P$, so cyclicity removes one of the two projectors in its trace against
+$X(G)$. All $35$ choices of the three swapped sites have the same trace
+against an identical-site product $G^{\otimes7}$, yielding the formula
+for $q$. Finally the span of the powers $G^{\otimes7}$ is the symmetric
+seventh tensor power of $\mathcal A_5$, by polarisation. The trace pairing
+on this site-symmetric algebra is nondegenerate. This proves the last claim.
+Probes over $\mathbb Q(i)$ are also allowed: real and imaginary parts of
+$G=A+iB$ evaluations are rational combinations of the eight real probes
+$A+tB$, $t=0,\ldots,7$, by degree-seven interpolation.
+\end{proof}
+
+\begin{proposition}[the critical space and finite probes; DP5-1]
+\label{prop:fivecopy-finite-probes}
+Let $\mathcal M_5$ be the real span of the normalised five-copy moments
+of pure seven-qubit states after local-unitary twirling, site averaging
+and averaging with the complex conjugate state (the conjugation-even
+part). Then $\dim\mathcal M_5=3285$. The \emph{critical space}
+$\mathcal C\subset\mathcal M_5^*$ of functionals vanishing at the
+icosahedral moment $X_0$ and at its derivative $X_0'$ along the
+normalised family $\psi_x$ of~\eqref{eq:ico} at $x_0=37/524$ has
+dimension $3283$. If functionals in $\mathcal C$ have an evaluation
+matrix of rank $3283$ on some finite set of probes, they span
+$\mathcal C$, and evaluation on those probes is injective on
+$\mathcal C$.
+\end{proposition}
+\begin{proof}
+By the last part of Lemma~\ref{lem:fivecopy-direct-probes}, $\mathcal M_5$
+is dual to the site-symmetric probe polynomials, that is, to the permutation-symmetric local-unitary
+invariants of bidegree $(5,5)$ for $N=7$ sites and local dimension $r=2$. Their Schur--Weyl character sum
+(\eqref{eq:fqe-invariant-dimension} and~\eqref{eq:fqe-invariant-even} of
+Section~\ref{sec:fqe-invariant-dimensions}) gives dimension $5844$, and the trace of the conjugation swap is
+$726$ (DP5-1), so the conjugation-even part has dimension
+$(5844+726)/2=3285$. This is the dimension of the linear span $\mathcal M_5$; the normalised moments
+lie in its affine hyperplane $\nu=1$. The normalisation functional $\nu$ has
+$\nu(X_0)=1$ and $\nu(X_0')=0$, and DP5-1 checks that the weight-two Pauli enumerator
+$A_2$ has derivative $96/131\ne0$ there, so $X_0'\ne0$ and $X_0,X_0'$ are independent. Hence
+$\dim\mathcal C=3283$. A rank-$3283$ evaluation matrix of elements of
+$\mathcal C$ gives both remaining assertions.
+\end{proof}
+
+The criterion is applied to the twelve-face baseline in
+Section~\ref{sec:fivecopy-positive-repair}, where rank and repair bounds
+are verified for the rational data.

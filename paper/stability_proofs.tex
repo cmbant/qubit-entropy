@@ -1,0 +1,99 @@
+\section{Proofs of the stability theorems}\label{sec:fqe-stability-proofs}
+This section proves the global and local stability results of Appendix~\ref{sec:fqe-orbit-stability} of the paper.
+We first write the surrogate $Q$ intrinsically in the magic matrix and prove the sharp global overlap bound. We then compute
+the transverse quadratic forms and obtain explicit local radii. The
+two sharp critical-locus theorems of Appendix~\ref{sec:fqe-critical-orbit-stability} are proved in Section~\ref{sec:sup-stability}.
+
+\begin{restated}[Explicit global LU-orbit stability; from Theorem~\ref{thm:fqe-global-overlap}]{Theorem}{thm:fqe-orbit-stability}
+For every unit pure four-qubit state,
+\[
+ d(\psi)^2\le\frac{12}{6+\sqrt6}\,Q(\psi),\qquad
+ \boxed{\ \delta(\psi)\ge k\,\frac{6+\sqrt6}{12}\,d(\psi)^2\ },\qquad k\,\frac{6+\sqrt6}{12}>\frac1{20}.
+\]
+For every critical state the optimal bound is $\delta\ge C_*d^2$, with
+$C_*\approx0.19058$ (Theorem~\ref{thm:fqe-p1-sharp}).
+On an explicit neighbourhood of the two orbits the coefficient improves:
+\[
+ d(\psi)\le1/20\quad\Longrightarrow\quad
+ \delta(\psi)\ge\frac3{10}d(\psi)^2.
+\]
+Its sharp limiting coefficient is
+$c_*=(2-\ln3)/(2\ln2)$, in the precise sense of
+\eqref{eq:fqe-entropy-local-sharp}. The power two is optimal.
+No optimal global coefficient is claimed; the equality states of
+Theorem~\ref{thm:fqe-p1-sharp} show that it is at most $C_*$.
+\end{restated}
+\noindent The global bounds are proved at the end of Section~\ref{sec:fqe-global-overlap}, the explicit radius and the
+limiting coefficient in Section~\ref{sec:fqe-entropy-orbit-local}; the critical coefficient $C_*$ is
+Theorem~\ref{thm:fqe-p1-sharp}, proved in Section~\ref{sec:sup-stability}.
+
+\input{bell_frame_stability}
+\input{global_overlap_certificate}
+
+\subsection{The transverse quadratic form and an explicit local radius}
+\label{sec:fqe-orbit-local}
+Use the magic representative $Z_* =\operatorname{diag}(a,ib,ib,ib)$,
+$a=1/\sqrt2$, $b=1/\sqrt6$, which belongs to one of the HS orbits.
+For a perturbation write
+\[
+ H=\begin{pmatrix}c&u^T\\v&D\end{pmatrix},\quad
+ S=(D+D^T)/2,\quad A=(D-D^T)/2.
+\]
+The coefficient $Q_2(H)$ of $t^2$ in $Q(Z_*+tH)$ is
+\begin{align}
+ Q_2(H)={}&6\bigl(|c|^2+\|S\|_F^2-|ac-ib\operatorname{tr}S|^2\bigr)
+       +20\|\operatorname{Re}A\|_F^2\notag\\
+ &+30\sum_{j=1}^3\bigl[(a\operatorname{Im}u_j+b\operatorname{Re}v_j)^2
+            +(b\operatorname{Re}u_j+a\operatorname{Im}v_j)^2\bigr].
+ \label{eq:fqe-orbit-quadratic}
+\end{align}
+This is an explicit orthogonal decomposition. On the complex symmetric
+block together with $c$, it is six times the norm squared perpendicular
+to the complex line through $Z_*$. The real antisymmetric block has
+coefficient twenty; the imaginary antisymmetric block is tangent to the
+orbit. For each cross-block pair the two displayed linear forms are
+orthogonal and have norm squared $a^2+b^2=2/3$, giving coefficient twenty
+on the two normal directions. The other two directions are the left and
+right real-rotation tangents. Thus the real quadratic-form operator has
+eigenvalues $0,6,20$ with multiplicities $11,12,9$. Its kernel is exactly
+the radial direction and the tangent space of $\mathcal M$ (including phase).
+The actual Hessian eigenvalues are twice these quadratic coefficients.
+
+For clarity, the formula can be derived with only quadratic matrix
+expansions. On each cut let $C$ and $B$ be the flattenings of $Z_*$ and
+$H$ in the computational basis, and put
+$R=CC^\dagger$, $L=CB^\dagger+BC^\dagger$, $V=BB^\dagger$.
+Then
+\[
+ P_2=\sum_{\rm cuts}\operatorname{tr}(L^2+2RV),\quad
+ T_2=3\sum_{\rm cuts}\operatorname{tr}(R^2V+RL^2),\quad
+ Q_2=18P_2-12T_2-21\|H\|_F^2-3n_1^2,
+\]
+where $n_1=2\operatorname{Re}\langle Z_*,H\rangle$; substitution gives
+\eqref{eq:fqe-orbit-quadratic}. This also specifies every matrix entry
+of the quadratic form without a numerical eigendecomposition.
+
+To bound all higher terms, represent $Q(z)$ as a matrix element on
+$z^{\otimes3}$. Each $N\operatorname{tr}R_j^2$ is a two-copy swap
+matrix element with an identity third copy, and each
+$\operatorname{tr}R_j^3$ is a three-cycle matrix element. Taking Hermitian
+parts if necessary gives an operator of norm at most
+$18\cdot3+12\cdot3+13=103$. Consequently, for $d=\|H\|\le r$,
+\begin{equation}\label{eq:fqe-orbit-taylor}
+ |Q(Z_*+H)-Q_2(H)|
+ \le103d^3(20+15r+6r^2+r^3).
+\end{equation}
+The constant and linear terms vanish because $Q$ is nonnegative and
+zero at $Z_*$. The binomial coefficients count the six tensor slots.
+
+Take a closest $\chi\in\mathcal M$ to $\psi$ and $H=\psi-\chi$.
+Stationarity makes $H$ real-orthogonal to the orbit tangent, which contains the phase direction $i\chi$, so
+$\langle\chi,H\rangle$ is real, while
+$\operatorname{Re}\langle\chi,H\rangle=-d^2/2$. Therefore
+$Q_2(H)\ge6(d^2-d^4/4)$. The same bound applies at either orbit by LU
+invariance and conjugation. Inserting $r=2^{-10}$ in
+\eqref{eq:fqe-orbit-taylor} proves $Q\ge3d^2$ for $d\le2^{-10}$, used for the local
+spectral-majorant transfer of Corollary~\ref{cor:fqe-orbit-spectral} of the paper.
+
+\input{entropy_orbit_hessian}
+

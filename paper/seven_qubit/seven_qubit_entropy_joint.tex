@@ -1,0 +1,204 @@
+\begin{proposition}[Competitor purity band; AH-1]
+\label{prop:seven-competitor-band}
+Every pure seven-qubit state with $E_3(z)\ge E_*$ obeys
+\begin{equation}\label{eq:seven-competitor-band}
+ \frac{121}{917}\le\pi_3(z)<p_c:=\frac{8693}{64000}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The lower bound is Corollary~\ref{cor:seven-global-from-fivecopy}.
+Lemma~\ref{lem:seven-entropy-linear-purity} gives
+$3-E_3\ge(2/5)(8\pi_3-1)$. Since
+$E_*>59307/20000$ (SC-2), rearrangement gives
+$\pi_3<(1+(5/2)(3-59307/20000))/8=8693/64000$.
+\end{proof}
+
+\begin{lemma}[Quadratic joint spin-flip relations; proved, AH-5]
+\label{lem:seven-joint-spinflip}
+For any triple marginal $R$ of the real family $\psi_x$, put
+$\widetilde R=\epsilon^{\otimes3}R^{\mathsf T}
+(\epsilon^{\otimes3})^{\mathsf T}$ (with $\epsilon=i\sigma_y$ this is the spin flip
+$Y^{\otimes3}R^{\mathsf T}Y^{\otimes3}$ of Section~\ref{sec:seven-spinflip-spectral}),
+$E=(R+\widetilde R)/2$, $O=(R-\widetilde R)/2$, and $u=(1-2x)/30$.
+If the triple avoids the distinguished site, then
+\[
+ O=0,\qquad (E-4uI)(E-(3u+x)I)=0.
+\]
+If it contains that site, then
+\begin{equation}\label{eq:seven-joint-spinflip}
+ [E,O]=0,\qquad O(E-6uI)=0,\qquad
+ 2u(E-4uI)(E-(u+x)I)-(5u-x)O^2=0.
+\end{equation}
+\end{lemma}
+\begin{proof}
+In the computational basis $\{|b_1b_2b_3\rangle\}$, $\epsilon^{\otimes3}$ maps $|b_1b_2b_3\rangle$ to $(-1)^{3-(b_1+b_2+b_3)}|\bar b_1\bar b_2\bar b_3\rangle$.
+By the block diagonalisation in the proof of Theorem~\ref{thm:ico}, on any cut $I=\{i,j,k\}$ avoiding $s$ the marginal $R=\operatorname{diag}(3u+x,(4u)^6,3u+x)$ is diagonal with bit-complement-symmetric entries, so $\widetilde R=R$, $O=0$, and $(E-4uI)(E-(3u+x)I)=0$.
+On any cut $\{s,i,j\}$ containing $s$, $R$ is diagonal with bit-complement-symmetric entries on the six basis states outside $\operatorname{span}\{|000\rangle,|111\rangle\}$ (two eigenvalues $u+x$ and four eigenvalues $4u$, where $O=0$), while on $\operatorname{span}\{|000\rangle,|111\rangle\}$ one has $R=\bigl(\begin{smallmatrix}6u&\mp2u\\\mp2u&6u\end{smallmatrix}\bigr)$ and $\epsilon^{\otimes3}$ maps $|000\rangle\mapsto-|111\rangle$ and $|111\rangle\mapsto|000\rangle$, flipping the off-diagonal sign: $\widetilde R=\bigl(\begin{smallmatrix}6u&\pm2u\\\pm2u&6u\end{smallmatrix}\bigr)$. Thus $E=6u\,I_2$ and $O=\bigl(\begin{smallmatrix}0&\mp2u\\\mp2u&0\end{smallmatrix}\bigr)$ on $\operatorname{span}\{|000\rangle,|111\rangle\}$, where $O^2=4u^2I_2$ and $2u(6u-4u)(6u-u-x)-(5u-x)(4u^2)=0$. This proves~\eqref{eq:seven-joint-spinflip} across all eight basis directions; AH-5 checks all $35$ cuts directly.
+\end{proof}
+
+\subsection{The degree of a sharp scalar entropy majorant}
+\label{sec:seven-entropy-majorant-degree}
+
+\begin{proposition}[Minimum replica degree for a sharp scalar
+entropy majorant]\label{prop:seven-entropy-majorant-degree}
+Let \(f(t)=-t\log_2t\) on \([0,1]\), with \(f(0)=0\).
+For \(k\ge2\) distinct interior nodes \(0<a_1<\dots<a_k<1\),
+any polynomial \(q\) satisfying \(q(t)\ge f(t)\) on \([0,1]\)
+and \(q(a_j)=f(a_j)\) for all \(j\) has degree at least
+\(2k-1\). This threshold is attained: the degree-\((2k-1)\)
+Hermite interpolant matching both \(f\) and \(f'\) at every node
+majorises \(f\) on \([0,1]\).
+
+At the seven-qubit entropy maximiser \(\psi_{x_*}\), a
+\emph{single} scalar entropy majorant sharp on every triple
+reduction therefore requires degree at least \(7\), since the
+combined spectra have four distinct positive eigenvalues.
+A joint majorant in a marginal and its spin flip avoids this:
+Lemma~\ref{lem:seven-joint-scalar-majorant} has degree five.
+\end{proposition}
+\begin{proof}
+If \(h=q-f\ge0\) and \(h(a_j)=0\) at an interior point,
+then \(h'(a_j)=0\). Thus \(h\) has at least \(2k\)
+zeros counted with multiplicity, so iterated Rolle's theorem
+forces \(h^{(2k-1)}\) to vanish somewhere in the interval
+spanned by the nodes. If \(\deg q\le2k-2\), however,
+\[
+ h^{(2k-1)}(t)=-f^{(2k-1)}(t)
+ =-\frac{(2k-3)!}{t^{2k-2}\ln2}<0
+ \qquad (t>0),
+\]
+a contradiction. For the converse, let \(H\) denote the
+Hermite polynomial matching \(f,f'\) at all \(k\) nodes.
+For \(0<t<1\), the Hermite remainder formula gives
+\[
+ f(t)-H(t)
+ =\frac{f^{(2k)}(\xi)}{(2k)!}
+   \prod_{j=1}^k(t-a_j)^2
+ \le0,
+ \qquad
+ f^{(2k)}(\xi)
+ =-\frac{(2k-2)!}{\xi^{2k-1}\ln2}<0.
+\]
+Continuity extends the inequality to \(t=0\).
+By Theorem~\ref{thm:ico} the cut eigenvalues of \(\psi_x\) are
+\(4u,3u+x,u+x,8u\) with \(u=(1-2x)/30\); two of them coincide
+only when \(x/u\in\{1,3,5,7\}\). By
+Proposition~\ref{prop:entropy-seven-stationarity},
+\(x_*/u_*\in(1,37/15)\), so the cuts of \(\psi_{x_*}\) have four
+distinct nodes. The asserted degree bound follows.
+\end{proof}
+
+\subsection{A joint degree-five entropy majorant}
+\label{sec:seven-joint-entropy-majorant}
+
+The joint spin-flip relations let us build a majorant with the same contacts for all seven choices of
+distinguished site. Its moment functional is therefore invariant under qubit permutations.
+Throughout this subsection $f(t)=-t\log_2t$, with $f(0)=0$, and
+$u=u_*$, $c=4u$, $a=3u+x_*$, $d=u+x_*$, $b=8u$.
+Let $P$ be the degree-five Hermite interpolant to $X\mapsto f(X/8)$
+at $8c,8a,8d$, including the first derivatives. Put
+\[
+ e_0=48u,\quad v_0=256u^2,\quad
+ h=\frac{f(b)+f(c)}2,\quad
+ h_e=\frac{f'(b)+f'(c)}{16},\quad
+ h_v=\frac{f'(b)-f'(c)}{512u}.
+\]
+Choose the following exact rational coefficients:
+\[
+ \alpha_2=-\frac{115001089107}{10^{12}},\qquad
+ \alpha_3=\frac{18166193766}{10^{12}},\qquad
+ \beta_1=\frac{14438812336}{10^{12}},
+\]
+and define the remaining coefficients by
+\begin{align*}
+ \beta_0&=\frac{v_0h_v-h+P(e_0)}{v_0^2}-\beta_1e_0,\\
+ \alpha_1&=\frac{h_e-P'(e_0)-v_0^2\beta_1}{v_0}
+             -2\alpha_2e_0-3\alpha_3e_0^2,\\
+ \alpha_0&=h_v-2v_0(\beta_0+\beta_1e_0)
+             -\alpha_1e_0-\alpha_2e_0^2-\alpha_3e_0^3.
+\end{align*}
+For $e=4(\lambda+\mu)$ and $v=16(\lambda-\mu)^2$, set
+\begin{equation}\label{eq:seven-joint-H}
+ H(\lambda,\mu)=P(e)+v\sum_{j=0}^3\alpha_je^j
+                          +v^2(\beta_0+\beta_1e)
+                 =\sum_{k+l\le5}h_{kl}\lambda^k\mu^l.
+\end{equation}
+It is a symmetric polynomial of total degree five.
+
+\begin{lemma}[Joint scalar majorant; exact-rational coefficient certificate AH-6]
+\label{lem:seven-joint-scalar-majorant}
+For all $\lambda,\mu\ge0$,
+\[
+ H(\lambda,\mu)\ge\frac{f(\lambda)+f(\mu)}2.
+\]
+Equality holds exactly at
+$(c,c),(a,a),(d,d),(b,c),(c,b)$, with first-order contact at each pair.
+\end{lemma}
+\begin{proof}
+The diagonal contacts follow from the definition of $P$. Substitution
+in the three formulas for $\beta_0,\alpha_1,\alpha_0$ gives the value
+and both first derivatives at $(b,c)$; symmetry gives $(c,b)$.
+
+Section~\ref{sec:seven-joint-analytic-proof} proves the inequality by a
+positive Stieltjes-kernel bound and a cubic Hermite minorant for the binary
+entropy correction. A single univariate discriminant polynomial remains;
+its fixed positive-coefficient certificate is checked in exact rational
+arithmetic (AH-6). That proof also excludes any further equality points.
+\end{proof}
+
+\begin{corollary}[Degree five is minimal]\label{cor:seven-joint-degree-five}
+Let $G(\lambda,\mu)$ be a polynomial of total degree $m$ with $G(\lambda,\mu)\ge\tfrac12[f(\lambda)+f(\mu)]$ on
+$[0,497/1000]^2$ and $G(t,t)=f(t)$ for $t\in\{c,a,d\}$. Then $m\ge5$. Every joint majorant with equality at the
+joint eigenvalue pairs of the marginals of $\psi_{x_*}$ satisfies these hypotheses, so $H$ has the least possible degree.
+\end{corollary}
+\begin{proof}
+The points $c,a,d$ are distinct (Proposition~\ref{prop:seven-entropy-majorant-degree}) and lie in $(0,497/1000)$.
+The restriction $g(t)=G(t,t)$ has degree at most $m$, satisfies $g\ge f$ on $[0,497/1000]$ and touches $f$ at three
+interior points. The proof of Proposition~\ref{prop:seven-entropy-majorant-degree} uses $g\ge f$ only on an interval
+containing the nodes in its interior, so it gives $m\ge\deg g\ge5$. For the second statement, Lemma~\ref{lem:seven-joint-spinflip}
+shows that a marginal avoiding the distinguished site equals its spin flip, with eigenvalues $c$ and $a$, and that on the
+eigenspace of $E$ for the eigenvalue $d$ of a marginal containing it the odd part $O$ vanishes, because $O(E-6uI)=0$
+and $d\ne6u$ (as $x_*/u_*<37/15$); so $(c,c),(a,a),(d,d)$ are joint
+eigenvalue pairs. This concerns majorants in a marginal and its spin flip only; it is not a lower bound on the copy
+hierarchy.
+\end{proof}
+
+\begin{proposition}[The five-copy entropy target]
+\label{prop:seven-joint-entropy-target}
+For a positive semidefinite $8\times8$ matrix $R$, let $\widetilde R$ denote its three-qubit
+spin flip. Then
+\begin{equation}\label{eq:seven-joint-matrix-majorant}
+ \operatorname{tr}f(R)\le
+ \mathcal P(R):=\sum_{k+l\le5}h_{kl}
+                         \operatorname{tr}(R^k\widetilde R^{\,l}).
+\end{equation}
+Commutation of $R$ and $\widetilde R$ is not required.
+For normalised seven-qubit states put
+\[
+ \mathcal P_5(z)=\frac1{35}\sum_{|S|=3}\mathcal P(\rho_S(z)).
+\]
+Every normalised pure seven-qubit state satisfies $E_3(z)\le\mathcal P_5(z)$,
+and $\mathcal P_5(\phi)=E_*$ for every choice of the distinguished qubit of $\phi$.
+After homogenisation, $\mathcal P_5$ is a permutation-invariant
+linear functional on five-copy moments.
+\end{proposition}
+\begin{proof}
+Take orthonormal eigenbases $u_i,v_j$ of $R,\widetilde R$, with
+eigenvalues $\lambda_i,\mu_j$. The matrix
+$w_{ij}=|\langle u_i,v_j\rangle|^2$ is doubly stochastic, so
+\[
+ \mathcal P(R)=\sum_{ij}w_{ij}H(\lambda_i,\mu_j)
+ \ge\frac{\operatorname{tr}f(R)+
+                \operatorname{tr}f(\widetilde R)}2
+ =\operatorname{tr}f(R).
+\]
+Lemma~\ref{lem:seven-joint-spinflip} shows that every
+marginal of $\phi$ commutes with its spin flip and has only the five
+joint pairs listed in Lemma~\ref{lem:seven-joint-scalar-majorant}.
+This proves equality. Multiplication of the term of degree $k+l$ in unnormalised
+marginals by $\nu^{5-k-l}$, where $\nu=\|z\|^2$, gives the homogeneous
+five-copy functional.
+\end{proof}
+
+Theorem~\ref{thm:seven-entropy-localized-identity} proves the matching
+quantum inequality for every competitor, completing the entropy bound.

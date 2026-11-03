@@ -1,0 +1,106 @@
+\subsection{The bounded-head chart}
+\label{sec:fqe-small-head-dual}
+
+\begin{lemma}[Supporting bound on the bounded-head chart; analytic; exact rational checks]\label{lem:fqe-small-head-dual}
+At $q=1587/1000$ and the multiplier $\theta=(397/100,3/20,159/100)$,
+every ordered spectrum $(a,b,c,c)$ with $a\le1/2$ satisfies
+\[
+ \Lambda_\theta\le\frac{8023}{4800}
+ <\frac53+\frac{1837}{375000}-10^{-5}.
+\]
+So on this chart the band-$L$ dual bound needs only rational arithmetic: rational enclosures of eight node values (SHD-1) for the binary
+quartic correction of Lemma~\ref{lem:fqe-binary-quartic} and eight one-variable quartic sign checks (SHD-3).
+\end{lemma}
+\begin{proof}
+Put $r=q-1$, $L=\ln2$, $h(u)=H_q(u,1-u)$, $d=u(1-u)$, and write
+\[
+ \lambda=\Bigl(\frac{1-u+\delta}2,\frac{1-u-\delta}2,\frac u2,\frac u2\Bigr),\qquad v=\delta^2,
+\]
+a head pair of total weight $1-u$ and a uniform tail pair of weight $u$.
+The head cap and ordering give $0\le u\le1/2$ and $0\le\delta\le\min\{u,1-2u\}$.
+We treat $u\le1/4$ by a head-deficit estimate and $u\ge1/4$ by the near-uniform moment bound.
+
+\emph{Small tail, $0\le u\le1/4$.}
+For the conditional vectors of the two pairs, Jensen's inequality for the logarithm (as in the proof
+of~\eqref{eq:fqe-capped-pairs}) gives
+\[
+ H_q(\lambda)\le h(u)+(1-w)\bigl(1-D_q(z)\bigr)+w
+ =1+h(u)-(1-w)D_q(z),\qquad w=\frac{u^q}{(1-u)^q+u^q},
+\]
+where $z=v/(1-u)^2\le u^2/(1-u)^2\le1/9$ is the squared imbalance of the head pair and $D_q$ is the
+function of Lemma~\ref{lem:fqe-binary-quartic}. That lemma shows that $(D_q(z)-z)/(z(1-z))=A_q/4$ decreases in
+$z\in(0,1)$. Put $\kappa=\tfrac{81}8\bigl(D_q(1/9)-\tfrac19\bigr)$, its value at $z=1/9$. Here
+$D_q(1/9)=1-H_q(1/3,2/3)\ge249/2000>1/9$, since $H_q(1/3,2/3)<1751/2000$ (power sums and the atanh series, as for the
+nodes below), so $\kappa>0$. For $0<z\le1/9$,
+\[
+ D_q(z)\ge z+\kappa z(1-z)\ge z\bigl(1+\tfrac89\kappa\bigr)=9D_q(1/9)\,z\ge\frac{2241}{2000}z ,
+\]
+since $9\cdot249/2000=2241/2000$.
+
+Next $1-w=(1-u)^2k_q(u)$ with
+\[
+ k_q(u)=\frac{(1-u)^{q-2}}{(1-u)^q+u^q}=\frac{(1-u)^{-2}}{1+(u/(1-u))^q},
+\]
+which increases with $q$ because $u\le1-u$; hence $k_q\ge k_{3/2}$. With $t=\sqrt{u/(1-u)}$,
+\[
+ \frac{k_{3/2}(u)}{1+2u}=\Bigl[1+\Bigl(\frac{t(1-t)}{1+t^2}\Bigr)^3\Bigr]^{-1}\ge\frac{64}{65},
+\]
+since $0\le t(1-t)\le1/4$ and $1+t^2\ge1$, so the cube is at most $1/64$.
+Combining, $(1-w)D_q(z)\ge\frac{2241}{2000}\cdot\frac{64}{65}(1+2u)v=\frac{8964}{8125}(1+2u)v$, so
+\[
+ H_q(\lambda)\le1+h(u)-\frac{11}{10}(1+2u)v.                 \tag{SHD}\label{eq:fqe-small-head-deficit}
+\]
+
+The binary entropy is controlled by the quartic correction of Lemma~\ref{lem:fqe-binary-quartic}:
+$h(u)=4d-A_q(u)\,d(1-4d)$ with $1-4d=(1-2u)^2\ge0$, and $A_q$ is increasing. Take the nodes and values
+\[
+\begin{array}{c|cccccccc}
+u_i&0&\frac1{100}&\frac3{100}&\frac1{20}&\frac2{25}&\frac{13}{100}&\frac{39}{200}&\frac{47}{200}\\[2pt]\hline
+a_i&\frac{99}{1000}&\frac{217}{1000}&\frac{289}{1000}&\frac{83}{250}&\frac{377}{1000}&\frac{43}{100}&\frac{12}{25}&\frac{101}{200}
+\end{array}
+\]
+and $u_8=1/4$. They satisfy $A_q(u_i)\ge a_i$: at $u_0=0$ in the sense $A_q(0^+)=4-q/(rL)>99/1000$, and at the other seven
+points by interval enclosures of the power sum $u^q+(1-u)^q$ and of the logarithm (atanh series) [exact certificate; SHD-1].
+Since $A_q$ is increasing, $A_q\ge a_i$ on $[u_i,u_{i+1}]$, hence $h(u)\le4d-a_id(1-4d)$ there.
+
+Substituting~\eqref{eq:fqe-small-head-deficit} in the definition of $\Lambda_\theta$ gives
+\[
+ \Lambda_\theta\le\frac{1999}{1200}+h(u)-\frac{179}{50}d
+       -\frac{159}{100}d^2
+       +\left(\frac3{200}+\frac{37}{50}u-\frac{159}{100}u^2\right)v
+       -\frac{159}{400}v^2.
+\]
+The coefficient of $v$ is positive on $[0,1/4]$. Using $v\le u^2$, dropping the last term and inserting the bound for $h$ leaves, on $[u_i,u_{i+1}]$, the quartic
+\[
+ P_i(u)=\frac{1999}{1200}+\frac{21}{50}d-a_i\,d(1-4d)-\frac{159}{100}d^2
+       +\Bigl(\frac3{200}+\frac{37}{50}u-\frac{159}{100}u^2\Bigr)u^2 .
+\]
+It remains to show $P_i\le8023/4800$ on $[u_i,u_{i+1}]$. Each $8023/4800-P_i$ is a quartic in $u$; written in the
+Bernstein basis of its interval, all five coefficients are positive [exact-rational certificate; SHD-3]. The smallest coefficient is $1/6400$, at $u=1/4$.
+
+\emph{Large tail, $1/4\le u\le1/2$.} Here we show that $\Lambda_\theta$ does not exceed its uniform value.
+The coordinate bounds give $p\le11/32$, by maximising a convex
+quadratic separately on $[1/4,1/3]$ and $[1/3,1/2]$.
+Put $x=p-1/4$, $y=\sum(\lambda_i-1/4)^3$.
+Here $y\ge0$, so $v=y/x$ lies in $[0,9/50]$, and $x\le X=3/32$.
+With $b=12\beta=9/5$ and $c=\alpha+8\beta-\gamma/2=35/8$, the identity~\eqref{eq:fqe-uniform-dual-difference},
+valid for every multiplier, gives $\Lambda_\theta((1/4)^4)-\Lambda_\theta(\lambda)=2-H_q-cx+by+\gamma x^2$.
+We apply Lemma~\ref{lem:fqe-moment-rectangle} with the SHD column of Table~\ref{tab:fqe-moment-rectangle}.
+On the stated rectangle,
+$17/10<V<19/10$, $-3/50<W<3/8$, $1\le N<6/5$ and $|B+2Cv+XD_5|<19/10$,
+with $A,B,C,D_5$ those of Lemma~\ref{lem:fqe-near-uniform-moment}.
+The bound $V^2-2W>8/3$ from the capped-cubic proof gives $Q=8/3$, and
+$8/3-2X(19/10)(3/50)>(7/4)(6/5)^2$ gives $m=7/4>2\rho\gamma$; $C>7/5$ gives
+$\Phi_{vv}(X,v)\ge(2C-X(19/10)^2)/(\rho(6/5)^2)>4=\kappa$.
+At the single point $v_*=27/200$,
+\[
+ \Phi(X,v_*)>1/800,\qquad |\Phi_v(X,v_*)|<1/100,
+\]
+using the eight-term alternating lower sum for
+$\ln(1+XV+X^2W)$ and $693147/10^6<L<693148/10^6$.
+The lemma gives a dual difference greater than $(1/800-1/80000)x>0$.
+Thus $\Lambda_\theta\le\Lambda_\theta((1/4)^4)=8023/4800$.
+The uniform case $x=0$ is immediate.
+
+The small-tail and large-tail cases together prove the stated bound.
+\end{proof}

@@ -1,0 +1,4 @@
+ESH-1 GHZ family: tau = 4c^2s^2, W1 = 4(1 - tau), F = 3 + 3tau/2 (exact, from the tensor definitions): PASS
+ESH-2 slack of the envelope with coefficient C: (7/2 - 4C) tau + (1 + 4C) tau^(3/2): PASS
+ESH-3 C = 7/8 leaves slack (9/2) tau^(3/2); C = 7/8 + 1/1000 fails at tau = 10^-8 (exact): PASS
+ALL ESH CHECKS PASSED

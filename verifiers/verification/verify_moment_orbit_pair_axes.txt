@@ -1,0 +1,11 @@
+A1=0; all pair T matrices are c_ij e_z e_z^T, exact
+c_special=76/524=19/131; c_ordinary=44/524=11/131
+A2=(6*19^2+15*11^2)/131^2=3981/17161
+all seven incident-pair wedge sums vanish exactly; PASS
+negative control A1=0, pair-axis wedge C=12>0; PASS
+negative control A1=C=0, but disjoint-edge tetrad=1; PASS
+E2,E3,E4,B1 exact; Newton recovers p1=1087/1441
+centered skewness saturates 5/sqrt(42); one high and six low weights
+pair-weight rigidity arithmetic PASS
+phase-flipped index 63: all 210 one/two-body Pauli values unchanged
+triple purity rises by exactly 1665/240254; distinct LU orbit PASS

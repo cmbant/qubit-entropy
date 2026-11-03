@@ -1,0 +1,11 @@
+FS-0 per-site algebra checks pass; flip maps T1, T2 agree with a direct n=2 computation to 2.4e-16
+FS-1 n=4: 16 parameters; four-copy bound on mean 2-body purity = 0.333333334 [optimal] (true minimum 1/3)
+FS-1 n=5: 33 parameters; four-copy bound on mean 2-body purity = 0.250000000 [optimal] (true minimum 1/4)
+FS-1 n=6: 81 parameters; four-copy bound on mean 3-body purity = 0.125000001 [optimal] (true minimum 1/8)
+FS-2 n=7: 167 parameters, maps built in 720s
+FS-2 n=7 omega + nothing  : bound on mean 3-body purity = -0.142857144 [optimal]   (three copies 125/978 = 0.127811861; Psi_ico 121/917 = 0.131952017)
+FS-2 n=7 omega + g1       : bound on mean 3-body purity = 0.130888053 [optimal]   (three copies 125/978 = 0.127811861; Psi_ico 121/917 = 0.131952017)
+code/four_copy_relaxation.py:353: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  pr.solve(solver='CLARABEL', max_iter=1000, tol_gap_abs=tol, tol_gap_rel=tol, tol_feas=tol)
+FS-2 n=7 omega + g2       : bound on mean 3-body purity = 0.131820602 [optimal_inaccurate]   (three copies 125/978 = 0.127811861; Psi_ico 121/917 = 0.131952017)
+FS-2 n=7 omega + g1+g2    : bound on mean 3-body purity = 0.131876646 [optimal_inaccurate]   (three copies 125/978 = 0.127811861; Psi_ico 121/917 = 0.131952017)

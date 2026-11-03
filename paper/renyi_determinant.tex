@@ -1,0 +1,47 @@
+\subsection{Determinant reduction for four-point spectra}
+\label{sec:fqe-renyi-determinant}
+
+\begin{lemma}[Determinant monotonicity at fixed second and third moments]
+\label{lem:fqe-renyi-determinant}
+For $1<q<2$, let $\lambda,\lambda'$ be four-point spectra with the same second moment $p$ and third moment $t$.
+If $\prod_i\lambda_i<\prod_i\lambda'_i$, then $H_q(\lambda)<H_q(\lambda')$.
+Consequently, at fixed $p$ and $t$, the maximum of $H_q$ is attained at a spectrum of one of the two types
+\[
+(a,b,c,c)\quad\text{or}\quad(a,a,b,c),
+\qquad a\ge b\ge c\ge0,
+\tag{DM}\label{eq:fqe-renyi-double-root}
+\]
+including their degenerations.
+\end{lemma}
+\begin{proof}[Proof idea]
+Write $e_k$ for the elementary symmetric polynomials of the eigenvalues and $d=\prod_i\lambda_i$. Newton's identities fix $e_1,e_2,e_3$, so $\prod_i(\lambda_i+s)$ depends on the spectrum only through $d$; a
+Stieltjes representation of $x^q$ then shows that $\sum_i\lambda_i^q$ decreases in $d$, and a spectrum of maximal
+determinant has a repeated outer pair. The complete proof is in Section~\ref{sec:sup-determinant} of the supplement~\cite{Companion}.
+\end{proof}
+
+
+\begin{corollary}[Six-variable classical reduction]
+\label{cor:fqe-renyi-six-variable}
+Let three four-component probability vectors be constrained by any
+conditions involving only their total second and third moments $P,T$
+and the sum of their squared second moments
+$U=\sum_jp_j^2$. For every $1<q<2$, the supremum of their mean
+R\'enyi entropy is unchanged if each cut is required to have one
+of the spectral forms \eqref{eq:fqe-renyi-double-root}.
+Up to permutation of cuts, only four patterns need be considered:
+$k=0,1,2,3$ cuts with two largest equal, the others with two
+smallest equal. Each cut has two free real spectral parameters.
+In particular, this reduction is exact for the classical relaxation
+$P\ge1$, $F=17P-12T-12\ge0$, and
+$F^2+\tfrac92(P-1)\ge6(U-P^2/3)$.
+Theorem~\ref{thm:fqe-renyi-classical} bounds this relaxation at the two anchor orders; with
+Corollary~\ref{cor:fqe-renyi-order-transfer} and order monotonicity this gives the envelope on it for $q>1$.
+\end{corollary}
+\begin{proof}
+At fixed $p_j,t_j$ for each cut, replacing that spectrum by one of
+maximum determinant preserves $P,T,U$ and thus all the stated
+constraints. Lemma~\ref{lem:fqe-renyi-determinant} shows that this
+replacement cannot decrease any cut entropy. The two forms in (DM)
+have two free coordinates after the trace constraint. The cut
+permutation symmetry reduces the eight form choices to four.
+\end{proof}

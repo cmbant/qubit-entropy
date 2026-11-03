@@ -1,0 +1,7 @@
+EF-1 PASS: general Hermite coefficient identity
+EF-2 PASS: cluster cut spectra
+EF-3 PASS: q=2 tie, q=3 Tsallis cluster advantage 1/144, all-q moment identity
+EF-4 PASS: von Neumann and q=2 limits; stability factor rounds to 4.57862
+EF-5 PASS: exact derivative and logarithmic-derivative identities, endpoints, rational log bounds and quadratic data
+EF-6 PASS: stronger polarization and spin-flip entropy-defect coefficients; envelope tau coefficient (9-6 ln3)/4 = 0.602 vs 15/4-3 ln3 = 0.454
+EF-7 PASS: universal strengthened defect identity and determinant-pencil leading coefficient

@@ -1,0 +1,18 @@
+dimensions {0: 1, 1: 4, 2: 5} weight multiplicities {0: 6, 1: 4, 2: 2}
+Gram determinants {0: 1, 1: 5, 2: 162}
+exact matrix units checked 42
+copies (4,) denominator 30 max numerator 40 physical reconstruction PASS involution PASS
+copies (3, 4) denominator 30 max numerator 45 physical reconstruction PASS involution PASS
+S5-1 PASS
+exact Q4 tensor Sym^6 H-invariants: ambient 840, block 77
+exact D5 pentagon placement covariance PASS
+t 0 three placement reps; max entry 18117365760
+t 1 three placement reps; max entry 17122642560
+t 2 three placement reps; max entry 42051457728
+t 3 three placement reps; max entry 129878405568
+t 4 three placement reps; max entry 351846657664
+t 5 three placement reps; max entry 824811579200
+coefficient maxima [18117365760, 12758714880, 4277174400, 2983825680, 143506208, 213315200] target pair maxima 3542938401600 3585726072096
+target exact rank 8 of 77; exact left kernel 69, all-column annihilation PASS
+committed compact artifacts reproduced exactly
+PASS

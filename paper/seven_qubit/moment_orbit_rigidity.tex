@@ -1,0 +1,328 @@
+\subsection{Degree-four invariants fix the orbit}\label{sec:fivecopy-orbit}
+The moment certificate fixes invariant values; we must now recover the state. The invariants needed for this
+step have degree at most four and are linear in the four-copy marginal of the five-copy moment. Combined with the tangent-line lemma this gives one
+equality theorem for every family point with $1/32<x<1/12$ (Theorem~\ref{thm:fivecopy-family-equality}), applied below to the
+purity and in Section~\ref{sec:seven-entropy-equality} to the entropy.
+
+\begin{theorem}[Degree-four invariants identify the icosahedral family; proved, FO-1]
+\label{thm:moment-orbit-rigidity}
+Fix $y\in(1/32,1/12)$. Let $z$ be a unit pure seven-qubit state whose thirteen
+product-$\mathrm{SU}(2)$, site-permutation and complex-conjugation invariant polynomials
+\[
+ A_1,\ C,\ D,\ \mathcal E_2,\ \mathcal E_3,\ \mathcal E_4,\ B_1,\ S_1,\ Q,\ R,\ F,\ L,\ \pi_3,
+\]
+all of bidegree at most $(4,4)$ and defined below, take their values at $\psi_y$.
+Then $z$ is local-unitarily and site-permutation equivalent to $\psi_y$.
+In particular, relabelling the distinguished site as $0$ and the ordinary sites as $1,\ldots,6$,
+in a suitable local frame its one-body marginals are $I/2$ and
+\[
+ T_{0j}=v e_ze_z^{\mathsf T},\qquad T_{ij}=w e_ze_z^{\mathsf T}\quad(i,j>0),
+ \qquad v=\frac{1-8y}{3},\quad w=\frac{32y-1}{15}.
+\]
+The interval contains both $37/524$ and the entropy parameter $x_*$.
+\end{theorem}
+
+\begin{proof}
+Write $r_i^a=\langle\sigma_a^{(i)}\rangle$ and
+$T_{ij}^{ab}=\langle\sigma_a^{(i)}\sigma_b^{(j)}\rangle$.
+At site $i$, concatenate $T_{ij}$ for $j>i$ and $T_{ji}^{\mathsf T}$
+for $j<i$ into the real $3\times18$ matrix $M_i$.  The incident-axis
+sum of squares
+\[
+ C=\sum_i\sum_{\substack{a<b\\c<d}}
+    (M_i^{ac}M_i^{bd}-M_i^{ad}M_i^{bc})^2
+  =\frac12\sum_i\bigl[(\operatorname{tr}M_iM_i^{\mathsf T})^2
+  -\operatorname{tr}(M_iM_i^{\mathsf T})^2\bigr]
+\]
+has bidegree $(4,4)$ in $z,\bar z$.  Also sum, over ordered quadruples
+of distinct sites, the nonnegative tetrad squares
+\[
+ D_{ijkl}=\sum_{a,b,c,d}
+ (T_{ij}^{ab}T_{kl}^{cd}-T_{ik}^{ac}T_{jl}^{bd})^2.
+\]
+The site-sum $D$ likewise has bidegree $(4,4)$.
+Local $SU(2)$ actions rotate each Pauli index orthogonally; each
+displayed squared tensor norm is unchanged.  Site permutations
+relabel summands.  Complex conjugation reflects the $Y$ Pauli axis,
+another orthogonal action.  Hence $C,D$ and
+$A_1=\sum_{i,a}(r_i^a)^2$ are conjugation-even invariant polynomials.
+
+By Theorem~\ref{thm:ico} and its proof, at $\psi_y$ every one-body marginal is $I/2$ and the two-body computational-basis marginals are $\rho_{si}=\operatorname{diag}(10u,5u+y,5u+y,10u)$ and $\rho_{ij}=\operatorname{diag}(\tfrac12-8u,8u,8u,\tfrac12-8u)$ with $u=(1-2y)/30$. In this displayed frame the axial pair tensors are $T_{0j}=ve_ze_z^{\mathsf T}$ and $T_{ij}=we_ze_z^{\mathsf T}$ with $v=2(10u)-2(5u+y)=(1-8y)/3$ and $w=2(\tfrac12-8u)-2(8u)=(32y-1)/15$, so $A_1=C=D=0$ at $\psi_y$ (checked independently by FO-1). On the stated interval $v>w>0$.
+The hypothesis forces $A_1(z)=C(z)=D(z)=0$.
+Thus all one-body Bloch vectors vanish and $\operatorname{rank}M_i\le1$
+for every $i$.  At each site choose a unit vector $n_i$ spanning the
+column space of $M_i$, or any unit vector if $M_i=0$.
+Every $T_{ij}$ then has the form $c_{ij}n_i n_j^{\mathsf T}$.
+Product local rotations send all $n_i$ to $e_z$, leaving a real
+symmetric scalar edge array $(c_{ij})$.  The tetrad equalities become
+\begin{equation}\label{eq:fivecopy-pair-tetrads}
+ c_{ij}c_{kl}=c_{ik}c_{jl}=c_{il}c_{jk}
+ \qquad(i,j,k,l\text{ distinct}).
+\end{equation}
+
+The following four scalar graph invariants are again conjugation-even,
+site-symmetric and of bidegree at most $(4,4)$:
+\[
+ \mathcal E_2=\sum_{i<j}\|T_{ij}\|_F^2,\qquad
+ \mathcal E_3=\sum_{i<j<k}\operatorname{tr}(T_{ij}T_{jk}T_{ki}),
+\]
+\[
+ \mathcal E_4=\frac13\sum_{i<j<k<l}
+     \sum_{\text{three cycles on }\{i,j,k,l\}}
+       \operatorname{tr}(T_{ij}T_{jk}T_{kl}T_{li}),
+ \qquad B_1=\sum_{i<j}\|T_{ij}\|_F^4.
+\]
+In the $\mathcal E_4$ expression the indices inside the trace follow each listed cycle.
+Their family values are
+\[
+ \mathcal E_2=6v^2+15w^2,\quad \mathcal E_3=15v^2w+20w^3,\quad
+ \mathcal E_4=20v^2w^2+15w^4,\quad B_1=6v^4+15w^4.
+\]
+In particular $\mathcal E_3>0$, so the edge array has a nonzero triangle.
+By~\eqref{eq:fivecopy-pair-tetrads}, a vertex outside this triangle
+is either connected to all its vertices or to none; in the latter
+case it has no edge to any other vertex.  Two vertices connected to
+the triangle have a nonzero mutual edge.  Thus the nonzero edges form
+a complete graph on one subset, with the other vertices isolated.
+For the scalar edge reconstruction, temporarily index the seven sites $1,\dots,7$, with a nonzero triangle on $1,2,3$, and put
+$\tau=c_{12}c_{13}/c_{23}\ne0$ and
+$\varepsilon=\operatorname{sgn}\tau$.
+Set $t_1=\sqrt{|\tau|}$ and
+$t_j=c_{1j}/(\varepsilon t_1)$ on the active subset, and $t_j=0$
+elsewhere.  The tetrads give $c_{ij}=\varepsilon t_it_j$ for every pair.
+Every nonzero triangle product therefore has sign $\varepsilon$;
+since $\mathcal E_3>0$, $\varepsilon=1$.
+
+Put $x_i=t_i^2\ge0$, $e_k=e_k(x_1,\ldots,x_7)$, and
+$p_k=\sum_i x_i^k$.  The graph invariants above become
+$\mathcal E_2=e_2$, $\mathcal E_3=e_3$, $\mathcal E_4=e_4$, $B_1=e_2(x_1^2,\ldots,x_7^2)$.
+Newton's identities give
+\[
+ B_1=e_2^2-2e_1e_3+2e_4,\qquad
+ e_1=\frac{\mathcal E_2^2+2\mathcal E_4-B_1}{2\mathcal E_3}=r+6\ell,
+ \qquad r=\frac{v^2}{w},\quad\ell=w.
+\]
+They also determine $p_2=e_1^2-2e_2$ and $p_3=e_1^3-3e_1e_2+3e_3$.
+For $\mu=e_1/7$ and $S_k=\sum_i(x_i-\mu)^k$, evaluating at the family profile $(r,\ell,\dots,\ell)$ with deviations $\frac67(r-\ell)$ and $-\frac17(r-\ell)$ (six times) gives (FO-1)
+\[
+ S_2=\frac67(r-\ell)^2>0,\qquad
+ S_3=\frac{30}{49}(r-\ell)^3>0,\qquad
+ S_3^2=\frac{25}{42}S_2^3.
+\]
+The sharp seven-variable skewness inequality is
+$S_3\le(5/\sqrt{42})S_2^{3/2}$, with equality only for one
+high value and six equal low values.  Indeed, maximising $S_3$ at
+fixed zero mean and $S_2$ by Lagrange multipliers yields at most two
+values; if the higher value occurs $m$ times, the ratio is
+$(7-2m)/\sqrt{7m(7-m)}$, maximal only at $m=1$.
+The recovered mean and variance give one value $r=v^2/w$ and six values
+$\ell=w$. All are positive. Flipping the local axis directions makes all
+$t_i$ positive, so there is one distinguished vertex, with incident weight
+$\sqrt{r\ell}=v$, and every ordinary edge has weight $w$.
+
+The pair correlations have now fixed the local axes and edge weights. Return to labels $0,\ldots,6$,
+with $0$ distinguished. We next use the remaining invariants to recover the state in that frame.
+The symbols $Q,R,F,L$ below denote seven-qubit invariants local to this proof. Let
+$J_7=\epsilon^{\otimes7}K$ be the spin flip, with $K$ complex conjugation,
+and form the $21$ one-body spin-flip vectors $V_{ia}=\sigma_a^{(i)}J_7z$
+($0\le i\le6$, $a\in\{x,y,z\}$), their Gram matrix $G=V^\dagger V$,
+the overlaps $h=V^\dagger z$ and $q_i=\sum_a|h_{ia}|^2$.
+Put $d_i=\sum_{j\ne i}\|T_{ij}\|_F^2$ and define
+\[
+ S_1=\sum_iq_i,\qquad Q=\sum_iq_i^2,\qquad
+ R=\sum_id_iq_i,
+\]
+\[
+ F=\sum_{i\ne j}\bigl(\|T_{ij}\|_F^2q_i
+                -\|T_{ij}^{\mathsf T}h_i\|^2\bigr),\qquad
+ L=\sum_{i<j}\operatorname{Re}(h_i^\dagger T_{ij}h_j),
+\]
+where $T_{ij}=T_{ji}^{\mathsf T}$ for $i>j$.
+Each summand of $F$ is nonnegative because the operator norm of a
+matrix is at most its Frobenius norm.  The respective bidegrees in
+$(z,\bar z)$ are $(2,2)$ for $S_1$, $(4,4)$ for $Q,R,F$, and $(3,3)$
+for $L$.  All five quantities are invariant under product $SU(2)$
+and site permutations: $J_7U=UJ_7$, so the Pauli indices of $h_i$
+and $T_{ij}$ rotate together.  Under complex conjugation, with
+$\Delta=\operatorname{diag}(1,-1,1)$, they transform as
+$h_i(\bar z)=\Delta\overline{h_i(z)}$ and
+$T_{ij}(\bar z)=\Delta T_{ij}(z)\Delta$; the real part makes $L$ invariant.
+A global phase multiplies all $h_i$ by one phase.  Their values equal those of $\psi_y$ by hypothesis.
+
+In the displayed frame of~\eqref{eq:ico}, $J_7|b\rangle=(-1)^{7-|b|}|\bar b\rangle$. The pair and complement strings have total weights $2$ and $5$, and the endpoint strings have weights $6$ and $1$, so their spin-flip signs must be retained separately. Comparing complementary amplitudes, the antilinear map $\sigma_z^{(s)}J_7$ acts on each string of the pair/complement pattern with sign $-1$ and on the endpoint pattern with sign $+1$. At an ordinary site $i$ the map is $\sigma_z^{(i)}J_7=(-1)^{b_s+b_i}\sigma_z^{(s)}J_7$, which reverses the sign on both endpoints and on the $10$ pair/complement strings with $b_i\ne b_s$; these $10$ strings, now with sign $+1$, and the other $20$, with sign $-1$, contribute $-10u$, while the endpoints contribute $-2y$. The transverse components of every $h_i$ vanish: $J_7\psi_y$ has the same support as $\psi_y$ ($s=0$ with ordinary weights $\{2,6\}$, $s=1$ with $\{0,4\}$), $X_i$ or $Y_i$ at an ordinary site changes the parity of the ordinary weight, and $X_s$ or $Y_s$ moves a string into the other branch, whose weight set is disjoint. This yields the family frame values (checked by FO-1)
+\[
+ h_s^*=-1+4y,\qquad h_o^*=-\frac{1+4y}{3},\qquad
+ q_0^*=(h_s^*)^2,\quad q_o^*=(h_o^*)^2.
+\]
+Both $h_s^*$ and $h_o^*$ are negative. The pair profile gives
+$d_0=6v^2$ and $d_i=v^2+5w^2$ for $i>0$, so $d_0>d_i$.
+Since $F(\psi_y)=0$, the hypothesis gives $F(z)=0$; every pair weight
+is positive, so each $h_i=\zeta_i e_z$ is axial.
+
+The equalities for $S_1$ and $R$, with $d_0\ne d_i$, determine
+$q_0=q_0^*$ and $\sum_{i=1}^6q_i=6q_o^*$.
+The equality for $Q$ then gives
+$\sum_{i=1}^6q_i^2=6(q_o^*)^2$.
+Equality in Cauchy--Schwarz forces $q_i=q_o^*$ for every $i>0$.
+Thus all $|\zeta_i|$ equal their nonzero family values.
+Moreover
+\[
+ L(z)=\sum_{i<j}a_{ij}\operatorname{Re}(\bar\zeta_i\zeta_j)
+ \le\sum_{i<j}a_{ij}|\zeta_i||\zeta_j|=L(\psi_y),
+\]
+where all $a_{ij}$ are positive.  The hypothesis on $L$ makes this an
+equality, so every pair of phases agrees.  A global phase of $z$
+can make $h_{0z}=h_s^*$ and $h_{iz}=h_o^*$ exactly.
+
+The one-site Bloch vectors vanish; the Gram $G$ therefore has
+identity diagonal $3\times3$ blocks and off-diagonal blocks $T_{ij}$.
+Let $c$ have axial entries $c_{0z}=-1/2$, $c_{iz}=-1/4$ for $i>0$,
+and zero transverse entries.  Since $T_{0j}=ve_ze_z^{\mathsf T}$ and $T_{ij}=we_ze_z^{\mathsf T}$, only axial entries of $Gc$ survive, with
+$(Gc)_{0z}=-\tfrac12-\tfrac32v=h_s^*$ and $(Gc)_{iz}=-\tfrac14-\tfrac v2-\tfrac54w=h_o^*$; so $Gc=h$, and
+$c^\dagger h=-\tfrac12h_s^*-\tfrac32h_o^*=1$.  Consequently
+\[
+ \|z-Vc\|^2=1-2\operatorname{Re}(c^\dagger h)
+                   +c^\dagger Gc=0.
+\]
+Thus $z=(-Z_0/2-\sum_{i=1}^6Z_i/4)J_7z$.
+Proposition~\ref{prop:kramers-conference-shell} therefore puts $z$ in the
+complex pair/complement shell $z_{T,b}$, where $T$ is the shell's symmetric amplitude matrix (not the
+correlation blocks $T_{ij}$ above), with entries $t_{ij}$. On that shell
+$\langle Z_0Z_j\rangle=1-4b^2-4p_j$ and $\langle Z_iZ_j\rangle=1-4(p_i+p_j)+8|t_{ij}|^2$, with $\sigma$ and $p_j$ as
+in~\eqref{eq:complexsos}. Equating these with $v$ and $w$, and using $\sum_jp_j=2\sigma=1-2b^2$, gives
+$b^2=y$, $p_j=(1-2y)/6=\sigma/3$ and $|t_{ij}|^2=(1-2y)/30=\sigma/15$, so the second and third squares
+of~\eqref{eq:complexsos} vanish and its first is $\pi_3(\psi_y)-121/917$. Since $z$ has the purity of $\psi_y$,
+\eqref{eq:complexsos} gives $\sum_{i<j}|(TT^\dagger)_{ij}|^2=0$: $T$ is a scaled symmetric conference matrix.
+Proposition~\ref{prop:confphase} classifies it by diagonal congruence and
+ordinary-site permutations. Its displayed local unitaries preserve the
+endpoint amplitudes for every $b$, so $z$ is equivalent to $\psi_y$.
+At $y=37/524$ this recovers the purity orbit and the pair values
+$19/131$ and $11/131$ checked independently by MO-1--MO-2.
+\end{proof}
+
+\begin{corollary}[Fourth-moment orbit rigidity]\label{cor:fourth-moment-orbit-rigidity}
+Let $X_r^+(z)$ denote the normalised $r$-copy moment of a pure seven-qubit
+state after product-local-unitary and site-permutation twirling and the
+complex-conjugation average. Fix $y\in(1/32,1/12)$. If
+$X_r^+(z)=X_r^+(\psi_y)$ for some $r\ge4$, then $z$ is local-unitarily and
+site-permutation equivalent to $\psi_y$. In particular this applies to
+both the purity and entropy optimisers.
+\end{corollary}
+\begin{proof}
+A twirl-invariant polynomial of bidegree $(k,k)$ with $k\le r$ is a
+linear functional of $X_r^+$, after multiplying by
+$\operatorname{tr}(zz^*)^{r-k}=1$.  The thirteen invariants of
+Theorem~\ref{thm:moment-orbit-rigidity} are of this kind with $k\le4$;
+the $r$-copy moment determines the four-copy moment by partial trace.
+\end{proof}
+
+Lemma~\ref{lem:fivecopy-tangent-line} and Corollary~\ref{cor:fourth-moment-orbit-rigidity}
+combine into the equality step shared by the purity and entropy theorems.
+
+\begin{theorem}[Equality from a sharp five-copy identity on the family; proved]
+\label{thm:fivecopy-family-equality}
+Fix $y\in(1/32,1/12)$, and put $X_y=X_5^+(\psi_y)$ and
+$X_y'=\frac{d}{dx}X_5^+(\psi_x)|_{x=y}$. Let $\Gamma_b$ be linear maps to
+symmetric matrices, and $W_b$ matrices such that
+the functionals $X\mapsto\operatorname{tr}[W_bSW_b^{\mathsf T}\Gamma_b(X)]$,
+  with $b$ varying and $S$ ranging over symmetric matrices, span the critical space of
+  linear functionals $f$ on the span of the twirled five-copy moments with
+  $f(X_y)=f(X_y')=0$.
+If a normalised pure seven-qubit state $z$ has
+$W_b^{\mathsf T}\Gamma_b(X_5^+(z))W_b=0$ for every $b$, then
+$X_5^+(z)=X_y$, and $z$ is local-unitarily and site-permutation
+equivalent to $\psi_y$.
+\end{theorem}
+\begin{proof}
+The family values above give $H(\psi_x)=155+96x$ for the invariant
+$H=104S_1-25\mathcal E_2$, so $X_y'\ne0$.
+Lemma~\ref{lem:fivecopy-tangent-line} gives $X_5^+(z)=X_y+tX_y'$.
+Writing $h=H(\psi_y)$, both $H$ and $(H-h)^2$ are linear functionals
+of the normalised five-copy moment, since their bidegrees are at most $(4,4)$.
+The latter is critical, hence vanishes at $z$. But
+$H(z)-h=96t$, so $t=0$. Thus $X_5^+(z)=X_y$, and
+Corollary~\ref{cor:fourth-moment-orbit-rigidity} with $r=5$ gives the orbit.
+\end{proof}
+
+\begin{corollary}[seven-qubit purity minimum and rigidity; verified-arithmetic certificate, FP5-1]
+\label{cor:seven-global-from-fivecopy}
+Every normalised pure seven-qubit state satisfies $\pi_3\ge121/917$.
+Equality holds precisely on the icosahedral local-unitary/permutation
+orbit, and there the whole normalised five-copy moment equals that of
+$\Psi_{\rm ico}$. Quantitatively, with $c>0$ the least eigenvalue of the
+$C_b$,
+\[
+ \pi_3(z)-\frac{121}{917}\ \ge\ c\sum_b\operatorname{tr}
+ \bigl[W_b^{\mathsf T}\Gamma_b(X_5^+(z))W_b\bigr].
+\]
+\end{corollary}
+\begin{proof}
+For a pure state the flipped five-copy moments are averages of rank-one
+projectors, so every $\Gamma_b(X_5^+(z))\succeq0$. The identity of
+Theorem~\ref{thm:fivecopy-sharp-certificate} gives the bound and the
+displayed inequality. At equality every
+$W_b^{\mathsf T}\Gamma_b(X_5^+(z))W_b$ vanishes, and
+Theorem~\ref{thm:fivecopy-family-equality} with $y=37/524$ gives the
+moment and orbit, using the spanning assertion of
+Theorem~\ref{thm:fivecopy-sharp-certificate}. Conversely,
+Theorem~\ref{thm:ico} gives equality on that orbit.
+\end{proof}
+
+\begin{corollary}[Labelled LU orbits in the family; proved, EO-1]
+\label{cor:icosahedral-labelled-orbits}
+For each fixed $y\in(1/32,1/12)$, the states obtained by permuting the
+qubits of $\psi_y$ form exactly $42$ distinct orbits under local unitaries
+and global phase. They form one orbit when qubit permutations are also
+allowed. Representatives are indexed by a choice of distinguished qubit
+and a permutation of the last three of the six ordered ordinary labels,
+leaving the first three ordinary labels fixed.
+\end{corollary}
+\begin{proof}
+The incident pair weights are $d_s=6v^2$ at the distinguished site and
+$d_o=v^2+5w^2$ elsewhere, with $d_s>d_o$. These labelled quantities are
+LU invariants, so different choices of distinguished site give seven
+different LU classes of configurations.
+
+Fix that site. Every canonical permuted state has the same nonzero
+positive axial pair profile. A local unitary mapping two such states
+must send each local $Z$ axis to itself or its negative. Positivity of
+every pair coefficient forces the seven signs to agree. Thus all local
+unitaries are diagonal, or all are anti-diagonal. A simultaneous bit flip
+sends the real conference matrix $C$ to $-C$, which is already realised
+by diagonal congruence $D=iI$ and the local unitaries of
+Proposition~\ref{prop:confphase}.
+
+For diagonal unitaries, equality of the two nonzero endpoint amplitudes
+shows that the pair matrices are related by $C'=DCD$ with $D$ diagonal
+unitary. Conversely every such congruence is implemented by the local
+unitaries displayed in that proposition, preserving the endpoints.
+When $C,C'$ have real sign entries, $d_id_j\in\{1,-1\}$ for every
+$i\ne j$. Using three distinct indices gives
+$D=\eta\operatorname{diag}(\epsilon_i)$, where
+$\eta\in\{1,i\}$ and $\epsilon_i\in\{1,-1\}$, up to an irrelevant
+common sign. The exact LU criterion for ordinary permutations is therefore
+\[
+ C'=\tau\operatorname{diag}(\epsilon_i)
+                C\operatorname{diag}(\epsilon_i),\qquad \tau\in\{1,-1\}.
+\]
+Normalise the first ordinary row to all positive signs. Orthogonality to
+that row says that every row of the five-vertex core has two negative
+entries. Its negative-edge graph is therefore a pentagon. There are
+$(5-1)!/2=12$ labelled pentagons, all attained by ordinary permutations
+of $C$. In the normalised frame the remaining equivalence above is
+identity or complementation: after choosing $\epsilon_0=1$, the first
+row forces $\epsilon_i=\tau$ for every $i>0$. Complementation pairs
+the twelve pentagons without fixed points, leaving six classes.
+
+The six permutations fixing ordinary labels $0,1,2$ and permuting
+$3,4,5$ represent all six classes. In the base pentagon
+$1\!-\!3\!-\!2\!-\!4\!-\!5$ the vertices $1,2$ are not adjacent, and a
+permutation fixing them keeps them non-adjacent, whereas they are adjacent
+in every complement; and two such images coincide only if the permutations
+differ by a dihedral symmetry fixing two vertices, that is, the identity.
+EO-1 independently checks all $720$ ordinary permutations: the switching
+and switching-complement automorphism counts are $60$ and $60$, and
+the six classes each contain $120$ permutations. It also verifies the
+explicit diagonal local gauges on both amplitude-pattern basis vectors. Combining these with the seven
+distinguished-site choices gives $7\cdot6=42$ LU orbits.
+\end{proof}

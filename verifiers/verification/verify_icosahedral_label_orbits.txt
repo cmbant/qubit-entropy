@@ -1,0 +1,5 @@
+EO-1 explicit diagonal gauges checked on both amplitude-pattern basis vectors; PASS
+EO-1 switching automorphisms: 60; switching-complement automorphisms: 60
+EO-1 all 720 ordinary permutations: six equivalence classes of size 120; PASS
+EO-1 representatives fix ordinary labels 0,1,2 and permute 3,4,5: [(0, 1, 2, 3, 4, 5), (0, 1, 2, 3, 5, 4), (0, 1, 2, 4, 3, 5), (0, 1, 2, 4, 5, 3), (0, 1, 2, 5, 3, 4), (0, 1, 2, 5, 4, 3)]
+EO-1 PASS: 7 distinguished sites times 6 classes = 42 labelled LU orbits; one LU/permutation orbit

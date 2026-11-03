@@ -1,0 +1,61 @@
+The transport law~\eqref{eq:fqe-spin-flip-calibration} integrates exactly. The result is a sum of squares for the defect
+in~(GE), which shows which terms vanish on the equality states.
+
+\begin{proposition}[Exact spin-flip calibration]
+\label{prop:fqe-spin-flip-calibration}
+In the notation of the proof of Theorem~\ref{thm:fqe-general-envelope}, let $\kappa=\sqrt\tau<1$ and put
+\[
+ A_i=X_i(a),\qquad E_i=X_i(\phi)+\tilde X_i(\phi),\qquad
+ c_{ij}=c_{ij}(\phi),\qquad C_0=\sum_{i<j}\|c_{ij}\|^2.
+\]
+Then the defect in the stronger envelope~(GE) is exactly
+\begin{align}
+&H(z_\kappa)-\kappa^2(1-\kappa)\Bigl(1+\frac78W_0\Bigr)\notag\\
+&\quad=(1-\kappa)^3H(\phi)
+ +\frac{9\kappa}{32}\sum_i\|\kappa A_i+\sqrt2(1-\kappa)E_i\|^2
+ +\frac{3\kappa^3}{32}\sum_i\|A_i\|^2\notag\\
+&\qquad\quad+\frac92\kappa(1-\kappa)^2C_0
+ +\frac98\kappa^2(1-\kappa)\sum_{i<j}\|c_{ij}-\tilde c_{ij}\|^2.
+\tag{SC-SOS}\label{eq:fqe-spin-flip-calibration-sos}
+\end{align}
+In particular, since $\frac38\sum_i\|A_i\|^2=F(a)$,
+\[
+ H(z_\kappa)\ge \kappa^2(1-\kappa)\Bigl(1+\frac78W_0\Bigr)
+                 +(1-\kappa)^3H(\phi)+\frac{\kappa^3}{4}F(a).
+\]
+\end{proposition}
+\begin{proof}
+Integrate~\eqref{eq:fqe-spin-flip-calibration} from $0$ to $\kappa$ and multiply by $(1-\kappa)^3$; the initial value is
+$\mathcal M(0)=H(\phi)$. To integrate exactly, set $p=\sqrt{(1+t)/2}$ and $q=\sqrt{(1-t)/2}$.
+All coefficients of $\mathcal O$ are real and its maps commute with
+spin flip. Cubic expansion in the flip-fixed vectors $a,b$ therefore gives
+\[
+ X_i(z_t)+\tilde X_i(z_t)
+ =p\bigl[(1+t)A_i+(1-t)B_i\bigr],\qquad
+ B_i=\sqrt2 E_i-A_i.
+\]
+Only the terms containing zero or two occurrences of $ib$ survive.
+With $r=(1+t)/(1-t)$ the site contribution to $\mathcal M'(t)dt$ is
+$\frac9{64}\sum_i\|rA_i+B_i\|^2dr$.
+For $R=(1+\kappa)/(1-\kappa)$, completing the square gives
+\[
+ \int_1^R\|rA+B\|^2dr
+ =(R-1)\|B+\tfrac{R+1}{2}A\|^2
+       +\frac{(R-1)^3}{12}\|A\|^2.
+\]
+Multiplication by $(1-\kappa)^3$ gives the two site terms of~(SC-SOS).
+
+The traceless marginal differences scale by $\sqrt{1-t^2}$ and
+anticommute with spin flip. Writing $z_t=\alpha\phi+\beta\tilde\phi$,
+where $\alpha^2+\beta^2=1$ and $2\alpha\beta=t$, gives
+\[
+ c_{ij}(z_t)=\sqrt{1-t^2}(\alpha c_{ij}-\beta\tilde c_{ij}),\qquad
+ \sum\|c_{ij}(z_t)\|^2=(1-t^2)(C_0-tD_0),
+\]
+where $D_0=\operatorname{Re}\sum\langle c_{ij},\tilde c_{ij}\rangle$.
+Its integrated contribution is
+$\frac94\kappa(1-\kappa)[(2-\kappa)C_0-\kappa D_0]$.
+Use $C_0-D_0=\frac12\sum\|c_{ij}-\tilde c_{ij}\|^2$ to obtain the last
+two terms. The integrations are checked in FG-8; this
+check involves only scalar rational identities, not state evaluations.
+\end{proof}

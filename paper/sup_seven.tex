@@ -1,0 +1,112 @@
+\input{seven_qubit/replica_hierarchy}
+\input{seven_qubit/four_copy_bound}
+
+\section{The complex conference family}\label{sec:sup-conference}
+The preceding replica hierarchy shows how the lower-copy relaxations fall
+short of the sharp seven-qubit purity bound. An explicit candidate is
+provided by the complex conference family, whose states are parametrised
+by a complex symmetric $6\times6$ matrix. We prove a sum-of-squares
+purity identity \emph{within this family}, classify its equality cases,
+and derive its spin-flip equation. This explains the icosahedral geometry,
+but does not establish a bound for arbitrary states: the five-copy
+certificate in Section~\ref{sec:fivecopy} supplies globality, and the
+invariant reconstruction there supplies equality rigidity.
+Figure~\ref{fig:seven-proof-map} separates these steps from the later
+entropy proof.
+\input{sup_seven_proof_map}
+\input{seven_qubit/conference_phase_rigidity}
+\subsection{A spin-flip equation for the conference family}\label{sec:sup-conference-shell}
+\input{seven_qubit/conference_antilinear_shell}
+
+\input{seven_qubit/five_copy_level}
+\input{seven_qubit/five_copy_probe_certificate}
+\input{seven_qubit/positive_repair_lemma}
+\input{seven_qubit/five_copy_repair_certificate}
+\input{seven_qubit/moment_orbit_rigidity}
+
+\subsection{Proof of Theorem~\ref{thm:fqe-seven-purity}}\label{sec:sup-seven-purity}
+\begin{restated}[the seven-qubit purity minimum; verified-arithmetic certificate FP5-1, exact FO-1]{Theorem}{thm:fqe-seven-purity}
+Every pure seven-qubit state satisfies $\pi_3(\psi)\ge121/917$. Equality holds if and only if $\psi$ is
+equivalent to $\Psiico$ under local unitaries and permutations of the qubits.
+\end{restated}
+\begin{proof}
+Corollary~\ref{cor:seven-global-from-fivecopy} combines the positive
+twelve-face identity of Theorem~\ref{thm:fivecopy-sharp-certificate}
+with the equality-moment and orbit reconstruction of
+Theorem~\ref{thm:fivecopy-family-equality}.
+Theorem~\ref{thm:ico} computes the attaining value at $\Psiico$.
+\end{proof}
+\input{seven_qubit/purity_nondegenerate}
+
+\section{The sharp mean entropy at seven qubits}\label{sec:sup-seven-entropy}
+The family entropy maximiser $\psi_{x_*}$ has, over all its triple
+reductions, four distinct positive marginal eigenvalues. A one-variable polynomial majorant of the entropy
+touching all four would require degree at least seven
+(Proposition~\ref{prop:seven-entropy-majorant-degree}).
+The proof instead pairs each marginal with its spin flip to obtain
+a degree-five joint majorant. An entropy--purity slope and an eigenvalue
+cap first restrict the states that could improve on $\psi_{x_*}$;
+a localised five-copy identity then proves the bound on that region.
+The equality-moment reconstruction used for purity applies again at
+$x_*$, but selects a different orbit. The final subsections establish
+nondegeneracy, exclude mixed-state maximisers, and show that every local
+entropy maximum has full-rank marginals.
+\input{seven_qubit/seven_qubit_entropy_local}
+\input{seven_qubit/seven_qubit_entropy_global_upper}
+\input{seven_qubit/seven_qubit_entropy_compatibility}
+\input{seven_qubit/seven_qubit_entropy_joint}
+\input{seven_qubit/joint_entropy_analytic_proof}
+\input{seven_qubit/seven_qubit_entropy_certificate}
+\input{seven_qubit/seven_qubit_entropy_equality}
+\begin{restated}[seven-qubit mean-entropy maximum and equality; verified-arithmetic E7-1; exact AH-6, FO-1, EO-1; uses Theorem~\ref{thm:fqe-seven-purity}]{Theorem}{thm:fqe-seven-entropy}
+Every pure seven-qubit state satisfies
+\[
+ E_3(\psi)\le E_3(\psi_{x_*})=2.965356029477675899\ldots\ \text{bits}.
+\]
+Equality holds if and only if $\psi$ is local-unitarily and qubit-permutation equivalent to $\psi_{x_*}$.
+With fixed qubit labels, the equality set consists of exactly $42$ LU orbits.
+\end{restated}
+\begin{proof}
+Theorem~\ref{thm:seven-entropy-global-maximum} combines the
+competitor restrictions
+(Proposition~\ref{prop:seven-competitor-band} and
+Corollary~\ref{cor:seven-entropy-eigen-cap-497}),
+the joint majorant (Proposition~\ref{prop:seven-joint-entropy-target}),
+and the localised five-copy identity
+(Theorem~\ref{thm:seven-entropy-localized-identity}).
+Proposition~\ref{prop:seven-entropy-equality-moment} fixes the equality
+moment; Corollary~\ref{cor:fourth-moment-orbit-rigidity}
+identifies the orbit, and Corollary~\ref{cor:icosahedral-labelled-orbits}
+counts its $42$ labelled LU orbits.
+\end{proof}
+\input{seven_qubit/seven_qubit_entropy_nondegenerate}
+\input{seven_qubit/entropy_full_rank}
+
+\paragraph{The remaining sections.} The four- and seven-qubit proofs are now complete. The remaining sections collect
+independent consequences and generalisations, with one exception: Lemma~\ref{lem:focus-pauli} and
+Proposition~\ref{prop:zero-focus} of Section~\ref{sec:sextic-general} supply the focused-covariant zero of the
+conference family and the symmetric cubic kernel of the seven-qubit entropy certificate. Apart from these two
+statements, none of the remaining sections is needed for the preceding global optima.
+
+\input{seven_qubit/sextic_covariant_generalizations}
+\input{seven_qubit/even_qubit_purity_minima}
+\input{seven_qubit/balanced_purity_18}
+\input{seven_qubit/spinflip_tradeoff}
+
+\section{Thirteen qubits: purity interval and an entropy witness}\label{sec:sup-thirteen}
+At thirteen qubits the Rains linear programme (level two of the hierarchy of Section~\ref{sec:hierarchy}) has value
+$25/1408$, but a state attaining it would be a pure $((13,1,6))_2$ code, which does not exist. The three-copy level, in the
+Schur--Weyl coordinates of Section~\ref{sec:threecopy-sw}, gives a lower bound strictly above the LP value; measuring one
+qubit of the fourteen-qubit graph state of Theorem~\ref{thm:fourteenfifteen} gives an upper bound
+(Proposition~\ref{prop:thirteeninterval}). The exact minimum remains open. A graph-code superposition built on the same
+witness gives $\max E_6>5.8336$ (Corollary~\ref{cor:thirteen-entropy-witness}). The paper uses only these
+thirteen-qubit statements and Theorem~\ref{thm:threecopy-sw}(a); the other sizes are recorded with the same certificates.
+\input{seven_qubit/three_copy_schur_weyl}
+
+\subsection{The thirteen-qubit interval}\label{sec:sup-thirteen-interval}
+\input{seven_qubit/pauli_postselection}
+
+{\sloppy % a long script name in thm:strictLP1319
+\input{seven_qubit/thirteen_interval}\par}
+
+\input{seven_qubit/thirteen_entropy_witness}

@@ -1,0 +1,4 @@
+[PASS] PM-1 all 12 cut correlation matrices are signed permutations; u^(j)_a=r_(a+k_j) s_a, k_j=[0, 2, 1], sigma ranges over the 4 odd-minus vectors
+[PASS] PM-2 sum_j|u_j|^2=|r|^2|s|^2; delta-generators (cycle r, cycle s, swap r,s, even flips) permute the 12 probabilities; the 32 admissible cube pairs are invariant under S3 on r, S3 on s, swap and even flips
+[PASS] PM-4 exact equality spectra, maximum HS fidelity (3+sqrt3+sqrt2+sqrt6)/12, four tied pairs and all 144 symmetry-related coordinate pairs
+[EVALUATION] C* = 0.1905789470127268878590967

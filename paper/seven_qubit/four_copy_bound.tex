@@ -1,0 +1,128 @@
+\subsection{The four-copy spin-flip relaxation}\label{sec:fourcopy}
+
+\paragraph{Construction.} At four copies, the per-site algebra is
+$\mathcal A_4\cong\mathbb C\oplus M_3\oplus M_2$: the $S_4$ irreps $[4],[3,1],[2,2]$, with $U(2)$
+multiplicity spaces of dimension $5,3,1$ (the others vanish on qubits). The twirled moment $X$ of
+$(|\psi\rangle\langle\psi|)^{\otimes4}$ lies in $\mathcal A_4^{\otimes n}$; after averaging over site permutations and
+$\psi\mapsto\overline\psi$ it is real, $S_n$-symmetric and fixed by global copy permutations on either side, so
+each Fourier block of a site-type pattern $(a,b,c)$ ($a$ sites in $[3,1]$, $b$ in $[2,2]$, $c$ in $[4]$)
+is supported on the $S_4$-invariant vectors of $[3,1]^{\otimes a}\otimes[2,2]^{\otimes b}$. Splitting
+these by the $S_a\times S_b$ isotypic components leaves blocks $\omega_{(a,b),\lambda\mu}$ whose entries
+are the free parameters: $167$ at $n=7$. Two flipped moments are linear in $X$:
+\[
+ \begin{aligned}
+  Y_1&=\text{twirl of }|\psi\psi\psi\tilde\psi\rangle\langle\psi\psi\psi\tilde\psi|=T_1^{\otimes n}X,\\
+  Y_2&=\text{twirl of }|\psi\psi\tilde\psi\tilde\psi\rangle\langle\psi\psi\tilde\psi\tilde\psi|=T_2^{\otimes n}X,
+ \end{aligned}
+\]
+where $T_1$, $T_2$ are the per-site maps $a\mapsto E\,a^{T_{\mathrm{flip}}}E^{T}$ (partial transpose on
+the flipped copies, $E=\epsilon$ on those copies), exact rational $14\times14$ matrices with $12T$
+integral. $Y_1$ is supported on $S_3$-invariant and $Y_2$ on $S_2\times S_2$-invariant vectors of the
+copies, and both are positive. The relaxation minimises the mean purity $\tr(X\,\mathrm{SWAP}_{12}^{S})$
+(averaged over $|S|=k$) subject to $\tr X=1$, $\omega\succeq0$ and the $\gamma$-blocks of $Y_1,Y_2$
+$\succeq0$. Tracing out a copy maps these constraints onto the corresponding three-copy ones, so the
+four-copy bound is at least the three-copy bound. The numerical construction uses orthonormal irreps;
+the certificate uses integer irreps and integer symmetry-adapted bases.
+
+\noindent\emph{Numerical} (FS-0--FS-2): the values at $n=4,5,6$ are $1/3$, $1/4$, $1/8$ (to
+$10^{-9}$), the true minima. At $n=7$:
+\begin{center}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+constraints & $\omega$ & $\omega+Y_1$ & $\omega+Y_2$ & $\omega+Y_1+Y_2$\\
+\midrule
+bound on $\pi_3$ & $-1/7$ & $0.130888$ & $0.131821$ & $0.131877$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The combined numerical value is about $7.5\times10^{-5}$ below $121/917$;
+$Y_2$ alone nearly reaches the combined value. To improve the conditioning of the numerical solve, every block is first congruence-centred at the Haar average of the moment,
+proportional to $\sum_{\pi\in S_4}\pi^{\otimes n}$, on the retained nonzero blocks.
+The two largest $n=7$ solves are flagged inaccurate by the solver, so these values are
+numerical evidence. The certified bounds are Theorem~\ref{thm:fourcopy} and, from above,
+Proposition~\ref{prop:fourcopy-not-sharp}: $211/1600\le L_4<6597/50000<121/917$.
+
+\begin{theorem}[exact certificate; FC-0--FC-4]\label{thm:fourcopy}
+Every pure seven-qubit state satisfies $\pi_3(\psi)\ge 211/1600 = 0.131875$.
+\end{theorem}
+
+\begin{proof}
+Write $x$ for the $167$ real coordinates of the symmetrised moment, with
+$\mathrm{on}(x)=\tr X=1$ and $\mathrm{oo}(x)=\pi_3(\psi)$.
+The trace weights each site type $(a,b,c)$ by $\frac{7!}{a!b!c!}3^a5^c$.
+In the certificate's convention each multiplicity matrix has
+$\omega_{kk}=x_{kk}$ and $\omega_{kl}=x_{kl}/2$ for $k\ne l$.
+These matrices are positive semidefinite for genuine states. Indeed each nontrivial
+Fourier block is
+$2R(\omega\otimes\operatorname{adj}K)R^TH$, with $H$ the positive Gram form,
+$R$ an integer basis of the allowed isotypic support and $K$ a positive definite Gram matrix.
+Conjugation by $H^{1/2}$ makes this a congruence of
+$\omega\otimes\operatorname{adj}K$; the scalar trivial block is treated separately.
+For a Fourier block $B_j$ of $Y_j$, $j=1,2$, the flip blocks are
+$\gamma_g(x)=Q_g^THB_jQ_g\succeq0$, where $Q_g$ spans the corresponding
+row-invariant isotypic component. These are Gram compressions of the positive $Y_j$ blocks.
+
+Put $\lambda=211/1600$. The certificate supplies a positive integer $Q_z$ and
+integer matrices $Z_g\succ0$ such that
+\[
+ d_p=\mathrm{oo}_p-\lambda\,\mathrm{on}_p
+       -\frac1{Q_z}\sum_g\langle Z_g,\gamma_g(e_p)\rangle
+\]
+forms a positive definite matrix $D_b=[d_{kl}]$ on every $\omega$-block $b$.
+Here $\langle A,B\rangle=\tr(A^TB)$. FC-3 checks positive definiteness by exact
+fraction-free elimination. It computes the integer numerator
+$12^7\sum_g\langle Z_g,\gamma_g(e_p)\rangle$ using $12T_1,12T_2$,
+by adjoint contraction modulo $35$ primes and Chinese remaindering under an integer
+triangle-inequality bound. Thus, with the off-diagonal convention above,
+\[
+ \pi_3(\psi)-\lambda
+ =\sum_b\langle D_b,\omega_b(x)\rangle
+   +\frac1{Q_z}\sum_g\langle Z_g,\gamma_g(x)\rangle\ge0.
+\]
+The rational basis construction uses modular pivots only to prove independence.
+For the copy-group invariant space, the exact trace of its averaging projector
+gives the matching upper bound on dimension. In the subsequent Young-isotypic
+decomposition the row subgroup has a one-dimensional fixed line in the matching Specht module,
+so each selected row-invariant vector accounts for one multiplicity;
+the sum of its irrep dimensions equals that same exact rank. Thus no component
+is omitted. A floating rank estimate is not used for completeness. \qedhere
+\end{proof}
+
+\begin{remark}[regressions; numerical]
+Two numerical regressions accompany the exact proof and are not used in it. FC-1 checks the parametrisation and
+the identities $\mathrm{on}=\tr X$, $\mathrm{oo}=$ mean purity, in the same exact coordinates, on random
+three-qubit states; FC-2 compares the CRT-recovered adjoint sum with a direct forward computation at $n=3,4$ for random integer $Z$.
+\end{remark}
+
+\begin{proposition}[the four-copy relaxation is not sharp; exact certificate, NS-0--NS-4]\label{prop:fourcopy-not-sharp}
+Let $L_4$ be the optimum of the $n=7$ four-copy relaxation above ($k=3$; constraints $\tr X=1$, all $78$
+$\omega$-blocks and all $271$ flip blocks of $Y_1,Y_2$ positive semidefinite; these are all of its constraints,
+with no marginal or further flip equalities). Then
+\[
+ \frac{211}{1600}\ \le\ L_4\ <\ \frac{6597}{50000}=0.13194\ <\ \frac{121}{917}=0.131952\ldots,
+ \qquad \frac{121}{917}-\frac{6597}{50000}=\frac{551}{45850000}.
+\]
+The feasible point is a pseudo-moment, not a seven-qubit state; it excludes only proofs that use this
+relaxation unchanged.
+\end{proposition}
+\begin{proof}
+The lower bound is Theorem~\ref{thm:fourcopy}. For the upper bound, the data file supplies an integer
+vector $x$ of the $167$ coordinates of the proof of Theorem~\ref{thm:fourcopy}. Apart from $\tr X=1$
+every constraint is homogeneous, so $x/\mathrm{on}(x)$ is feasible once every block of $x$ is positive
+semidefinite, and its objective is $\mathrm{oo}(x)/\mathrm{on}(x)$. NS-1 computes $\mathrm{on}(x)>0$
+and this ratio exactly; it is $0.1319308\ldots<6597/50000$. NS-2 checks that all $78$ matrices
+$2\omega_b(x)$ (integer) are positive definite by exact fraction-free elimination. NS-3 forms
+the moment $X(x)$ and $(12T_j)^{\otimes7}X(x)$ modulo each of $34$ primes, recovers every
+$12^7\gamma_g(x)=Q_g^TH\,B_j\,Q_g$ as an integer matrix by the Chinese remainder theorem under an
+integer triangle-inequality bound on its entries (the bound covers the block sums of the moment, the seven
+flip contractions and the compression; the modulus exceeds twice it), and checks that all $271$ are exactly symmetric and
+positive definite by exact fraction-free elimination. Hence $L_4\le\mathrm{oo}(x)/\mathrm{on}(x)<6597/50000$.
+\end{proof}
+
+\begin{remark}[provenance of the pseudo-moment; numerical]
+The point $x$ is a floating-point optimum of the Haar-centred relaxation
+($0.1318766470$), mixed with the Haar point at weight $10^{-3}$, moved to the exact coordinates by a per-type
+least-squares fit and rounded to a dyadic grid; its least centred block eigenvalue is about $10^{-3}$.
+None of this is used in the proof, which checks the stored integers only. NS-0 is a regression of the
+modular forward map against a direct floating-point computation at $n=3,4$.
+\end{remark}

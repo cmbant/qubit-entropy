@@ -1,0 +1,315 @@
+\subsection{Nondegeneracy of the maximiser}\label{sec:seven-entropy-nondegenerate}
+Having identified the global maximum and its equality orbit, we now quantify the entropy loss near that orbit.
+The constrained Hessian at \(\phi\) is negative definite transverse to the symmetry orbit, giving
+an explicit quadratic basin.
+
+\begin{theorem}[Strict full-space local entropy maximum; exact certificate SEH-1--SEH-3 with an analytic perturbation bound]
+\label{thm:entropy-seven-local}
+The state \(\psi_{x_*}\) is a \emph{strict local maximiser} of
+\(E_3\) modulo local unitaries and global phase. More precisely,
+for every nonzero real unit-sphere tangent vector \(v\) orthogonal to the
+local-unitary and phase tangent space at \(\psi_{x_*}\),
+\begin{equation}\label{eq:entropy-seven-hessian-gap}
+   D^2(E_3|_{\|z\|=1})_{\psi_{x_*}}[v,v]
+      <-\frac{239}{1000}\,\|v\|^2.
+\end{equation}
+The \(22\) phase and local-unitary symmetry infinitesimals have
+zero constrained Hessian.
+\end{theorem}
+\begin{proof}
+Extend \(E_3(z)\) off the unit sphere by the same formula
+\(-35^{-1}\sum_{|S|=3}\operatorname{tr}(R_S\log_2 R_S)\), with \(R_S\) not renormalised:
+for unit \(z\) and \(r>0\), \(E_3(rz)=r^2E_3(z)-r^2\log_2r^2\). Hence \(E_3\) is the mean entropy only on the
+unit sphere, and its radial derivative \(\frac12\frac{d}{dr}E_3(rz)|_{r=1}=E_3(z)-1/\ln2\) is the multiplier \(\lambda\) below.
+For a three-qubit cut flatten \(z\) to an \(8\times16\) matrix \(M\)
+and put \(R=MM^\dagger\). For a variation \(v\) with flattening \(\dot M\),
+write \(\dot R=\dot MM^\dagger+M\dot M^\dagger\), and denote the Fréchet
+derivative of the matrix logarithm by
+\[
+ {\cal L}_R(H)=\int_0^\infty(R+tI)^{-1}H(R+tI)^{-1}\,dt.
+\]
+The unnormalised second variation of the mean entropy is
+\begin{equation}\label{eq:entropy-seven-H-form}
+ D^2 E_3(z)[v,v]
+ =-\frac1{35\ln2}\sum_{|S|=3}
+ \left[2\operatorname{tr}\dot M^\dagger(\ln R+I)\dot M
+ +\operatorname{tr}\dot R\,{\cal L}_R(\dot R)\right].
+\end{equation}
+At the stationary unit vector put
+\(\lambda=\langle z,\partial_{\bar z} E_3(z)\rangle
+=E_3(z)-1/\ln2\).
+The constrained Hessian is \(H=D^2E_3-2\lambda I_{256}\);
+it splits into a real and imaginary \(128\times128\) block
+because \(z\) is real. Its phase/LU symmetry generators, given
+by \(iz\) and \(i\sigma_a^{(j)}z\), span \(G\).
+
+For the certificate take the nearby \emph{rational} vector
+\(z_0=a_0U+b_0V\), with \(a_0=16934604/10^8\),
+\(b_0=26425139/10^8\). Exact integer signs in
+\eqref{eq:entropy-seven-star}, evaluated at
+\(698287976009/10^{13}\) and \(698287976010/10^{13}\), bracket
+\(x_*\). Squaring rational endpoints proves
+\(|a-a_0|,|b-b_0|<5\cdot10^{-9}\) and hence
+\(\|\psi_{x_*}-z_0\|<3\cdot10^{-8}\) (SEH-1).
+Every reduced eigenvalue along this short segment is at least
+\(1/12\), and each difference between two \emph{distinct}
+reduced eigenvalues at \(z_0\) exceeds \(1/64\); both are
+exact rational checks.
+
+At \(z_0\) the spectral projectors are rational: if \(\ell\)
+ranges over the two or three distinct eigenvalues of \(R\), then
+\[
+ P_\ell=\prod_{h\ne\ell}\frac{R-hI}{\ell-h},\qquad
+ \ln R=\sum_\ell(\ln\ell)P_\ell,\qquad
+ {\cal L}_R(H)=\sum_{\ell,h}
+ \frac{\ln\ell-\ln h}{\ell-h}P_\ell H P_h,
+\]
+with diagonal coefficient \(1/\ell\). SEH-2 uses rational proxies
+for the four logarithms and \(1/\ln2\), each with error less than
+\(10^{-13}\), bounded by exact rational \(\operatorname{arctanh}\)
+series. It forms a rational fixed-point matrix \(\widehat B\)
+approximating \(B=-H+4GG^T\), including the symmetry penalty,
+with entrywise rounding checked by integer arithmetic.
+
+The exact Hessian at \(z_0=a_0U+b_0V\) respects the symmetry-adapted orthogonal integer decomposition of Theorem~\ref{thm:icolocal}.
+Rounding could disrupt this structure in \(\widehat B\), so SEH-2 checks the decomposition exactly for \(\widehat B\). The decomposition consists of the six computational-basis sectors~\eqref{eq:ico-hessian-six-blocks}, the disjoint-pair projectors \(P_2,P_3,P_{-1},P_{-3}\) on \(\mathcal H_{\mathrm{supp}}\) and \(\mathcal H_{\mathrm{flip}}\), and the triple-incidence projectors \(F_1,F_2,P_{8,40}\) on \(\mathcal H_{\mathrm{odd}}\). In both \(128\times128\) blocks, SEH-2 verifies by exact integer multiplication that the \(16\) isotypic blocks (sizes \(1\times1\), \(2\times2\), and \(4\times4\), with diagonal integer Gram matrices \(D_{\mathrm{blk}}\)) span \(\mathbb R^{128}\) and are exact invariant subspaces of \(\widehat B\), and that every \(1\times1\), \(2\times2\), and \(4\times4\) symmetric integer matrix \(V_{\mathrm{blk}}^{\mathsf T}(\widehat B-0.239395\,I_{128})V_{\mathrm{blk}}\) has strictly positive leading principal minors. Hence \(\lambda_{\min}(\widehat B)>0.239395\) with no floating-point basis or Gram conditioning step.
+
+It remains to bound \(B(\psi_{x_*})-\widehat B\) analytically. Write \(\varepsilon=\|z_0-\psi_{x_*}\|<3\cdot10^{-8}\).
+Using \(R\succeq I/12\) along the segment,
+\[
+ \|R(z_0)-R(z_*)\|_{\rm op}\le3\varepsilon,\quad
+ \|\ln R(z_0)-\ln R(z_*)\|_{\rm op}\le36\varepsilon,\quad
+ \|{\cal L}_{R(z_0)}-{\cal L}_{R(z_*)}\|_{F\to F}
+ \le432\varepsilon.
+\]
+Also \(\|\dot R(v)\|_F\le3\|v\|\) and
+\(\|\dot R_{z_0}(v)-\dot R_{z_*}(v)\|_F
+\le2\varepsilon\|v\|\). Inserting these estimates in
+\eqref{eq:entropy-seven-H-form} with \(\|\dot M\|_F=\|v\|=1\) and
+\(\|{\cal L}_R\|\le12\), each cut changes by at most
+\(2\cdot36\varepsilon+2\cdot(2\varepsilon)\cdot12\cdot3+3\cdot432\varepsilon\cdot3
+=4104\varepsilon\), hence the mean by at most
+\(4104\varepsilon/\ln2<5.93\cdot10^3\varepsilon\). Parametrise the segment from $z_*$ to $z_0$ over $[0,1]$;
+then $\|\dot R\|_F\le3\varepsilon$ along it. Hence
+\(|\operatorname{tr}\dot R(\ln R+I)|\le\|\dot R\|_F\|\ln R+I\|_F<3\sqrt8\cdot\frac32\,\varepsilon\) per cut and
+\(|\|z_0\|^2-1|<3\varepsilon\), so \(\lambda(z)=E_3(z)-\|z\|^2/\ln2\) obeys \(2|\lambda(z_0)-\lambda(z_*)|<50\varepsilon\); the \(22\) columns \(iz,i\sigma_a^{(j)}z\)
+of \(G\) have norm \(\|z\|\), so \(4\|G(z_0)G(z_0)^T-G(z_*)G(z_*)^T\|_{\rm op}\le8\cdot22(1+\varepsilon)\varepsilon<180\varepsilon\).
+These add less than \(4\cdot10^2\varepsilon\). The operator-norm change is therefore below
+\(10^4\varepsilon\). This budget is analytic; SEH-3 checks only the resulting margin.
+The four rational logarithm enclosures, their divided differences,
+and the explicit \(10^{-10}\)-grid rounding used to assemble
+\(\widehat B\) add less than \(10^{-5}\) in operator norm.
+Consequently
+\[
+ \|B(\psi_{x_*})-\widehat B\|_{\rm op}
+ <10^4(3\cdot10^{-8})+10^{-5}=0.00031.
+\]
+The exact block positivity bound now implies \(B(\psi_{x_*})\succ0\), with
+\(\lambda_{\min}(B)>0.239395-0.00031=0.239085>0.239\) (SEH-3).
+By Proposition~\ref{prop:entropy-seven-stationarity} and LU/phase
+invariance, \(H\) annihilates every vector in \(G\). On \(G^\perp\)
+the penalty vanishes, so \(-H=B\succ0\) and
+\eqref{eq:entropy-seven-hessian-gap} follows. A local slice
+transverse to the compact unitary-group orbit gives the claimed
+strict local maximum modulo symmetry.
+\end{proof}
+
+
+\begin{theorem}[quadratic stability near the maximiser; proved from SEH-1--SEH-3, rational constants EB-0--EB-3]
+\label{thm:entropy-seven-quantbasin}
+Let $\mathcal O_E$ be the local-unitary, global-phase
+and qubit-permutation orbit of $\phi=\psi_{x_*}$, the equality set of
+Theorem~\ref{thm:seven-entropy-global-maximum}.
+For any normalised pure seven-qubit state $z$ write
+$\delta(z)=\min_{\phi\in\mathcal O_E}\|z-\phi\|_2$.
+If $\delta(z)\le1/20000$, then
+\begin{equation}\label{eq:entropy-seven-quantbasin}
+\boxed{\qquad
+ E_3(z)\le E_3(\psi_{x_*})-\frac{\delta(z)^2}{20}.
+ \qquad}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Let $\phi'\in\mathcal O_E$ be a closest point to $z$; by symmetry we may take $\phi'=\phi$.
+After the allowed global phase its overlap with $z$ is real
+and nonnegative. Thus
+\[
+ z=\cos\theta\,\phi+\sin\theta\,w,\qquad
+ \|w\|=1,\quad\langle\phi,w\rangle=0,\quad
+ \delta(z)=2\sin(\theta/2).
+\]
+Here $\theta=0$ is trivial. The nearest-point
+condition implies that $w$ is real orthogonal
+to every local-unitary and phase tangent vector
+at $\phi$. The full-space constrained Hessian
+certificate of Theorem~\ref{thm:entropy-seven-local}
+then gives, for $e(t)=E_3(\cos t\,\phi+\sin t\,w)$,
+\[
+ e'(0)=0,\qquad e''(0)<-\frac{239}{1000}.
+\]
+
+We obtain a uniform third-derivative bound with no
+numerical spectral estimates. For each $|S|=3$,
+let $M(t)$ be the $8\times16$ flattening of the
+unit vector $\gamma(t)=\cos t\,\phi+\sin t\,w$,
+and let $N=M'$, $R=MM^\dagger$. Along this
+unit-sphere geodesic,
+$M''=-M$, $\|M\|_F=\|N\|_F=1$, so
+\[
+ \|R'\|_F\le2,\quad \|R''\|_F\le4,\quad
+ R'''=-4R',\quad\|R'''\|_F\le8.
+\]
+At $t=0$ all triple marginals have smallest
+eigenvalue at least $1/12$ by the exact
+eigenvalue enclosures in SEH-1. As
+$\|R'(t)\|_{\rm op}\le2$, Weyl's inequality
+gives, for $0\le t\le1/10000$,
+\[
+ \lambda_{\min}(R(t))
+ \ge\frac1{12}-2t
+ \ge\frac1{12}-\frac1{5000}
+ >\frac1{16}=:m.
+\]
+The eigenvalues are at most $1$ because $\gamma(t)$
+is normalised. Hence
+$\|\ln R+I\|_F<6$.
+
+Write
+$\mathcal L_R(K)=\int_0^\infty
+ (R+sI)^{-1}K(R+sI)^{-1}\,ds$
+for the Fr\'echet derivative of $\ln R$.
+The resolvent integral bounds imply
+\[
+ \|\mathcal L_R(K)\|_F\le m^{-1}\|K\|_F,\qquad
+ \|D\mathcal L_R[H](K)\|_F
+   \le m^{-2}\|H\|_F\|K\|_F.
+\]
+Differentiating the entropy of one cut three times
+(with natural logarithms internally) yields
+\[
+ \frac{d^3}{dt^3}[-\operatorname{tr}R\log_2 R]
+ =-\frac1{\ln2}
+ \left[
+ \operatorname{tr}R'''(\ln R+I)
+ +3\operatorname{tr}R''\mathcal L_R(R')
+ +\operatorname{tr}R'\,
+       D\mathcal L_R[R'](R')
+ \right].
+\]
+Therefore its absolute value is bounded by
+\[
+ \frac{8\cdot6+3\cdot4\cdot2\cdot16
+                     +2^3\cdot16^2}{\ln2}
+ =\frac{2480}{\ln2}<3720,
+\]
+using $\ln2>2/3$. Averaging the $35$ cuts
+gives the same bound $|e'''(t)|<3720$.
+Every step holds uniformly along the geodesic.
+
+For $\delta\le1/20000$,
+$\theta=2\arcsin(\delta/2)\le2\delta\le1/10000$.
+Taylor's theorem and the negative Hessian give
+\[
+ e(\theta)-e(0)
+ \le-\frac{239}{2000}\theta^2
+       +\frac{3720}{6}\theta^3
+ \le-\left(\frac{239}{2000}-\frac{620}{10000}\right)
+       \theta^2
+ =-\frac{23}{400}\theta^2
+ \le-\frac1{20}\delta^2,
+\]
+as $\theta\ge\delta$.
+EB-0--EB-3 check all needed rational constant
+inequalities independently; the spectral and Hessian
+inputs are exactly SEH-1--SEH-3. This proves
+\eqref{eq:entropy-seven-quantbasin}.
+\end{proof}
+
+\begin{corollary}[Global quadratic stability at seven qubits; proved from the certified theorems cited in the proof]\label{cor:seven-global-quadratic}
+Let $\delta_p(z)$ be the distance from a normalised pure seven-qubit state $z$ to the orbit of $\Psiico$ under local
+unitaries, global phase and qubit permutations, and $\delta(z)$ the distance to $\mathcal O_E$ as in
+Theorem~\ref{thm:entropy-seven-quantbasin}. There are constants $c_p,c_e>0$ such that every such $z$ satisfies
+\[
+ \pi_3(z)-\frac{121}{917}\ge c_p\,\delta_p(z)^2,\qquad
+ E_3(\psi_{x_*})-E_3(z)\ge c_e\,\delta(z)^2 .
+\]
+\end{corollary}
+\begin{proof}
+Both distances are at most $\sqrt2$, since $\min_\theta\|z-e^{i\theta}\phi\|^2=2-2|\langle z,\phi\rangle|$. If
+$\delta_p(z)\le1/250$, a qubit permutation $\sigma$ carries a nearest point of the orbit into the local-unitary and
+phase orbit of $\Psiico$; $\pi_3$ is permutation invariant, so Theorem~\ref{thm:icoquantbasin} applied to $\sigma z$
+gives the bound with $1/1024$. The set $\{\delta_p\ge1/250\}$ of unit vectors is compact and $\pi_3-121/917$ is
+continuous on it. It is positive there, because equality holds only on the orbit
+(Corollary~\ref{cor:seven-global-from-fivecopy}), so it has a positive minimum $m_p$. Hence
+$c_p=\min\{1/1024,m_p/2\}$ works. The entropy bound follows in the same way from
+Theorem~\ref{thm:entropy-seven-quantbasin} for $\delta\le1/20000$, continuity of $E_3$, and the equality case of
+Theorem~\ref{thm:seven-entropy-global-maximum}. The constants come from compactness and are not explicit.
+\end{proof}
+
+\subsection{Mixed states attain neither optimum}\label{sec:seven-mixed-roofs}
+For a seven-qubit density matrix $\rho$ and $|S|=3$ let
+\[
+ E_S(\rho)=\inf_{\rho=\sum_\ell p_\ell|\psi_\ell\rangle\langle\psi_\ell|}\sum_\ell p_\ell\,S\bigl(\rho_S^{(\ell)}\bigr),\qquad
+ L_S(\rho)=\inf_{\rho=\sum_\ell p_\ell|\psi_\ell\rangle\langle\psi_\ell|}\sum_\ell p_\ell\bigl(1-\operatorname{tr}(\rho_S^{(\ell)})^2\bigr)
+\]
+be the convex roofs of the entropy (in bits) and of the linear entropy of the cut $S|S^c$, where $\rho_S^{(\ell)}$ is the
+marginal of $\psi_\ell$.
+
+\begin{lemma}[no flat extremal planes]\label{lem:seven-flat-extremal-planes}
+Let $f$ be a real function on the unit sphere of $(\mathbb C^2)^{\otimes7}$, invariant under phases and local unitaries,
+and let $\phi$ be a global extremum of $f$ such that $f$ is $C^2$ near $\phi$, every one-qubit marginal of $\phi$ is $I/2$,
+and the constrained Hessian $H$ of $f$ at $\phi$ satisfies $H[w,w]\ne0$ for every nonzero real tangent vector
+$w$ ($\operatorname{Re}\langle\phi,w\rangle=0$) orthogonal to
+\[
+ G=\operatorname{span}_{\mathbb R}\{i\phi,\ i\sigma_a^{(j)}\phi\}.
+\]
+Then no complex subspace of dimension at least two containing $\phi$ has all its unit vectors global extrema of the
+same kind.
+\end{lemma}
+\begin{proof}
+Suppose $V\ni\phi$ is such a subspace with $\dim V\ge2$. Pick a unit vector $\psi\in V$ with $\langle\phi,\psi\rangle=0$, and let
+$w$ be $\psi$ or $i\psi$. The great circle $t\mapsto\cos t\,\phi+\sin t\,w$ lies in the unit sphere of $V$, so $f$ is
+constant on it, and at the critical point $\phi$ its second derivative along this geodesic is $H[w,w]$; hence $H[w,w]=0$.
+The vectors spanning $G$ are tangent, as $\langle\phi,\sigma_a^{(j)}\phi\rangle$ is real, and the orbit of $\phi$ consists of
+critical points, so differentiating the vanishing constrained gradient along it gives $Hg=0$ for $g\in G$. Writing $w=g+w'$
+with $g\in G$ and $w'$ tangent and orthogonal to $G$, $0=H[w,w]=H[w',w']$, so $w'=0$: both $\psi$ and $i\psi$ lie in $G$.
+
+But $G\cap iG=\{0\}$. Let $\mathfrak k$ be the real span of $iI$ and the $i\sigma_a^{(j)}$, and suppose $g=A\phi=iA'\phi$ lies in $G\cap iG$, with
+$A,A'\in\mathfrak k$. Put $B=-A'$, so $A\phi=-iB\phi$. Since $A,B$ are anti-Hermitian,
+\[
+ \langle\phi,[A,B]\phi\rangle=\langle B\phi,A\phi\rangle-\langle A\phi,B\phi\rangle=-2i\|B\phi\|^2 .
+\]
+The commutator $[A,B]$ is a sum of traceless one-site operators, and every one-qubit marginal of $\phi$ is $I/2$, so the left
+side vanishes. Hence $B\phi=0$ and $A\phi=0$. Thus $\psi=0$, a contradiction.
+\end{proof}
+
+\begin{proposition}[mixed-state roofs; proved from the certified theorems cited in the proof]\label{prop:seven-mixed-roofs}
+Every seven-qubit density matrix $\rho$ satisfies
+\[
+ \frac1{35}\sum_{|S|=3}E_S(\rho)\le E_3(\psi_{x_*}),\qquad \frac1{35}\sum_{|S|=3}L_S(\rho)\le1-\frac{121}{917}.
+\]
+Equality holds in the first bound only for pure states local-unitarily and permutation equivalent to $\psi_{x_*}$, and in
+the second only for pure states equivalent to $\Psiico$.
+\end{proposition}
+\begin{proof}
+Using one ensemble of $\rho$ for all $35$ infima bounds the left sides by $\sum_\ell p_\ell E_3(\psi_\ell)$ and
+$\sum_\ell p_\ell(1-\pi_3(\psi_\ell))$, so Theorem~\ref{thm:seven-entropy-global-maximum} and
+Corollary~\ref{cor:seven-global-from-fivecopy} give the bounds and the pure equality cases.
+
+Suppose the entropy bound is attained. The left side is at most the ensemble mean of $E_3(\psi_\ell)$, and each term is
+at most $E_3(\psi_{x_*})$, so every member of every ensemble of $\rho$ is a pure maximiser. Every unit
+vector $\chi$ in the support of $\rho$ belongs to some ensemble, since $\rho-p|\chi\rangle\langle\chi|\succeq0$ for
+$p=\langle\chi,\rho^+\chi\rangle^{-1}$, with $\rho^+$ the inverse of $\rho$ on its support; so every unit vector of the
+support is a maximiser. Pick a unit vector $\phi$ in the support; after a local unitary, a qubit permutation and a phase,
+applied to $\rho$, which change neither side, $\phi=\psi_{x_*}$. Lemma~\ref{lem:seven-flat-extremal-planes} applies to
+$f=E_3$ at $\phi$: near $\phi$ all triple marginals have full rank, so $E_3$ is smooth there, the one-qubit marginals are
+$I/2$ (Theorem~\ref{thm:ico}), and Theorem~\ref{thm:entropy-seven-local} gives $H[w,w]<-\frac{239}{1000}\|w\|^2$ for tangent $w$
+orthogonal to $G$. So the support has dimension one and $\rho$ is pure.
+
+The linear-entropy case is the same with $f=\pi_3$, a global minimum and $\Psiico$ in place of $\psi_{x_*}$: the Lagrange form
+$Q$ of Theorem~\ref{thm:icolocal} is the constrained Hessian, positive semidefinite with kernel exactly $G$.
+\end{proof}
+Thus mixed-state exclusion follows from two properties of the pure optimiser, maximally mixed one-qubit marginals
+and a Hessian nondegenerate transverse to the local-unitary orbit (Lemma~\ref{lem:seven-flat-extremal-planes}); the
+four-qubit proof of
+Corollary~\ref{cor:fqe-convex-roof} instead uses the square flattenings, which the $3|4$ cuts do not have.

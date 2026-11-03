@@ -1,0 +1,3 @@
+BC-1 PASS: grouping derivative cancellation, geometric convexity and sharp threshold algebra
+BC-2 PASS: global cubic grouping identity, equality contacts and a lower-order negative control
+BC-3 PASS: unconditional analytic high-F transfer; no variance or chart hypothesis

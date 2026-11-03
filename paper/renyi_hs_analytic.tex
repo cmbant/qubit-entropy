@@ -1,0 +1,181 @@
+\subsection{An analytic HS supporting inequality}\label{sec:fqe-hs-polynomial}
+
+At the upper anchor $q_u=8/5$, choosing $\beta=1/12$ makes the
+fixed-purity optimisation a bound on $H_{8/5}-t$. We first show that its
+maximiser has one large eigenvalue, then prove the resulting one-variable
+supporting inequality. The outer dual is nonnegative for $F\le3/20$,
+which determines the split between the two anchor regions.
+Throughout this subsection put $q=8/5$, $r=q-1=3/5$ and $L=\ln2$.
+
+\begin{lemma}[A third-moment tilt at fixed purity; proved]\label{lem:fqe-hs-tilt}
+Among four-point probability vectors of a fixed purity $p\le9/16$,
+$H_{8/5}(\lambda)-\sum_i\lambda_i^3$ is maximised only by the one-large spectrum
+\[
+ \lambda(s)=\bigl((1+3s)/4,(1-s)/4,(1-s)/4,(1-s)/4\bigr),
+ \qquad p=(1+3s^2)/4,
+\]
+up to permutation (uniform when $p=1/4$).
+\end{lemma}
+\begin{proof}
+Let $Z=\sum_i\lambda_i^q$ and let $a,b,c$ be three distinct entries.
+Their mean is at most $1/3$, so the divided-difference bound~\eqref{eq:fqe-dd-power} gives
+$-[a,b,c]x^r\ge\frac12r(1-r)3^{2-r}$. Also
+$Z=\sum_i\lambda_i\lambda_i^r\le p^r$ by concavity of $x^r$.
+Consequently
+\[
+ \eta(a,b,c):=-\frac{q[a,b,c]x^r}{3rLZ}
+ \ge\frac8{75L}\frac{3^{7/5}}{(9/16)^{3/5}}
+ >\frac{16}{105}(3\cdot2^{12})^{1/5}>1.
+ \tag{HTS}\label{eq:fqe-hs-tilt-slope}
+\]
+The last comparisons use $L<7/10$ and
+$105^5=12762815625<3\cdot2^{32}=12884901888$.
+
+Lemma~\ref{lem:fqe-low-tilt-reduction}, with $\omega=1$, reduces the maximum
+to the pattern $(a,b,c,c)$. Write it as
+\[
+ (1/4+u+d,1/4+u-d,1/4-u,1/4-u),\qquad
+ x=p-1/4=4u^2+2d^2,\quad 0\le d\le2u.
+\]
+Decrease $u$ to $u_0=\sqrt{x/12}$ at fixed $x$, setting
+$d=\sqrt{(x-4u^2)/2}$. Ordering and positivity persist, and $b=c$ at
+the endpoint: it is the one-large spectrum.
+Along this path
+\[
+ t=\frac1{16}+\frac34x+3xu-12u^3,\qquad
+ \frac{dt}{du}=3x-36u^2\le0.
+\]
+As in the preceding chart reduction, $dH_q/dt=\eta(a,b,c)>1$.
+Thus decreasing $u$ strictly increases $H_q-t$ unless the spectrum
+is already one-large. Continuity handles zero or coalescing entries.
+At equality the strict paths force every determinant-maximal replacement to be
+one-large. That replacement preserves $p,t$, so equality in the sharp third-moment bound
+(Lemma~\ref{lem:fqe-third-moment}) forces the original spectrum to be the same.
+The uniform case $p=1/4$ is immediate.
+\end{proof}
+
+\begin{lemma}[HS supporting inequality; proved]\label{lem:fqe-hs-polynomial}
+At $q=q_u=8/5$ put $u=3^{3/5}$ and
+\[
+ k=\frac{16}{3L}\frac{u-1}{u+1},\qquad
+ \beta=\frac1{12},\qquad \gamma=\frac{10}3,\qquad
+ \alpha=\frac32k+\frac{65}{36}.
+\]
+Every four-point probability vector with $p\le9/16$ satisfies
+$\Lambda_{(\alpha,\beta,\gamma)}(\lambda)\le h_{8/5}$,
+with equality only at HS. For $0\le\varepsilon\le1/9$ and
+$0\le F\le3/20$,
+\[
+ \ell_{(\alpha,\beta,\gamma)}(\varepsilon,F)
+ \ge\frac{149}{324}\varepsilon
+       +F\left(\frac1{12}-\frac59F\right)\ge0.
+\]
+\end{lemma}
+\begin{proof}
+At fixed $p$, the only variable part of $\Lambda$ is $H_q-t$.
+Lemma~\ref{lem:fqe-hs-tilt} reduces its maximum to $\lambda(s)$.
+Write $f(p)=H_q(\lambda(s))$, $p_* =1/3$, and
+\[
+ A(s)=\frac92(s-\tfrac13)^2(s+\tfrac16),\qquad
+ W(p)=f(p)-\beta A(s)-\gamma(p-p_*)^2.
+\]
+Direct moment evaluation gives
+\[
+ \Lambda(\lambda(s))=W(p)+\frac32k(p-p_*),\qquad
+ W(p_*)=h_q,\qquad W'(p_*)=-\frac32k,
+ \qquad \frac{d^2 A}{dp^2}=\frac6s.
+\]
+We show that $W$ is first convex and then concave, allowing either
+interval to be empty. The needed scalar calculation is explicit below.
+Put
+\[
+ x=\left(\frac{1+3s}{1-s}\right)^{1/5},\quad
+ J=\frac{L f''(p)}{2\gamma+6\beta/s},\quad
+ h_4(x)=1+x+x^2+x^3+x^4.
+\]
+Since $p\le9/16$, $s<2/3$, so $1<x<2$ and $0<x^5-1<8$.
+Differentiating
+\[
+ L\frac{dH_q(\lambda(s))}{ds}
+ =-\frac{2(x^5+3)(x^3-1)}{x^8+3}
+\]
+gives the identity
+\[
+ \frac{dJ}{dx}
+ =-\frac{8(x^5+3)^3 Q(x)}
+ {5x^3(43x^5-31)^2(x^8+3)^3h_4(x)^3}.
+ \tag{HCJ}\label{eq:fqe-hs-curvature-identity}
+\]
+Here, with $y=x-1$ and $R=x^5-1$,
+$Q(x)=\sum_{j=0}^7R^jP_j(y)$, where the five columns below are the
+coefficients of $1,y,y^2,y^3,y^4$ in $P_j$.
+\[
+\begin{array}{c|rrrrr}
+ j&1&y&y^2&y^3&y^4\\\hline
+% HD-CURVATURE-BEGIN
+0&225600&457600&471040&240000&48640\\
+1&582160&1108000&1118304&557584&110864\\
+2&690608&1195520&1018512&418768&68128\\
+3&756896&1304520&1151162&522393&96703\\
+4&516296&613195&462027&220948&46208\\
+5&181031&120245&477&-23717&-6797\\
+6&-259&2795&1978&774&129\\
+7&43&0&0&0&0
+% HD-CURVATURE-END
+\end{array}
+\]
+This displayed identity proves the sign without a parameter certificate:
+$P_0,\ldots,P_4,P_7$ have positive coefficients, and, for $0\le y<1$,
+\[
+ P_5(y)\ge181031-23717-6797=150517,\qquad P_6(y)\ge-259.
+\]
+Thus $P_5+RP_6\ge150517-8\cdot259>0$. Hence $Q>0$ and $J$ strictly decreases.
+As $W''=(2\gamma+6\beta/s)(J/L-1)$, the asserted curvature pattern follows.
+
+To turn this curvature pattern into a supporting line, subtract the
+tangent at $p_*$ and write
+$D(p)=W(p)-W(p_*)-W'(p_*)(p-p_*)$.
+Then $D(p_*)=D'(p_*)=0$, and $D'$ first increases and then decreases.
+If $D(1/4)<0$, the contact $p_*$ must lie in the strictly concave portion:
+otherwise $D'<0$ throughout its left side, which would give
+$D(1/4)>0$. In the concave portion, the tangent strictly
+dominates to the right of $p_*$; to its left, $D$ has no maximum except
+at $1/4$ or $p_*$. Thus $D<0$ away from $p_*$.
+In the present case the
+left-endpoint gap is strictly positive, so $D(1/4)<0$:
+\[
+ \Delta=-D(1/4)=h_q+\frac k8-2+\frac\beta{12}+\frac\gamma{144}
+ =h_q+\frac k8-2+\frac{13}{432}>\frac1{5000}.
+ \tag{HUC}\label{eq:fqe-hs-uniform-contact}
+\]
+For completeness, this small constant has an elementary rational proof.
+Let $u_0=19331/10000$, $v=1/(2u_0+1)$ and
+\[
+ L_-=2\sum_{j=0}^5\frac{1}{(2j+1)3^{2j+1}},\qquad
+ B_+=2\sum_{j=0}^4\frac{v^{2j+1}}{2j+1}
+             +\frac{2v^{11}}{11(1-v^2)}.
+\]
+The formula $h_q=8/3-(5/(3L))\ln(1+1/u)$ and the atanh series give $L>L_-$ and
+$\ln(1+1/u_0)<B_+$. Since $u_0^5<27$, $u>u_0$; the function
+$-5\ln(1+1/u)+2(u-1)/(u+1)$ increases with $u>0$.
+The purely rational comparison
+\[
+ \frac{301}{144}L_- -5B_+ +\frac{2(u_0-1)}{u_0+1}
+ >\frac{21}{50000}
+\]
+therefore gives $3L\Delta>21/50000>3L/5000$, using $L<7/10$.
+This proves~\eqref{eq:fqe-hs-uniform-contact}.
+The tangent bound is strict away from $p_*$ by the strict curvature
+calculation. Thus $\Lambda\le h_q$, with equality only at HS.
+
+Finally $u>19/10$ and $L<7/10$ give
+$k>480/203>7/3$. Substitution into the outer dual yields
+\[
+ \ell=\left(\alpha-\gamma(\tfrac{17}{12}+\tfrac\varepsilon3)\right)\varepsilon
+          +F\left(\tfrac1{12}-\tfrac59F\right)
+ \ge\frac{149}{324}\varepsilon+F\left(\tfrac1{12}-\tfrac59F\right).
+\]
+The last term is nonnegative for $F\le3/20$, as required.
+All global maximisation and sign arguments above are analytic;
+HD checks the displayed identities and rational comparisons.
+\end{proof}

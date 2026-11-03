@@ -1,0 +1,58 @@
+\subsection{A monotone path from the repeated-largest chart}
+\label{sec:fqe-low-tilt-reduction}
+\begin{lemma}[Low third-moment tilt; analytic]\label{lem:fqe-low-tilt-reduction}
+Let $3/2\le q\le8/5$ and $0\le\omega\le9/5$.
+Among spectra $(a,a,b,c)$ with $a\ge b\ge c\ge0$ of a fixed purity,
+$H_q-\omega t$ is maximised only by two equal pairs.
+Consequently, whenever $0\le\beta\le3/20$, the maximum at fixed purity of the supporting function
+$\Lambda_\theta$ of Lemma~\ref{lem:fqe-dual} is attained on the single pattern $(a,b,c,c)$.
+\end{lemma}
+\begin{proof}
+\emph{The path.} Write a repeated-largest spectrum of purity $p$ as
+\[
+ (1/4+u,\,1/4+u,\,1/4-u+d,\,1/4-u-d),\qquad
+ x=p-1/4=4u^2+2d^2,\quad 0\le d\le2u,
+\]
+the last condition being the ordering. Increase $u$ to $u_*=\sqrt x/2$ at fixed $x$, with
+$d=\sqrt{(x-4u^2)/2}$. Then $d'=-2u/d$ and $d\le2u$, so the middle entry $1/4-u+d$ decreases,
+stays at most $1/4+u$, and the smallest entry has derivative $2u/d-1\ge0$: it never falls below its
+initial value $c\ge0$. The endpoint is two equal pairs. Along the path
+\[
+ t=\frac1{16}+\frac34x+12u^3-3xu,\qquad
+ \frac{dt}{du}=36u^2-3x=6(4u^2-d^2)\ge0,
+\]
+strictly in the interior unless the path is constant.
+
+\emph{The slope.} Put $r=q-1\in[1/2,3/5]$, $L=\ln2$ and $Z=\sum_i\lambda_i^q$, so that
+$H_q=\log_2Z/(1-q)$. The path preserves trace and purity and moves the three distinct entries
+$a,b,c$; interpolating $x^r$ quadratically at them gives $dZ=\frac q3[a,b,c]x^r\,dt$, hence
+\[
+ \frac{dH_q}{dt}=\eta(a,b,c):=-\frac{q[a,b,c]x^r}{3rLZ}.
+\]
+For distinct $a,b,c\ge0$ with mean $m$ and $0<r<1$,
+\[
+ -[a,b,c]x^r\ge\frac{r(1-r)}2\,m^{r-2}.
+ \tag{DD}\label{eq:fqe-dd-power}
+\]
+Indeed, let $T$ be the cubic Taylor polynomial of $x^r$ at $m$. Then
+$(x^r-T)''=-r(1-r)\{x^{r-2}-m^{r-2}-(r-2)m^{r-3}(x-m)\}\le0$ by the tangent inequality for the convex
+function $x^{r-2}$, so $x^r-T$ is concave on $[0,\infty)$ and $[a,b,c](x^r-T)\le0$. As
+$[a,b,c](x-m)^2=1$ and $[a,b,c](x-m)^3=a+b+c-3m=0$, $[a,b,c]T=-\frac12r(1-r)m^{r-2}$.
+Here $m=(1-a)/3$. With $Z\le a^r\sum_i\lambda_i=a^r$ this gives
+\[
+ \eta(a,b,c)\ge\frac{q(1-r)3^{2-r}}{6L\,a^r(1-a)^{2-r}},\qquad
+ a^r(1-a)^{2-r}=[a(1-a)]^r(1-a)^{2-2r}\le\frac9{16}\left(\frac49\right)^r\le\frac38,
+\]
+using $1/4\le a\le1/2$ and $r\ge1/2$. With $q(1-r)=q(2-q)\ge16/25$, $L<7/10$ and
+$3^{2-r}\ge3^{7/5}>9/2$ (as $3^7>(9/2)^5$),
+\[
+ \eta(a,b,c)>\frac{64}{35}>\frac95\ge\omega.
+\tag{LT}\label{eq:fqe-low-tilt-slope}
+\]
+Thus $d(H_q-\omega t)/du=(\eta-\omega)\,dt/du>0$ on every nonconstant path, and continuity covers zero or
+coalescing entries. This proves the first claim.
+
+For the second, Lemma~\ref{lem:fqe-renyi-determinant} reduces a fixed-purity maximum of $\Lambda_\theta$ to the
+patterns $(a,b,c,c)$ and $(a,a,b,c)$. At fixed purity the variable part of $\Lambda_\theta$ is $H_q-12\beta t$ with
+$12\beta\le9/5$, and two equal pairs already belong to the first pattern.
+\end{proof}

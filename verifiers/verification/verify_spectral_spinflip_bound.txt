@@ -1,0 +1,5 @@
+SCB-1 PASS: generic complex-matrix calibration in dimensions 2--6; rank-one limit
+SCB-2 PASS: trace-gap identity, exact unitary regressions, and Schmidt sign-flip sharpness
+SCB-3 PASS: generic two-qubit Pauli spin-flip mismatch equals the two Bloch norms
+SCB-4 PASS: physical sharpness family and negative tests for both smaller coefficients
+SCB-5 PASS: exact classical counterexample satisfies the caps and critical envelope but has QK residual -43512669144347111/1000000000000000000

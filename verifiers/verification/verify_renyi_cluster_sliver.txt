@@ -1,0 +1,4 @@
+SL-1 PASS: binary/head/tail bounds and finite exact logarithm/power constants
+SL-2 PASS: four exact polynomial lower bounds and epsilon coefficients
+SL-3 PASS: domain and epsilon removal, exact rational
+SL-4 PASS: endpoint signs and all 11 printed Bernstein coefficient bounds; no subdivision

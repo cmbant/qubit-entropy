@@ -1,0 +1,42 @@
+\begin{proposition}[Product Pauli postselection convexity for stabilizer states]
+\label{prop:pauliprojection}
+Let $|\Omega\rangle$ be a pure $n$-qubit stabilizer state, and let
+$M$ be a set of $t$ sites with $\rho_M=I/2^t$. On each $i\in M$ choose
+an arbitrary pure vector $|u_i\rangle$ with Bloch coordinates
+$r_i=(r_{i,x},r_{i,y},r_{i,z})$, and set
+$|\psi_u\rangle=2^{t/2}(\bigotimes_{i\in M}\langle u_i|)\Omega\rangle$.
+For each $a\in\{x,y,z\}^M$, let $\psi_a$ be the normalized state
+obtained by projecting every $i\in M$ onto either eigenstate of
+$\sigma_{a_i}$. Then, for every subset $T$ of the unmeasured sites,
+\[
+ \operatorname{tr}\rho_T(\psi_u)^2
+  =\sum_{a\in\{x,y,z\}^M}
+      \left(\prod_{i\in M}r_{i,a_i}^2\right)
+      \operatorname{tr}\rho_T(\psi_a)^2.
+\]
+Thus the entire subsystem-purity profile after arbitrary product
+postselection on $M$ is in the convex hull of the $3^t$ product-Pauli
+profiles. No such product measurement can improve the minimum of any
+fixed linear combination of these purities beyond its best product-Pauli
+measurement. The one-site statement is the case $t=1$.
+\end{proposition}
+\begin{proof}
+Expand the stabilizer density operator as
+$|\Omega\rangle\langle\Omega|=2^{-n}\sum_{g\in\mathcal S}g$.
+The normalized postselected density is
+\[
+ \rho_u=2^{-(n-t)}\sum_{g\in\mathcal S}
+       \left(\prod_{i\in M}\langle u_i|g_i|u_i\rangle\right)g_{M^c}.
+\]
+The condition $\rho_M=I/2^t$ says that no nonidentity stabilizer is
+supported inside $M$. Hence distinct stabilizers have distinct Pauli
+restrictions to $M^c$, up to their fixed signs. In the Pauli expansion
+of $\rho_T$, each nonzero coefficient is therefore a single product
+$\pm\prod_{i\in M}r_{i,b_i}$, with $r_{i,I}=1$ and
+$b_i\in\{I,x,y,z\}$. Purity is the sum of the squares of these
+coefficients divided by $2^{|T|}$. Since
+$\sum_{a_i=x,y,z}r_{i,a_i}^2=1$ for each measured site, expanding the
+identity factors gives the displayed convex combination. Changing a
+Pauli outcome only changes coefficient signs, so every $\psi_a$ has
+the same purity profile for its $2^t$ possible outcomes.
+\end{proof}

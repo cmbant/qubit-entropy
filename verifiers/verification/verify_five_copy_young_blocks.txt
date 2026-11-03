@@ -1,0 +1,14 @@
+dimensions {0: 1, 1: 4, 2: 5} weight multiplicities {0: 6, 1: 4, 2: 2}
+Gram determinants {0: 1, 1: 5, 2: 162}
+exact matrix units checked 42
+copies (4,) denominator 30 max numerator 40 physical reconstruction PASS involution PASS
+copies (3, 4) denominator 30 max numerator 45 physical reconstruction PASS involution PASS
+S5-1 PASS
+[5,1] exact kernel rank 420
+[4,2] exact kernel rank 420
+H invariant multiplicities (137, 148)
+  projected candidate shape (2520, 153) max abs 1120
+[5,1] exact invariant basis (2520, 137)
+  projected candidate shape (4200, 164) max abs 912
+[4,2] exact invariant basis (4200, 148)
+Y5-1 PASS

@@ -1,0 +1,4 @@
+SF-1 PASS: exact 4-qubit sextic with residual 4 Phi_1 - 15 Phi_0
+SF-5 PASS: even-subset Fourier bases through n7 and symmetric Krawtchouk bases through n17; all-n scalar-gradient completeness is proved analytically in prop:zero-focus
+SF-5 PASS: every coefficient of the tensor Gram equals q q^T + x(1-2x) qprime qprime^T/8; no determining-point interpolation
+SF-5 PASS: fixed two-source Gram determinant 72x(1-2x), rank2 on the open family and rank1 at both endpoints; both kernel rows and purity-gradient value605/131 are exact

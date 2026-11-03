@@ -1,0 +1,308 @@
+\subsection{A positive twelve-face certificate}
+\label{sec:fivecopy-positive-repair}
+
+We construct the certificate by correcting a positive baseline on twelve exact physical
+kernels. In each supplied rational kernel basis, the identity Gram is
+strictly positive. A sufficiently small correction can therefore enforce the polynomial
+identity while preserving positivity. The same rank computation also gives the equality case
+(Corollary~\ref{cor:seven-global-from-fivecopy}).
+
+\begin{theorem}[sharp five-copy certificate; verified-arithmetic certificate, FP5-1]
+\label{thm:fivecopy-sharp-certificate}
+There is a rational sharp five-copy dual supported on the twelve
+physical kernels of Proposition~\ref{prop:ico-fivecopy-g34-kernels}:
+rational $C_b\succ0$ with
+\[
+ q(G)=\sum_b\operatorname{tr}\bigl[C_b\,W_b^{\mathsf T}\Gamma_b(G)W_b\bigr]
+ \qquad\text{for every }G\in\mathcal A_5 .
+\]
+Consequently the five-copy relaxation has value $121/917$. Moreover the
+functionals $X\mapsto\operatorname{tr}[W_bSW_b^{\mathsf T}\Gamma_b(X)]$,
+$S$ symmetric, span the $3283$-dimensional critical space of
+Proposition~\ref{prop:fivecopy-finite-probes}.
+\end{theorem}
+The $C_b$ solve a rational linear system whose solvability is certified with rigorous floating-point bounds;
+they are not computed in exact arithmetic, which is why the theorem is a verified-arithmetic certificate.
+The rational coefficients therefore exist but are not printed: their existence and the strict positivity of every
+$C_b$ follow from the verified inverse test~\eqref{eq:fivecopy-verified-repair} in the proof.
+\begin{proof}
+Write $W_b=U_bK_bB_b$ for the supplied rational basis of the $b$th
+physical kernel (PK5-4 checks that it annihilates the icosahedral
+moment block), and let $\Gamma_b(G)$ be the contracted probe matrix,
+including its positive multiplicity weight. The physical inner product
+is used on the ambient Young model, so an identity Gram in these
+coordinates is a positive physical multiplier even though the columns of
+$W_b$ need not be orthonormal.
+
+Let $Q_b$ be the rational orthogonal matrix given by the supplied
+Householder reflections, and put $r_b=\min(7,k_b)$, where
+$k_b=\operatorname{cols}W_b$. Restrict repairs to
+\[
+ C_b=I+Q_b\begin{pmatrix}D_b&E_b\\E_b^{\mathsf T}&0\end{pmatrix}Q_b^{\mathsf T},
+ \qquad D_b=D_b^{\mathsf T}\in\mathbb R^{r_b\times r_b}.
+\]
+Each reflection is $I-2vv^{\mathsf T}/(v^{\mathsf T}v)$; orthogonality is
+checked with integers. Let $z_b$ list the upper-triangular entries of $D_b$
+and all entries of $E_b$. Then
+$\|C_b-I\|_2\le\sqrt2\|z_b\|_2\le\tfrac32\|z_b\|_2$.
+There are $\sum_b[r_bk_b-r_b(r_b-1)/2]=3754$ independent coordinates.
+Width six would give only $3249$, too few to span the critical space
+(FP5-4), so seven is the smallest possible uniform width for this argument.
+
+For every vector $v$, the smooth function
+$v^{\mathsf T}W_b^{\mathsf T}\Gamma_b(X_5^+(\psi_x))W_bv$ is
+nonnegative and vanishes at $x=37/524$, so its derivative vanishes there.
+Thus every repair functional is critical. The target $q$ is critical by
+Theorem~\ref{thm:ico}.
+We apply Lemma~\ref{lem:positive-repair} with $\mathcal V=\mathcal M_5^*$,
+$\mathcal C$ the critical space ($d=3283$, Proposition~\ref{prop:fivecopy-finite-probes}),
+$N=3754$, $\Phi(z)=\sum_b\operatorname{tr}[(C_b-I)W_b^{\mathsf T}\Gamma_bW_b]$,
+$\Delta_b(z)=C_b-I$ with $c=\tfrac32$, and
+\[
+ \rho=q-\sum_b\operatorname{tr}[W_b^{\mathsf T}\Gamma_bW_b].
+\]
+By the preceding paragraph $\Phi(\mathbb R^N)\subseteq\mathcal C$ and $\rho\in\mathcal C$.
+Let $\mathcal E$ evaluate at the $3424$ supplied rational probes,
+with the supplied nonzero dyadic row weights, so that $A$ is the rational evaluation
+matrix of the repair directions and $r=\mathcal E\rho$.
+The verifier takes the leading $3283$ singular triples of a floating
+evaluation of $A$, reads their binary64 entries as exact dyadic
+rationals, and forms from them rational matrices $L$ and $R$ of sizes
+$3283\times3424$ and $3754\times3283$. With the error bounds below it
+establishes
+\begin{equation}\label{eq:fivecopy-verified-repair}
+ \|I-LAR\|_2\le\delta<1,\qquad
+ \frac{3\|R\|_2\|Lr\|_2}{2(1-\delta)}<1 ;
+\end{equation}
+the logged upper bounds are $\delta<0.070$ and $0.324$. These are
+\eqref{eq:positive-repair-inverse} and~\eqref{eq:positive-repair-margin}
+for the exact rational matrices. FP5-3 reimplements the probe evaluator independently and
+reproduces all face traces and repair coefficients on non-scalar probes.
+
+Lemma~\ref{lem:positive-repair}(a) gives rank $3283$, so the repair
+functionals span the critical space (the rank criterion of
+Proposition~\ref{prop:fivecopy-finite-probes}). Part~(b), with $K=\mathbb Q$,
+gives rational $z$ with $\Phi(z)=\rho$, which is the asserted identity, and
+part~(c), using $\|C_b-I\|_2\le\tfrac32\|z_b\|_2\le\tfrac32\|z\|_2$, gives every
+$C_b\succ0$. Lemma~\ref{lem:fivecopy-direct-probes} turns
+the identity into an exact rational feasible sharp dual, and the
+icosahedral moment is feasible with value $121/917$.
+\end{proof}
+
+\begin{lemma}[equality moments lie on the tangent line]
+\label{lem:fivecopy-tangent-line}
+Let $\mathcal M$ be a finite-dimensional real moment space with normalisation
+functional $\nu$. Fix $X_0,X_0'\in\mathcal M$ with
+$\nu(X_0)=1$, $\nu(X_0')=0$ and $X_0'\ne0$, and let
+$\mathcal C=\{f\in\mathcal M^*:f(X_0)=f(X_0')=0\}$. Let $\Gamma_b$ be
+linear maps to symmetric matrices, and $W_b$ matrices such that the
+functionals $X\mapsto\operatorname{tr}[W_bSW_b^{\mathsf T}\Gamma_b(X)]$
+span $\mathcal C$. If $\nu(X)=1$ and
+$W_b^{\mathsf T}\Gamma_b(X)W_b=0$ for every $b$, then
+$X=X_0+tX_0'$ for some $t\in\mathbb R$.
+\end{lemma}
+\begin{proof}
+Every functional of the spanning set, hence every $f\in\mathcal C$,
+vanishes at $X$. Since
+$\nu(X_0)=1$ and $\nu(X_0')=0$, the vectors $X_0,X_0'$ are independent,
+$\mathcal C$ has codimension two, and its annihilator is their span.
+Normalisation fixes the coefficient of $X_0$ at one.
+The lemma uses no property of the number of copies, the number of qubits or the target.
+\end{proof}
+
+\paragraph{Rational models and exact target values.}
+The verification uses only the exact certificate data. Each baseline factor
+$B_b$ is lower triangular with positive dyadic diagonal; its invertibility
+is therefore checked directly over the rationals. There are $24502$
+potentially nonzero factor entries, rather than $48434$ entries in dense
+factors. Each is stored as an odd signed integer of at most $53$ bits times
+an integral power of two, and integer shifts reconstruct it exactly.
+The twelve frames are regenerated from
+fixed PCG64 seeds; FP5-4 fingerprints all $36{,}480$ original Householder
+integers before checking their exact orthogonality. The probe archive uses
+lossless compression, with signed $16$-bit probe numerators in column order.
+The baseline, frames and probes occupy $441612$ bytes. PK5-4 fingerprints
+the triangular factors and checks their full physical kernel support;
+the probe fingerprint preserves every probe value and row weight.
+In the rational
+one-site model write its physical Gram as $G_d=L_dD_dL_d^{\mathsf T}$,
+with rational $L_d$ and positive diagonal rational $D_d$.
+Changing coordinates by $L_d^{\mathsf T}$ makes the physical Gram diagonal
+without square roots. In a symmetric power the monomial of exponent $m$
+has squared norm
+\[
+ \frac{\prod_i m_i!}{(\sum_i m_i)!}\prod_i(D_d)_{ii}^{m_i}.
+\]
+Thus both the kernel columns and their physical dual columns are rational.
+They, and their products with the rational repair frames, are formed
+exactly before conversion to binary64. The conversion is correctly
+rounded; exact zero counts and exponent guards exclude underflow.
+The local spin-flip and copy-permutation maps are formed exactly as
+rational $42\times42$ matrices.
+
+Each source probe has integer coordinates divided by $8192$. Consequently
+all $a_\sigma$ in Lemma~\ref{lem:fivecopy-direct-probes} are rational with
+this denominator. If their integer numerators are $a'_{\sigma}$, the target
+is evaluated first as the exact fraction
+\[
+ \frac{917\sum_{\sigma,t}(a'_{t\sigma})^3(a'_\sigma)^4
+                  -1210\sum_\sigma(a'_\sigma)^7}
+ {917\cdot1200\cdot8192^7}.
+\]
+For probes commuting with the copy transposition $(12)$, the paired cosets
+are also identified under $(a,b)\mapsto(a(12),(12)b)$.
+The commutation is checked exactly before using this reduction.
+An independent exact scalar control (FP5-2) takes $G$ to be the identity
+on the local spin-$5/2$ block and zero elsewhere. Then
+$q(G)=(796/917)6^7$, and only the two-flip all-$V$ shape $(7)$ and
+one-$F$ shape $(6)$ survive. Their forms are respectively
+$6^7d_7d_7^{\mathsf T}$ and $(7/3)6^7d_6d_6^{\mathsf T}$, where the right
+functionals on the ambient polynomial models are $e_5^7$ and
+$(e_3+e_4)\otimes e_5^6$. This follows because, for this $G$, every
+local two-flip block has rank one, so each contracted gamma form is a
+symmetric power of a rank-one local form.
+FP5-2 checks every thin coefficient and the baseline trace against these
+exact rational forms, including the ten zero faces.
+
+
+\paragraph{Forward-error bounds for the probes.}
+These bounds, and those of the entropy certificate E7-1, hold under one arithmetic model:
+IEEE-754 binary64 with round-to-nearest, so that every floating-point addition, multiplication, division or square root
+(including any fused multiply--add inside the single-threaded BLAS calls) returns the exact result times $1+\delta$
+with $|\delta|\le u$, away from underflow and overflow, which are treated separately below.
+Put $u=2^{-53}$ and $\gamma_s=su/(1-su)$.
+For a large face the baseline trace is evaluated as
+$\operatorname{tr}(TC)$, where $C=V_RV_L^{\mathsf T}$ is formed once.
+Its tensor indices are contracted in decreasing factor dimension, with
+inner products blocked at $128$ terms. The first repair term is evaluated
+as $(T^{\mathsf T}V_{LU})^{\mathsf T}V_R$, so both repair actions use
+only $r_b\le7$ columns. The smaller faces use the factored baseline trace.
+These are cyclic trace and transpose identities; no additional
+certificate data are retained. Forming $C$ costs error depth $k+2$,
+including its two column conversions.
+For every signed contraction the verifier evaluates a positive companion.
+For a column matrix $V$, write $n(V)_i=\|V_{i,:}\|_2$. If $T_+$ is the
+nonnegative tensor action obtained by replacing the local matrices by
+their absolute values, Minkowski and Cauchy give
+\[
+ n(TV)\le T_+n(V),\qquad
+ \|A^{\mathsf T}TV\|_F\le\bigl\||A|^{\mathsf T}T_+n(V)\bigr\|_2,
+ \qquad
+ |\operatorname{tr}(A^{\mathsf T}TV)|\le n(A)^{\mathsf T}T_+n(V).
+\]
+Thus single-column tensor actions on $n(V_R)$ and $n(V_{RU})$ bound the
+two coefficient terms and the trace. The positive coefficient vectors
+are summed over coset terms before taking their norms; the two term
+bounds are added, and the face bounds are combined in Euclidean norm.
+The resulting scalar radius bounds the Frobenius norm of the entire
+coefficient error. Row norms are rounded upwards with $1+2^{-20}$;
+their squared inputs are normal by the conversion guards below.
+The polynomial functionals being evaluated are unchanged.
+A degree-$n$ symmetric-power recurrence has at most five terms per entry
+at each step. Including conversion of the local matrix gives error depth
+at most $6n$. A matrix product with inner dimension $d$, split into
+chunks of length $c$ and summed pairwise, has depth at most
+\[
+ \min(d,c)+\left\lceil\log_2\lceil d/c\rceil\right\rceil.
+\]
+If the ambient model has factor dimensions $d_i$, total dimension $D$,
+kernel dimension $k$, and $t$ coset terms, define
+\begin{align*}
+ a&=\sum_i\left(\min(d_i,128)+\lceil\log_2\lceil d_i/128\rceil\rceil\right),\\
+ f&=\min(D,256)+\lceil\log_2\lceil D/256\rceil\rceil,\\
+ h&=\min(D,128)+\lceil\log_2\lceil D/128\rceil\rceil+\lceil\log_2 k\rceil+1,\\
+ s&=8+\lceil t/8\rceil+16.
+\end{align*}
+With $g\le7$ the local degree of the model, the coefficient and trace error depths are respectively $a+f+6g+s$
+and $a+h+6g+s$ for a factored trace. For a multiplier trace its depth is
+\[
+ k+2+6g+s+
+ \sum_i\left[\min(d_i^2,128)+\lceil\log_2\lceil d_i^2/128\rceil\rceil\right].
+\]
+The final $16$ covers the two rational column conversions,
+the addition of the two thin repair terms, multiplicity scaling,
+and summation over all twelve models. A common error budget for the
+positive companion is
+\[
+ b=Dk+\sum_i d_i+6g+2\binom5j^2+64.
+\]
+If its computed value is $p$, the corresponding error radius is bounded
+by $\gamma_{a+f+6g+s}p/(1-\gamma_b)$, or with the corresponding trace
+depth for the trace. An additional factor $1+2^{-20}$ bounds rounding in the positive
+bounds themselves. Every scalar accumulation and Frobenius norm used in these bounds has
+fewer than $2^{29}$ terms. The input guards give $|h_{ij}|<2^{10}$ for
+every exact local matrix, $D<2^{13}$, $k<2^8$, multiplicity below $2^{15}$
+and model-column entries below $2^{20}$. Each degree-$n$ symmetric-power
+entry is bounded by $(5\cdot2^{10})^n<2^{13n}$. Since the total degree is
+seven, signed tensor actions are bounded by $2^{13+91+20}=2^{124}$ and
+norm companions by $2^{128}$; subsequent
+column products, traces, multiplicities and at most $100$ coset terms keep
+all mathematical intermediates below $2^{200}$. These bounds also hold
+with a factor of two for the rounded computations, so overflow is
+excluded without repeatedly scanning the large arrays. An underflow
+error is at most $2^{-1074}$ per operation. Even allowing $2^{100}$
+operations and amplification by $2^{200}$ gives less than $2^{-774}$;
+the verifier adds $2^{-500}$ to each coefficient and trace radius.
+The initial row-norm squares are normal. Norms of the accumulated
+positive coefficient vectors are taken after the multiplicity and coset
+scales: loss of subnormal squares changes such a norm by less than
+$2^{-520}$, and its contribution to a radius is multiplied by
+$\gamma_{a+f+6g+s}<2^{-30}$. The same $2^{-500}$ allowance covers it.
+FP5-2 checks row scales between $1$ and $2^{32}$, and model conversion
+guards keep every nonzero input column above $2^{-400}$.
+In the inverse validation, possible dot-product underflows, even after
+multiplication by a guarded $d_i$ and taking a Frobenius norm, contribute
+less than $2^{-600}$. The separate norm allowances and these terms sum
+to less than $2^{-500}$, far below the coarse rational margins.
+
+\paragraph{Validation of the rational inverse.}
+The probe evaluator first gives rectangular coefficients in the first
+$r_b$ frame columns. To obtain the independent coordinates, multiply
+each coefficient array $M_b$ by the full $Q_b$, halve the diagonal,
+average the two entries on each off-diagonal of the leading square,
+and retain its upper triangle and the remaining rectangular block.
+These selections and averages contract the Euclidean error norm.
+If the initial row radius is $\epsilon$, a radius after this change is
+\[
+ \epsilon+\sum_b\left[
+ \left(\gamma_{k_b}+\frac{u}{1-u}\right)\|M_b\|_F\|\widetilde Q_b\|_F
+ +u\|\operatorname{fl}(M_b\widetilde Q_b)\|_F\right],
+\]
+with the same upward norm allowance. Here $\widetilde Q_b$ is the
+correctly rounded rational orthogonal matrix. FP5-4 checks this packing
+against independent exact matrix contractions on every supplied frame.
+
+Let $\widetilde A,\widetilde r$ be the computed centres, and let $e_j$
+bound the Euclidean norm of row $j$ of $A-\widetilde A$ and $\tau_j$
+bound $|r_j-\widetilde r_j|$. The preceding radii provide these bounds.
+Take the first $3283$ left and right singular vectors of
+$\widetilde A$ merely as candidate data, and regard their binary64
+entries, and the computed reciprocal singular values $d_i$, as exact
+dyadic rationals. Write these matrices as $U,V,d$ and put
+\[
+ L=\operatorname{diag}(d)U^{\mathsf T},\qquad R=V^{\mathsf T}.
+\]
+An independent Gram-product error bound verifies
+$\|R\|_2\le v=1+2^{-12}$.
+For the computed centres
+$H=\operatorname{fl}(\operatorname{diag}(d)\operatorname{fl}(U^{\mathsf T}\widetilde A))$
+and $M=\operatorname{fl}(HV^{\mathsf T})$, the inverse defect is at most
+\begin{align*}
+ \|I-M\|_F
+ &+(\gamma_m+u+u\gamma_m)d_{\max}\|U\|_F\|\widetilde A\|_Fv
+   +\gamma_n\|H\|_F\|V\|_F\\
+ &+v\|\operatorname{diag}(d)|U|^{\mathsf T}e\|_2,
+ \qquad m=3424,\quad n=3754.
+\end{align*}
+Likewise, if $p=\operatorname{fl}(\operatorname{diag}(d)
+\operatorname{fl}(U^{\mathsf T}\widetilde r))$, then
+\[
+ \|Lr\|_2\le
+ \left\||p|+\operatorname{diag}(d)|U|^{\mathsf T}
+       (\tau+\gamma_m|\widetilde r|)+\frac{u}{1-u}|p|\right\|_2.
+\]
+All norms and positive bounds are rounded upwards using the same
+$1+2^{-20}$ allowance. Substituting these bounds into
+$3v\|Lr\|_2/[2(1-\delta)]$ verifies
+\eqref{eq:fivecopy-verified-repair}. Thus neither a numerical rank assumption nor a dense exact inverse is
+needed.

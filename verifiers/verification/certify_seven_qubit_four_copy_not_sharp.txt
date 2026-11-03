@@ -1,0 +1,7 @@
+NS-0 PASS (regression): modular forward map + CRT equals the direct float forward map (n = 3, 4, random integer x), max relative difference 0.0e+00
+  n=7 rational bases built (68s)
+NS-1 PASS: 167 integer coordinates (largest 570 bits); on(x) > 0; exact objective oo(x)/on(x) = 0.131930815625 (rational, denominator 178 digits) < 6597/50000 < 121/917 = 0.131952017448; gap to 121/917 2.1202e-05
+NS-2 PASS: all 78 omega blocks positive definite (exact Sylvester)
+  |12^7 gamma entries| <= 2^676 < M/2, M = product of 34 distinct primes < 2^20 (2^680); 2 process(es)
+NS-3 PASS: all 271 flip blocks (g1 128, g2 143; sizes 1..18) exactly symmetric and positive definite (exact Sylvester; smallest eigenvalue/max entry 1.22e-09, diagnostic only)
+NS-4 PASS: x/on(x) is feasible for the four-copy relaxation, so L_4 <= 0.131930815625 < 6597/50000 < 121/917; 121/917 - 6597/50000 = 551/45850000  (779s)

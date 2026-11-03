@@ -1,0 +1,4 @@
+RG-1 PASS: exact two-qubit Pauli trace formulas
+RG-2 PASS: 2F=n^3+8n(W1+tau)-9B+9D
+RG-3 PASS: copy-symmetric witness eigenvalues 4, -47, -47
+ALL RG CHECKS PASS

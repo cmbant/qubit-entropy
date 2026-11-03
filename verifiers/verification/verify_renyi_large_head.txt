@@ -1,0 +1,4 @@
+LHD-1 PASS: J(x,y) identities, K range, envelopes; Bernstein certificates of degree 12 (A), 16 (B), 16 (h)
+LHD-2 PASS: -f_aaa(1/2,z) >= 0 from (1-z) times a polynomial of degree 12 with positive coefficients
+LHD-3 PASS: monotone in K, minorant kappa, logarithm constants and error budgets
+LHD-4 PASS: c2 >= 1/10 and 4 c0 c2 - c1^2 >= 3/100 on [0,1] (Bernstein coefficients, degree 13 and 26)

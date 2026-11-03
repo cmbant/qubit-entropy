@@ -1,0 +1,169 @@
+\subsection{Checks of the paper's appendices}\label{sec:sup-paper-checks}
+Table~\ref{tab:fqe-checks} of the paper lists which results use the checks below. The four-qubit von Neumann, Tsallis and
+single-crossing proofs do not assume a computational certificate; their checks confirm algebra. Finite decimals used as
+bounds specify exact rationals.
+\begin{description}
+\item[ME-1--ME-6] Exact polynomial arithmetic in the sixteen amplitudes and their conjugates: two
+independent sum-of-squares forms of $F$, coefficient by
+coefficient (ME-1, ME-2); the purity identity of Lemma~\ref{lem:fqe-purity} (ME-3); the Hermite
+coefficients $a,b$ and the entropy-gap identity of Section~\ref{sec:fqe-entropy_maximum-entropy-bound} (ME-4);
+the values of $(P,T,F)$ at $M_4$ and at a product of two Bell pairs (ME-5); and, on the critical slice,
+the cut spectra, the spin-flip amplitude $\sum_kv_k^2$, Clifford realisations of the coordinate
+symmetries and the equality solutions (ME-6).
+\item[SP-1--SP-5] The elementary swap derivation of Appendix~\ref{sec:fqe-sextic}: the $\epsilon$-maps,
+spin-flip transpose and antisymmetry relations behind \eqref{eq:fqe-kernels} (SP-1); the generic
+two-qubit swap, cycle and partial-transpose contractions with the marginal trace identities and the pair norms
+\eqref{eq:fqe-pair-norms} (SP-2);
+the eleven type coefficients of the table and the two class reductions (SP-3); the three contractions
+\eqref{eq:fqe-contractions} and the identity \eqref{eq:fqe-remainder} (SP-4); and the local polarisation norm
+\eqref{eq:fqe-local-polarization}, including degenerate Schmidt values (SP-5).
+\item[SI-1--SI-3] An independent check of \eqref{eq:fqe-remainder}: the tensors $U_i,V_i$ and the pair vectors built
+from their definitions (SI-1), the identity compared coefficient by coefficient in the sixteen amplitudes and their
+conjugates (SI-2), and the product-state value $F=\tfrac34NW_1$ (SI-3).
+\item[CE-1--CE-5] The critical envelope \eqref{eq:fqe-critical-envelope}: on $G(v)$, with $v,\bar v$ independent symbols,
+$F=\tfrac12N^3+\tfrac74N\tau+\tfrac94\operatorname{perm}\Theta$, $P=N^2+\tau/2$, $\det\Theta=-N\tau$ and the eigenvalues
+$N^2,\tau,\tau$ of $\Theta^T\Theta$ (CE-1); the sign-triple and cyclic-diagonal sums (CE-2); the expansion of
+$\operatorname{perm}(\kappa I+(1-\kappa)uu^T)$ and its Maclaurin value (CE-3); the twelve equality matrices $O$ among the
+signed permutations, and the bound attained on all of them (CE-4). CE-5 is a numerical sanity check, not used.
+\item[PZ-1--PZ-2] Bloch-operator invertibility, the positive-Bloch support exclusion, and the generic GHZ identity
+$H=(9/2)N\tau$ of Lemma~\ref{lem:fqe-polarization-remainder-zeros}.
+\item[FI-1--FI-5] The spin-flip gradient identity~\eqref{eq:fqe-flip-gradient-identity} of Lemma~\ref{lem:fqe-flip-gradient}:
+the dimension $19$ of the $SU(2)^4$-invariants of bidegree $(4,2)$ (and $8$ for $(2,2)$) as an exact character constant term
+(FI-1); $19$ site-wise $\epsilon/\delta$ contraction invariants with an exact rank-$19$ evaluation matrix at $24$ integer points,
+with $\bar z$ replaced by an independent vector (FI-2); (S) in the normalisation used, $\|A\|^2=F-\frac34NW_1$ (FI-3); the identity
+at all $24$ points in exact integer arithmetic (FI-4); negative regressions with the coefficient $\frac98$ replaced by $1$ or the
+multiple of $s$ dropped (FI-5).
+\item[FG-6--FG-8] The integration proving Theorem~\ref{thm:fqe-general-envelope}: the passage
+from~\eqref{eq:fqe-flip-gradient-identity} to~\eqref{eq:fqe-flip-gradient}, the pencil derivative, the scaling of $W_1$, the
+integrating factor and the final substitution (FG-7); the scalar rational identities giving the exact transport
+law~\eqref{eq:fqe-spin-flip-calibration} and its positive-norm integral~\eqref{eq:fqe-spin-flip-calibration-sos} (FG-8). FG-6 is a
+finite-difference sanity check of~\eqref{eq:fqe-flip-gradient} and of the envelope at random states, not used in the proof. FG-1--FG-5
+and FG-9, in the same script, check the direct proof of~\eqref{eq:fqe-flip-gradient-identity} in Section~\ref{sec:sup-flip-gradient}.
+\item[ESH-1--ESH-3] Optimality of the coefficient $7/8$ in Theorem~\ref{thm:fqe-general-envelope}: on the GHZ family
+$c|0000\rangle+s|1111\rangle$, $\tau$, $W_1$ and $F$ computed exactly from the tensor definitions, and the slack with $7/8$
+replaced by $C$ equals $(7/2-4C)\tau+(1+4C)\tau^{3/2}$ ; exact symbolic.
+\item[ER-1--ER-5] The equality case: the one-cut spectrum and spin-flip amplitude on $G(v)$ with the
+Pauli actions that move its coordinates (ER-1); the weighted triangle-deficit identity (ER-2); the
+entropy-gap identity and the fact that $(\tfrac12,\tfrac16,\tfrac16,\tfrac16)$ is the only spectrum in
+$\{\tfrac16,\tfrac12\}$ with trace one (ER-3); the critical-slice factorisation \eqref{eq:fqe-critical-factor}'s second proof of Proposition~\ref{prop:fqe-moment-zeros}
+against direct partial traces (ER-4); and the vanishing of $F$ on every listed zero representative together
+with the determinant ratio that separates $M_4$ from $\overline{M_4}$ (ER-5).
+\item[CN-1--CN-4] The normal form of Appendix~\ref{sec:fqe-normal-form}: the magic-basis generators and
+moment maps (CN-1); the amplitude formula $G(v)=G_{abcd}$ (CN-2); the block-elimination identities of the
+real singular-value lemma (CN-3); and rank-deficient and repeated-block rectangular examples (CN-4).
+\item[EF-1--EF-7] The spectral corollaries of Section~\ref{sec:fqe-spectral}: the general Hermite
+coefficient identity \eqref{eq:fqe-tsallis-coefficient} (EF-1); the cluster-state cut spectra (EF-2); the
+tie at $q=2$, the Tsallis advantage $1/144$ of the cluster state at $q=3$ and the all-$q$ moment identity (EF-3);
+the von Neumann and $q=2$ limits and the stability constant $4.57862$ (EF-4); the derivative and
+logarithmic-derivative identities, endpoint values and rational logarithm bounds of the Tsallis sign proof (EF-5);
+the strengthened polarisation and spin-flip coefficients, including the small-$\tau$ values $0.454$ and $0.602$ with and without the envelope term (EF-6); and the strengthened defect identity with the
+leading coefficient of the determinant pencil used in the mixed-state exclusion (EF-7).
+\item[RA-1--RA-5] The fourth-derivative identity, three endpoint derivative numerators,
+fifteen printed coarse Taylor-coefficient bounds and their tails in
+Lemma~\ref{lem:fqe-slack-fourth-derivative} (RA-1), logarithm absorption,
+moment-defect algebra, the HS--cluster crossing brackets of Proposition~\ref{prop:fqe-renyi-crossing}: the integer comparisons giving $3/2<q_*<8/5$ and the exact enclosures giving $1587/1000<q_*<1589/1000$ (RA-4), and the strict
+rational constants in the cap-free purity bound (RA-5). The concavity,
+derivative-shape and Hermite-remainder proof is analytic; no parameter grid
+is used.
+\item[SCB-1--SCB-5] Generic complex-matrix calibration algebra in dimensions
+two through six, the trace-rearrangement gap identity, exact unitary
+regressions, the generic two-qubit Pauli spin-flip identity, the
+physical sharpness family, and a classical counterexample to deriving QK
+from the separate-cut caps. Positivity and the arbitrary-dimensional
+overlap bound in Section~\ref{sec:fqe-spectral-spinflip} are analytic.
+\item[UR-4] The quantitative crossed-purity algebra, including the unrestricted
+$W_1/4$ term and the critical rank-two equality case, for
+Proposition~\ref{prop:fqe-two-flat-rigidity}; the rigidity argument itself is analytic.
+
+\item[OT-1--OT-4] Exact symbolic algebra in the analytic single-crossing proof
+(Lemma~\ref{lem:fqe-renyi-single-crossing}, every $q>1$): the family formula, its derivative and the gradient profile (OT-1);
+the Euler identity and the second variation splitting equal coordinates (OT-2);
+the hyperbolic identity~\eqref{eq:fqe-renyi-crossing-ratio}, its contact value, the derivative of $\sinh(sz)/z$
+and the integrating factor (OT-3); and a negative control where increasing $\kappa_q$ by $1/1000$ destroys HS
+stationarity (OT-4). Full support, exclusion of repeated larger entries and all sign and equality arguments are
+proved analytically; these checks are not proof inputs.
+\item[SHD-1--SHD-4] The interval enclosures of the eight node values of the binary
+quartic correction and $H_q(1/3,2/3)$; the grouping
+constants and dual identities; the exact Bernstein coefficients of the eight one-variable quartics (SHD-3, with a negative
+control); and the large-tail coefficient bounds and the SHD column of
+Table~\ref{tab:fqe-moment-rectangle} (Lemma~\ref{lem:fqe-moment-rectangle}) in
+Lemma~\ref{lem:fqe-small-head-dual}. The monotonicity of $A_q$ (Lemma~\ref{lem:fqe-binary-quartic}, by Cauchy's
+formula), the grouping
+and global derivative arguments are analytic.
+\item[LHD-1--LHD-4] Lemmas~\ref{lem:fqe-large-head-curvature} and~\ref{lem:fqe-large-head-dual}.
+LHD-1: the identities for the biased binary fourth derivative $J(x,y)$, the range of $K$, the three envelopes
+of $y$, and the Bernstein expansions of degree $12$, $16$, $16$ on $[0,3/5]$ with all coefficients positive (with a negative control).
+LHD-2: the polynomial with positive coefficients at $a=1/2$.
+LHD-3: the monotonicity constants in $K$, the cubic minorant $\kappa$, the logarithm constants and error budgets.
+LHD-4: the two Bernstein expansions of degree $13$ and $26$ behind the completed square, each with all coefficients
+at least the stated bound. The Hermite remainder signs and the quasi-convexity of $J$ are proved in the text; no
+subdivision or external coefficient file is used.
+\item[BC-1--BC-3] Exact grouping derivative cancellation, geometric-convexity
+and cubic grouping identities, equality contacts, lower-order negative control,
+and the high-$F$ transfer. Log-sum, the single-crossing inference and the global
+entropy bound are analytic in Section~\ref{sec:fqe-renyi-cubic-bound}.
+This covers the analytic high-$F$ case $20\varepsilon+2F\ge1$ of Theorem~\ref{thm:fqe-renyi-classical} without
+interval arithmetic.
+\item[DA-1--DA-5] Exact-symbolic HS tangency, cluster contacts, evenness,
+dual and sliver algebra; exact comparison of every printed multiplier and band with the
+executable data; closed-band coverage and finite crossing brackets; exact wrong-multiplier
+and shifted-contact negative controls.
+\item[CV-1--CV-5] An independent quaternion parametrisation of the cut spectra on $P=1$ (CV-1, CV-2), cyclic purity and moment
+identities, the cubic discriminant and nonnegative geometric-mean transfer remainder, and the full equality-family data for Proposition~\ref{prop:fqe-critical-variance}.
+The cut-spectrum formula and equality inference are analytic.
+\item[CJ-1--CJ-5] Directional permanent and geometric-concavity identities,
+the Fourier variance factor and shared-unitary block expansion, the scalar
+factorisation and quadratic discriminant, the sharp cluster-to-Bell family,
+and a scalar-only negative control for
+Proposition~\ref{prop:fqe-critical-quadratic-variance}.
+The Cauchy--Schwarz bounds, global sign and equality arguments are analytic;
+these checks use no coefficient certificate.
+\item[QVA-1--QVA-4] The compact universal certificate for Theorem~\ref{thm:fqe-sharp-quadratic-variance}:
+exact six-copy $\mathrm{SU}(2)$ intertwiners and vanishing at HS and cluster (QVA-1);
+positivity of the denominator and $95$ integer norm weights (QVA-2); and the exact identity
+\eqref{eq:fqe-qv-allstate-sos} at the $83$ determining Gaussian-integer states of QG (QVA-3).
+There are $95$ squared norms in $14$ spin sectors, with denominator $D=10235456181520$ and positive integer
+weights of at most $14$ decimal digits. Their sparse multiplicity vectors have $716$ nonzero integer entries,
+all of absolute value at most $22$. There are no Gram matrices or matrix positivity checks.
+QVA-4 retains the invariance regression for every squared norm under conjugation, qubit permutations and four
+Gaussian-integer local maps per qubit. The replay uses integer arithmetic throughout.
+The data encodes each highest-weight row by its negative and positive supports in the zero-based
+six-bit computational basis. For $j=0,2,4,6$ these give $5,9,5,1$ rows $H_j$, respectively;
+each is supported at Hamming weight $(6-j)/2$ and killed by the raising matrix $E$.
+Concatenate $H_jE^k/k!$ in increasing $j$, then $k=0,\ldots,j$, to obtain $C_6$.
+For each sector, \texttt{a} and \texttt{spins} specify $W_{a,p}$; each entry of \texttt{vectors} is a flat
+list $[j_1,c_1,\ldots,j_s,c_s]$ specifying $\sum_tc_te_{j_t}$ with zero-based multiplicity indices,
+and the corresponding entry of \texttt{weights} is its positive coefficient $q_{ki}$.
+The proof needs no equality-curve jets, auxiliary rank computation or coefficient solve.
+\item[EU-1, EU-2] The sharp entropy--purity slope of Lemma~\ref{lem:seven-entropy-linear-purity} for
+every dimension: the one-spike identities for $N''$, $F_m(r_*)$, $F_m'(r_*)$ and $c_d$ (EU-1); and the entropy ceilings
+of Table~\ref{tab:fqe-other-n}, evaluated at 60 digits and rounded up (EU-2).
+\item[QG-1--QG-5] Mixed-sextic recoupling, every permuted HS/cluster zero, and the nonsingular 83-point evaluation matrix of
+83 raw Gram entries built from five-copy blocks, multiplied by $N$ or coupled to one further copy (QG-1, QG-3):
+these make the 83 states determining for the invariant space of
+Section~\ref{sec:sup-qk}. The same script checks an independent direct proof of (QK): 80 squared covariant norms in 16
+modules with strictly positive rational coefficients from an exact $80\times80$ solve, and a signed norm identity forcing
+$P\in\{1,3/2\}$ at equality (QG-2, QG-4). QG-5 checks invariance of every raw Gram entry under complex conjugation, qubit
+transpositions and five Gaussian-integer multiples of local unitaries on full-support states (a regression of the
+construction). The ambient dimension 85 follows from \eqref{eq:fqe-invariant-even} and SD-4.
+
+\item[RG-1--RG-3] The correlation geometry of Appendix~\ref{sec:fqe-correlation}: the Pauli trace formulas
+for $\operatorname{tr}R^2$ and $\operatorname{tr}R^3$ of an arbitrary two-qubit matrix (RG-1); the determinant
+identity \eqref{eq:fqe-correlation-volume} (RG-2); and the generalised eigenvalues $4,-47,-47$ of the
+replica witness $K_{\rm rep}$ on the three pairings (RG-3).
+\item[IC-1--IC-6] The icosahedral family of Appendix~\ref{sec:ico}: one-qubit marginals, the
+quadratic $\pi_3(\psi_x)$ and its exact minimiser $x=37/524$, the marginal and pair purities, the
+computational-basis block diagonalisation of the 35 triple and 21 pair marginals (proved analytically from $C^2=5I_6$ in Theorem~\ref{thm:ico}),
+and the exact signs of both entropy derivatives in Corollary~\ref{cor:ico-entropy-separation}.
+\item[EG-1] Interval-arithmetic enclosures of the gap $E_3(\psi_{x_*})-E_3(\Psiico)$ and of $\pi_3(\psi_{x_*})-121/917$ on
+the icosahedral family, from its explicit spectra.
+\item[GS-4] The MacWilliams and shadow-integrality identity for seven-qubit stabilizer states and an explicit seven-vertex graph witness attaining $\pi_3=19/140$; the lower bound is proved analytically in Proposition~\ref{prop:stab7}.
+
+\item[SD-1, SD-2, SD-4] Dimensions of the spaces of local-unitary invariant polynomials of four qubits
+for copy numbers up to $8$, by a character average and independently by a multiplicity count (SD-1, SD-2),
+and the qubit-symmetric conjugation-even and odd counts of \eqref{eq:fqe-invariant-even} (SD-4). The degree-six
+even count $85$ is a proof input for QVA and QG.
+
+\end{description}
+
+\input{stability_verification_map}

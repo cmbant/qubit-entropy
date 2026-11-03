@@ -1,0 +1,2 @@
+TY-1 PASS: C16(2, 3, 4, 8), tau=1, purity=1/143, exact ranks {6: 1096, 7: 6882, 8: 4892}
+TY-2 PASS: C20(3, 4, 5, 10), tau=1, purity=131/77792, exact ranks {8: 12312, 9: 96900, 10: 75544}

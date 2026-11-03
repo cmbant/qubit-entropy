@@ -1,0 +1,125 @@
+\section{Seven qubits: copy moments and the five-copy proofs}\label{sec:fqe-seven}
+
+We define the copy hierarchy used in Section~\ref{sec:fqe-seven-entropy}, locate the four-qubit inequalities
+within it, and record the ingredients of both seven-qubit
+proofs. The complete proofs are in the supplement~\cite{Companion};
+Appendix~\ref{sec:ico} constructs the icosahedral family. For a pure state of $n$ qubits put
+\[
+ \pi_k(\psi)=\binom nk^{-1}\sum_{|S|=k}\operatorname{tr}\rho_S^2.
+\]
+
+\paragraph{Pauli expansion.} Let $A_j$ be the sum of the squared expectation values of the $3^j\binom nj$ Pauli strings
+of weight $j$ (acting nontrivially on exactly $j$ qubits), so $A_0=1$ and $A_1=\sum_i\|\mathbf r_i\|^2$ (the $W_1$ of
+the four-qubit sections). Expanding each marginal in Pauli strings gives
+$\pi_k=2^{-k}\binom nk^{-1}\sum_{j\le k}\binom{n-j}{k-j}A_j$~\cite{Rains}; at $n=7$, $k=3$ this is
+$280\pi_3=35+15A_1+5A_2+A_3$. An AME state has $A_1=\dots=A_k=0$, which makes it a pure quantum code of distance
+$k+1$~\cite{Scott}. For stabilizer states the $A_j$ and the corresponding shadow coefficients are integers; with
+$A_1=A_2=0$ the shadow identity $4S_1=7-A_3$ forces $A_3\ge3$, and if $A_1+A_2\ge1$ instead, integrality gives
+$15A_1+5A_2+A_3\ge5$. Thus every seven-qubit stabilizer state has $\pi_3\ge19/140$ (Proposition~\ref{prop:stab7}, which
+defines the shadow coefficients $S_w$).
+
+\paragraph{Copy moments.} Purities are linear observables of the two-copy density operator: if $\mathrm{SW}_S$ swaps the two
+copies of the qubits in $S$, then $\operatorname{tr}\rho_S^2=\operatorname{tr}[\mathrm{SW}_S\,(|\psi\rangle
+\langle\psi|)^{\otimes2}]$. A lower bound on $\pi_k$ therefore follows from any convex set of operators
+that contains the twirled $m$-copy moments
+\[
+  X_m=\operatorname{Av}_{\sigma,K}\int\bigl(U|\psi\rangle\langle\psi|U^\dagger\bigr)^{\otimes m}\,dU,
+  \qquad m\ge2,
+\]
+where $U=u_1\otimes\cdots\otimes u_n$ ranges over local unitaries (LU), and
+$\operatorname{Av}_{\sigma,K}$ also averages over qubit permutations and complex conjugation (the supplement writes $X_m^+$).
+These averages preserve the mean purity objective, and the partial trace over one copy maps $X_{m+1}$ to $X_m$.
+
+Spin flip supplies further positivity constraints. With
+$\epsilon=\bigl(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\bigr)$ and
+$\tilde\psi=\epsilon^{\otimes n}\overline\psi$ the spin-flipped state, the twirl of
+$|\psi^{\otimes(m-j)}\tilde\psi^{\otimes j}\rangle\langle\psi^{\otimes(m-j)}\tilde\psi^{\otimes j}|$ is an average of
+rank-one projectors, $1\le j\le m/2$; we denote it by $\Lambda_j(X_m)$ when the flipped copies are the last $j$, and set
+$\Lambda_0(X_m)=X_m$. Since $\epsilon\overline u\epsilon^{-1}=u$ for $u\in SU(2)$, the flip commutes with the
+local twirl; the extra phase for $U(2)$ cancels in projectors. It also commutes with qubit
+permutations and complex conjugation. Thus $\Lambda_j$ is a fixed linear image of $X_m$: partial
+transpose on the $j$ flipped copies followed by conjugation by the corresponding $\epsilon$ factors.
+Minimising $\pi_k$ over trace-one, twirl-invariant operators $X_m$ supported on the symmetric subspace,
+subject to $X_m\succeq0$ and $\Lambda_j(X_m)\succeq0$, is a semidefinite programme. Its optimum $L_m$ bounds $\min\pi_k$ from below, $L_m\le L_{m+1}$, and $L_m\to\min\pi_k$; the
+level $m=2$ is the shadow-enumerator linear programme of Rains~\cite{Rains}
+(Proposition~\ref{prop:rainsppt} and Theorem~\ref{thm:spinflip-ppt-hierarchy} of the supplement~\cite{Companion}).
+
+\paragraph{The four-qubit inequalities in this hierarchy.} A certificate at level $m$ is an identity
+\[
+ \text{objective}-\text{bound}=\sum_{j}\operatorname{tr}\bigl[\Xi_j\,\Lambda_j(X_m)\bigr],\qquad \Xi_j\succeq0,
+\]
+valid for all $X_m$; on a genuine state each term is an average of squared norms
+$\|\Xi_j^{1/2}(\psi^{\otimes(m-j)}\otimes\tilde\psi^{\otimes j})\|^2$.
+At $n=4$ the purity bound $P\ge1$ of Lemma~\ref{lem:fqe-purity} is the level-two linear-programming (LP) minimum
+$\pi_2=1/3$ (Theorem~\ref{thm:lptable} of the supplement). Its proof evaluates $\tau=\operatorname{tr}(\rho\tilde\rho)$, the
+shadow term. The sextic identity~\eqref{eq:fqe-remainder} is a level-three certificate (it holds as a linear identity in the three-copy moment) with one flipped copy: every
+term is $\langle w,Aw\rangle$ with $w=z\otimes z\otimes\tilde z$ and $A\succeq0$
+(Appendix~\ref{sec:fqe-sextic}). Its objective $F$ differs from the purity, so it uses the same positivity
+conditions with a different objective.
+
+At $n=7$ the levels separate (Table~\ref{tab:fqe-seven-levels}). Five copies are the first level that gives the sharp
+purity bound (levels two to four are provably not sharp). With a purity band and an eigenvalue cap as extra constraints, they also give the sharp bound for the entropy majorant of
+Section~\ref{sec:fqe-seven-entropy}.
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}cll@{}}
+\toprule
+$m$ & $L_m$ at $n=7$ & status\\
+\midrule
+$2$ & $L_2=1/8$ & exact (LP-2; a putative AME weight distribution)\\
+$3$ & $L_3=\tfrac{125}{978}=0.1278118\ldots$ & proved (Thm.~\ref{thm:threecopy})\\
+$4$ & $\tfrac{211}{1600}\le L_4<\tfrac{6597}{50000}<\tfrac{121}{917}$ & bounds proved (Thm.~\ref{thm:fourcopy}, Prop.~\ref{prop:fourcopy-not-sharp}); $L_4\approx0.131877$ numerical (FS)\\
+$5$ & $L_5=\tfrac{121}{917}=0.131952\ldots$ & verified-arithmetic certificate (Thm.~\ref{thm:fqe-seven-purity})\\
+\bottomrule
+\end{tabular}
+\caption{The seven-qubit copy hierarchy for $\pi_3$. Strictness $L_2=1/8<L_3$ is read off the table and $L_3<L_4$ is proved
+(Corollary~\ref{cor:strict-copy-hierarchy} of the supplement), and $L_4<L_5$ by the exact feasible pseudo-moment of Proposition~\ref{prop:fourcopy-not-sharp} (exact certificate; checks NS-0--NS-4).}
+\label{tab:fqe-seven-levels}
+\end{table}
+
+\paragraph{Ingredients of the five-copy proofs.} Section~\ref{sec:fqe-seven-entropy} outlines the proofs of
+Theorems~\ref{thm:fqe-seven-purity} and~\ref{thm:fqe-seven-entropy} in three steps (value, equality moment, orbit), taken
+at a point $\psi_y$ of the icosahedral family: $y=37/524$ for the purity and $y=x_*$ for the entropy. The complete proofs
+are Sections~\ref{sec:fivecopy} and~\ref{sec:sup-seven-entropy} of the supplement. Here we define the objects used in those outlines
+and record the sizes of the computations.
+
+\emph{Faces.} By representation theory the positivity conditions at level five decompose into blocks. The
+certificates use some of them, $\Gamma_b(X_5)$, each a compression (followed by a fixed congruence) of $\Lambda_{j_b}(X_5)$
+with $j_b\in\{0,1,2\}$ flipped copies. Exact matrices $W_b$ (rational for the purity; for the entropy defined by exact
+formulas at $x_*$, with enclosures used only to check the identity) have columns in the kernels of the blocks at $\psi_y$,
+and the \emph{faces} are $W_b^{\mathsf T}\Gamma_b(X_5)W_b\succeq0$. With positive definite $C_b$, the objective minus its value at
+$\psi_y$ (for the entropy, the value minus the objective) equals $\sum_b\operatorname{tr}[C_bW_b^{\mathsf T}\Gamma_b(X_5)W_b]$
+plus, for the entropy, further nonnegative terms. For the purity there are twelve faces:
+\[
+ \pi_3-\frac{121}{917}=\sum_{b=1}^{12}\operatorname{tr}\bigl[C_bW_b^{\mathsf T}\Gamma_b(X_5)W_b\bigr]
+\]
+for every normalised $X_5$, in the $3285$-dimensional space of conjugation-even five-copy moments
+(Proposition~\ref{prop:fivecopy-finite-probes} of the supplement). For the entropy the objective is the
+mean of the joint majorant of Section~\ref{sec:fqe-seven-entropy}; there are seventeen faces, and the extra terms are the
+purity-band constraints times nonnegative cubic polynomials and matrix squares weighted by the eigenvalue cap.
+
+\emph{Probes and verified arithmetic.} In both cases the target functional and the face entries vanish at $X_5(\psi_y)$ and at
+$X_5'=\tfrac{d}{dx}X_5(\psi_x)|_{x=y}$. They therefore lie in the $3283$-dimensional \emph{critical space}
+of linear functionals annihilating these two moments. A computer evaluates the faces at $3424$ rational probe
+moments, and a rank computation with rigorous error bounds shows that the probes separate the critical space; solving
+the probe equations gives each $C_b$ (for the entropy, the first twelve) as a verified small correction of the identity
+matrix. In practice numerical linear algebra proposes an approximate inverse, and rigorous rounding-error bounds validate
+it; Section~\ref{sec:fivecopy-positive-repair} of the supplement gives the rank test, the error model and the margins. The arithmetic is floating point with rigorous error bounds, so the proof uses a verified-arithmetic certificate
+rather than an exact-rational computation. The same rank computation shows that the face entries span the critical space, which
+is the input of the equality step. The purity certificate also gives a quantitative bound: $\pi_3-121/917$ is at least the
+least eigenvalue of the $C_b$ times the total face energy $\sum_b\operatorname{tr}[W_b^{\mathsf T}\Gamma_b(X_5)W_b]$.
+
+\emph{Equality moment and orbit.} At equality every face vanishes. Since the face entries span the critical space, the
+moment then lies on the tangent line $X_5(\psi_y)+tX_5'$; this is Lemma~\ref{lem:fivecopy-tangent-line} of the
+supplement, which holds for any number of qubits and copies. The invariant that fixes the tangent parameter is $H=104S_1-25A_2$, with $S_1$
+the weight-one shadow coefficient (Proposition~\ref{prop:stab7}) and $A_2$ the weight-two Pauli sum of the Pauli expansion above (the invariant $\mathcal E_2$ of Theorem~\ref{thm:moment-orbit-rigidity}); its family
+value is $h=155+96y$. Both $H$ and $H^2$ are linear in $X_5$, so at $X_5(\psi_y)+tX_5'$ they force
+$(h+96t)^2=h^2+192ht$, that is $t=0$; equivalently, the centred square $(H-h)^2$ is linear in the moment and lies in the critical
+space, so it vanishes at equality, yet on the actual state it equals $(96t)^2$. Hence $X_5(\psi)=X_5(\psi_y)$. The orbit step is Theorem~\ref{thm:moment-orbit-rigidity} of the supplement, valid for every
+$y\in(1/32,1/12)$: its thirteen invariants, of bidegree at most $(4,4)$ in $\psi,\bar\psi$, are all determined by the
+four-copy marginal of $X_5$, and force a local frame in which $\psi$ is fixed by an antilinear operator built from the spin
+flip, that of Proposition~\ref{prop:kramers-conference-shell}; the remaining matrix $Q$ is complex symmetric of order six
+with zero diagonal, and the real amplitude is fixed by $y$; the conference-matrix conclusion, unique up to diagonal
+unitaries and permutations, is Theorem~\ref{thm:complexsos} (the identity~\eqref{eq:fqe-complex-sos}) with Proposition~\ref{prop:confphase}; and
+Corollary~\ref{cor:icosahedral-labelled-orbits} counts the $42$ labelled LU orbits. Steps 2 and 3 together are
+Theorem~\ref{thm:fivecopy-family-equality} of the supplement, stated for every $y\in(1/32,1/12)$.

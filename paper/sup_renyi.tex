@@ -1,0 +1,858 @@
+\section{The R\'enyi bounds: full proofs and further results}\label{sec:sup-renyi}
+The intermediate-order R\'enyi proof works with a \emph{relaxation} of the
+quantum problem. Take three arbitrary four-point probability vectors
+$\lambda^{(j)}$, $j=2,3,4$, and set
+$P=\sum_{j,i}(\lambda_i^{(j)})^2$ and
+$T=\sum_{j,i}(\lambda_i^{(j)})^3$. Impose the necessary constraints
+$P\ge1$, $F=17P-12T-12\ge0$, and the quadratic purity-variance bound
+(QK). We do not assume these inequalities characterise physically
+realisable cut spectra. An upper bound for this larger set proves the
+quantum bound; identifying the equality states requires the separate
+rigidity arguments of the paper. The bound (QK)
+is deduced below from the sharper six-copy certificate (QV).
+
+The remaining optimisation has two anchor orders. Determinant monotonicity
+reduces individual spectra to repeated-root charts; the supporting bounds
+then cover an HS region, a strict intermediate band, a capped region and a
+narrow cluster region. Single crossing transfers the HS anchor to lower
+orders, and monotonicity of R\'enyi entropy transfers the cluster anchor to
+higher orders. The final subsections give independent estimates and explain
+why local filtering cannot replace the unrestricted compatibility argument.
+
+\subsection*{Proofs of results of the paper}
+\subsection{Proof of Theorem~\ref{thm:fqe-sharp-quadratic-variance} and Corollary~\ref{thm:fqe-quadratic-variance}}\label{sec:sup-qk}
+\begin{restated}[Sharp quadratic purity variance; exact-rational certificate, QVA]{Theorem}{thm:fqe-sharp-quadratic-variance}
+Every unit pure four-qubit state satisfies
+\[
+\boxed{\qquad F^2+3P(P-1)\ge6V_P,
+\qquad V_P=\sum_{j=2}^4(p_j-P/3)^2.\qquad}
+\tag{QV}
+\]
+Equality holds along the whole cluster-to-Bell family \eqref{eq:fqe-quadratic-family}, so the
+coefficient $3$ cannot be decreased.
+\end{restated}
+Write $p_j=\operatorname{tr}\rho_{1j}^2\in[1/4,1]$ and $U=\sum_jp_j^2$. Maximising the convex function $U$ at fixed
+$P$ over the box $[1/4,1]^3$, filling one coordinate at a time towards an endpoint, gives the \emph{purity box}
+\[
+U\le
+\begin{cases}
+(P-1/2)^2+1/8,&1\le P\le3/2,\\
+1+(P-5/4)^2+1/16,&3/2\le P\le9/4,\\
+2+(P-2)^2,&9/4\le P\le3.
+\end{cases}
+\tag{JB}\label{eq:fqe-purity-box}
+\]
+The family \eqref{eq:fqe-quadratic-family} has $P=1+r^2/2$, $F=(1-r^2)/2$ and $V_P=(1+2r^2)^2/24$, which gives
+equality and, for $r>0$, $(6V_P-F^2)/(P(P-1))=3$ exactly (QV-3). Proposition~\ref{prop:fqe-critical-quadratic-variance}
+covers critical states, including $P=1$ by Lemma~\ref{lem:fqe-purity}. When $F\ge3/2-P$, the purity box
+\eqref{eq:fqe-purity-box} gives the inequality directly by substituting into $F^2+5P^2-3P-6U$ (QV-2).
+Thus only noncritical states with $1<P<3/2$ and $F<3/2-P$ need the certificate, which
+treats all states at once.
+
+\begin{proof}
+For $z\in\mathbb C^{16}$ put $N=\lVert z\rVert^2$, use unnormalised marginals in $P,T,U$, and set
+\[
+ \mathfrak F=17NP-12T-12N^3,\qquad
+ \mathfrak D=\mathfrak F^2+5N^2P^2-3N^4P-6N^2U.
+\]
+Then $\mathfrak D(z)=N^6\bigl(F^2+3P(P-1)-6V_P\bigr)(z/\sqrt N)$, so it suffices to prove $\mathfrak D\ge0$.
+It is a local-unitary invariant of bidegree $(6,6)$, symmetric under qubit permutations and complex
+conjugation, and it vanishes at HS and at the cluster state, which are equality cases. We exhibit it as a sum of
+squared norms.
+
+Put $\widetilde z=\epsilon^{\otimes4}\bar z$, where $\epsilon=\bigl(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\bigr)$.
+Since $\epsilon\bar U=U\epsilon$ for $U\in SU(2)$, apply the six-copy spin intertwiners to
+$z^{\otimes a}\otimes\widetilde z^{\otimes(6-a)}$, $a\in\{3,4\}$, and stack all $24$ qubit permutations.
+For a spin tuple $p=(j_1,\dots,j_4)$, one twice-spin $j_i\in\{0,2,4,6\}$ of the six copies at each qubit, call the resulting map $W_{a,p}$ and equip its magnetic rows with the positive weights
+\[
+ w_p=\bigotimes_{j\in p}\left(\frac{\operatorname{lcm}_{r}\binom jr}{\binom jk}\right)_{k=0}^{j},
+\]
+repeated over the permutations. These are the invariant spin inner products: the spin-$j/2$ lowering basis has weights $1/\binom jk$.
+The data in the verifier map specifies integer multiplicity vectors $v_{ki}$, integer weights $q_{ki}$
+and an integer denominator $D$. Put $\Phi_{ki}=W_{a_k,p_k}v_{ki}$.
+Intertwining makes their squared norms local-unitary invariant; summing over permutations makes them
+qubit-symmetric, and the real intertwiners and weights make them conjugation-even.
+
+There are three finite checks: the highest-weight identities and vanishing of each $\Phi_{ki}$ at HS and
+cluster (QVA-1); positivity of $D$ and every $q_{ki}$ (QVA-2); and the identity
+\begin{equation}\label{eq:fqe-qv-allstate-sos}
+ 2D\,\mathfrak D(z)=\sum_{k,i}q_{ki}\lVert\Phi_{ki}(z)\rVert_{w_{p_k}}^2
+\end{equation}
+at the $83$ determining states (QVA-3).
+Both sides lie in the space $\mathcal V$ of qubit-symmetric, conjugation-even local-unitary
+invariants of bidegree $(6,6)$ vanishing at HS and cluster. The ambient space has dimension $85$
+(Section~\ref{sec:fqe-invariant-dimensions}, SD-4); HS and cluster evaluations are independent,
+since the normalised values of $(N^6,N^3T)$ are $(1,5/12)$ and $(1,3/8)$. Thus $\dim\mathcal V=83$.
+QG supplies $83$ Gram entries in $\mathcal V$, built from five-copy covariants multiplied by $N$
+or coupled to one further copy (QG-1), whose evaluation matrix at these states
+has determinant $627608$ modulo $1000003$ (QG-3). Evaluation is therefore injective on $\mathcal V$,
+and \eqref{eq:fqe-qv-allstate-sos} holds identically. Every summand is nonnegative, so $\mathfrak D\ge0$.
+\end{proof}
+
+\begin{restated}[Quadratic purity variance]{Corollary}{thm:fqe-quadratic-variance}
+Every unit pure four-qubit state satisfies
+\[
+\boxed{\qquad F^2+\frac92(P-1)\ge6V_P.\qquad}
+\tag{QK}
+\]
+Equality holds exactly for HS cut spectra, cluster cut spectra, or products
+of two Bell pairs, up to ordering of cuts and eigenvalues.
+The coefficient $9/2$ cannot be decreased, and the coefficient $6$ cannot
+be increased while retaining $9/2$.
+\end{restated}
+\begin{proof}
+Write $\mathcal K=F^2+\frac92(P-1)-6V_P$ and $\mathcal V_Q=F^2+3P(P-1)-6V_P$, so that
+$\mathcal K-\mathcal V_Q=3(P-1)(3/2-P)$. By Lemma~\ref{lem:fqe-purity}, $P\ge1$. For $1\le P\le3/2$,
+Theorem~\ref{thm:fqe-sharp-quadratic-variance} gives $\mathcal K\ge3(P-1)(3/2-P)\ge0$, strictly for $1<P<3/2$.
+For $P\ge3/2$ the purity box \eqref{eq:fqe-purity-box} gives
+$\mathcal K\ge F^2+4(P-\tfrac32)(\tfrac{27}8-P)$ on $[3/2,9/4]$ and
+$\mathcal K\ge F^2+(P-\tfrac94)(\tfrac{39}2-4P)+\tfrac{27}8>0$ on $[9/4,3]$ (QV-2), so $\mathcal K\ge0$, strictly for
+$P>3/2$. Equality therefore forces $P=1$ or $P=3/2$.
+
+At $P=3/2$ the box gives $\mathcal K\ge F^2$, so equality forces $F=0$ and $U=9/8$; the purities are a permutation of
+$(1,1/4,1/4)$. The marginal of purity one makes the state a product across that cut. On either crossed cut its
+marginal is a product of two one-qubit states, and purity $1/4$ forces both to be maximally mixed, so both factors
+are Bell pairs. At $P=1$, Proposition~\ref{prop:fqe-critical-variance} gives
+$\mathcal K=F^2-6V_P\ge s^4(1-s)(2-s)$ with $0\le s\le1$ (QV-1). Equality requires $s\in\{0,1\}$ and equality in
+\eqref{eq:fqe-critical-variance}, which gives exactly HS or cluster spectra. All three types attain equality.
+Bell products force the coefficient $9/2$, and cluster spectra force the coefficient $6$.
+\end{proof}
+
+The Lean formalisation proves~\eqref{eq:fqe-qv-allstate-sos} for all $z$ directly, without the dimension count
+(Section~\ref{sec:fqe-lean}). An older direct certificate for (QK), from eighty squared covariant norms in sixteen modules, is
+kept as a regression (QG-2, QG-4).
+
+\subsection{Proof of Lemma~\ref{lem:fqe-renyi-determinant}}\label{sec:sup-determinant}
+At fixed trace, second moment and third moment, the determinant is the only
+remaining elementary symmetric function of a four-point spectrum. The lemma
+shows that increasing this determinant improves R\'enyi entropy for
+$1<q<2$, reducing each spectral optimisation to a repeated-root boundary.
+\begin{restated}[Determinant monotonicity at fixed second and third moments]{Lemma}{lem:fqe-renyi-determinant}
+For $1<q<2$, let $\lambda,\lambda'$ be four-point spectra with the same second moment $p$ and third moment $t$.
+If $\prod_i\lambda_i<\prod_i\lambda'_i$, then $H_q(\lambda)<H_q(\lambda')$.
+Consequently, at fixed $p$ and $t$, the maximum of $H_q$ is attained at a spectrum of one of the two types
+\[
+(a,b,c,c)\quad\text{or}\quad(a,a,b,c),
+\qquad a\ge b\ge c\ge0,
+\tag{DM}
+\]
+including their degenerations.
+\end{restated}
+\begin{proof}
+Newton's identities fix $e_1=1$, $e_2=(1-p)/2$ and $e_3=(1-3p+2t)/6$ (UR-3). Hence, for $s>0$ and $d=\prod_i\lambda_i$,
+\[
+ \prod_i(\lambda_i+s)=M(s)+d,\qquad \sum_i\prod_{j\ne i}(\lambda_j+s)=M'(s),\qquad M(s)=s^4+s^3+e_2s^2+e_3s,
+\]
+where $M$ depends only on $(p,t)$ and both quantities are positive. Since $x^2/(x+s)=x-s+s^2/(x+s)$,
+\[
+ \sum_i\frac{\lambda_i^2}{\lambda_i+s}=1-4s+\frac{s^2M'(s)}{M(s)+d},
+\]
+which is strictly decreasing in $d$ for every $s>0$. For $1<q<2$ and $x\ge0$, the substitution $s=xu$ and
+$\int_0^\infty u^{q-2}(1+u)^{-1}\,du=\pi/\sin(\pi(q-1))$ give
+\[
+ x^q=\frac{\sin(\pi(q-1))}{\pi}\int_0^\infty s^{q-2}\,\frac{x^2}{x+s}\,ds .
+\]
+Each of these integrals converges, so summing over the four eigenvalues gives, for $d<d'$,
+\[
+ \sum_i\lambda_i^q-\sum_i\lambda_i'^q=\frac{\sin(\pi(q-1))}{\pi}\int_0^\infty s^{q}M'(s)
+ \Bigl(\frac1{M(s)+d}-\frac1{M(s)+d'}\Bigr)ds>0,
+\]
+and $H_q=(1-q)^{-1}\log_2\sum_i\lambda_i^q$ gives $H_q(\lambda)<H_q(\lambda')$.
+
+For (DM), the ordered spectra $\lambda_1\ge\lambda_2\ge\lambda_3\ge\lambda_4\ge0$ with trace one and the given $p,t$
+form a compact set, so the determinant attains its maximum on it, and by the first part a spectrum of maximal
+determinant maximises $H_q$. Suppose it has $\lambda_1>\lambda_2$ and $\lambda_3>\lambda_4$. Let
+$g(z)=\prod_i(z-\lambda_i)$, $m_1=(\lambda_1+\lambda_2)/2$ and $m_2=(\lambda_3+\lambda_4)/2$. Then $g(m_1)<0$,
+$g(m_2)<0$ and $g(\lambda_2)=g(\lambda_4)=0$, so for $0<\delta<\min\{-g(m_1),-g(m_2)\}$ the quartic $g+\delta$ changes
+sign on each of $(\lambda_4,m_2)$, $(m_2,\lambda_2)$, $(\lambda_2,m_1)$ and $(m_1,\infty)$. Its four roots are therefore
+distinct and exceed $\lambda_4\ge0$. They have the same $e_1,e_2,e_3$, hence the same $p,t$, and product $d+\delta$,
+contradicting maximality. So $\lambda_1=\lambda_2$ or $\lambda_3=\lambda_4$, which is (DM).
+\end{proof}
+
+\subsection{The classical relaxation: multiplier table}\label{sec:sup-renyi-classical}
+The proof of Theorem~\ref{thm:fqe-renyi-classical} of the paper uses the multiplier table below and the
+supporting lemmas, at the orders $q_s=1587/1000$ and $q_u=8/5$ of that theorem.
+The next subsection combines them; the supporting inequalities follow afterwards.
+
+\input{renyi_dual_tables}
+
+\subsection{Proof of Theorem~\ref{thm:fqe-renyi-classical}}\label{sec:sup-renyi-classical-proof}
+\begin{restated}[Two R\'enyi anchors]{Theorem}{thm:fqe-renyi-classical}
+Let $q_s=1587/1000$ and $q_u=8/5$. Every triple satisfying $P\ge1$, $F\ge0$ and
+\eqref{eq:fqe-quadratic-variance-proved} obeys one of the following.
+\begin{enumerate}
+\item If $F\ge3/20$ or $20\varepsilon+2F\ge1$, then $\mathcal E_{q_s}\le5/3$, with equality only at a permutation of
+$(c_1,c_2,c_2)$.
+\item Otherwise $\mathcal E_{q_u}\le h_{q_u}$, with equality only when all three spectra are HS spectra.
+\end{enumerate}
+\end{restated}
+\begin{proof}
+The following partition is exhaustive and disjoint. In the last four rows,
+$20\varepsilon+2F<1$; in the last two, $F>11/25$.
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}p{.36\linewidth}cl@{}}
+\toprule
+Region (first applicable row) & Order & Bound used \\
+\midrule
+$20\varepsilon+2F\ge1$ & $q_s$ & Cubic envelope (BC) \\
+$F<3/20$ & $q_u$ & HS support (HD) \\
+$3/20\le F\le11/25$ & $q_s$ & Strict band L (LT, SHD, LHD) \\
+$\max_jp_j\le47/100$ & $q_s$ & Capped cubic bound (CG) \\
+$\max_jp_j>47/100$ & $q_s$ & Cluster sliver (NU, SL) \\
+\bottomrule
+\end{tabular}
+\caption{The anchor partition. Rows are applied in order: each triple is handled by the first row whose region
+contains it, so every row excludes the regions above it. HD gives HS equality; BC gives cluster equality; the other
+three regions are strict. SHD and CG both use the monotonicity of $A_q$ in Lemma~\ref{lem:fqe-binary-quartic}, proved by Cauchy's formula;
+SHD adds the quartic checks SHD-3.}
+\label{tab:fqe-renyi-coverage}
+\end{table}
+
+\emph{Cubic envelope.} Corollary~\ref{cor:fqe-renyi-high-f}, with $q_s>q_b$,
+handles the first row and classifies its equality triples.
+Henceforth $\varepsilon<1/20$, $F<1/2$, and
+\[
+ p_j\le P-1/2<11/20<9/16<49/75.
+\]
+These are the purity caps required by HD and L; they are consequences of
+the region, not hypotheses on physical states.
+
+\emph{HS zone.} For $F<3/20$, Lemma~\ref{lem:fqe-hs-polynomial} gives
+$\Lambda_\theta\le h_{q_u}$, strictly off HS, and
+$\ell_\theta\ge0$ on $[0,1/9]\times[0,3/20]$, which contains $(\varepsilon,F)$.
+The dual lemma therefore gives $\mathcal E_{q_u}\le h_{q_u}$,
+with equality only at three HS spectra.
+
+\emph{Strict band.} For $3/20\le F\le11/25$,
+Lemma~\ref{lem:fqe-rational-dual} gives
+$\Lambda_\theta<W-10^{-5}$, where $3W=5+\min\ell_\theta$ on the
+L rectangle. Thus
+\[
+ 3\mathcal E_{q_s}\le\sum_j\Lambda_\theta-\ell_\theta
+ <5+\min\ell_\theta-\ell_\theta-3\cdot10^{-5}<5.
+\]
+
+\emph{Near the cluster triple.} The remaining region has $F>11/25$ and
+$\varepsilon<(1-2F)/20<3/500<1/100$.
+If every cut has $p_j\le47/100$, Corollary~\ref{cor:fqe-capped-cluster}
+gives the strict ceiling. Otherwise label a cut with $p_2>47/100$.
+It is unique, since two such cuts would give
+$P>47/50+1/4>101/100$. The other two have
+$p_j\le P-p_2-1/4<29/100$.
+For this last case only, use determinant replacement
+(Corollary~\ref{cor:fqe-renyi-six-variable}) to put each cut on an ordered
+double-root chart, preserving every $p_j,t_j$ and the constraints.
+
+\emph{Cluster sliver.} Set $X=(p_3-1/4)+(p_4-1/4)=1/2+\varepsilon-p_2\le1/25$.
+Writing $x_j=p_j-1/4$, Lemma~\ref{lem:fqe-third-moment} for cuts $3,4$ gives
+\[
+ F\in I=[F_c-\kappa_aX,F_c+\kappa_aX],\qquad
+ F_c=-1+8\varepsilon+9p_2-12t_2,\qquad \kappa_a=4\sqrt3/5,
+\]
+since the error is at most
+$4\sqrt3(x_3^{3/2}+x_4^{3/2})\le4\sqrt3X^{3/2}\le\kappa_aX$.
+The actual $F$ lies in $I\cap(11/25,1/2)$, exactly the window needed by SL.
+Use the HT row $\theta_s=(3.5425,0.1872,1.1235)$ and put
+\[
+ \Lambda^\star_i=\Lambda_{\theta_s}(c_i),\qquad
+ m=\min_{f\in\partial I}\ell_{\theta_s}(\varepsilon,f),\qquad
+ \ell_0=\ell_{\theta_s}(0,1/2).
+\]
+NU bounds each of the two near-uniform cuts by $\Lambda^\star_2$.
+SL bounds the distinguished cut by $\Lambda^\star_1+m-\ell_0$.
+Concavity of $\ell_{\theta_s}$ in $F$ gives $\ell_{\theta_s}(\varepsilon,F)\ge m$; hence Lemma~\ref{lem:fqe-dual}
+and the contact identity~\eqref{eq:fqe-dual-contact} give
+\[
+ 3\mathcal E_{q_s}
+ \le \Lambda^\star_1+2\Lambda^\star_2-\ell_0+m-\ell_{\theta_s}(\varepsilon,F)
+ \le \Lambda^\star_1+2\Lambda^\star_2-\ell_0=5.
+\]
+Here NU and SL are Lemmas~\ref{lem:fqe-near-uniform-dual}
+and~\ref{lem:fqe-cluster-sliver}.
+
+\emph{Equality.} HD forces three HS spectra. The strict band and capped region are strict.
+In the sliver, equality in SL forces the distinguished cut to be $c_1$ and $\varepsilon=0$.
+Then $X=0$, so both other cuts are $c_2$, giving $F=1/2$, excluded in this region.
+Thus the replaced triple, and hence the original triple, has a strict bound there.
+Only the HS equality of HD and the cluster equality of the cubic envelope remain.
+\end{proof}
+
+\input{renyi_low_tilt_reduction}
+
+\input{renyi_hs_analytic}
+
+\subsection{The strict supporting band}\label{sec:fqe-rational-dual}
+The bounded-head and capped-cubic proofs below use the same near-uniform
+moment inequality. Readers following dependencies rather than the
+case partition can first consult
+Lemma~\ref{lem:fqe-near-uniform-moment} and the moment-rectangle argument
+in Section~\ref{sec:sup-nu-moment}, then return to these two applications.
+\begin{lemma}[Strict dual band; analytic with exact polynomial sign certificates]
+\label{lem:fqe-rational-dual}
+For band $L$ of Table~\ref{tab:fqe-dual-co}, set
+$W=5/3+\min\ell_\theta/3$, with the minimum over its rectangle's corners.
+At $q_s=1587/1000$, every four-point spectrum with $p\le49/75$ satisfies
+$\Lambda_\theta<W-10^{-5}$.
+\end{lemma}
+\begin{proof}
+At fixed purity the variable part is $H_q-(9/5)t$.
+Lemma~\ref{lem:fqe-low-tilt-reduction} reduces the maximum to $(a,b,c,c)$.
+Lemma~\ref{lem:fqe-small-head-dual} handles $a\le1/2$ and
+Lemma~\ref{lem:fqe-large-head-dual} handles $1/2\le a\le4/5$.
+These cover the domain: $p\ge a^2+(1-a)^2/3$ and its value $49/75$ at $a=4/5$
+force $a\le4/5$. The corner minimum of the outer dual is $1837/125000$,
+so $W-10^{-5}=2507333/1500000$ as required.
+\end{proof}
+
+\input{renyi_binary_quartic}
+
+\input{renyi_small_head_dual}
+\input{renyi_large_head_dual}
+
+\input{renyi_capped_cubic}
+
+\subsection{An analytic moment bound near the uniform spectrum}\label{sec:sup-nu-moment}
+The following argument bounds the near-uniform cuts in the cluster sliver. It applies to all four-point
+spectra, without a chart reduction or physical compatibility assumption. Its rectangle form,
+Lemma~\ref{lem:fqe-moment-rectangle}, is shared with the bounded-head chart and the capped region.
+
+\begin{lemma}[Near-uniform moment minorant; analytic]
+\label{lem:fqe-near-uniform-moment}
+Let $\lambda$ be a four-point probability vector. Put
+$w_i=\lambda_i-1/4$, $x=\sum w_i^2\le1/25$, and $y=\sum w_i^3$.
+For $q=q_s=1587/1000$, write $r=q-1$ and
+\[
+A=2qr,\quad B=\frac83qr(q-2),\quad
+C=\frac83qr(q-2)(q-3),\quad D_5=\frac23(q-4)C.
+\]
+If $x>0$, set $v=y/x$, $V=A+Bv+Cv^2$, $W=C/4+D_5v$.
+The notation $D_5$ distinguishes this Taylor coefficient from the
+global third-moment sum $T$.
+Then $|v|<3/25$, $V,W>0$, and
+\[
+2-H_q(\lambda)\ge
+\frac{\ln(1+xV+x^2W)}{r\ln2}.
+\tag{NU}\label{eq:fqe-near-uniform-moment}
+\]
+\end{lemma}
+\begin{proof}
+The sixth derivative of $z^q$ is positive on $z>0$. Taylor's formula
+through degree five at $z=1/4$, summed over the four entries, therefore gives
+\[
+4^{q-1}\sum_i\lambda_i^q
+\ge1+Ax+By+C\sum_iw_i^4+D_5xy.
+\]
+Here the trace-zero Newton identity is
+$\sum w_i^5=5xy/6$. The estimate extends to zero entries by continuity.
+The elementary square identity
+\[
+\sum_i\left(w_i^2-\frac x4-\frac yx w_i\right)^2
+=\sum_iw_i^4-\frac{x^2}4-\frac{y^2}x\ge0
+\]
+proves the required moment lower bound, since $C>0$.
+Lemma~\ref{lem:fqe-third-moment} gives $|y|\le x^{3/2}/\sqrt3$,
+hence $|v|\le1/\sqrt{75}<3/25$. The logarithm is increasing,
+and its division by $r\ln2$ gives \eqref{eq:fqe-near-uniform-moment}.
+For completeness, the rational bounds at $q_s$
+\[
+ A\ge\tfrac95,\quad |B|\le\tfrac{21}{20},\quad
+ C\ge\tfrac75,\quad -\tfrac{12}5\le D_5<0
+\]
+give $V\ge\tfrac{837}{500}$ and
+$W\ge\tfrac7{20}-\tfrac{12}5\cdot\tfrac3{25}
+=\tfrac{31}{500}>0$ for $|v|<3/25$.
+This proves the asserted positivity without relying on a later case split.
+\end{proof}
+
+The bound~\eqref{eq:fqe-near-uniform-moment} is used three times in the same way: on a rectangle
+in $(x,v)$ it is concave enough in $x$ to reduce to the far edge $x=X$, and convex enough in $v$ there
+to reduce to one point.
+\begin{lemma}[Moment rectangle; analytic]
+\label{lem:fqe-moment-rectangle}
+Keep $q=q_s$ and the notation of Lemma~\ref{lem:fqe-near-uniform-moment}, put $L=\ln2$,
+$N(x,v)=1+xV(v)+x^2W(v)$ and $\rho=21/50=(3/5)(7/10)$, so that $rL<\rho$. For constants $b,c$ and
+$\gamma\ge0$ let
+\[
+\Phi(x,v)=\frac{\ln N(x,v)}{rLx}+bv-c+\gamma x\qquad(x>0).
+\]
+Let $X>0$ and $v_*\in\mathcal I=[v_{\min},v_{\max}]$, and suppose that on $[0,X]\times\mathcal I$
+\[
+1\le N\le N_+,\quad V\le V_+,\quad W\ge-W_-,\quad V^2-2W\ge Q,\quad
+|B+2Cv+XD_5|\le S,
+\tag{MR1}\label{eq:fqe-rect-bounds}
+\]
+with $W_-\ge0$, and that the constants $m,\kappa,f_0,\eta$ satisfy
+\[
+Q-2XV_+W_-\ge mN_+^2,\quad m>2\rho\gamma,\quad
+2C-XS^2\ge\kappa\rho N_+^2,\quad \kappa>0,
+\tag{MR2}\label{eq:fqe-rect-curvature}
+\]
+\[
+\Phi(X,v_*)>f_0,\qquad|\Phi_v(X,v_*)|<\eta.
+\tag{MR3}\label{eq:fqe-rect-point}
+\]
+Then $\Phi$ is strictly decreasing in $x$ and $\Phi>\mu:=f_0-\eta^2/(2\kappa)$ on
+$(0,X]\times\mathcal I$. Consequently every four-point probability vector with $0<x\le X$ and
+$v=y/x\in\mathcal I$ satisfies
+\[
+2-H_q(\lambda)-cx+by+\gamma x^2>\mu x.
+\tag{MR}\label{eq:fqe-moment-rectangle}
+\]
+\end{lemma}
+\begin{proof}
+Fix $v\in\mathcal I$ and put $\ell(x)=\ln N$. Then
+\[
+\ell''(x)=\frac{2W-V^2-2xW(V+xW)}{N^2}.
+\]
+Since $N\ge1$, $V+xW\ge0$ for $x>0$. The last term is therefore nonpositive when $W\ge0$; when $W<0$ it is
+at most $2XW_-V_+$, as $V+xW\le V$. The numerator is at most $-Q+2XV_+W_-\le-mN_+^2<0$, so
+$\ell''\le-m$. Put $\mathcal F(x)=rLx\Phi=\ell(x)-rLx(c-bv-\gamma x)$. Then $\mathcal F(0)=0$ and
+$\mathcal F''=\ell''+2rL\gamma\le-m+2\rho\gamma<0$, so $\mathcal F(x)/x$, and with it $\Phi$, is strictly
+decreasing in $x$ on $(0,X]$.
+
+At $x=X$, since $1\le N\le N_+$, $C>0$ and $2C-XS^2>0$,
+\[
+\Phi_{vv}=\frac{2CN-X(B+2Cv+XD_5)^2}{rLN^2}\ge\frac{2C-XS^2}{\rho N_+^2}\ge\kappa .
+\]
+Completing the tangent square at $v_*$ gives
+$\Phi(X,v)\ge\Phi(X,v_*)-\Phi_v(X,v_*)^2/(2\kappa)>\mu$, and so $\Phi(x,v)\ge\Phi(X,v)>\mu$.
+
+The Taylor and projection inequality in the proof of Lemma~\ref{lem:fqe-near-uniform-moment} holds for
+every four-point vector; $x\le1/25$ entered only the bound on $|v|$. As $N\ge1>0$, it gives
+$2-H_q(\lambda)\ge\ln N/(rL)=x\Phi+cx-by-\gamma x^2$, which is~\eqref{eq:fqe-moment-rectangle}.
+\end{proof}
+
+In each application~\eqref{eq:fqe-rect-point} is checked at one point by rational arithmetic. With
+$z=XV(v_*)+X^2W(v_*)\in(0,1)$ and an even $k$, $\ln(1+z)\ge\sum_{j=1}^k(-1)^{j+1}z^j/j$; if this sum is
+positive, dividing it by $rL_+X$ bounds $\ln N/(rLX)$ below whenever $L<L_+$. The slope
+$\Phi_v(X,v_*)=(B+2Cv_*+XD_5)/(rLN(X,v_*))+b$ is monotone in $L$, so it is bounded by substituting the two
+rational endpoints of an enclosure of $L$. Table~\ref{tab:fqe-moment-rectangle} lists the three
+instances; each application derives~\eqref{eq:fqe-rect-bounds} from its own coefficient bounds.
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+ & NU & SHD (large tail) & CG (moment part)\\
+\midrule
+target & $\Lambda_\theta(c_2)-\Lambda_\theta(\lambda)\ge dx$ & $\Lambda_\theta(\lambda)\le\Lambda_\theta((1/4)^4)$ & \eqref{eq:fqe-capped-cubic}, $p\le21/50$\\
+$X$; $\mathcal I$; $v_*$ & $1/25$; $[-3/25,3/25]$; $1/20$ & $3/32$; $[0,9/50]$; $27/200$ & $17/100$; $[-6/25,6/25]$; $0$\\
+$b$; $c$; $\gamma$ & $12\beta$; $\alpha+8\beta-\gamma/2$; $\gamma$ (HT) & $9/5$; $35/8$; $159/100$ & $8/3$; $171/40$; $11/10$\\
+$N_+$; $V_+$; $W_-$ & $13/12$; $41/20$; $0$ & $6/5$; $19/10$; $3/50$ & $3/2$; $9/4$; $21/100$\\
+$Q$; $m$ & $(837/500)^2-4/3$; $6/5$ & $8/3$; $7/4$ & $8/3$; $1$\\
+$S$; $\kappa$ & $753/500$; $5$ & $19/10$; $4$ & $213/100$; $2$\\
+$f_0$; $\eta$ & $21/2500$; $1/50$ & $1/800$; $1/100$ & $1/250$; $1/20$\\
+$k$; $(L_-,L_+)$ & $4$; $(6931/10^4,1733/2500)$ & $8$; $(693147,693148)/10^6$ & $8$; $(693147,693148)/10^6$\\
+$\mu$ & $>d=1/125$ & $=1/800-1/80000$ & $=1/250-1/1600$\\
+\bottomrule
+\end{tabular}
+\caption{The three instances of Lemma~\ref{lem:fqe-moment-rectangle}, all at $q_s$ with $\rho=21/50$.
+For NU and SHD, $(\alpha,\beta,\gamma)$ is the multiplier of the lemma and the target is the dual
+difference $2-H_q-cx+by+\gamma x^2$; for CG the target is the centred form of~\eqref{eq:fqe-capped-cubic}.
+The hypotheses are checked by NU-3, SHD-4 and CG-1 through one shared function.}
+\label{tab:fqe-moment-rectangle}
+\end{table}
+
+\subsection{An analytic uniform-cut dual bound}\label{sec:sup-nu-dual}
+\begin{lemma}[Analytic uniform-cut dual bound; NU]
+\label{lem:fqe-near-uniform-dual}
+At the order $q_s=1587/1000$, with the HT multiplier row, every four-point spectrum
+with $p\le29/100$ satisfies
+\[
+\Lambda_\theta(c_2)-\Lambda_\theta(\lambda)
+\ge d\,(p-1/4),\qquad c_2=(1/4)^4.
+\tag{ND}\label{eq:fqe-near-uniform-dual}
+\]
+HT labels the cluster-sliver multiplier row. The order and multipliers are exactly those of the row HT of
+Table~\ref{tab:fqe-dual-co}, and $d=1/125$. Equality occurs only at $c_2$.
+\end{lemma}
+The proof uses two further constants, checked by NU-3: $f_0=21/2500$ and $\eta=1/50$.
+\begin{proof}
+Put $b=12\beta$, $c=\alpha+8\beta-\gamma/2$ and $x=p-1/4$.
+The uniform moment identities give
+\[
+\Lambda_\theta(c_2)-\Lambda_\theta(\lambda)
+=2-H_q(\lambda)-cx+by+\gamma x^2 .
+\tag{UD}\label{eq:fqe-uniform-dual-difference}
+\]
+By Lemma~\ref{lem:fqe-near-uniform-moment}, $x\le X=1/25$ and $|v|<D=3/25$ when $x>0$. We apply
+Lemma~\ref{lem:fqe-moment-rectangle} with the NU column of Table~\ref{tab:fqe-moment-rectangle}.
+At $q=q_s$ the coefficients satisfy
+\[
+\frac95\le A\le\frac{19}{10},\quad
+-\frac{21}{20}\le B<0,\quad
+\frac75\le C\le\frac32,\quad -\frac{12}5\le D_5<0.
+\]
+These are rational comparisons at the single order $q_s$ (NU-2). Consequently
+\[
+\frac{837}{500}\le V\le\frac{41}{20},\quad
+0<W<\frac23,\quad 1\le N<\frac{13}{12},\quad
+|B+2Cv+XD_5|\le\frac{21}{20}+3D+\frac{12}5X=\frac{753}{500},
+\]
+and $V^2-2W\ge Q=(837/500)^2-4/3$. This is~\eqref{eq:fqe-rect-bounds} with $W_-=0$.
+For~\eqref{eq:fqe-rect-curvature}, $Q>(6/5)(13/12)^2$, $2\rho\gamma\le(21/25)(6/5)<6/5$ as
+$0\le\gamma\le6/5$, and $C\ge7/5$ gives
+$14/5-(1/25)(753/500)^2>5\rho(13/12)^2$.
+For~\eqref{eq:fqe-rect-point} take $k=4$ and
+\[
+\frac{6931}{10000}<L<\frac{1733}{2500}.
+\]
+The latter follows by summing ten terms of
+$L=2\sum_{k\ge0}((2k+1)3^{2k+1})^{-1}$ and bounding the geometric tail.
+Direct rational substitution of the multiplier row gives $\Phi(X,v_*)>f_0$ and
+$|\Phi_v(X,v_*)|<\eta$ at $v_*=1/20$. Since $\mu=f_0-\eta^2/10>d$,
+\eqref{eq:fqe-moment-rectangle} and~\eqref{eq:fqe-uniform-dual-difference} prove
+\eqref{eq:fqe-near-uniform-dual}.
+At $x=0$ the spectrum is $c_2$; otherwise $d>0$ makes it strict.
+\end{proof}
+
+\subsection{An analytic bound on the distinguished cluster cut}\label{sec:sup-sliver}
+We now treat the distinguished cut in the cluster sliver. Elementary entropy estimates reduce the
+required bound to finitely many polynomial signs, with no interval covering or derivative grid.
+Write $q_s=1587/1000$ and let $\theta_s$ be the
+HT row of Table~\ref{tab:fqe-dual-co}. Set
+\[
+\kappa=4\sqrt3/5,\quad X=\tfrac12+\varepsilon-p,\quad
+F_c=-1+8\varepsilon+9p-12t.
+\]
+\begin{lemma}[Analytic cluster sliver; SL]
+\label{lem:fqe-cluster-sliver}
+At the order $q_s=1587/1000$,
+on either ordered chart, suppose
+\[
+p\ge47/100,\quad X\ge0,\quad 0\le\varepsilon\le1/100,\quad
+[F_c-\kappa X,F_c+\kappa X]\cap[11/25,1/2]\ne\varnothing.
+\]
+For either sign, put
+\[
+G_{\pm}=\Lambda_{\theta_s}(c_1)-\Lambda_{\theta_s}(\lambda;q_s)
++\ell_{\theta_s}(\varepsilon,F_c\pm\kappa X)
+-\ell_{\theta_s}(0,1/2).
+\]
+Then $G_{\pm}\ge0$, with equality only at
+$\lambda=c_1$, $\varepsilon=0$.
+\end{lemma}
+\begin{proof}
+The proof first bounds the two chart coordinates, then replaces the entropy by an explicit
+minorant of its deficit. The resulting four polynomial bounds are reduced to one-variable
+endpoint signs by removing $\varepsilon$ and using concavity in $v$.
+
+\emph{Coordinates and domains.}
+Put $v=\delta^2$. In the two charts use
+\[
+\begin{aligned}
+\lambda_S&=((1-u+\delta)/2,(1-u-\delta)/2,u/2,u/2),\\
+\lambda_B&=((1-u)/2,(1-u)/2,(u+\delta)/2,(u-\delta)/2),\\
+p&=\tfrac12-u+u^2+v/2,\\
+t_S&=\tfrac14-\tfrac34u+\tfrac34u^2+\tfrac34(1-u)v,\qquad
+t_B=\tfrac14-\tfrac34u+\tfrac34u^2+\tfrac34uv.
+\end{aligned}
+\tag{SV}\label{eq:fqe-sliver-coordinates}
+\]
+In both charts $0\le u<1/16$, $0\le v<1/20$.
+Here are explicit domain reductions. Ordering in $S$ gives $u\le1/2$,
+$v\le(1-2u)^2$ and $p\le1-3u+3u^2$; hence $u<1/4$.
+Since $X\le1/25$ and $\kappa<7/5$, the window condition gives
+$(9/2)(1-2u)v\le49/250$.
+Successively this gives $v<9/100$, $u<1/10$, $v<11/200$,
+$u<1/16$ and $v<1/20$, using $u-u^2\le3/100+v/2$ each time
+(verifier-checked, SL-3).
+In $B$, ordering gives $u\le1/2$, $v\le u^2$ and
+$p\le1/2-u+3u^2/2$; thus already $u<1/30$.
+
+\emph{Entropy estimates.}
+Set $(K,c_s)=(7801/2000,5/2)$.
+On $0\le u\le1/16$, the binary entropy obeys
+\[
+H_{q_s}(u,1-u)\le Ku-c_su^{8/5}+\frac{12}5u^2.
+\tag{SE}\label{eq:fqe-sliver-binary}
+\]
+Indeed $(1-u)^q\ge1-qu+q(q-1)u^2/2$. If
+$z=qu-q(q-1)u^2/2-u^q$, then $0\le z\le qu$ and
+$\ln(1-z)\ge-z-z^2/(2(1-z))$ give the sharper bound
+\[
+H_q(u,1-u)\le\frac q{(q-1)\ln2}u-\frac{u^q}{(q-1)\ln2}
++\frac{q^2/(2(1-q/16))-q(q-1)/2}{(q-1)\ln2}u^2.
+\]
+The last coefficient is less than $12/5$. The linear coefficient is
+less than $K$, while $16^{8/5-q_s}>51/50$ exceeds $c_s(q_s-1)\ln2$.
+These are rational comparisons, integer-power comparisons and the
+atanh bounds $693147/10^6<\ln2<693148/10^6$.
+
+Separating the head and tail pairs in the power sum gives
+\[
+H_{q_s}(\lambda)\le1+Ku-c_su^{8/5}+\frac{12}5u^2
+-\begin{cases}
+\frac{113}{100}v+\frac32uv-\frac38v^2,&S,\\
+3v,&B.
+\end{cases}
+\tag{SH}\label{eq:fqe-sliver-head-tail}
+\]
+To see the head estimate, let $M=(1-u)^q+u^q$.
+The even Taylor expansion of the head power gives an increase of at least
+$(q(q-1)/2)(1-u)^{q-2}v$ over $M$. The factor
+\[
+\frac{(1-u)^{q-2}}M
+=\frac{(1-u)^{-2}}{1+(u/(1-u))^q}\ge1+\frac32u
+\]
+follows from $(u/(1-u))^q\le7u/25$ and $(1-u)^{-2}\ge1+2u$.
+The coefficient $\frac{q(q-1)}2(1-u)^{q-2}/M$ of $v$ in the resulting relative increase is at most
+$\frac{q(q-1)}2(1-u)^{-2}\le\frac{q(q-1)}2\bigl(\frac{16}{15}\bigr)^2<27/50$. Applying $\ln(1+z)\ge z-z^2/2$ proves the $S$ estimate,
+since $q/(2\ln2)>113/100$ and
+$(27/50)^2/(2(q-1)\ln2)<3/8$.
+In $B$ the same argument acts on the tail: its factor is
+$u^{q-2}/M\ge3$, and the logarithm increment is at most $1/100$
+when $v\le u^2$. The resulting coefficient exceeds $3$.
+All estimates extend to $u=0$ by continuity.
+
+\emph{Polynomial lower bounds.}
+Inserting \eqref{eq:fqe-sliver-head-tail} in $G_{\pm}$
+gives the following lower bound, throughout
+$u\le1/16$, $v\le1/20$, $\varepsilon\le1/100$:
+\[
+P(u,v)+\varepsilon(A+Bv),\qquad
+P=au+bv+cu^2+duv+fv^2+gu^2v+c_su^{8/5}.
+\tag{SP}\label{eq:fqe-sliver-polynomial}
+\]
+The coefficients are exact rationals. In each row label, the first letter is the chart ($S$ or $B$)
+and the second is the sign in $G_\pm$:
+\[
+\begin{array}{c|rrrrrr|rr}
+&a&b&c&d&f&g&A&B\\\hline
+% SL-COEFFICIENTS-BEGIN
+S-&2/125&7/500&-571/100&-33/10&-281/100&6&185/100&8\\
+S+&2/125&7/500&-6&69/50&-103/20&0&147/100&16\\
+B-&2/125&19/100&-6&3&-5&0&1/2&0\\
+B+&2/125&19/100&-571/100&-3/2&-5/2&0&1/2&0
+% SL-COEFFICIENTS-END
+\end{array}
+\tag{ST}\label{eq:fqe-sliver-coefficients}
+\]
+For clarity, this table involves polynomial algebra only. Expand the
+formula for $G$ using \eqref{eq:fqe-sliver-coordinates}, enclose $\kappa$
+between $13856/10000$ and $13857/10000$, and bound negative terms of
+higher degree by $u\le1/16$, $v\le1/20$, $\varepsilon\le1/100$.
+At $\varepsilon=0$, charge them to $u^2$, $uv$ or $v^2$; in the
+coefficient of $\varepsilon$, retain positive terms proportional to $v$.
+The difference from every row in \eqref{eq:fqe-sliver-coefficients}
+then has nonnegative coefficients (verifier-checked, SL-2). No transcendental sign is left.
+
+\emph{Removing $\varepsilon$ (verifier-checked, SL-3).}
+In $S$ the window and $X\ge0$ imply
+\[
+v\le\min\{2(u-u^2)+2\varepsilon,\ V(u)+21\varepsilon/10\},\qquad
+V(u)=\frac{3/50+(7/5)(u-u^2)}{26/5-9u}.
+\]
+Put $v_0=\min\{v,2(u-u^2),V(u)\}$. Then $v-v_0\le21\varepsilon/10$.
+From the two $S$ rows, $P_v\ge-C_0+2fv$, where
+$C_0=\max\{0,-b+\max(0,-d)/16\}$. Direct substitution gives
+\[
+A-\tfrac{21}{10}C_0+\tfrac1{20}\min\{0,B+\tfrac{21}5f\}>9/10.
+\]
+Thus $G_\pm\ge P(u,v_0)+9\varepsilon/10$. Hence it remains to prove $P\ge0$ with
+$\varepsilon=0$, $v\le\min\{2(u-u^2),V(u)\}$ and $u\le1/16$.
+In chart $B$ simply discard the positive $\varepsilon/2$ term;
+there $u<1/30$ and $v\le u^2$.
+
+\emph{One-variable signs.}
+The function $P$ is concave in $v$, so its minimum is at an endpoint.
+At $v=0$ the claim follows from $u^{8/5}\ge3u^2$ on $0\le u\le1/16$. In chart $B$,
+$b+du+fv\ge3/40$, so this also proves the $v=u^2$ case.
+
+For the $S$ endpoint $v=2(u-u^2)$, that endpoint is the smaller one
+only when $u<1/140$. Dividing $P$ by $u>0$ and dropping positive terms gives
+\[
+P/u\ge a+2b+c_su^{3/5}-Du,\quad
+D=2b-c-2\min\{d,(139/140)d\}-4f.
+\]
+This is a concave function of $u$. It is positive at both $0$ and $1/140$;
+for the latter check use $(1/140)^{3/5}>51/1000$.
+
+Finally $v=V(u)$ is the smaller endpoint only for $u>1/150$.
+Use the following quadratic minorant of $u^{8/5}$:
+for $Z=23/40$, $U=Z^5$, $z=2/5$, $u_0=z^5$, put
+\[
+Q_{Z,z}(u)=z^8+\frac85z^3(u-u_0)
++\frac{Z^8-z^8-(8/5)z^3(U-u_0)}{(U-u_0)^2}(u-u_0)^2.
+\tag{SQ}\label{eq:fqe-sliver-quadratic}
+\]
+Since the third derivative of $u^{8/5}$ is negative,
+Hermite's remainder gives $u^{8/5}\ge Q_{Z,z}(u)$ for $0\le u\le U$.
+After replacing $u^{8/5}$ by this minorant, multiply $P(u,V(u))$
+by $(26/5-9u)^2$. The resulting polynomial $R$ has degree at most five.
+For $L=1/150$, $U=Z^5$, write
+\[
+R(L+(U-L)x)=\sum_{i=0}^n B_i\binom ni x^i(1-x)^{n-i}.
+\]
+Every $B_i$ is positive. Explicit integer lower bounds on $10^6 B_i$ are
+\[
+\begin{array}{c|r|rrrrrr}
+&n&\multicolumn{6}{c}{\text{coefficient lower bounds}}\\\hline
+% SL-BERNSTEIN-BEGIN
+S-&5&793&27467&39030&38325&27813&9606\\
+S+&4&238&51693&86240&106860&116069&
+% SL-BERNSTEIN-END
+\end{array}
+\tag{SB}\label{eq:fqe-sliver-bernstein}
+\]
+These are two polynomial expansions on single intervals, with no
+subdivision. They prove the last endpoint signs. Together with the
+strict $v=0$ and $\varepsilon$ bounds, this proves the asserted equality case.
+\end{proof}
+
+
+\subsection*{Further results}
+\noindent The proof of Corollary~\ref{cor:fqe-renyi-gw} in the paper uses none of the results of
+Sections~\ref{sec:fqe-renyi-above-one}--\ref{sec:fqe-renyi-filter-limit}. They give an independent near-one defect estimate
+with its quantitative form, the sharp purity-variance profile on the critical locus with an analytic proof of (QV) on critical
+states (used for the equality case of (QK) at $P=1$), and a shorter proof of the envelope for states with a rank-two cut.
+\input{renyi_above_one}
+\input{renyi_scalar_slack}
+\input{renyi_compatibility}
+\input{renyi_restricted_domains}
+\subsection{A cap-free purity-controlled R\'enyi bound}\label{sec:fqe-renyi-purity-bound}
+The defect estimate of Theorem~\ref{thm:fqe-renyi-above-one} also gives a ceiling at every order $q\ge5/4$ that
+improves linearly with the purity sum. It is not used in the proof of Corollary~\ref{cor:fqe-renyi-gw}.
+
+\begin{corollary}[Cap-free purity-controlled R\'enyi bound; exact-rational check, RA-5]
+\label{cor:fqe-renyi-purity}
+For every unit pure four-qubit state and every $q\ge5/4$,
+\[
+\boxed{\qquad \mathcal E_q(\psi)\le h_{5/4}-\frac{13}{20}(P-1),
+\qquad h_{5/4}=\frac{\log_2m_{5/4}}{1-5/4}.\qquad}
+\tag{RH}\label{eq:fqe-renyi-high-purity}
+\]
+In particular, $P\ge10/9$ implies $\mathcal E_q(\psi)<5/3$
+for $q\ge5/4$. The bound \eqref{eq:fqe-renyi-high-purity} holds for every triple of four-point spectra with
+$P\ge1$ and $F=17P-12T-12\ge0$, since the proof uses only these and the per-cut estimate
+\eqref{eq:fqe-renyi-cut}.
+\end{corollary}
+\begin{proof}
+At $q_0=5/4$, the defect estimate \eqref{eq:fqe-renyi-defect}
+and $F,\mathcal D_{q_0}\ge0$ give
+\[
+\mathcal E_{q_0}(\psi)\le h_{q_0}-c(P-1),
+\qquad c=\frac{\alpha_{q_0}}{3m_{q_0}\ln2}.
+\]
+The exact-rational enclosures RA-5 establish
+\[
+20\alpha_{q_0}-39m_{q_0}\ln2>0,\qquad
+4\ln m_{q_0}+\frac{313}{180}\ln2>0.
+\]
+Equivalently $c>13/20$ and $h_{q_0}<313/180$.
+R\'enyi entropy is nonincreasing in its order, so
+$\mathcal E_q(\psi)\le\mathcal E_{q_0}(\psi)$ for $q\ge q_0$.
+Since $P\ge1$, the first assertion follows. If $P\ge10/9$,
+\[
+\mathcal E_q(\psi)<\frac{313}{180}
+-\frac{13}{20}\left(\frac{10}{9}-1\right)=\frac53,
+\]
+as asserted.
+\end{proof}
+
+\input{purity_variance_certificate}
+
+\subsection{What local filtering can and cannot reduce}
+\label{sec:fqe-renyi-filter-limit}
+
+\begin{lemma}[One-site filtering majorises a locally maximally mixed pair]
+\label{lem:fqe-single-filter}
+Let $\rho$ be a two-qubit density matrix with both one-qubit
+marginals equal to $I/2$. Let $K$ be any nonzero filter on
+one of its qubits, and normalise
+$\rho_K=(K\otimes I)\rho(K^\dagger\otimes I)$ by its trace
+(with the factors interchanged if the filter acts on the second qubit).
+Then
+\[
+\operatorname{spec}(\rho)\prec\operatorname{spec}(\rho_K).
+\tag{FM}\label{eq:fqe-filter-majorization}
+\]
+In particular, filtering a single qubit of any pure critical four-qubit
+state cannot increase the R\'enyi entropy of \emph{any} of the three
+balanced cuts, at any $q>0$.
+\end{lemma}
+\begin{proof}
+The positive factor in the polar decomposition of $K$ suffices,
+since the unitary factor only conjugates $\rho_K$. By a positive
+rescaling assume $\operatorname{tr}K^\dagger K=2$; the given
+single-qubit marginal makes the filtered state already normalised.
+Then $K^\dagger K=I+s\,\mathbf n\cdot\boldsymbol\sigma$,
+$0\le s\le1$, where $\mathbf n$ is a real unit vector. Put
+$N=(\mathbf n\cdot\boldsymbol\sigma)\otimes I$.
+
+Let $\Theta=(\sigma_y\otimes\sigma_y)\mathcal K$ be the
+two-qubit spin-flip antiunitary, where $\mathcal K$ is
+complex conjugation in the computational basis.
+Expanding $\rho$ in Pauli matrices shows that
+$\Theta\rho\Theta^{-1}=\rho$, because the two one-site
+Bloch vectors vanish and spin flip changes the sign of
+each individual Pauli factor. Also
+$\Theta N\Theta^{-1}=-N$.
+The matrices
+\[
+B_\pm=\rho^{1/2}(I\pm sN)\rho^{1/2}
+\]
+are positive, have the same spectrum by conjugation with
+$\Theta$, and satisfy $(B_++B_-)/2=\rho$.
+The nonzero eigenvalues of $B_+$ coincide with those of
+$(K\otimes I)\rho(K^\dagger\otimes I)$, because these
+matrices have the form $X^\dagger X$ and $XX^\dagger$.
+Convexity of every Ky Fan sum under averaging therefore gives
+$\operatorname{spec}(\rho)\prec\operatorname{spec}(B_+)
+=\operatorname{spec}(\rho_K)$.
+
+For a critical four-qubit state, each qubit marginal is $I/2$.
+On each balanced cut choose the two-qubit side containing the
+filtered site. Its reduced state has both one-qubit marginals $I/2$;
+the two sides of a pure bipartition have the same nonzero spectrum.
+Apply the result above and Schur concavity of R\'enyi entropy.
+\end{proof}
+
+\paragraph{Two filters need not preserve this ordering.}
+The single-site conclusion is \emph{not} an orbitwise
+monotonicity theorem. For an exact counterexample let
+\[
+z=(2+2i)(|0011\rangle+|1100\rangle)
+ +|0101\rangle-|0110\rangle-|1001\rangle+|1010\rangle.
+\]
+It has squared norm $20$ and all four one-qubit marginals
+maximally mixed. Apply $\operatorname{diag}(2,1)$ at
+\emph{both} sites 2 and 3, and normalise the resulting
+unnormalised vector $z'$ of squared norm $89$.
+The three cut spectra of $z/\sqrt{20}$ are, respectively,
+\[
+(2/5,2/5,1/5,0),\qquad
+(13/20,1/4,1/20,1/20),\qquad
+(13/20,1/4,1/20,1/20),
+\]
+whereas those of $z'/\sqrt{89}$ are
+\[
+(32,32,25,0)/89,\quad
+(65,16,4,4)/89,\quad
+(52,20,16,1)/89.
+\]
+Consequently, their products of cut purities are
+\[
+\prod_jp_j(z/\sqrt{20})=\frac{21609}{250000}
+\;>\;
+\frac{40544579889}{496981290961}
+=\prod_jp_j(z'/\sqrt{89}).
+\tag{FN}\label{eq:fqe-filter-nogo}
+\]
+This proves that the \emph{mean} R\'enyi-2 entropy increases
+under two local filters. The same is true at $q=3/2$, inside
+the intermediate-order interval: if $M(\lambda)=\sum_i\lambda_i^{3/2}$,
+the original moments obey $M_1>59/100$ and
+$M_2=M_3>67/100$, while the filtered moments obey
+$M'_1<581/1000$, $M'_2<720/1000$, and $M'_3<631/1000$.
+Each strict bound follows by squaring rational bounds on the
+square roots of the displayed rational eigenvalues. Thus
+\[
+\prod_jM_j>\frac{264851}{10^6}>
+\frac{3299499}{12500000}>\prod_jM'_j,
+\]
+so $\mathcal E_{3/2}(z'/\sqrt{89})
+>\mathcal E_{3/2}(z/\sqrt{20})$.
+Both states obey the global HS--cluster envelope of Corollary~\ref{cor:fqe-renyi-gw}.
+The valid single-filter lemma therefore cannot be iterated to
+replace all noncritical states by critical representatives.

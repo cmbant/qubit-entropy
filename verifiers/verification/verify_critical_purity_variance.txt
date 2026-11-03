@@ -1,0 +1,5 @@
+CV-1 PASS: quaternion relations, commuting actions and projector sign convention
+CV-2 PASS: all three exact measurement triads and tetrahedral sign rows
+CV-3 PASS: spectral moments, cyclic purity identity and variance defect algebra
+CV-4 PASS: cubic discriminant, nonnegative geometric-mean remainder and sharp defect
+CV-5 PASS: full equality-family moments, HS/cluster endpoints and projector attainability

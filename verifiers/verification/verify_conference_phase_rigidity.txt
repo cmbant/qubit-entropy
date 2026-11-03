@@ -1,0 +1,6 @@
+CP-4 PASS: 243 core pairings: 81 inconsistent, 132 one-phase, 30 two-phase.
+CP-4 PASS: all two-phase cases force t^2=1; no nonreal phase ratio.
+CP-4 PASS: all resulting real cores are five-cycles (12 labelled choices).
+THEOREM: every complex symmetric conference C of order 6 equals D P S P^T D.
+COROLLARY: every CC-1 optimal seven-qubit state is LU + ordinary-qubit-permutation equivalent to Psi_ico.
+CP-4 scope: classification of conference phases only.

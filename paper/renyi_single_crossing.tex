@@ -1,0 +1,94 @@
+\subsection{Single crossing in the order}\label{sec:fqe-renyi-single-crossing}
+
+The orders above one are reduced to two anchor orders by a property of single spectra:
+as the order increases, the R\'enyi entropy of any four-point spectrum can overtake that of the HS spectrum
+at most once, and never falls back below it. For a probability vector $\lambda$ and $q>1$ put
+\[
+ u_q(\lambda)=\ln\sum_i\lambda_i^q,\qquad v_q(\lambda)=\partial_qu_q(\lambda)=\frac{\sum_i\lambda_i^q\ln\lambda_i}{\sum_i\lambda_i^q},
+ \qquad \kappa_q=\frac1q+\frac{\ln3}{\sinh((q-1)\ln3)},
+\]
+with $0^q\ln0=0$, so that $H_q(\lambda)\ln2=u_q(\lambda)/(1-q)$.
+Write $\sigma=(\tfrac12,\tfrac16,\tfrac16,\tfrac16)$ for the HS spectrum.
+
+\begin{lemma}[Single crossing]\label{lem:fqe-renyi-single-crossing}
+For every $q>1$ and every four-point probability vector $\lambda$,
+\[
+ v_q(\lambda)-v_q(\sigma)\le\kappa_q\bigl(u_q(\lambda)-u_q(\sigma)\bigr),
+ \tag{SX}\label{eq:fqe-renyi-single-crossing}
+\]
+with equality only when $\lambda$ is a permutation of $\sigma$.
+\end{lemma}
+
+\begin{corollary}[Order transfer]\label{cor:fqe-renyi-order-transfer}
+For every four-point spectrum $\lambda$ the function
+\[
+ G_\lambda(q)=\frac{(q-1)\bigl(H_q(\lambda)-H_q(\sigma)\bigr)}{q\tanh\bigl((q-1)\ln3/2\bigr)}
+\]
+is nondecreasing on $(1,\infty)$, strictly unless $\lambda$ is a permutation of $\sigma$.
+Consequently, for every triple of four-point spectra and $1<q<q_1$:
+if $\mathcal E_{q_1}\le h_{q_1}$ then $\mathcal E_q\le h_q$, with equality only when all three spectra are
+HS spectra; and if $\mathcal E_{q_1}<h_{q_1}$ then $\mathcal E_q<h_q$.
+\end{corollary}
+\begin{proof}
+Put $U(q)=u_q(\lambda)-u_q(\sigma)$ and $K(q)=\ln q+\ln\tanh((q-1)\ln3/2)$, so that $K'=\kappa_q$ and
+$G_\lambda=-e^{-K}U/\ln2$. By \eqref{eq:fqe-renyi-single-crossing}, $(e^{-K}U)'=e^{-K}(U'-\kappa_qU)\le0$, with equality
+at an order only for HS. For a triple, the average of $G_{\lambda^{(j)}}(q)$ is a positive multiple of
+$\mathcal E_q-h_q$. It increases strictly unless all three spectra are HS.
+Its sign at $q_1$ therefore gives the two transfers and the equality statement.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:fqe-renyi-single-crossing}]
+Fix $q>1$, and put $s=q-1$, $L=\ln3$, $\beta=q\kappa_q-1=qL/\sinh(sL)>0$ and
+$\varphi=v_q-\kappa_qu_q$. We maximise this continuous function on the simplex.
+
+\emph{A maximiser has full support.} On the positive coordinates, with $Z=\sum_i\lambda_i^q$,
+\[
+ \partial_i\varphi=\frac{g(\lambda_i)}Z,\qquad
+ g(x)=x^{q-1}(q\ln x+C),\qquad C=1-qv_q-q\kappa_q.
+\]
+The derivative in a zero coordinate is zero, since $x^{q-1}\ln x\to0$.
+At a maximiser on a face, the positive-coordinate derivatives equal a multiplier $\mu$.
+But $\sum_i\lambda_i\partial_i\varphi=1-q\kappa_q=-\beta$, so $\mu=-\beta$.
+Moving mass from a positive coordinate to a zero one therefore has derivative $\beta>0$,
+contradicting maximality.
+
+\emph{Only one coordinate can be larger.} Since
+\[
+ g'(x)=x^{q-2}\bigl[(q-1)(q\ln x+C)+q\bigr],
+\]
+the bracket is strictly increasing, so $g$ decreases then increases and takes each value at most twice.
+The Lagrange condition thus gives at most two coordinate values, $a>b>0$.
+If both occur, $g(a)=g(b)$ implies $g'(a)>0$.
+Two coordinates equal to $a$ would admit the trace-preserving variation $(a+t,a-t)$.
+Its first variations of $Z$ and $v_q$ vanish, and its second variation of $\varphi$ is
+$2g'(a)/Z>0$, again contradicting maximality.
+Thus every maximiser is uniform or a permutation of $(a,b,b,b)$.
+
+\emph{The one-large family.} Parametrise it by
+$a=(1+3e^{-z})^{-1}$, $b=ae^{-z}$, $z\ge0$, and put
+$w=3e^{-qz}/(1+3e^{-qz})$, $p=3e^{-z}/(1+3e^{-z})$.
+Direct differentiation gives, for $z>0$,
+\[
+ \begin{aligned}
+ \varphi(z)&=\beta\ln(1+3e^{-z})-\kappa_q\ln(1+3e^{-qz})-zw,\\
+ \varphi'(z)&=\beta(w-p)+qzw(1-w)
+             =zw(1-w)\bigl(q-\beta R(z)\bigr),
+ \end{aligned}
+\]
+where the elementary hyperbolic identity
+\[
+ R(z)=\frac{(e^{sz}-1)(1+3e^{-qz})}{z(1+3e^{-z})}
+     =\frac{\sinh(sz)}z+
+       \tanh\!\left(\frac{z-L}{2}\right)\frac{\cosh(sz)-1}z
+ \tag{SR}\label{eq:fqe-renyi-crossing-ratio}
+\]
+settles the sign. The function $\sinh(sz)/z$ is strictly increasing for $z>0$,
+and the second summand has the sign of $z-L$. Consequently
+\[
+ R(z)<R(L)=\frac{\sinh(sL)}L=\frac q\beta\quad(0<z<L),\qquad
+ R(z)>R(L)\quad(z>L).
+\]
+Hence $\varphi$ strictly increases up to $z=L$ and strictly decreases afterwards.
+This also excludes the uniform endpoint $z=0$.
+Its unique maximum is $z=L$, namely $\sigma$, proving both the inequality and its equality case.
+\end{proof}

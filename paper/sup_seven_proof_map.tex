@@ -1,0 +1,31 @@
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[
+  box/.style={draw,rounded corners=2pt,align=center,font=\footnotesize,minimum width=6.4cm,inner sep=3pt,minimum height=1.05cm},
+  res/.style={box,very thick},
+  arr/.style={-{Stealth[length=2mm]},semithick},
+  node distance=0.42cm]
+\node[font=\small\bfseries] (P) {Purity minimum};
+\node[box,below=0.25cm of P] (p1) {Five-copy kernels and finite probes\\(Props.~\ref{prop:ico-fivecopy-g34-kernels}, \ref{prop:fivecopy-finite-probes})};
+\node[box,below=of p1] (p2) {Sharp five-copy certificate:\\$\pi_3-121/917$ is a sum of faces\\(Thm.~\ref{thm:fivecopy-sharp-certificate}, FP5-1)};
+\node[box,below=of p2] (p3) {Tangent line and invariant square give\\$X_5^+=X_5^+(\Psiico)$\\(Lemma~\ref{lem:fivecopy-tangent-line}, Thm.~\ref{thm:fivecopy-family-equality})};
+\node[box,below=of p3] (p4) {Degree-four invariants fix the orbit\\through the conference family\\(Thm.~\ref{thm:moment-orbit-rigidity}, Thm.~\ref{thm:complexsos})};
+\node[res,below=of p4] (p5) {$\pi_3\ge121/917$, with equality only\\on the orbit of $\Psiico$\\(Thm.~\ref{thm:fqe-seven-purity})};
+\draw[arr] (p1)--(p2); \draw[arr] (p2)--(p3); \draw[arr] (p3)--(p4); \draw[arr] (p4)--(p5);
+
+\node[font=\small\bfseries,right=4.6cm of P] (E) {Entropy maximum};
+\node[box,below=0.25cm of E] (e1) {The family maximiser $\psi_{x_*}$\\is stationary on the whole sphere\\(Prop.~\ref{prop:entropy-seven-stationarity})};
+\node[box,below=of e1] (e2) {Contender region: purity band\\and eigenvalues at most $497/1000$\\(Prop.~\ref{prop:seven-competitor-band}, Cor.~\ref{cor:seven-entropy-eigen-cap-497})};
+\node[box,below=of e2] (e3) {Joint scalar majorant (Lemma~\ref{lem:seven-joint-scalar-majorant}, AH-6)\\and localised identity (Thm.~\ref{thm:seven-entropy-localized-identity}, E7-1)};
+\node[box,below=of e3] (e4) {Invariant and square fix\\the five-copy moment\\(Thm.~\ref{thm:fivecopy-family-equality}, Prop.~\ref{prop:seven-entropy-equality-moment})};
+\node[res,below=of e4] (e5) {$E_3\le E_3(\psi_{x_*})$, with equality only\\on the orbit of $\psi_{x_*}$\\(Thm.~\ref{thm:fqe-seven-entropy})};
+\draw[arr] (e1)--(e2); \draw[arr] (e2)--(e3); \draw[arr] (e3)--(e4); \draw[arr] (e4)--(e5);
+
+\draw[arr,dashed] (p5.east) to[out=0,in=180] (e2.west);
+\draw[arr,dashed] (p4.east)--(e4.west);
+\end{tikzpicture}
+\caption{How the seven-qubit optima are proved. Solid arrows are the steps of each proof; dashed arrows mark what the
+entropy proof takes from the purity proof: the purity bound, which confines the contenders, and the orbit step. Section~\ref{sec:sup-conference} treats the conference family,
+Section~\ref{sec:fivecopy} the purity minimum and Section~\ref{sec:sup-seven-entropy} the entropy maximum.}
+\label{fig:seven-proof-map}
+\end{figure}

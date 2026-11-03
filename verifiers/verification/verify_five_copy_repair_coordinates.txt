@@ -1,0 +1,17 @@
+FP5-4 all 36480 original Householder integers and frame ranks preserved exactly
+FP5-4 frame recipe bytes 588
+FP5-4 face 0: 31 kernel columns, 196 coordinates; exact trace and norm, rigorous rotation radius, negative control PASS
+FP5-4 face 1: 69 kernel columns, 462 coordinates; exact trace and norm, rigorous rotation radius, negative control PASS
+FP5-4 face 2: 125 kernel columns, 854 coordinates; exact trace and norm, rigorous rotation radius, negative control PASS
+FP5-4 face 3: 128 kernel columns, 875 coordinates; exact trace and norm, rigorous rotation radius, negative control PASS
+FP5-4 face 4: 57 kernel columns, 378 coordinates; exact trace and norm, rigorous rotation radius, negative control PASS
+FP5-4 face 5: 72 kernel columns, 483 coordinates; exact trace and norm, rigorous rotation radius, negative control PASS
+FP5-4 face 6: 2 kernel columns, 3 coordinates; exact trace and norm, rigorous rotation radius, negative control PASS
+FP5-4 face 7: 3 kernel columns, 6 coordinates; exact trace and norm, rigorous rotation radius, negative control PASS
+FP5-4 face 8: 6 kernel columns, 21 coordinates; exact trace and norm, rigorous rotation radius, negative control PASS
+FP5-4 face 9: 14 kernel columns, 77 coordinates; exact trace and norm, rigorous rotation radius, negative control PASS
+FP5-4 face 10: 27 kernel columns, 168 coordinates; exact trace and norm, rigorous rotation radius, negative control PASS
+FP5-4 face 11: 36 kernel columns, 231 coordinates; exact trace and norm, rigorous rotation radius, negative control PASS
+FP5-4 width six has only 3249 coordinates, fewer than the critical dimension 3283
+FP5-4 independent repair coordinates 3754 (previous rectangular count 8965)
+FP5-4 PASS: exact frame/action audit; no global identity or rank claim

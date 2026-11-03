@@ -1,0 +1,137 @@
+dimensions {0: 1, 1: 4, 2: 5} weight multiplicities {0: 6, 1: 4, 2: 2}
+Gram determinants {0: 1, 1: 5, 2: 162}
+exact matrix units checked 42
+copies (4,) denominator 30 max numerator 40 physical reconstruction PASS involution PASS
+copies (3, 4) denominator 30 max numerator 45 physical reconstruction PASS involution PASS
+S5-1 PASS
+FP5-1 original probe arrays, denominators, ranges and coset commutations checked exactly
+FP5-1 saved input bytes 441612
+FP5-1 trusted cached evaluations 0 / 3424
+RATIONAL POLYNOMIAL MODEL 7 (330, 31) max right/left 11.818229504303197 80.92100245619747 denbits 94 sec 1.3755700588226318
+RATIONAL POLYNOMIAL MODEL 6 (840, 69) max right/left 2.285969773529076 84.92798995572261 denbits 99 sec 3.8730595111846924
+RATIONAL POLYNOMIAL MODEL 51 (2520, 125) max right/left 1.066517789097451 87.19907583094499 denbits 105 sec 12.440236568450928
+RATIONAL POLYNOMIAL MODEL 42 (4200, 128) max right/left 0.6069818693211106 46.28576539716378 denbits 106 sec 35.89730167388916
+RATIONAL POLYNOMIAL MODEL 61 (1050, 57) max right/left 1.9368541555041872 127.94990242632716 denbits 96 sec 39.5629723072052
+RATIONAL POLYNOMIAL MODEL 52 (1890, 72) max right/left 0.915139283518205 87.43341492578871 denbits 100 sec 43.50573778152466
+RATIONAL POLYNOMIAL MODEL 0-7 (330, 2) max right/left 0.030396819056321904 0.48565589172693546 denbits 118 sec 44.2813925743103
+RATIONAL POLYNOMIAL MODEL 0-61 (1050, 3) max right/left 0.017743583968980067 0.6250850365049041 denbits 111 sec 44.62029480934143
+RATIONAL POLYNOMIAL MODEL 0-52 (1890, 6) max right/left 0.004208759566858422 0.5492450644255137 denbits 109 sec 45.1012978553772
+RATIONAL POLYNOMIAL MODEL 1-7 (330, 14) max right/left 1.8484666929884415 26.4696185117638 denbits 96 sec 45.93352031707764
+RATIONAL POLYNOMIAL MODEL 1-61 (1050, 27) max right/left 0.861681736891892 51.24360586671219 denbits 99 sec 47.39583611488342
+RATIONAL POLYNOMIAL MODEL 1-52 (1890, 36) max right/left 0.3973536012109757 90.4842309785589 denbits 102 sec 49.4664421081543
+exact local probe maps 0 cosets 1 C2 terms 1 denominator 144
+exact local probe maps 1 cosets 5 C2 terms 17 denominator 2160
+exact local probe maps 2 cosets 10 C2 terms 58 denominator 4320
+FP5-1 evaluated 32 / 3424 elapsed 156.0759472846985
+FP5-1 evaluated 64 / 3424 elapsed 185.86242365837097
+FP5-1 evaluated 96 / 3424 elapsed 206.3552839756012
+FP5-1 evaluated 128 / 3424 elapsed 231.0184760093689
+FP5-1 evaluated 160 / 3424 elapsed 292.3069739341736
+FP5-1 evaluated 192 / 3424 elapsed 317.3134534358978
+FP5-1 evaluated 224 / 3424 elapsed 342.10107016563416
+FP5-1 evaluated 256 / 3424 elapsed 370.4571120738983
+FP5-1 evaluated 288 / 3424 elapsed 403.1285946369171
+FP5-1 evaluated 320 / 3424 elapsed 429.5872106552124
+FP5-1 evaluated 352 / 3424 elapsed 455.5204710960388
+FP5-1 evaluated 384 / 3424 elapsed 483.76992559432983
+FP5-1 evaluated 416 / 3424 elapsed 510.6285631656647
+FP5-1 evaluated 448 / 3424 elapsed 536.5552172660828
+FP5-1 evaluated 480 / 3424 elapsed 565.1127669811249
+FP5-1 evaluated 512 / 3424 elapsed 596.9132969379425
+FP5-1 evaluated 544 / 3424 elapsed 624.9947330951691
+FP5-1 evaluated 576 / 3424 elapsed 647.1621088981628
+FP5-1 evaluated 608 / 3424 elapsed 667.0614731311798
+FP5-1 evaluated 640 / 3424 elapsed 695.681969165802
+FP5-1 evaluated 672 / 3424 elapsed 740.1029152870178
+FP5-1 evaluated 704 / 3424 elapsed 773.31454205513
+FP5-1 evaluated 736 / 3424 elapsed 801.504093170166
+FP5-1 evaluated 768 / 3424 elapsed 831.3198466300964
+FP5-1 evaluated 800 / 3424 elapsed 859.3888533115387
+FP5-1 evaluated 832 / 3424 elapsed 901.8951444625854
+FP5-1 evaluated 864 / 3424 elapsed 938.181557893753
+FP5-1 evaluated 896 / 3424 elapsed 971.9755959510803
+FP5-1 evaluated 928 / 3424 elapsed 998.6546764373779
+FP5-1 evaluated 960 / 3424 elapsed 1037.9173691272736
+FP5-1 evaluated 992 / 3424 elapsed 1074.6747255325317
+FP5-1 evaluated 1024 / 3424 elapsed 1099.7889113426208
+FP5-1 evaluated 1056 / 3424 elapsed 1121.5814943313599
+FP5-1 evaluated 1088 / 3424 elapsed 1144.4222254753113
+FP5-1 evaluated 1120 / 3424 elapsed 1160.296860218048
+FP5-1 evaluated 1152 / 3424 elapsed 1174.0825402736664
+FP5-1 evaluated 1184 / 3424 elapsed 1186.1651492118835
+FP5-1 evaluated 1216 / 3424 elapsed 1206.2710099220276
+FP5-1 evaluated 1248 / 3424 elapsed 1228.1903212070465
+FP5-1 evaluated 1280 / 3424 elapsed 1243.5438010692596
+FP5-1 evaluated 1312 / 3424 elapsed 1269.6863451004028
+FP5-1 evaluated 1344 / 3424 elapsed 1293.166571855545
+FP5-1 evaluated 1376 / 3424 elapsed 1309.9059460163116
+FP5-1 evaluated 1408 / 3424 elapsed 1340.9731602668762
+FP5-1 evaluated 1440 / 3424 elapsed 1358.7820076942444
+FP5-1 evaluated 1472 / 3424 elapsed 1374.0083446502686
+FP5-1 evaluated 1504 / 3424 elapsed 1391.5871620178223
+FP5-1 evaluated 1536 / 3424 elapsed 1407.6779284477234
+FP5-1 evaluated 1568 / 3424 elapsed 1422.4703044891357
+FP5-1 evaluated 1600 / 3424 elapsed 1438.5227086544037
+FP5-1 evaluated 1632 / 3424 elapsed 1453.7841413021088
+FP5-1 evaluated 1664 / 3424 elapsed 1470.510381937027
+FP5-1 evaluated 1696 / 3424 elapsed 1486.2870724201202
+FP5-1 evaluated 1728 / 3424 elapsed 1504.4422175884247
+FP5-1 evaluated 1760 / 3424 elapsed 1525.629103422165
+FP5-1 evaluated 1792 / 3424 elapsed 1543.8659262657166
+FP5-1 evaluated 1824 / 3424 elapsed 1561.567999124527
+FP5-1 evaluated 1856 / 3424 elapsed 1577.2219922542572
+FP5-1 evaluated 1888 / 3424 elapsed 1594.905843257904
+FP5-1 evaluated 1920 / 3424 elapsed 1613.4017424583435
+FP5-1 evaluated 1952 / 3424 elapsed 1632.109049797058
+FP5-1 evaluated 1984 / 3424 elapsed 1647.9611382484436
+FP5-1 evaluated 2016 / 3424 elapsed 1666.838457584381
+FP5-1 evaluated 2048 / 3424 elapsed 1694.086385011673
+FP5-1 evaluated 2080 / 3424 elapsed 1718.1193351745605
+FP5-1 evaluated 2112 / 3424 elapsed 1736.394301891327
+FP5-1 evaluated 2144 / 3424 elapsed 1750.6915838718414
+FP5-1 evaluated 2176 / 3424 elapsed 1769.8623883724213
+FP5-1 evaluated 2208 / 3424 elapsed 1787.218330860138
+FP5-1 evaluated 2240 / 3424 elapsed 1804.3895871639252
+FP5-1 evaluated 2272 / 3424 elapsed 1822.9297807216644
+FP5-1 evaluated 2304 / 3424 elapsed 1841.832767009735
+FP5-1 evaluated 2336 / 3424 elapsed 1859.8501822948456
+FP5-1 evaluated 2368 / 3424 elapsed 1877.3942201137543
+FP5-1 evaluated 2400 / 3424 elapsed 1895.76669049263
+FP5-1 evaluated 2432 / 3424 elapsed 1913.2916243076324
+FP5-1 evaluated 2464 / 3424 elapsed 1931.1361029148102
+FP5-1 evaluated 2496 / 3424 elapsed 1947.6115489006042
+FP5-1 evaluated 2528 / 3424 elapsed 1965.7155616283417
+FP5-1 evaluated 2560 / 3424 elapsed 1991.6023349761963
+FP5-1 evaluated 2592 / 3424 elapsed 2007.9890055656433
+FP5-1 evaluated 2624 / 3424 elapsed 2029.3605427742004
+FP5-1 evaluated 2656 / 3424 elapsed 2047.2671782970428
+FP5-1 evaluated 2688 / 3424 elapsed 2065.066374063492
+FP5-1 evaluated 2720 / 3424 elapsed 2078.3096148967743
+FP5-1 evaluated 2752 / 3424 elapsed 2099.7650537490845
+FP5-1 evaluated 2784 / 3424 elapsed 2115.3931896686554
+FP5-1 evaluated 2816 / 3424 elapsed 2128.450765132904
+FP5-1 evaluated 2848 / 3424 elapsed 2142.4638533592224
+FP5-1 evaluated 2880 / 3424 elapsed 2155.317367076874
+FP5-1 evaluated 2912 / 3424 elapsed 2169.912249803543
+FP5-1 evaluated 2944 / 3424 elapsed 2183.047037601471
+FP5-1 evaluated 2976 / 3424 elapsed 2196.248961210251
+FP5-1 evaluated 3008 / 3424 elapsed 2208.992957830429
+FP5-1 evaluated 3040 / 3424 elapsed 2222.705217599869
+FP5-1 evaluated 3072 / 3424 elapsed 2239.7188427448273
+FP5-1 evaluated 3104 / 3424 elapsed 2257.378725528717
+FP5-1 evaluated 3136 / 3424 elapsed 2270.0717420578003
+FP5-1 evaluated 3168 / 3424 elapsed 2282.911204814911
+FP5-1 evaluated 3200 / 3424 elapsed 2295.3505969047546
+FP5-1 evaluated 3232 / 3424 elapsed 2307.98642039299
+FP5-1 evaluated 3264 / 3424 elapsed 2320.6789202690125
+FP5-1 evaluated 3296 / 3424 elapsed 2334.7504262924194
+FP5-1 evaluated 3328 / 3424 elapsed 2348.2700214385986
+FP5-1 evaluated 3360 / 3424 elapsed 2361.981381416321
+FP5-1 evaluated 3392 / 3424 elapsed 2374.350347995758
+FP5-1 evaluated 3424 / 3424 elapsed 2393.3941221237183
+FP5-1 matrix (3424, 3754) validated rational rank 3283
+FP5-1 inverse defect upper 0.06983532857660969 including evaluation 0.059716891456706354
+FP5-1 projected residual upper 0.20086366306638845
+FP5-1 Gram correction upper 0.32399568564208875 baseline 1
+FP5-1 SVD and bound seconds 35.45669221878052
+FP5-1 PASS: exact rational strictly positive five-copy dual exists

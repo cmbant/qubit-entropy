@@ -1,0 +1,6 @@
+SDS-1 PASS: m=5 w=1, 285 exact Pauli zeros below distance 4
+SDS-2 PASS: all 20 ordinary triple-purity relations
+SDS-1 PASS: m=6 w=2, 558 exact Pauli zeros below distance 4
+SDS-1 PASS: m=7 w=2, 966 exact Pauli zeros below distance 5
+SDS-1 PASS: m=8 w=2, 1536 exact Pauli zeros below distance 6
+SDS-3 PASS: one-uniform spinflip-doubled families

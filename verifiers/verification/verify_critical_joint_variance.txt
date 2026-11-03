@@ -1,0 +1,5 @@
+CJ-1 PASS: directional permanent bound algebra and geometric-concavity identities
+CJ-2 PASS: Fourier variance factor and generic shared-unitary block expansion
+CJ-3 PASS: scalar factorisation, tangent bound and nonpositive discriminant identity
+CJ-4 PASS: sharp family moments and tetrahedral spectra for all k
+CJ-5 PASS: scalar-only negative control; shared joint-cut structure is essential

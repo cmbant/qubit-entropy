@@ -1,0 +1,6 @@
+ST-1 PASS: n=4 pi >= 1/3 + (1/6)*tau; positive A coefficients [1]; sharp coefficient witness
+ST-2 PASS: n=8 pi >= 3/35 + (1/70)*tau; positive A coefficients [1, 2, 3]; sharp coefficient witness
+ST-3 PASS: n=10 pi >= 1/21 + (1/168)*tau; positive A coefficients [1, 2, 3]; sharp coefficient witness
+ST-4 PASS: n=14 pi >= 331/27456 + (5/6864)*tau; positive A coefficients [1, 2, 3, 4, 5]; sharp coefficient witness
+ST-5 PASS: n=16 pi >= 1/156 + (1/1716)*tau; positive A coefficients [1, 2, 3, 4, 5]; sharp coefficient witness
+ST-6 PASS: n=20 pi >= 1193/739024 + (103/1478048)*tau; positive A coefficients [1, 2, 3, 4, 5, 6, 7]; sharp coefficient witness

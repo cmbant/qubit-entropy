@@ -1,0 +1,85 @@
+\subsection{An independent near-one defect estimate}\label{sec:fqe-renyi-above-one}
+
+Use $H_q$, $h_q$ and $\mathcal E_q$ from Section~\ref{sec:fqe-spectral}, and set
+$m_q=2^{-q}+3\,6^{-q}$. Entropies are in bits throughout this section; the proof below uses
+$H_q^{\mathrm{nat}}=H_q\ln2$ when working in nats.
+The Tsallis result alone does not give an upper R\'enyi bound when $q>1$.
+The anchor-order argument proves the full HS--cluster envelope of Corollary~\ref{cor:fqe-renyi-gw} for all $q>1$.
+Here we give an independent near-one proof using the nonnegative Hermite interpolation error to control
+the logarithm's curvature; it also yields the quantitative defect estimate~\eqref{eq:fqe-renyi-defect}.
+
+\begin{theorem}[R\'enyi interval above one]
+\label{thm:fqe-renyi-above-one}
+For every pure four-qubit state and every $1<q\le5/4$,
+\[
+\boxed{\quad\mathcal E_q(\psi)\le\frac{\log_2 m_q}{1-q}.\quad}
+\]
+Equality holds exactly on the two $M_4$, $\overline{M_4}$ LU orbits.
+\end{theorem}
+
+
+The argument rests on a scalar slack estimate. Set $p=1/6$, $s=1/2$, and
+\[
+f_q(x)=\frac{x^q-x}{1-q},\qquad f_1(x)=-x\ln x,\qquad f_q(0)=0.
+\]
+Let $\ell_q$ be the secant of $f_q$ through $p,s$, and $\widehat h_q$ its cubic
+Hermite interpolant there, as in Corollary~\ref{cor:fqe-tsallis}.
+
+\begin{lemma}[Scalar slack control]
+\label{lem:fqe-renyi-slack}
+For $1\le q\le5/4$ and $0\le x\le1$,
+\[
+ \bigl(f_q(x)-\ell_q(x)\bigr)^2
+ \le\frac{141}{100}\bigl(\widehat h_q(x)-f_q(x)\bigr).
+ \tag{RA}\label{eq:fqe-renyi-scalar}
+\]
+Consequently, for any four-component probability vector $\lambda$, put
+$S_q=\sum_i f_q(\lambda_i)$, $S_q^*=f_q(s)+3f_q(p)$,
+and $D_q=\sum_i(\widehat h_q-f_q)(\lambda_i)$. Then
+\[
+ (S_q-S_q^*)^2\le\frac{141}{25}D_q.
+ \tag{RB}\label{eq:fqe-renyi-sum}
+\]
+\end{lemma}
+The proof (Section~\ref{sec:sup-renyi-slack}; check RA-1) puts
+$G=\widehat h_q-f_q-\frac{100}{141}(f_q-\ell_q)^2$, which vanishes with its derivative at $p$ and $s$, and shows
+$G^{(4)}>0$ on $(0,1]$ from an elementary bound $\Phi_q<141/100$ on the factor its fourth derivative contains;
+the Hermite remainder then gives $G\ge0$, and Cauchy--Schwarz gives the summed bound.
+
+\begin{proof}[Proof of Theorem~\ref{thm:fqe-renyi-above-one}]
+Put $r=q-1$, $L=4^{-r}$, $M=\sum_i\lambda_i^q=1-rS_q$,
+and $m=m_q=1-rS_q^*$. Convexity of $x^q$ gives $M\ge L$ and $m\ge L$.
+For $u>0$, integration of $(t-1)/t$ gives
+\[
+u-1-\ln u\le\frac{(u-1)^2}{2\min(u,1)}.
+\]
+Apply this with $u=M/m$; since $\min(u,1)\ge L/m$, it follows that
+\[
+H_q^{\mathrm{nat}}(\lambda)-H_q^{\mathrm{nat}}(s,p,p,p)
+\le\frac{S_q-S_q^*}{m}+
+\frac{r(S_q-S_q^*)^2}{2mL}.
+\]
+By \eqref{eq:fqe-renyi-sum} and $S_q=\sum_i \widehat h_q(\lambda_i)-D_q$, this is at most
+\[
+\frac{\sum_i \widehat h_q(\lambda_i)-S_q^*}{m}
+-\frac{1-141r/(50L)}{m}D_q.
+\tag{RD}\label{eq:fqe-renyi-cut}
+\]
+For $r\le1/4$, the last coefficient is positive, because
+\[
+\frac{141r}{50L}\le\frac{141}{200}\sqrt2<1
+\qquad\left(\left(\tfrac{141}{200}\sqrt2\right)^2=\tfrac{19881}{20000}\right).
+\]
+Write $a_q,b_q$ for the cubic and quadratic coefficients of $\widehat h_q$ and
+$\alpha_q=-b_q-17a_q/12$. Corollary~\ref{cor:fqe-tsallis} proves
+$a_q,\alpha_q>0$. Sum \eqref{eq:fqe-renyi-cut} over the three cuts and
+use $T=(17P-12-F)/12$. With $\mathcal D_q=\sum_jD_q(\rho_{1j})$ and
+$\kappa=1-141\sqrt2/200>0$, the result is the defect estimate
+\[
+3m_q\ln2\bigl(\mathcal E_q(M_4)-\mathcal E_q(\psi)\bigr)
+\ge\alpha_q(P-1)+\frac{a_q}{12}F+\kappa\mathcal D_q\ge0.
+\tag{RE}\label{eq:fqe-renyi-defect}
+\]
+Equality forces $P=1,F=0$, so Proposition~\ref{prop:fqe-moment-zeros} gives the two HS
+orbits; both attain the bound.
+\end{proof}

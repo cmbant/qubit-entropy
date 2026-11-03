@@ -1,0 +1,124 @@
+\section{Seven qubits: the icosahedral state}\label{sec:ico}
+
+Label the qubits $s,0,1,\dots,5$. Let $s_{ij}=-1$ for $\{i,j\}$ an edge of the pentagon
+$1\!-\!3\!-\!2\!-\!4\!-\!5\!-\!1$ and $s_{ij}=+1$ otherwise. These signs represent the regular two-graph of the six
+icosahedral axes: a triangle is negative when its three signs multiply to $-1$, and every pair
+lies in exactly two negative triangles. The two-graph has symmetry group $A_5\cong PSL(2,5)$. For $0\le x\le\tfrac12$ put
+$\alpha=\sqrt{(1-2x)/30}$, $\beta=\sqrt x$ and
+\begin{equation}\label{eq:ico}
+\begin{split}
+  \psi_x ={}& |0\rangle_s\Bigl(\alpha\sum_{i<j}s_{ij}|e_i+e_j\rangle + \beta|111111\rangle\Bigr)\\
+         &+ |1\rangle_s\Bigl(\beta|000000\rangle - \alpha\sum_{i<j}s_{ij}|111111-e_i-e_j\rangle\Bigr).
+\end{split}
+\end{equation}
+
+\begin{theorem}[the icosahedral family]\label{thm:ico}
+\leavevmode\begin{enumerate}
+  \item Every one-qubit marginal of every $\psi_x$ is $I/2$.
+  \item $\pi_3(\psi_x)$ is a quadratic polynomial in $x$, minimised within the family at $x=37/524$. The
+    \emph{icosahedral state} $\Psiico=\psi_{37/524}$ has $\pi_3(\Psiico)=121/917=0.131952\ldots$
+  \item Its $20$ three-body marginals avoiding $s$ have purity $4381/34322$ and its $15$ containing $s$
+    have purity $2363/17161$. Its pair purities are $8641/34322$ ($15$ pairs avoiding $s$) and
+    $8761/34322$ ($6$ pairs containing $s$).
+  \item Throughout the family, writing $u=\alpha^2=(1-2x)/30$,
+    its triple spectra are $(4u)^6,(3u+x)^2$ on cuts avoiding $s$,
+    and $(8u),(4u)^5,(u+x)^2$ on cuts containing $s$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Let $C$ be the $6\times6$ zero-diagonal symmetric conference matrix with entries $C_{ij}=s_{ij}$ ($i\ne j$).
+Every pair of vertices lies in two negative and two positive triangles, so $C^2=5I_6$.
+In~\eqref{eq:ico} the $|0\rangle_s$ and $|1\rangle_s$ branches are supported on ordinary Hamming weights
+$\{2,6\}$ and $\{0,4\}$, respectively. Disjointness of these weight sets makes $\rho_s$ diagonal, with each branch of weight $15u+x=1/2$.
+Within each branch the ordinary weights have one parity, so every $\rho_i$ is diagonal, and
+$P(b_i=1)=5u+x+10u=1/2$. This proves item~(1).
+
+For an ordinary triple $I=\{i,j,k\}$ with complement $J=\{0,\dots,5\}\setminus I$, group the partial trace over $\{s\}\cup J$ by Hamming weight on $J$. This block-diagonalises $\rho_I$ by Hamming weight on $I$. On $|000\rangle$ and $|111\rangle$ the diagonal entries are $3u+x$ (three pairs inside $J$ plus the endpoint term). On the weight-$1$ subspace $\operatorname{span}\{|100\rangle,|010\rangle,|001\rangle\}$, the $|0\rangle_s$ branch (weight $1$ on $J$) contributes $u\,B_{IJ}B_{IJ}^{\mathsf T}$, where $B_{IJ}$ is the $3\times3$ block of $C$ between $I$ and $J$, while the $|1\rangle_s$ branch (weight $3$ on $J$) contributes $u\,|v_1\rangle\langle v_1|$ with $|v_1\rangle=(s_{jk},s_{ik},s_{ij})^{\mathsf T}$. For any zero-diagonal $\{\pm1\}$ matrix $C_I$ of order three, $C_I^2=I_3+|v_1\rangle\langle v_1|$, while the $I$-block of $C^2=5I_6$ reads $C_I^2+B_{IJ}B_{IJ}^{\mathsf T}=5I_3$. Their sum is therefore
+\[
+ u\bigl(B_{IJ}B_{IJ}^{\mathsf T}+|v_1\rangle\langle v_1|\bigr)
+ =u\bigl((5I_3-C_I^2)+(C_I^2-I_3)\bigr)=4u\,I_3.
+\]
+Since $X^{\otimes7}\psi_x$ is $\psi_x$ with $\alpha\mapsto-\alpha$, and the weight-$1$ block depends only on $\alpha^2$, the weight-$2$ block is also $4u\,I_3$, so $\rho_I=\operatorname{diag}(3u+x,(4u)^6,3u+x)$ in the computational basis.
+
+For a cut $\{s,i,j\}$ containing $s$, with complement $K=\{0,\dots,5\}\setminus\{i,j\}=\{k,l,m,n\}$, the five Hamming-weight sectors on $K$ map to four orthogonal $2\times2$ blocks of $\rho_{sij}$:
+\begin{itemize}
+\item weights $0$ and $4$ on $K$ span $\{|011\rangle,|100\rangle\}$ with orthogonal conditional vectors $\alpha s_{ij}|011\rangle+\beta|100\rangle$ and $\beta|011\rangle-\alpha s_{ij}|100\rangle$, giving $(u+x)I_2$;
+\item weight $1$ on $K$ spans $\{|010\rangle,|001\rangle\}$ and weight $3$ spans $\{|101\rangle,|110\rangle\}$, each giving $4u\,I_2$ because $\sum_{r\in K}s_{ir}s_{jr}=(C^2)_{ij}=0$;
+\item weight $2$ on $K$ spans $\{|000\rangle,|111\rangle\}$ with matrix $\bigl(\begin{smallmatrix}6u&-2u\,\eta_K\\-2u\,\eta_K&6u\end{smallmatrix}\bigr)$, where $\eta_K=s_{kl}s_{mn}+s_{km}s_{ln}+s_{kn}s_{lm}\in\{\pm1\}$, giving eigenvalues $6u\pm2u=(8u,4u)$.
+\end{itemize}
+Here the sign magnitude follows intrinsically from the conference equation:
+$C^{-1}=C/5$ and $\det C=-125$, so Jacobi's complementary-minor identity gives
+$\det C_K=(-125)(-1/25)=5$. Expanding a symmetric zero-diagonal $4\times4$
+determinant gives $\det C_K+\eta_K^2=6$, since all off-diagonal entries are signs.
+Thus $\eta_K^2=1$, without a case split on pentagon subgraphs.
+This proves item~(4). Tracing out one further site gives $\rho_{ij}=\operatorname{diag}(\tfrac12-8u,8u,8u,\tfrac12-8u)$ and $\rho_{si}=\operatorname{diag}(10u,5u+x,5u+x,10u)$. Summing the squared eigenvalues gives~\eqref{eq:icopurities} and $\pi_3(\psi_x)=\frac{121}{917}+\frac{(524x-37)^2}{137550}$, proving~(2) and~(3).
+IC-1--IC-6 independently check all marginals, polynomial identities and derivatives. \qedhere
+\end{proof}
+
+\noindent In particular the $20$ cuts avoiding $s$ at $\Psiico$ have spectrum
+$(41/262,41/262,(15/131)^{6})$ and the $15$ containing $s$ have $(30/131,(15/131)^{5},(13/131)^{2})$.
+Throughout $\psi_x$ the mean two- and three-body purities and the mean three-body third moment
+$b_3=\tfrac1{35}\sum_{|S|=3}\operatorname{tr}\rho_S^3$ are
+\begin{equation}\label{eq:icopurities}
+ \pi_2(\psi_x)=\frac{832x^2-112x+163}{630},\qquad
+ \pi_3(\psi_x)=\frac{2096x^2-296x+149}{1050},
+\end{equation}
+\[
+ b_3(\psi_x)=\frac{35008x^3+17328x^2-3084x+709}{31500},
+\]
+with $b_3'(37/524)=-432/120127<0$ (IC-6).
+
+\begin{corollary}[purity and entropy have different stationary points]
+\label{cor:ico-entropy-separation}
+Let $f(t)=-t\log_2t$, $f(0)=0$. The mean balanced entropy $E_3=\binom73^{-1}\sum_{|S|=3}S(\rho_S)$, in bits, on the
+icosahedral family is the strictly concave function
+\[
+ E_3(\psi_x)=\frac{195f(4u)+40f(3u+x)+15f(8u)+30f(u+x)}{35},
+ \qquad u=(1-2x)/30.
+\]
+It has a unique maximum on $[0,1/2]$, lying strictly between $0$ and
+$37/524$. In particular $\Psiico$ is not an entropy maximiser, even
+locally in the full pure-state space, since decreasing $x$ already increases $E_3$.
+\end{corollary}
+\noindent[Check IC-6.]
+\begin{proof}
+The spectra give the formula. Every eigenvalue is affine in $x$,
+and the nonconstant eigenvalue $4u$ makes the sum strictly concave.
+At the purity minimum,
+\[
+ E_3'(37/524)=\frac4{35\ln2}
+ \ln\frac{30^{10}15^5}{13^7 41^8}<0,
+\]
+where the sign is an exact integer comparison. At $x=0$ the
+derivative is $32\ln(16/3)/(35\ln2)>0$.
+Strict concavity proves the asserted location and uniqueness.
+This locates the maximum within the family; it is the global
+maximum over all pure seven-qubit states by
+Theorem~\ref{thm:fqe-seven-entropy}.
+\end{proof}
+
+
+\paragraph{Comparison.} Di~Martino, Facchi and Florio~\cite{DMFF18} found numerically a seven-qubit
+state with $\pi_3=0.131952$, given by coefficients to six digits in a basis of products of four-qubit and
+three-qubit states, and did not claim it optimal. Computed from their coefficients, its marginal
+spectra and pair purities agree with those of $\Psiico$ to that precision, which suggests that the two states are
+LU-equivalent; Theorem~\ref{thm:ico} gives an explicit closed-form state with the exact value
+$121/917$. This value is below the Fano/wheel graph state ($19/140=0.1357\ldots$,
+Zha et al.~\cite{Zha11}, also~\cite{HGS}; the best stabilizer value, Proposition~\ref{prop:stab7}) and
+the earlier numerical $0.13387$ of Facchi et al.~\cite{Facchi}. We know of no state in the literature
+with smaller $\pi_3$.
+
+\begin{proposition}[stabilizer states]\label{prop:stab7}
+Every seven-qubit stabilizer state has $\pi_3\ge 19/140$. Hence the seven-qubit minimum is not
+attained by a stabilizer state.
+\end{proposition}
+
+\begin{proof}
+For any pure seven-qubit state with Pauli weight enumerator $A_w=\sum_{\operatorname{wt}(P)=w}\langle\psi|P|\psi\rangle^2$ ($A_0=1$) and shadow enumerator $S_w=\sum_{\operatorname{wt}(P)=w}|\langle\psi|P|\tilde\psi\rangle|^2$, expanding $\pi_3$ in subset purities gives the first identity below; the second follows from complementarity of the mean $s$-qubit purities, $\pi_s=\pi_{7-s}$ (the pure-state MacWilliams identity), and Rains' shadow transform $S(x,y)=A\bigl(\tfrac{x+3y}2,\tfrac{y-x}2\bigr)$~\cite{Rains}:
+\[
+ 280\pi_3=35+15A_1+5A_2+A_3,\qquad
+ 4S_1=7+A_1+A_2-A_3.
+\]
+For a seven-qubit stabilizer state $|\psi\rangle$ with stabilizer group $\mathcal S$ ($|\mathcal S|=2^7$), every Pauli string $P$ has $\langle\psi|P|\psi\rangle^2\in\{0,1\}$. Moreover, since $\tilde\psi=\epsilon^{\otimes 7}\bar\psi$ satisfies $M\tilde\psi=(-1)^{\operatorname{wt}(M)}\tilde\psi$ for every $M\in\mathcal S$, the state $P\tilde\psi$ is a joint eigenvector of $\mathcal S$, so $|\langle\psi|P|\tilde\psi\rangle|^2\in\{0,1\}$ as well. Hence the $A_w$ and $S_w$ are nonnegative integers. If $A_1+A_2\ge1$, then $15A_1+5A_2+A_3\ge5>3$. If $A_1=A_2=0$, then $A_3=7-4S_1\ge0$ with $S_1\in\mathbb Z_{\ge0}$ forces $S_1\in\{0,1\}$ and $A_3\in\{3,7\}$, so $A_3\ge3$. In both cases $15A_1+5A_2+A_3\ge3$ and $\pi_3\ge38/280=19/140$, with equality iff $(A_1,A_2,A_3)=(0,0,3)$ ($S_1=1$), attained by an explicit seven-vertex graph state. Then $121/917<19/140$ by Theorem~\ref{thm:ico}; GS-4 checks both identities and the equality witness. \qedhere
+\end{proof}

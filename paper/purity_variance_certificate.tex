@@ -1,0 +1,55 @@
+\subsection{The unrestricted joint purity bound}\label{sec:fqe-joint-purity}
+
+\begin{theorem}[Joint purity compatibility; consequence of QK]
+\label{thm:fqe-joint-purity}
+Every pure four-qubit state satisfies
+\[
+\boxed{\qquad T+\sum_{j=2}^4p_j^2\le3P-\frac94.\qquad}
+\tag{JV}\label{eq:fqe-joint-purity}
+\]
+Equality holds exactly for HS cut spectra, cluster cut spectra, or products
+of two Bell pairs, up to ordering of the cuts and eigenvalues.
+In the HS case the states belong to the two HS LU orbits.
+\end{theorem}
+\begin{proof}
+This is an elementary consequence of the stronger quadratic variance bound
+\eqref{eq:fqe-quadratic-variance-proved}, together with $F\ge0$ and
+$p_j\in[1/4,1]$. Set
+\[
+U=\sum_jp_j^2,\qquad G=3P-\frac94-T-U,\qquad
+Q=F^2+\frac92(P-1)-6\bigl(U-P^2/3\bigr)\ge0.
+\]
+Since $T=(17P-12-F)/12$, direct algebra gives the useful identity
+\[
+12G=F(1-2F)+2(P-1)(3-2P)+2Q.
+\tag{JI}\label{eq:fqe-joint-implication}
+\]
+It proves $G\ge0$ whenever $1\le P\le3/2$ and $0\le F\le1/2$.
+
+For the remaining cases, use the purity box \eqref{eq:fqe-purity-box} of Section~\ref{sec:sup-qk}, the
+maximum of the convex function $U$ at fixed $P$ over $[1/4,1]^3$.
+Using $12G=19P-15+F-12U$, the first piece, for
+$1\le P\le3/2$ and $F\ge1/2$, yields
+\[
+12G\ge F-\frac12+(P-1)(19-12P)\ge0.
+\]
+For $3/2\le P\le9/4$ the second piece yields
+\[
+12G\ge F+\frac12(2P-3)(31-12P)\ge0,
+\]
+and for $9/4\le P\le3$ the last piece yields
+\[
+12G\ge F-12P^2+67P-87\ge F+3>0.
+\]
+The last inequality follows from concavity of the quadratic and its
+values $3,6$ at the two endpoints.
+
+Equality in the first case forces $Q=0$, so the equality classification of
+Corollary~\ref{thm:fqe-quadratic-variance} gives HS, cluster or Bell-pair
+spectra. In the $F\ge1/2$ case equality requires
+$P=1$, $F=1/2$, $U=3/8$, again giving $Q=0$ and the cluster
+spectra. In the second box range equality requires
+$P=3/2$, $F=0$ and $U=9/8$; its purity triple is
+$(1,1/4,1/4)$, and the state is a product of two Bell pairs.
+The final range is strict. All three listed types attain equality.
+\end{proof}

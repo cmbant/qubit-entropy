@@ -1,0 +1,7 @@
+FC-0 PASS: integer S_4 irreps and matrix units (Schur orthogonality, exact); flip maps T1, T2 exact with 12T integral; Gram forms positive definite: True
+FC-1 PASS (numerical regression, 3 random three-qubit states): parametrisation residual 1.3e-17, |tr X - 1| 1.3e-15, |objective - purity| 6.7e-16, min eig omega 8.4e-07, flip maps vs direct flipped moments 6.2e-17, min eig flip blocks -1.7e-16
+FC-2 PASS: modular adjoint contraction + CRT equals the direct forward computation (n = 3, 4; random integer Z), max relative difference 3.3e-16
+  n=7 rational bases built (57s)
+  |c_p| <= 6.631e+207: CRT over 35 primes
+FC-3 PASS: 271 flip multipliers, all positive definite: True; 167 omega parameters in 78 blocks, every residual block positive definite: True (smallest eigenvalue 2.177e-04)
+FC-4 PASS: every pure seven-qubit state has mean three-body purity pi_3 >= 211/1600 = 0.131875  (698s)

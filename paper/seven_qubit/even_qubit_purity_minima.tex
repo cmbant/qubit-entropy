@@ -1,0 +1,153 @@
+\section{Exact minima of the balanced purity}\label{sec:lp}
+
+For a pure state $\psi$ of $n$ qubits and $k=\lfloor n/2\rfloor$ write
+$\pi_k(\psi)=\binom nk^{-1}\sum_{|S|=k}\tr\rho_S^2$ for the mean balanced-cut purity. Since
+$\tr\rho_S^2\ge2^{-k}$, $\pi_k\ge2^{-k}$, with equality iff $\psi$ is absolutely maximally entangled
+(AME$(n,2)$), which happens only for $n=2,3,5,6$ (Rains~\cite{Rains} and Scott~\cite{Scott} for $n\ge8$;
+Huber--G\"uhne--Siewert~\cite{HGS} for $n=7$). This section shows that for $n\le18$, $n\ne7,13$,
+the minimum of $\pi_k$ is the value of the Rains linear programme and is attained by a graph state
+(Table~\ref{tab:minima}; $n=18$ is Theorem~\ref{thm:eighteen}).
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{@{}cccl@{}}
+\toprule
+$n$ & $2^{-k}$ & $\min\pi_k$ (the Rains LP value) & attained by \\
+\midrule
+4 & $1/4$ & $1/3$ & cluster ($P_4$) or Higuchi--Sudbery state\\
+5 & $1/4$ & $1/4$ & AME(5,2), e.g.\ $C_5(1)$\\
+6 & $1/8$ & $1/8$ & AME(6,2), e.g.\ $C_6(2,3)$\\
+8 & $1/16$ & $3/35$ & graph state (Table~\ref{tab:graphs})\\
+9 & $1/16$ & $1/14$ & $C_9(3,4)$\\
+10 & $1/32$ & $1/21$ & $C_{10}(1,2,4)$ (Remark~\ref{rem:ten})\\
+11 & $1/32$ & $1/28$ & graph state (Table~\ref{tab:graphs})\\
+12 & $1/64$ & $5/224$ & $C_{12}(3,5,6)$\\
+14 & $1/128$ & $331/27456$ & graph state (Theorem~\ref{thm:fourteenfifteen})\\
+15 & $1/128$ & $1/104$ & graph state (Theorem~\ref{thm:fourteenfifteen})\\
+16 & $1/256$ & $1/156$ & induced subgraph of $C_{17}(1,3,4,5)$\\
+17 & $1/256$ & $1/208$ & $C_{17}(1,3,4,5)$\\
+18 & $1/512$ & $7/2288$ & graph state (Theorem~\ref{thm:eighteen})\\
+\bottomrule
+\end{tabular}
+\caption{Minimum of $\pi_k$ for $n\le18$ qubits, $n\ne7,13$ (for $n=7$ the minimum $121/917$ is
+Corollary~\ref{cor:seven-global-from-fivecopy}). $C_n(D)$ is the circulant graph joining $i$ and $i\pm d$ for $d\in D$.}
+\label{tab:minima}
+\end{table}
+
+Write $A_j=\sum_{\mathrm{wt}(P)=j}\langle\psi|P|\psi\rangle^2$ for the weight distribution over the
+$4^n$ Pauli strings $P$ ($A_0=1$, $\sum_jA_j=2^n$). Expanding $\rho_S$ in Pauli strings gives
+\begin{equation}\label{eq:as}
+  a_s := \binom ns^{-1}\sum_{|S|=s}\tr\rho_S^2 = \frac{1}{2^s\binom ns}\sum_{j\le s}\binom{n-j}{s-j}A_j,
+\end{equation}
+and for pure states $a_s=a_{n-s}$. Rains' shadow inequalities~\cite{Rains} state that the coefficients
+$S_j$ of $S(x,y)=\sum_jA_j\bigl(\tfrac{x+3y}{2}\bigr)^{n-j}\bigl(\tfrac{y-x}{2}\bigr)^{j}$ are
+non-negative. The \emph{Rains LP} minimises $a_k$ over $A\in\mathbb R^{n+1}_{\ge0}$ with $A_0=1$,
+$a_s=a_{n-s}$ and $S_j\ge0$.
+
+\begin{theorem}[exact certificate; LP-1, GS-1]\label{thm:lptable}
+\begin{enumerate}
+  \item For $n\in\{4,5,6,8,9,10,11,12\}$, $\pi_k(\psi)$ is at least the value in Table~\ref{tab:minima} for every pure $n$-qubit state.
+  \item For $n\in\{4,5,6,8,9,10,11,12\}$ the graph state of Table~\ref{tab:graphs} has $\pi_k$ equal to
+    the LP bound. Hence $\min\pi_k$ equals the LP bound for these $n$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(1) For each $n$, LP-1 exhibits rational multipliers $e_s\in\mathbb Q$, $y_i\ge 0$ such that
+$a_k - L A_0 - \sum_s e_s(a_s-a_{n-s}) - \sum_i y_iS_i$, as a linear form in $A$, has non-negative
+coefficients. On any feasible $A$ the right-hand terms vanish or are non-negative, so $a_k\ge L$.
+(Part~(2) shows that $L$ is the LP value.)
+(2) For the graph state $|G\rangle$ and a cut $S$, $\tr\rho_S^2 = 2^{-\operatorname{rk}_2\Gamma[S,S^c]}$,
+with $\Gamma[S,S^c]$ the biadjacency matrix over $\mathbb F_2$ (Hein--Eisert--Briegel~\cite{HEB}).
+GS-1 computes all ranks exactly. \qedhere
+\end{proof}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{@{}c>{\raggedright\arraybackslash}p{8cm}l@{}}
+\toprule
+$n$ & graph & ranks over all $k$-sets $S$\\
+\midrule
+4 & path $P_4$ (linear cluster) & $1^{2}\,2^{4}$ \\
+5 & $C_5(1)$ & $2^{10}$ \\
+6 & $C_6(2,3)$ & $3^{20}$ \\
+8 & edges 20 21 31 32 41 43 50 51 52 54 60 61 63 64 70 71 76 & $2^6\,3^8\,4^{56}$ \\
+9 & $C_9(3,4)$ & $3^{18}\,4^{108}$ \\
+10 & $C_{10}(1,2,4)$ & $4^{132}\,5^{120}$ \\
+11 & edges 20 21 31 40 41 42 51 53 54 60 61 63 64 70 71 76 81 83 84 85 86 87 92 93 96 98 $\{10\}$0--6 $\{10\}$9 & $4^{66}\,5^{396}$\\
+12 & $C_{12}(3,5,6)$ & $4^{6}\,5^{378}\,6^{540}$ \\
+\bottomrule
+\end{tabular}
+\caption{Graph states attaining the LP bound ($r^m$: $m$ cuts of rank $r$). For $n=11$,
+``$\{10\}$0--6'' means vertex 10 is joined to $0,\dots,6$.}
+\label{tab:graphs}
+\end{table}
+
+\begin{remark}[ten qubits]\label{rem:ten}
+The $C_{10}(1,2,4)$ graph state is $3$-uniform, with weight distribution
+$A=(1,0,0,0,10,72,160,240,285,200,56)$ (GS-2): a $[[10,0,4]]$ stabilizer state. By \eqref{eq:as},
+$\pi_5$ depends on $A_4$ and $A_5$ as well as the distance, so not every $[[10,0,4]]$ state attains
+$1/21$: the Petersen graph state has $\pi_5=3/56$ (GS-3). Scott's Table~I~\cite{Scott} lists only
+the Petersen weight distribution for $n=10$ (value $3/56$, with a caption noting that other
+distributions exist); Zha et al.~\cite{Zha14} give $13/336$ as a heuristic ``theoretical
+limitation''. The distribution of $C_{10}(1,2,4)$ is the extremal Type~I enumerator $W_{10,1}$ of
+Danielsen--Parker~\cite{DP}, so the value $1/21$ is implicit in published data. We have found no earlier
+statement that $\min\pi_5=1/21$.
+\end{remark}
+
+\begin{theorem}[exact finite certificates; LP-14, LP-15, GS-14, GS-15]
+\label{thm:fourteenfifteen}
+The minimum mean balanced-cut purity over all pure qubit states is
+\[
+ \min_{\psi\in(\mathbb C^2)^{\otimes14}}\pi_7(\psi)=\frac{331}{27456},
+ \qquad
+ \min_{\psi\in(\mathbb C^2)^{\otimes15}}\pi_7(\psi)=\frac1{104}.
+\]
+Both minima are attained by graph states.
+\end{theorem}
+\begin{proof}
+For each $n=14,15$, the checks LP-14 and LP-15
+verify, coefficient by
+coefficient in all $n+1$ Pauli-weight coordinates, the exact rational
+Rains-LP dual identity
+\[
+ a_{\lfloor n/2\rfloor}(A)-L A_0
+  =\sum_{s< n/2}e_s(a_s-a_{n-s})
+      +\sum_{i=0}^n y_i S_i(A)+\sum_{j=0}^n w_j A_j,
+       \quad y_i,w_j\ge0,
+\]
+where the finite lists of rational coefficients are supplied literally
+in the script. This proves the universal lower bounds.
+
+For the graph witnesses with symmetric binary adjacency matrices
+specified by the hexadecimal row strings in that script, exact
+enumeration of the graph stabilizer gives, respectively,
+\[
+ \begin{array}{c|c|l}
+ n & (A_0,\ldots,A_7) & \text{balanced-cut binary rank histogram}\\ \hline
+ 14 &(1,0,0,0,0,0,161,576)&5^{60}\,6^{1684}\,7^{1688}\\
+ 15 &(1,0,0,0,0,0,105,540)&5^{35}\,6^{1380}\,7^{5020}.
+ \end{array}
+\]
+The 14- and 15-vertex graphs have 47 and 56 edges. An independent
+enumeration of every $7|(n-7)$ binary cut matrix computes its rank
+$r_S$, yielding $\operatorname{tr}\rho_S^2=2^{-r_S}$. Averaging the rank
+histograms gives exactly $331/27456$ and $1/104$, matching the
+certified lower bounds.
+\end{proof}
+
+\begin{theorem}[exact finite certificates; GL-1, GL-2]
+\label{thm:sixteenseventeen}
+The minimum mean balanced purity is $1/156$ for $n=16$ and $1/208$
+for $n=17$. It is attained by the graph state $C_{17}(1,3,4,5)$ at
+$n=17$, and by its induced graph on vertices $0,\dots,15$ at $n=16$.
+\end{theorem}
+\begin{proof}
+GL-1 verifies exact Rains-LP dual identities with nonnegative rational
+shadow and Pauli-weight coefficients, proving the stated universal
+lower bounds. GL-2 computes every balanced cut rank over $\mathbb F_2$.
+For $n=16$ the ranks are $5^{10}6^{500}7^{6680}8^{5680}$;
+for $n=17$ they are $6^{510}7^{4080}8^{19720}$.
+Inserting $2^{-r}$ for each cut of rank $r$ yields $1/156$ and
+$1/208$ respectively, matching the lower bounds.
+\end{proof}

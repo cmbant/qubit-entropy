@@ -1,0 +1,10 @@
+IC-1 PASS: support sizes 30 and 2, disjoint; psi_x is a unit vector for every x in [0,1/2]
+IC-2 PASS: every one-qubit marginal is I/2 along the whole family
+IC-3 PASS: mean 3-body purity = (4470 a^4 + 70 b^4 + 300 a^2 b^2)/35, odd terms zero
+IC-4 PASS: family minimum at x = 37/524, mean 3-body purity exactly 121/917 < 19/140
+IC-5 PASS: triple purities 4381/34322 (x20, avoiding s) and 2363/17161 (x15, containing s); pair purities 8641/34322 (x15, avoiding s) and 8761/34322 (x6, containing s)
+IC-6 PASS: conference equation, complementary minors and generic hafnian-determinant identity
+IC-6 PASS: exact all-family triple spectra, 35 cuts, degree-six polynomial identities
+IC-6 PASS: entropy derivative at the purity minimum is negative (exact integer sign)
+IC-6 PASS: E_3'(37/524) = 4/(35 ln2) ln(30^10 15^5/(13^7 41^8)) < 0 and E_3'(0) = 32 ln(16/3)/(35 ln2) > 0 (exact)
+IC-6 PASS: Psi_ico triple spectra (41/262)^2 (15/131)^6 avoiding s; 30/131, (15/131)^5, (13/131)^2 containing s; b_3'(37/524) = -432/120127
