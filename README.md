@@ -2,7 +2,7 @@
 
 **Compiled PDFs:** [Main paper](paper/four_qubit_entropy.pdf) · [Supplement](paper/supplement.pdf)
 
-This is the companion to the paper *The most entangled states of four and seven qubits*.
+This is the companion to the paper [*The most entangled states of four and seven qubits*](https://arxiv.org/abs/2611.05757).
 The public repository is [cmbant/qubit-entropy](https://github.com/cmbant/qubit-entropy). The paper and supplement
 give the proofs; this repository also holds the certificates and formalisation needed to check them:
 
@@ -46,7 +46,7 @@ section list them under their results.
 | Sharp critical stability | Thm 20, p. 31 | Sec S8.2, p. 47 | CO-1–CO-3, NC-1–NC-4, FP-1–FP-4, RP-1–RP-4 | `critical_orbit_sharp_dist_all`‡, `null_critical_sharp` |
 | Sharp entropy stability on the critical locus | Thm 21, p. 31 | Sec S8.5, p. 58 | PM, PS, TC-1–TC-8, EX, LCC, CCV (covering Prop S40); numerical evidence NV-1, NV-2 | – |
 | Critical normal form | Thm 16, p. 27 | – | CN-1–CN-4 | `critical_normal_form`, `critical_iff_LU_Gv` |
-| Seven qubits: purity minimum `121/917` and unique icosahedral orbit | Thm 11, p. 13 | Sec S11, p. 71<br>Cor S67, p. 83<br>Thm S69, p. 84<br>Thm S71, p. 86 | S5-1, Y5-1, IK5-1–IK5-4, PK5-1–PK5-4, DP5-1, FP5-1–FP5-4, TT-1, MO-1, MO-2, FO-1, CC-1, CP-4, LH-1–LH-4, QB-1–QB-3 | abstract steps only: `SevenFiveCopy.tangent_line` (`lem:fivecopy-tangent-line`), `equality_moment_centred` |
+| Seven qubits: purity minimum `121/917` and unique icosahedral orbit | Thm 11, p. 13 | Sec S11, p. 71<br>Cor S67, p. 83<br>Thm S69, p. 84<br>Thm S71, p. 86 | S5-1, Y5-1, IK5-1–IK5-4, PK5-1–PK5-4, DP5-1, FP5-1–FP5-4, TT-1, MO-1, MO-2, FO-1, CC-1, CP-4, LH-1–LH-4, QB-1–QB-3 | abstract steps only: `tangent_line`, `tangent_line_eq` (`lem:fivecopy-tangent-line`), `equality_moment_centred` |
 | Seven qubits: icosahedral state | Thm 41, p. 46 | – | IC-1–IC-6 | `icosahedralState_eq_ico`, `pairCut_spectrum` (family spectra and purities) |
 | Seven qubits: mean-entropy maximum `E₃(ψ_{x_*})` | Thm 12, p. 13 | Sec S12, p. 87<br>Thm S86, p. 99<br>Thm S88, p. 100<br>Thm S89, p. 101 | ES, SEH, EB, SC-2, SP7, AH, E7-K0–E7-K3, E7-1, FO-1, EO-1 (supplement), EG-1 | `star_value` (family value), `joint_scalar_majorant`, `joint_scalar_majorant_eq_iff` (AH-6), `seven_entropy_max_reduction_joint` (reduction assuming `π₃ ≥ 121/917` and E7-1) |
 | Replica hierarchy: three- and four-copy levels (supplement) | – | Thm S45, p. 64<br>Thm S47, p. 66<br>Prop S49, p. 67 | TCB, FC-0–FC-4, NS-0–NS-4 (numerical TCN, FS) | – |
@@ -111,13 +111,15 @@ lake build
 
 The default targets are the development and the general library. The development is `lean/FourQubitEntropy/`; `lean/FormalResearch/NQubit/` holds the general `n`-qubit
 library (vectors, local `SU(2)` rotations, time reversal, Pauli weights, reduced states, entropy–purity bounds, Rains shadow inequalities, graph states), and `lean/QVCheckImpl/` the compiled quadratic-variance checker. The toolchain is pinned in
-`lean-toolchain` and Mathlib in `lake-manifest.json`. With the cache, the default parallel build
-takes about an hour on four cores and 15 GB of memory (measured); the heaviest files need about 9 GB each. Lake compiles
-one module per core, so on a machine with 16 GB or less build the two heaviest modules first, one at a time:
+`lean-toolchain` and Mathlib in `lake-manifest.json`. With the cache, the default parallel build has been measured at
+about an hour on four cores and 15 GB of memory; the heaviest files need about 9 GB each. Lake may launch many modules
+at once even when CPU affinity is restricted, so those figures are not a memory limit. On a memory-constrained machine,
+build individual targets and monitor memory; building the two heaviest modules first can reduce later peak usage:
 
 ```bash
 cd lean
-lake build FourQubitEntropy.PurityLPGraphData18 && lake build FourQubitEntropy.SpinFlipTradeoffEvenGraph20 && lake build
+lake build FourQubitEntropy.PurityLPGraphData18
+lake build FourQubitEntropy.SpinFlipTradeoffEvenGraph20
 ```
 
 The HS overlap stability Theorem 18 also needs its certificate data, generated (byte-reproducibly, about 22 MB)
@@ -247,7 +249,7 @@ lake build FourQubitEntropy.QVEqualityMain
   (`oddPur_eq_half_sub_Rspin`).
 - **Spin-flip doubling and the abstract five-copy equality steps.** Theorem S51 and Corollary S52
   (`spinflip_double_odd`, `ordinary_triple_purity`); the five-copy tangent-line lemma Lemma S63 in abstract
-  form, for any copy number and any number of qubits (`SevenFiveCopy.tangent_line`; with the equality clause, `SpinFlip.tangent_line_eq`); and the moment-level step of
+  form, for any copy number and any number of qubits (`tangent_line`, `tangent_line_eq`); and the moment-level step of
   Theorem S66 (`equality_moment_centred`: the tangent line and the elimination of `t`, given `H(X_y') ≠ 0`).
   These do not use FP5-1, which is not formalised.
 - **Even-`n` purity–time-reversal tradeoff** (Theorem S108, Corollary S109). For

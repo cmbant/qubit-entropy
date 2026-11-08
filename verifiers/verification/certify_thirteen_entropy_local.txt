@@ -10,3 +10,9 @@ E13L-2 PASS: E6=[5.8336058383627019939735024139202836117480 +/- 1.11e-41]; full 
 E13L-3 PASS: assembled representation error <[5.252779094689014578098025144458e-8 +/- 1.84e-39]; arithmetic budget 1e-6.
 E13L-4: assembled 128/512 simultaneous Hessian columns.
 E13L-4: assembled 256/512 simultaneous Hessian columns.
+E13L-4: assembled 384/512 simultaneous Hessian columns.
+E13L-4: assembled 512/512 simultaneous Hessian columns.
+E13L-4 PASS: all 32 rounded penalty matrices >1/80000 by integer Gram residuals.
+E13L-5 PASS: exact-center penalized Hessian >1/100000; gradient <1e-18.
+E13L CONCLUSION: a full-rank strict local entropy maximum modulo LU lies within 2e-12 of the exact input; 5.83360583836270199<E6<5.83360583836270200.
+E13L SCOPE: global optimality, global equality orbits and the thirteen-qubit purity inequality remain open.

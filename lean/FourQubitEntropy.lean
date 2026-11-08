@@ -368,7 +368,6 @@ import FourQubitEntropy.Spectral
 import FourQubitEntropy.SpectralSpinFlip
 import FourQubitEntropy.SpinFlipOddQSum
 import FourQubitEntropy.SpinFlipOmega
-import FourQubitEntropy.SpinFlipTangent
 import FourQubitEntropy.SpinFlipTradeoff
 import FourQubitEntropy.SpinFlipTradeoffEven
 import FourQubitEntropy.SpinFlipTradeoffEvenCert

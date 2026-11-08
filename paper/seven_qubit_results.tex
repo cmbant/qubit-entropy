@@ -71,12 +71,12 @@ $\Psiico$ and $\psi_{x_*}$ both lie in the icosahedral family $\psi_x$ defined b
 \paragraph{An explicit state.} Label the qubits $s,0,1,\dots,5$, with $0,\dots,5$ the axes through opposite vertices of
 the icosahedron. Let $e_i$ denote the six-bit string with a single
 $1$ at site $i$. Set $s_{ij}=-1$ for $\{i,j\}$ an edge of the pentagon $1\!-\!3\!-\!2\!-\!4\!-\!5\!-\!1$, and
-$s_{ij}=+1$ otherwise. For $0\le x\le1/2$ put $\alpha=\sqrt{(1-2x)/30}$ and (equation~\eqref{eq:ico} of
+$s_{ij}=+1$ otherwise. For $0\le x\le1/2$ put $\alpha=\sqrt{(1-2x)/30}$, $\beta=\sqrt x$ and (equation~\eqref{eq:ico} of
 Appendix~\ref{sec:ico})
 \[
 \begin{aligned}
-  \psi_x ={}& |0\rangle_s\Bigl(\alpha\sum_{i<j}s_{ij}|e_i+e_j\rangle + \sqrt x\,|111111\rangle\Bigr)\\
-         &+ |1\rangle_s\Bigl(\sqrt x\,|000000\rangle - \alpha\sum_{i<j}s_{ij}|111111-e_i-e_j\rangle\Bigr).
+  \psi_x ={}& |0\rangle_s\Bigl(\alpha\sum_{i<j}s_{ij}|e_i+e_j\rangle + \beta|111111\rangle\Bigr)\\
+         &+ |1\rangle_s\Bigl(\beta|000000\rangle - \alpha\sum_{i<j}s_{ij}|111111-e_i-e_j\rangle\Bigr).
 \end{aligned}
 \]
 Every member has maximally mixed one-qubit marginals, and its three-qubit marginals fall into two spectral classes

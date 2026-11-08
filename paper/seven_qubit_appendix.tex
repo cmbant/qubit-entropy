@@ -13,10 +13,9 @@ of weight $j$ (acting nontrivially on exactly $j$ qubits), so $A_0=1$ and $A_1=\
 the four-qubit sections). Expanding each marginal in Pauli strings gives
 $\pi_k=2^{-k}\binom nk^{-1}\sum_{j\le k}\binom{n-j}{k-j}A_j$~\cite{Rains}; at $n=7$, $k=3$ this is
 $280\pi_3=35+15A_1+5A_2+A_3$. An AME state has $A_1=\dots=A_k=0$, which makes it a pure quantum code of distance
-$k+1$~\cite{Scott}. For stabilizer states the $A_j$ and the corresponding shadow coefficients are integers; with
+$k+1$~\cite{Scott}. For stabilizer states the $A_j$ and the corresponding shadow coefficients $S_w$ (defined in Proposition~\ref{prop:stab7}) are integers; with
 $A_1=A_2=0$ the shadow identity $4S_1=7-A_3$ forces $A_3\ge3$, and if $A_1+A_2\ge1$ instead, integrality gives
-$15A_1+5A_2+A_3\ge5$. Thus every seven-qubit stabilizer state has $\pi_3\ge19/140$ (Proposition~\ref{prop:stab7}, which
-defines the shadow coefficients $S_w$).
+$15A_1+5A_2+A_3\ge5$. Thus every seven-qubit stabilizer state has $\pi_3\ge19/140$ (Proposition~\ref{prop:stab7}).
 
 \paragraph{Copy moments.} Purities are linear observables of the two-copy density operator: if $\mathrm{SW}_S$ swaps the two
 copies of the qubits in $S$, then $\operatorname{tr}\rho_S^2=\operatorname{tr}[\mathrm{SW}_S\,(|\psi\rangle
